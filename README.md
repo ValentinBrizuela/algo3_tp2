@@ -10,6 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 2** - [Tomás Pierdominici](https://github.com/tpierdominici)
 * **Integrante 3** - [Lucas Perez Esnaola](https://github.com/LucasPerezEs)
 * **Integrante 4** - [Ivan Eric Rubin](https://github.com/ivanrubin10)
+* **Integrante 5** - [Valentin Brizuela](https://github.com/ValentinBrizuela)
 
 Corrector: **{Corrector}**
 
