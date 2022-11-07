@@ -6,7 +6,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Integrante 1** - [Mariano Googlieri](https://github.com/marianoguglieri)
+* **Integrante 1** - [Mariano Guglieri](https://github.com/marianoguglieri)
 * **Integrante 2** - [Tomás Pierdominici](https://github.com/tpierdominici)
 * **Integrante 3** - [Lucas Perez Esnaola](https://github.com/LucasPerezEs)
 * **Integrante 4** - [Ivan Eric Rubin](https://github.com/ivanrubin10)
