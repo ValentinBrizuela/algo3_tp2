@@ -9,6 +9,10 @@ public class CasoDeUso1 {
     @Test
     public void test01CriaderoRegeneraUnaLarvaAlConsumirLuegoDeUnTurno(){
         Criadero c = new Criadero();
+        c.avanzarTurno();
+        c.avanzarTurno();
+        c.avanzarTurno();
+        c.avanzarTurno();
         c.engendrarZangano();
 
         assertEquals(2, c.cantidadLarvas());
@@ -21,6 +25,11 @@ public class CasoDeUso1 {
     @Test
     public void test02CriaderoRegeneraDosLarvasAlConsumir2LuegoDeDosTurnos(){
         Criadero c = new Criadero();
+        c.avanzarTurno();
+        c.avanzarTurno();
+        c.avanzarTurno();
+        c.avanzarTurno();
+
         c.engendrarZangano();
         c.engendrarZangano();
 
