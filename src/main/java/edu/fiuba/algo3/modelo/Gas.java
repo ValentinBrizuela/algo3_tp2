@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
-public class Gas extends Terreno{
+public class Gas extends Recurso{
 
     public Gas(){
 
     }
 
-    public Casilla construir(RefineriaGas edificio, Casilla casilla){
+    public Casilla construir(Edificio edificio, Casilla casilla){
+
         casilla.estado.construir();
     }
+
 }

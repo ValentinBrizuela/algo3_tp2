@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Asimilador extends Edificio implements RefineriaGas{
+public class Asimilador extends RefineriaGas{
 
     private int escudo;
 
