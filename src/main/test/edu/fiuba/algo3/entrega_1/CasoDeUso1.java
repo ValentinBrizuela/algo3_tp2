@@ -9,6 +9,8 @@ public class CasoDeUso1 {
     @Test
     public void test01CriaderoRegeneraUnaLarvaAlConsumirLuegoDeUnTurno(){
         Criadero c = new Criadero();
+        //Se hizo avanzarTurno() asi temporalmente para poder avanzar con los tests
+        //Hay que hacer una funcion donde se pasen la cantidad de turnos
         c.avanzarTurno();
         c.avanzarTurno();
         c.avanzarTurno();
@@ -30,6 +32,7 @@ public class CasoDeUso1 {
         c.avanzarTurno();
         c.avanzarTurno();
 
+        //Idem a lo que pasa con avanzarTurno()
         c.engendrarZangano();
         c.engendrarZangano();
 

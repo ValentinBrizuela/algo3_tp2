@@ -14,7 +14,7 @@ public class CasoDeUso2 {
         c.avanzarTurno();
         c.avanzarTurno();
 
-        assertThrows (EdificioEnConstruccionError.class, c::engendrarZangano);
+        assertThrows(EdificioEnConstruccionError.class, c::engendrarZangano);
 
     }
 
