@@ -1,33 +1,36 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.Asimilador;
-import edu.fiuba.algo3.modelo.Gas;
+import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CasoDeUso3 {
     @Test
-    public void test01AsimiladorSePuedeConstruirSobreGas(){
-        CasillaDesocupada casillaD = new CasillaDesocupada(0, 0, new Gas());
+    public void test01AsimiladorSePuedeConstruirSobreGeiser(){
+        Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
         Asimilador asimilador = new Asimilador();
 
-        CasillaOcupada casillaO = casillaD.construir(asimilador);
+        casilla.construir(asimilador);
 
-        assertEquals(asimilador, casillaO.edificioActual());
+        assertEquals(asimilador, casilla.obtenerEdificio());
     }
 
     @Test
-    public void test02ExtractorSePuedeConstruirSobreGas(){
-        CasillaDesocupada casillaD = new CasillaDesocupada(0, 0, new Gas());
-        Asimilador asimilador = new Asimilador();
+    public void test02ExtractorSePuedeConstruirSobreGeiser(){
+        Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
+        Extractor extractor = new Extractor();
 
-        CasillaOcupada casillaO = casillaD.construir(asimilador);
+        casilla.construir(extractor);
 
-        assertEquals(asimilador, casillaO.edificioActual());
+        assertEquals(extractor, casilla.obtenerEdificio());
     }
 
     @Test
-    public void test03NoSePuedeConstruirUnEdificioQueNoSeaExtractorOAsimiladorSobreGas(){
+    public void test03NoSePuedeConstruirUnEdificioQueNoSeaExtractorOAsimiladorSobreGeiser(){
+        Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
+        Criadero criadero = new Criadero();
 
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero);});
     }
 }

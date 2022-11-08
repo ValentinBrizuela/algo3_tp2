@@ -1,21 +1,47 @@
 package edu.fiuba.algo3.modelo;
 
 public class Casilla {
-    protected int posX;
-    protected int posY;
-    protected Terreno tipoDeSuelo;
-    protected Estado estado;
-    public Casilla(int posX, int posY, Terreno tipoDeSuelo, Estado estado){
+    private final int posX;
+    private final int posY;
+    private Terreno terreno;
+    private Estado estado;
+
+    private Edificio edificio;
+    public Casilla(int posX, int posY, Terreno terreno, Estado estado){
         this.posX = posX;
         this.posY = posY;
-        this.tipoDeSuelo = tipoDeSuelo;
+        this.terreno = terreno;
         this.estado = estado;
-
+        this.edificio = null;
     }
 
-    public Casilla construir(Edificio edificio){
+    public void construir(Edificio edificio){
         estado.construir(edificio, this);
-        return null;
+        cambiarEdificio(edificio);
+    }
+
+    public void cambiarEstado(Estado estado){
+        this.estado = estado;
+    }
+
+    private void cambiarEdificio(Edificio edificio){
+        this.edificio = edificio;
+    }
+
+    public void cambiarTerreno(Terreno terreno){
+        this.terreno = terreno;
+    }
+
+    public Edificio obtenerEdificio(){
+        return edificio;
+    }
+
+    public Estado obtenerEstado(){
+        return estado;
+    }
+
+    public Terreno obtenerTerreno(){
+        return terreno;
     }
 
 }

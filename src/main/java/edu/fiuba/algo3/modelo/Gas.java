@@ -6,8 +6,4 @@ public class Gas extends Recurso{
 
     }
 
-    public Casilla construir(Edificio edificio, Casilla casilla){
-
-    }
-
 }
