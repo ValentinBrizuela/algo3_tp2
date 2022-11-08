@@ -14,7 +14,8 @@ public class Casilla {
     }
 
     public Casilla construir(Edificio edificio){
-        estado.construir(edificio);
+        estado.construir(edificio, this);
+        return null;
     }
 
 }
