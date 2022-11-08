@@ -4,5 +4,5 @@ public abstract class RefineriaGas extends Edificio{
     public RefineriaGas (int vida, int costo, int tiempo){
         super(vida,costo,tiempo);
     };
-    public abstract void extraerGas();
+    public abstract void extraerGas(Almacen almacen);
 }

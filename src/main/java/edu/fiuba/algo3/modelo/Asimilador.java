@@ -9,9 +9,8 @@ public class Asimilador extends RefineriaGas{
         this.escudo = 450;
     }
 
-    public void extraerGas(){
-
+    public void extraerGas(Almacen almacen){  /*verificar construccion*/
+        almacen.almacenarGas(20);
     }
-
 
 }
