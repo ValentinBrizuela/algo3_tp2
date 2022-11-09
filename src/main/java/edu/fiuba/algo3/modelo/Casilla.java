@@ -15,9 +15,14 @@ public class Casilla {
         this.edificio = null;
     }
 
-    public void construir(Edificio edificio){
+    public void construir(Edificio edificio, Almacen almacen){
         estado.construir(edificio, this);
-        cambiarEdificio(edificio);
+
+        if (edificio.puedoComprar(almacen)){
+            cambiarEdificio(edificio);
+        } else {
+            throw new RecursosInsuficientes();
+        }
     }
 
     public void cambiarEstado(Estado estado){

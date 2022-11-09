@@ -4,7 +4,8 @@ public class Criadero extends Edificio {
     private int cantidadLarvas;
 
     public Criadero(){
-        super(500, 50, 4);
+
+        super(500, 4, 50, 0);
         this.cantidadLarvas = 3;
         this.raza = new Zerg();
     }
@@ -19,9 +20,10 @@ public class Criadero extends Edificio {
         if (cantidadLarvas() < 3) {
         cantidadLarvas += 1;
         }
-        this.tiempoContruccion -= 1;
+        this.tiempoConstruccion -= 1;
     }
     public int cantidadLarvas(){
         return this.cantidadLarvas;
     }
+
 }

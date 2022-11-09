@@ -16,6 +16,14 @@ public class Almacen {
         mineral += cant;
     }
 
+    public void gastarGas(int cant) {
+        gas -= cant;
+    }
+
+    public void gastarMineral(int cant){
+        mineral -= cant;
+    }
+
     public int cantGas() {
         return gas;
     }

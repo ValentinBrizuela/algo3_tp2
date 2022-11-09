@@ -1,20 +1,20 @@
 package edu.fiuba.algo3.modelo;
 
-public class Edificio {
+public abstract class Edificio {
     protected int vida;
-    protected int costo;
-    protected int tiempoContruccion;
+    protected int tiempoConstruccion;
+    protected Costo costo;
 
     protected Raza raza;
 
-    public Edificio(int vida, int costo, int tiempoContruccion) {
+    public Edificio(int vida, int tiempoConstruccion, int costoMinerales, int costoGas) {
+        this.costo = new Costo(costoMinerales, costoGas);
         this.vida = vida;
-        this.costo = costo;
-        this.tiempoContruccion = tiempoContruccion;
+        this.tiempoConstruccion = tiempoConstruccion;
     }
 
     public boolean esUsable() {
-        return this.tiempoContruccion < 1;
+        return this.tiempoConstruccion < 1;
     }
 
     public void atacar(int dano) {
@@ -22,8 +22,12 @@ public class Edificio {
     }
 
     public int tiempoDeConstruccion() {
-        return tiempoContruccion;
+        return tiempoConstruccion;
     }
 
     public Raza obtenerRaza(){return raza;}
+
+    public boolean puedoComprar(Almacen almacen){
+        return costo.puedoComprar(almacen);
+    }
 }
