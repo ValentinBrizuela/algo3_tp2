@@ -12,7 +12,14 @@ public class Almacen {
         gas += cant;
     }
 
+    public void almacenarMineral(int cant) {
+        mineral += cant;
+    }
+
     public int cantGas() {
         return gas;
+    }
+    public int cantMineral() {
+        return mineral;
     }
 }
