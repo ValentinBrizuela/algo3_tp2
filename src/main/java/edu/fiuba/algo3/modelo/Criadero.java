@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Criadero extends Edificio {
+public class Criadero extends EdificioZerg {
     private int cantidadLarvas;
 
     public Criadero(){

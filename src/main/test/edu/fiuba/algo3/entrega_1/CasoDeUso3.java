@@ -10,7 +10,7 @@ public class CasoDeUso3 {
     public void test01AsimiladorSePuedeConstruirSobreGeiser(){
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
-        Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
+        Casilla casilla = new Casilla(0,0, new TierraEnergizada(),new Geiser(), new Desocupada());
         Asimilador asimilador = new Asimilador();
 
         casilla.construir(asimilador, almacen);
@@ -20,7 +20,7 @@ public class CasoDeUso3 {
 
     @Test
     public void test02ExtractorSePuedeConstruirSobreGeiser(){
-        Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
+        Casilla casilla = new Casilla(0,0, new Moho(),new Geiser(), new Desocupada());
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
         Extractor extractor = new Extractor();
@@ -32,7 +32,7 @@ public class CasoDeUso3 {
 
     @Test
     public void test03NoSePuedeConstruirUnEdificioQueNoSeaExtractorOAsimiladorSobreGeiser(){
-        Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
+        Casilla casilla = new Casilla(0,0, new TierraEnergizada(),new Geiser(), new Desocupada());
         Criadero criadero = new Criadero();
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);

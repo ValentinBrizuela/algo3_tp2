@@ -1,15 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-public class NexoMineral extends Edificio {
+public class NexoMineral extends EdificioProtoss implements Mina {
 
-    private Mena mena;
+    public NexoMineral() {
+        super(250, 250, 4, 50, 0);
 
-    public NexoMineral(Mena mena) {
-        super(250, 4, 50, 0);
-        this.mena = mena;
     }
 
-    public void extraerMineral(Almacen almacen) {
+    public void extraerMineral(Almacen almacen, Mena mena) {
         almacen.almacenarMineral(mena.extraer(20));
     }
 }

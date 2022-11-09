@@ -4,19 +4,42 @@ public class Casilla {
     private final int posX;
     private final int posY;
     private Terreno terreno;
+
+    private Recurso recurso;
     private Estado estado;
 
     private Edificio edificio;
-    public Casilla(int posX, int posY, Terreno terreno, Estado estado){
+    public Casilla(int posX, int posY, Terreno terreno, Recurso recurso, Estado estado){
         this.posX = posX;
         this.posY = posY;
         this.terreno = terreno;
         this.estado = estado;
+        this.recurso = recurso;
         this.edificio = null;
     }
 
-    public void construir(Edificio edificio, Almacen almacen){
-        estado.construir(edificio, this);
+    public void construir(EdificioProtoss edificio, Almacen almacen){
+
+        estado.construir();
+        terreno.construir(edificio);
+        recurso.construir(edificio);
+
+        if (edificio.puedoComprar(almacen)){
+            cambiarEstado(new Ocupada());
+            cambiarEdificio(edificio);
+            Costo costo = edificio.obtenerCosto();
+            almacen.cobrar(costo);
+
+        } else {
+            throw new RecursosInsuficientes();
+        }
+    }
+
+    public void construir(EdificioZerg edificio, Almacen almacen){
+
+        estado.construir();
+        terreno.construir(edificio);
+        recurso.construir(edificio);
 
         if (edificio.puedoComprar(almacen)){
             cambiarEstado(new Ocupada());

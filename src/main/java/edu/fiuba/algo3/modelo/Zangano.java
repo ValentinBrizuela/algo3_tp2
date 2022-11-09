@@ -1,14 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-public class Zangano {
+public class Zangano implements Mina {
 
-    private Mena mena;
-
-    public void trabajarSobreMena(Mena mena) {
-        this.mena = mena;
-    }
-
-    public void extraerMineral(Almacen almacen) {
+    public void extraerMineral(Almacen almacen, Mena mena) {
         almacen.almacenarMineral(mena.extraer(10));
     }
 }

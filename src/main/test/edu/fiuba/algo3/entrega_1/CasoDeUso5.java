@@ -11,7 +11,7 @@ public class CasoDeUso5 {
 
     @Test
     public void construyoEdificioZergEnTierraYNoSePuede() {
-        Casilla casilla = new Casilla(0,0, new Tierra(), new Desocupada());
+        Casilla casilla = new Casilla(0,0, new Tierra(), new Geiser(), new Desocupada());
         Extractor extractor = new Extractor();
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
@@ -20,19 +20,19 @@ public class CasoDeUso5 {
         //Falta testear los otros edificios.
     }
 
-    @Test
+   /* @Test
     public void construyoEdificioZergEnGeiserYNoSePuede() {
-        Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
+        Casilla casilla = new Casilla(0,0, new Moho(),new Geiser(), new Desocupada());
         Criadero criadero = new Criadero();
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
 
         assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero, almacen);});
-    }
+    }*/
 
     @Test
     public void construyoEdificioProtossEnMohoYNoSePuede() {
-        Casilla casilla = new Casilla(0,0, new Moho(), new Desocupada());
+        Casilla casilla = new Casilla(0,0, new Moho(), new Geiser(), new Desocupada());
         Asimilador asimilador = new Asimilador();
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
@@ -43,12 +43,12 @@ public class CasoDeUso5 {
     //REFACTOREAR LA CONSTRUCCION POR RAZA.
     @Test
     public void construyoEdificioProtossEnTierraNoEnergizadaYNoSePuede() {
-        Casilla casilla = new Casilla(0,0, new Tierra(), new Desocupada());
-        Acceso acceso = new Acceso();
+        Casilla casilla = new Casilla(0,0, new Tierra(), new Geiser(), new Desocupada());
+        Asimilador asimilador = new Asimilador();
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
         //Casilla sin energia por defecto.
         // Funciona por ser tierra pero deberia funcionar por no tener energia.
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(acceso, almacen);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(asimilador, almacen);});
     }
 }

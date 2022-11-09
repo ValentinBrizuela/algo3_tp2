@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Extractor extends RefineriaGas{
+public class Extractor extends EdificioZerg implements RefineriaGas{
 
     private int cantZanganos;
 
@@ -11,7 +11,8 @@ public class Extractor extends RefineriaGas{
     }
 
     @Override
-    public void extraerGas(Almacen almacen) {  /*verificar construccion*/
+    public void extraerGas(Almacen almacen, Geiser geiser) {  /*verificar construccion*/
+        geiser.extraerGas(cantZanganos*10);
         almacen.almacenarGas(cantZanganos*10);
     }
 

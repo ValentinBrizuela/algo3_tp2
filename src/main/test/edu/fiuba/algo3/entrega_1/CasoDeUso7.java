@@ -12,9 +12,8 @@ public class CasoDeUso7 {
         Almacen a = new Almacen();
         Zangano z = new Zangano();
         Mena men = new Mena();
-        z.trabajarSobreMena(men);
 
-        z.extraerMineral(a);
+        z.extraerMineral(a, men);
 
         assertEquals(10, a.cantMineral());
     }
@@ -23,9 +22,9 @@ public class CasoDeUso7 {
     public void nexoMineralExtrae20MineralesPorTurno() {
         Almacen a = new Almacen();
         Mena men = new Mena();
-        NexoMineral nexo = new NexoMineral(men);
+        NexoMineral nexo = new NexoMineral();
 
-        nexo.extraerMineral(a);
+        nexo.extraerMineral(a, men);
 
         assertEquals(20, a.cantMineral());
     }

@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class Edificio {
     protected int vida;
+
+    protected int vidaMax;
     protected int tiempoConstruccion;
     protected Costo costo;
 
@@ -10,6 +12,7 @@ public abstract class Edificio {
     public Edificio(int vida, int tiempoConstruccion, int costoMinerales, int costoGas) {
         this.costo = new Costo(costoMinerales, costoGas);
         this.vida = vida;
+        this.vidaMax = vida;
         this.tiempoConstruccion = tiempoConstruccion;
     }
 
