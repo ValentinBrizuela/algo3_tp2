@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
 import org.junit.jupiter.api.Test;
-import edu.fiuba.algo3.modelo.Criadero;
+import edu.fiuba.algo3.modelo.edificios.Criadero;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

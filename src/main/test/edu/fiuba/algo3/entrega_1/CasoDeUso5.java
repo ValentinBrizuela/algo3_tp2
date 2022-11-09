@@ -1,6 +1,14 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.edificios.Asimilador;
+import edu.fiuba.algo3.modelo.edificios.Extractor;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.estados.Desocupada;
+import edu.fiuba.algo3.modelo.juego.Almacen;
+import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.recursos.Geiser;
+import edu.fiuba.algo3.modelo.terrenos.Moho;
+import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
