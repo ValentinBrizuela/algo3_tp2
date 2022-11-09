@@ -23,9 +23,9 @@ public abstract class Edificio {
         return this.tiempoConstruccion < 1;
     }
 
-    public void atacar(int dano) {
-        vida -= dano;
-    }
+    public abstract void atacar(int dano);
+
+    public abstract void regenerar();
 
     public int tiempoDeConstruccion() {
         return tiempoConstruccion;
@@ -39,5 +39,9 @@ public abstract class Edificio {
 
     public Costo obtenerCosto(){
         return this.costo;
+    }
+
+    public int vida() {
+        return this.vida;
     }
 }

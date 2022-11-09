@@ -24,6 +24,7 @@ public class Criadero extends EdificioZerg {
         cantidadLarvas += 1;
         }
         this.tiempoConstruccion -= 1;
+        this.regenerar();
     }
     public int cantidadLarvas(){
         return this.cantidadLarvas;

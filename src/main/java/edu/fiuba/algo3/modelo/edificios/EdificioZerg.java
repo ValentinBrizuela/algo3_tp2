@@ -6,4 +6,16 @@ public class EdificioZerg extends Edificio {
         super(vida, tiempoConstruccion, costoMinerales, costoGas);
     }
 
+    public void atacar(int dano) {
+        vida -= dano;
+    }
+    @Override
+    public void regenerar() {
+        if (vidaMax-vida > 0) {
+            vida += vidaMax*0.1;
+            if (vida > vidaMax) {
+                vida = vidaMax;
+            }
+        }
+    }
 }

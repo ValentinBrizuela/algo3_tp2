@@ -9,5 +9,28 @@ public class EdificioProtoss extends Edificio {
         this.escudo = escudo;
         this.escudoMax = escudo;
     }
+    @Override
+    public void atacar(int cant) {
+        if (cant > escudo) {
+            vida -= (cant - escudo);
+            escudo = 0;
+        }
+        else {
+            escudo -= cant;
+        }
+    }
 
+    @Override
+    public void regenerar() {
+        if (escudoMax-escudo > 0) {
+            escudo += escudoMax*0.1;
+            if (escudo > escudoMax) {
+                escudo = escudoMax;
+            }
+        }
+    }
+
+    public int escudo() {
+        return escudo;
+    }
 }
