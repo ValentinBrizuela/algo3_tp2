@@ -5,7 +5,7 @@ public class NexoMineral extends Edificio {
     private Mena mena;
 
     public NexoMineral(Mena mena) {
-        super(250, 50, 4);
+        super(250, 4, 50, 0);
         this.mena = mena;
     }
 

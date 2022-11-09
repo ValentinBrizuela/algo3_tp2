@@ -15,4 +15,12 @@ public class Costo {
 
         return (mineralDisponible >= costoMineral && gasDisponible >= costoGas);
     }
+
+    public int obtenerCostoMineral(){
+        return costoMineral;
+    }
+
+    public int obtenerCostoGas(){
+        return costoGas;
+    }
 }

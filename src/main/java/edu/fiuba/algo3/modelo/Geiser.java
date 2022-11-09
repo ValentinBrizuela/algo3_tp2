@@ -6,11 +6,9 @@ public class Geiser extends Terreno {
     }
 
     public void construir(Edificio edificio, Casilla casilla) {
-        if (edificio instanceof RefineriaGas) {
-            Estado ocupada = new Ocupada();
-            casilla.cambiarEstado(ocupada);
-        } else {
+        if (!(edificio instanceof RefineriaGas)) {
             throw new ConstruccionNoPermitidaError();
         }
+
     }
 }

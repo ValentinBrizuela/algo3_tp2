@@ -10,10 +10,9 @@ public class CasoDeUso8 {
     public void test01NoPuedoConstruirUnCriaderoSiNoTengoLosRecursosNecesarios(){
         Almacen almacen = new Almacen();
         Casilla casilla = new Casilla(0,0, new Moho(), new Desocupada());
-        Costo costo = new Costo(50, 0);
         Criadero criadero = new Criadero();
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(criadero, almacen);})
+        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(criadero, almacen);});
     }
 
 }

@@ -8,10 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CasoDeUso3 {
     @Test
     public void test01AsimiladorSePuedeConstruirSobreGeiser(){
+        Almacen almacen = new Almacen();
+        almacen.almacenarMineral(1000);
         Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
         Asimilador asimilador = new Asimilador();
 
-        casilla.construir(asimilador);
+        casilla.construir(asimilador, almacen);
 
         assertEquals(asimilador, casilla.obtenerEdificio());
     }
@@ -19,9 +21,11 @@ public class CasoDeUso3 {
     @Test
     public void test02ExtractorSePuedeConstruirSobreGeiser(){
         Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
+        Almacen almacen = new Almacen();
+        almacen.almacenarMineral(1000);
         Extractor extractor = new Extractor();
 
-        casilla.construir(extractor);
+        casilla.construir(extractor, almacen);
 
         assertEquals(extractor, casilla.obtenerEdificio());
     }
@@ -30,7 +34,9 @@ public class CasoDeUso3 {
     public void test03NoSePuedeConstruirUnEdificioQueNoSeaExtractorOAsimiladorSobreGeiser(){
         Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
         Criadero criadero = new Criadero();
+        Almacen almacen = new Almacen();
+        almacen.almacenarMineral(1000);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero, almacen);});
     }
 }

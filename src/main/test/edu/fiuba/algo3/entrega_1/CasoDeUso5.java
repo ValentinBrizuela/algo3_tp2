@@ -13,8 +13,10 @@ public class CasoDeUso5 {
     public void construyoEdificioZergEnTierraYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Tierra(), new Desocupada());
         Extractor extractor = new Extractor();
+        Almacen almacen = new Almacen();
+        almacen.almacenarMineral(1000);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(extractor);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(extractor, almacen);});
         //Falta testear los otros edificios.
     }
 
@@ -22,16 +24,20 @@ public class CasoDeUso5 {
     public void construyoEdificioZergEnGeiserYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Geiser(), new Desocupada());
         Criadero criadero = new Criadero();
+        Almacen almacen = new Almacen();
+        almacen.almacenarMineral(1000);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero, almacen);});
     }
 
     @Test
     public void construyoEdificioProtossEnMohoYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Moho(), new Desocupada());
         Asimilador asimilador = new Asimilador();
+        Almacen almacen = new Almacen();
+        almacen.almacenarMineral(1000);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(asimilador);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(asimilador, almacen);});
     }
 
     //REFACTOREAR LA CONSTRUCCION POR RAZA.
@@ -39,8 +45,10 @@ public class CasoDeUso5 {
     public void construyoEdificioProtossEnTierraNoEnergizadaYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Tierra(), new Desocupada());
         Acceso acceso = new Acceso();
+        Almacen almacen = new Almacen();
+        almacen.almacenarMineral(1000);
         //Casilla sin energia por defecto.
         // Funciona por ser tierra pero deberia funcionar por no tener energia.
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(acceso);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(acceso, almacen);});
     }
 }

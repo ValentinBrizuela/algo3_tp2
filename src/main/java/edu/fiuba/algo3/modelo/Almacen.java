@@ -16,12 +16,9 @@ public class Almacen {
         mineral += cant;
     }
 
-    public void gastarGas(int cant) {
-        gas -= cant;
-    }
-
-    public void gastarMineral(int cant){
-        mineral -= cant;
+    public void cobrar(Costo costo){
+        gas -= costo.obtenerCostoGas();
+        mineral -= costo.obtenerCostoMineral();
     }
 
     public int cantGas() {

@@ -19,7 +19,11 @@ public class Casilla {
         estado.construir(edificio, this);
 
         if (edificio.puedoComprar(almacen)){
+            cambiarEstado(new Ocupada());
             cambiarEdificio(edificio);
+            Costo costo = edificio.obtenerCosto();
+            almacen.cobrar(costo);
+
         } else {
             throw new RecursosInsuficientes();
         }

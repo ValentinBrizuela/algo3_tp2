@@ -30,4 +30,8 @@ public abstract class Edificio {
     public boolean puedoComprar(Almacen almacen){
         return costo.puedoComprar(almacen);
     }
+
+    public Costo obtenerCosto(){
+        return this.costo;
+    }
 }
