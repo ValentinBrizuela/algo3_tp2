@@ -5,6 +5,8 @@ public class Edificio {
     protected int costo;
     protected int tiempoContruccion;
 
+    protected Raza raza;
+
     public Edificio(int vida, int costo, int tiempoContruccion) {
         this.vida = vida;
         this.costo = costo;
@@ -22,4 +24,6 @@ public class Edificio {
     public int tiempoDeConstruccion() {
         return tiempoContruccion;
     }
+
+    public Raza obtenerRaza(){return raza;}
 }

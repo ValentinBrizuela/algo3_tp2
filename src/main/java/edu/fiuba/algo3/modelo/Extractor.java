@@ -7,7 +7,7 @@ public class Extractor extends RefineriaGas{
     public Extractor(){
         super(750, 100, 6);
         cantZanganos = 0;
-
+        this.raza = new Zerg();
     }
 
     @Override

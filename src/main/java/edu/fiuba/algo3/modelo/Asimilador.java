@@ -7,6 +7,7 @@ public class Asimilador extends RefineriaGas{
     public Asimilador() {
         super(450, 100, 6);
         this.escudo = 450;
+        this.raza = new Protoss();
     }
 
     public void extraerGas(Almacen almacen){  /*verificar construccion*/

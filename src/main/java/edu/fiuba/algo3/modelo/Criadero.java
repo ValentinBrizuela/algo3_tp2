@@ -6,6 +6,7 @@ public class Criadero extends Edificio {
     public Criadero(){
         super(500, 50, 4);
         this.cantidadLarvas = 3;
+        this.raza = new Zerg();
     }
     public void engendrarZangano(){
         if (!esUsable()) {

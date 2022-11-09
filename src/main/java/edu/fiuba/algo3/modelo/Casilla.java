@@ -44,4 +44,8 @@ public class Casilla {
         return terreno;
     }
 
+    public void energizarse(){
+        terreno.energizarse();
+    }
+
 }
