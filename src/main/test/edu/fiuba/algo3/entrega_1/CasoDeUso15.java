@@ -5,10 +5,11 @@ import edu.fiuba.algo3.modelo.edificios.NexoMineral;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.razas.Zangano;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.recursos.Mena;
-import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
+import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 
@@ -99,5 +100,22 @@ public class CasoDeUso15 {
         extractor.extraerGas(almacen,geiser);
 
         assertEquals(20,almacen.cantGas());
+    }
+
+    @Test
+    public void test06UnZanganoDejaDeExtraerMineralesCuandoLaMinaSeAgota(){
+
+        Mena mena=new Mena();
+        //vacio la mena
+        mena.extraer(2000);
+        Casilla casilla = new Casilla(0,0,new Tierra(), mena, new Desocupada());
+        Almacen almacen= new Almacen();
+        almacen.almacenarMineral(0);
+        Zangano zangano= new Zangano();
+
+        zangano.extraerMineral(almacen,mena);
+
+        assertEquals(0,almacen.cantMineral());
+
     }
 }
