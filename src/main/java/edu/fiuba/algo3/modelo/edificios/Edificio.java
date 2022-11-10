@@ -14,11 +14,12 @@ public abstract class Edificio {
 
     protected Casilla casilla;
 
-    public Edificio(int vida, int tiempoConstruccion, int costoMinerales, int costoGas) {
+    public Edificio(int vida, int tiempoConstruccion, int costoMinerales, int costoGas, Casilla casilla) {
         this.costo = new Costo(costoMinerales, costoGas);
         this.vida = vida;
         this.vidaMax = vida;
         this.tiempoConstruccion = tiempoConstruccion;
+        this.casilla = casilla;
     }
 
     public boolean esUsable() {

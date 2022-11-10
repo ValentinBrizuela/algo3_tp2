@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.edificios.EdificioVacio;
 import edu.fiuba.algo3.modelo.edificios.Pilon;
 import edu.fiuba.algo3.modelo.juego.Almacen;
+import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
@@ -17,20 +18,21 @@ public class CasoDeUso13 {
         Mapa mapa = new Mapa();
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(100);
-        assertEquals(mapa.obtenerCasilla(25, 25).obtenerTerreno().getClass(), Tierra.class);
+        Casilla casilla = mapa.obtenerCasilla(25,25);
+        assertEquals(casilla.obtenerTerreno().getClass(), Tierra.class);
 
-        Criadero criadero = new Criadero(mapa, 25, 25);
-        mapa.obtenerCasilla(25, 25).construir(criadero, almacen);
+        Criadero criadero = new Criadero(mapa, casilla);
+        casilla.construir(criadero, almacen);
 
         criadero.avanzarTurno();
 
-        assertEquals(mapa.obtenerCasilla(25, 25).obtenerTerreno().getClass(), Moho.class);
+        assertEquals(casilla.obtenerTerreno().getClass(), Moho.class);
 
         criadero.atacar(1000);
-        mapa.obtenerCasilla(25, 25).avanzarTurno();
+        casilla.avanzarTurno();
 
-        assertEquals(mapa.obtenerCasilla(25, 25).obtenerEdificio().getClass(), EdificioVacio.class);
-        assertEquals(mapa.obtenerCasilla(25, 25).obtenerTerreno().getClass(), Moho.class);
-        assertEquals(mapa.obtenerCasilla(26, 26).obtenerTerreno().getClass(), Moho.class);
+        assertEquals(casilla.obtenerEdificio().getClass(), EdificioVacio.class);
+        assertEquals(casilla.obtenerTerreno().getClass(), Moho.class);
+        assertEquals(casilla.obtenerTerreno().getClass(), Moho.class);
     }
 }

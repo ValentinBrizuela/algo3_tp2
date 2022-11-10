@@ -1,13 +1,14 @@
 package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
 public abstract class EdificioProtoss extends Edificio {
     protected int escudo;
     protected int escudoMax;
 
-    public EdificioProtoss(int vida, int escudo, int tiempoConstruccion, int costoMinerales, int costoGas) {
-        super(vida, tiempoConstruccion, costoMinerales, costoGas);
+    public EdificioProtoss(int vida, int escudo, int tiempoConstruccion, int costoMinerales, int costoGas, Casilla casilla) {
+        super(vida, tiempoConstruccion, costoMinerales, costoGas, casilla);
         this.escudo = escudo;
         this.escudoMax = escudo;
     }
@@ -37,4 +38,11 @@ public abstract class EdificioProtoss extends Edificio {
     }
 
     public abstract void avanzarTurno();
+
+    public boolean estaEnergizado(){
+        if (casilla.obtenerTerreno().getClass() == TierraEnergizada.class){
+            return true;
+        }
+        return false;
+    }
 }

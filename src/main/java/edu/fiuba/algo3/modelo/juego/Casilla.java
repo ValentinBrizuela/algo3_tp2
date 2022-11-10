@@ -15,7 +15,6 @@ public class Casilla {
 
     private Recurso recurso;
     private Estado estado;
-
     private Edificio edificio;
     public Casilla(int posX, int posY, Terreno terreno, Recurso recurso, Estado estado){
         this.posX = posX;
@@ -23,7 +22,7 @@ public class Casilla {
         this.terreno = terreno;
         this.estado = estado;
         this.recurso = recurso;
-        this.edificio = new EdificioVacio();
+        this.edificio = new EdificioVacio(this);
     }
 
     public void construir(EdificioProtoss edificio, Almacen almacen){
@@ -87,8 +86,16 @@ public class Casilla {
     public void avanzarTurno(){
         if (edificio.estaDestruido()) {
             cambiarEstado(new Desocupada());
-            cambiarEdificio(new EdificioVacio());
+            cambiarEdificio(new EdificioVacio(this));
         }
         edificio.avanzarTurno();
+    }
+
+    public int obtenerPosX(){
+        return posX;
+    }
+
+    public int obtenerPosY(){
+        return posY;
     }
 }

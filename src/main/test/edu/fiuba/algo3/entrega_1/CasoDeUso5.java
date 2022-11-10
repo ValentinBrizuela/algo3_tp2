@@ -20,7 +20,7 @@ public class CasoDeUso5 {
     @Test
     public void construyoEdificioZergEnTierraYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Tierra(), new Geiser(), new Desocupada());
-        Extractor extractor = new Extractor();
+        Extractor extractor = new Extractor(casilla);
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
 
@@ -41,7 +41,7 @@ public class CasoDeUso5 {
     @Test
     public void construyoEdificioProtossEnMohoYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Moho(), new Geiser(), new Desocupada());
-        Asimilador asimilador = new Asimilador();
+        Asimilador asimilador = new Asimilador(casilla);
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
 
@@ -52,7 +52,7 @@ public class CasoDeUso5 {
     @Test
     public void construyoEdificioProtossEnTierraNoEnergizadaYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Tierra(), new Geiser(), new Desocupada());
-        Asimilador asimilador = new Asimilador();
+        Asimilador asimilador = new Asimilador(casilla);
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
         //Casilla sin energia por defecto.

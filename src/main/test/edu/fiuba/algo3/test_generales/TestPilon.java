@@ -23,7 +23,8 @@ public class TestPilon {
         Almacen almacen=new Almacen();
         almacen.almacenarMineral(1000);
 
-        Pilon pilon=new Pilon();
+        Mapa mapa = new Mapa();
+        Pilon pilon=new Pilon(mapa, tierraSinEnergiaYSinRecursos);
         tierraSinEnergiaYSinRecursos.construir(pilon,almacen);
 
         assertSame(pilon,tierraSinEnergiaYSinRecursos.obtenerEdificio());
@@ -38,7 +39,8 @@ public class TestPilon {
         Almacen almacen=new Almacen();
         almacen.almacenarMineral(1000);
 
-        Pilon pilon=new Pilon();
+        Mapa mapa = new Mapa();
+        Pilon pilon=new Pilon(mapa, tierraConEnergiaYSinRecursos);
         tierraConEnergiaYSinRecursos.construir(pilon,almacen);
 
         assertSame(pilon,tierraConEnergiaYSinRecursos.obtenerEdificio());
@@ -52,7 +54,8 @@ public class TestPilon {
         Almacen almacen=new Almacen();
         almacen.almacenarMineral(1000);
 
-        Pilon pilon=new Pilon();
+        Mapa mapa = new Mapa();
+        Pilon pilon=new Pilon(mapa, mohoSinEnergiaYSinRecursos);
 
         assertThrows(ConstruccionNoPermitidaError.class, () -> {mohoSinEnergiaYSinRecursos.construir(pilon,almacen);});
 

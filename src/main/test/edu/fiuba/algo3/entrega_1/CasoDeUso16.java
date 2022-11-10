@@ -18,11 +18,11 @@ public class CasoDeUso16 {
         Casilla casilla = new Casilla(0,0, new Moho(),new Geiser(), new Desocupada());
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
-        Extractor extractor = new Extractor();
+        Extractor extractor = new Extractor(casilla);
 
         casilla.construir(extractor, almacen);
 
-        Extractor extractor2 = new Extractor();
+        Extractor extractor2 = new Extractor(casilla);
         assertThrows(EdificioYaConstruidoError.class, () -> {casilla.construir(extractor2, almacen);});
     }
 
@@ -31,11 +31,11 @@ public class CasoDeUso16 {
         Casilla casilla = new Casilla(0,0, new Moho(),new Geiser(), new Desocupada());
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
-        Extractor extractor = new Extractor();
+        Extractor extractor = new Extractor(casilla);
 
         casilla.construir(extractor, almacen);
 
-        Extractor extractor2 = new Extractor();
+        Extractor extractor2 = new Extractor(casilla);
         assertThrows(EdificioYaConstruidoError.class, () -> {casilla.construir(extractor2, almacen);});
     }
 
