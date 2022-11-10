@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.edificios.NexoMineral;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zangano;
@@ -28,7 +27,7 @@ public class CasoDeUso7 {
     public void nexoMineralExtrae20MineralesPorTurno() {
         Almacen a = new Almacen();
         Mena men = new Mena();
-        Casilla casilla = new Casilla(0,0,new TierraEnergizada(),men, new Desocupada());
+        Casilla casilla = new Casilla(0,0,new TierraEnergizada(),men);
         NexoMineral nexo = new NexoMineral(casilla);
 
         nexo.extraerMineral(a, men);

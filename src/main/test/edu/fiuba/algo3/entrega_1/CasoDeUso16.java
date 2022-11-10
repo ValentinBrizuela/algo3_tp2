@@ -3,7 +3,6 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.edificios.NexoMineral;
 import edu.fiuba.algo3.modelo.errores.EdificioYaConstruidoError;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zangano;
@@ -18,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CasoDeUso16 {
     @Test
     public void test01NoPuedoConstruirSobreGeiserYaConstruidoPropio(){
-        Casilla casilla = new Casilla(0,0, new Moho(),new Geiser(), new Desocupada());
+        Casilla casilla = new Casilla(0,0, new Moho(),new Geiser());
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
         Extractor extractor = new Extractor(casilla);
@@ -31,7 +30,7 @@ public class CasoDeUso16 {
 
     @Test
     public void test02NoPuedoConstruirSobreGeiserYaConstruidoEnemigo(){
-        Casilla casilla = new Casilla(0,0, new Moho(),new Geiser(), new Desocupada());
+        Casilla casilla = new Casilla(0,0, new Moho(),new Geiser());
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
         Extractor extractor = new Extractor(casilla);
@@ -47,7 +46,7 @@ public class CasoDeUso16 {
         Almacen almacen=new Almacen();
         almacen.almacenarMineral(500);
         Mena mena=new Mena();
-        Casilla casilla= new Casilla(0,0, new Tierra(),mena,new Desocupada());
+        Casilla casilla= new Casilla(0,0, new Tierra(),mena);
         casilla.construir(new NexoMineral(casilla),almacen);
         Zangano zangano=new Zangano();
         assertThrows(EdificioYaConstruidoError.class, () -> {zangano.asentarseEnMena(casilla,almacen);});
@@ -57,7 +56,7 @@ public class CasoDeUso16 {
         Almacen almacen=new Almacen();
         almacen.almacenarMineral(500);
         Mena mena=new Mena();
-        Casilla casilla= new Casilla(0,0, new Moho(),mena,new Desocupada());
+        Casilla casilla= new Casilla(0,0, new Moho(),mena);
         Zangano zangano=new Zangano();
         zangano.asentarseEnMena(casilla,almacen);
         assertThrows(EdificioYaConstruidoError.class, () -> {casilla.construir(new NexoMineral(casilla),almacen);});

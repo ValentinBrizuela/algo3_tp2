@@ -16,11 +16,11 @@ public class Casilla {
     private Recurso recurso;
     private Estado estado;
     private Edificio edificio;
-    public Casilla(int posX, int posY, Terreno terreno, Recurso recurso, Estado estado){
+    public Casilla(int posX, int posY, Terreno terreno, Recurso recurso){
         this.posX = posX;
         this.posY = posY;
         this.terreno = terreno;
-        this.estado = estado;
+        this.estado = new Desocupada();
         this.recurso = recurso;
         this.edificio = new EdificioVacio(this);
     }
