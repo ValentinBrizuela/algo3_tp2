@@ -15,8 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CasoDeUso5 {
-
-
+    
     @Test
     public void construyoEdificioZergEnTierraYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Tierra(), new Geiser(), new Desocupada());

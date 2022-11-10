@@ -27,6 +27,7 @@ public class CasoDeUso15 {
         Almacen almacen= new Almacen();
         almacen.almacenarMineral(0);
         NexoMineral nexoMineral= new NexoMineral(casilla);
+        nexoMineral.finalizarConstruccion();
 
         nexoMineral.extraerMineral(almacen,mena);
 
@@ -45,6 +46,7 @@ public class CasoDeUso15 {
         Casilla casilla = new Casilla(0,0,new TierraEnergizada(), mena, new Desocupada());
 
         NexoMineral nexoMineral= new NexoMineral(casilla);
+        nexoMineral.finalizarConstruccion();
 
         nexoMineral.extraerMineral(almacen,mena);
 
@@ -63,6 +65,7 @@ public class CasoDeUso15 {
         Almacen almacen=new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser, new Desocupada());
         Extractor extractor=new Extractor(casilla);
+        extractor.finalizarConstruccion();
         extractor.meterZangano();
 
         extractor.extraerGas(almacen,geiser);
@@ -78,6 +81,7 @@ public class CasoDeUso15 {
         Almacen almacen=new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser,  new Desocupada());
         Extractor extractor=new Extractor(casilla);
+        extractor.finalizarConstruccion();
         extractor.meterZangano();
 
         extractor.extraerGas(almacen,geiser);
@@ -93,6 +97,7 @@ public class CasoDeUso15 {
         Almacen almacen=new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser, new Desocupada());
         Extractor extractor=new Extractor(casilla);
+        extractor.finalizarConstruccion();
         extractor.meterZangano();
         extractor.meterZangano();
         extractor.meterZangano();

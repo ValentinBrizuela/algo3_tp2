@@ -8,8 +8,4 @@ public class PuertoEstelar extends EdificioProtoss {
         super(600, 600, 10, 150, 150, casilla);
     }
 
-    @Override
-    public void avanzarTurno(){
-        regenerar();
-    }
 }

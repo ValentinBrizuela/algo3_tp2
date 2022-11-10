@@ -20,6 +20,7 @@ public class CasoDeUso4 {
        Almacen a = new Almacen();
        Casilla casilla = new Casilla(0,0,new Moho(), geiser,  new Desocupada());
        Extractor e = new Extractor(casilla);
+       e.finalizarConstruccion();
        e.extraerGas(a, geiser);
 
         assertEquals(0, a.cantGas());
@@ -31,6 +32,8 @@ public class CasoDeUso4 {
         Almacen a = new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser, new Desocupada());
         Extractor e = new Extractor(casilla);
+        e.finalizarConstruccion();
+
         e.meterZangano();
         e.extraerGas(a, geiser);
 
@@ -47,6 +50,8 @@ public class CasoDeUso4 {
         Almacen a = new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser, new Desocupada());
         Extractor e = new Extractor(casilla);
+        e.finalizarConstruccion();
+
         e.meterZangano();
         e.meterZangano();
         e.extraerGas(a, geiser);
@@ -64,6 +69,8 @@ public class CasoDeUso4 {
         Almacen a = new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser, new Desocupada());
         Extractor e = new Extractor(casilla);
+        e.finalizarConstruccion();
+
         e.meterZangano();
         e.meterZangano();
         e.meterZangano();
@@ -81,6 +88,8 @@ public class CasoDeUso4 {
         Geiser geiser = new Geiser();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser, new Desocupada());
         Extractor e = new Extractor(casilla);
+        e.finalizarConstruccion();
+
         e.meterZangano();
         e.meterZangano();
         e.meterZangano();
@@ -94,6 +103,8 @@ public class CasoDeUso4 {
         Casilla casilla = new Casilla(0,0,new TierraEnergizada(),geiser, new Desocupada());
         Almacen almacen = new Almacen();
         Asimilador a = new Asimilador(casilla);
+        a.finalizarConstruccion();
+
         a.extraerGas(almacen, geiser);
 
         assertEquals(20, almacen.cantGas());

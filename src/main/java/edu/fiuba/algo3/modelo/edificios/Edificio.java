@@ -51,4 +51,7 @@ public abstract class Edificio {
     public boolean estaDestruido() {
         return vida <= 0;
     }
+    public void finalizarConstruccion() {
+        tiempoConstruccion = 0;
+    }
 }

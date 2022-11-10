@@ -8,8 +8,4 @@ public class ReservaDeReproduccion extends EdificioZerg {
         super(1000, 12, 150, 0, casilla);
     }
 
-    @Override
-    public void avanzarTurno() {
-        regenerar();
-    }
 }

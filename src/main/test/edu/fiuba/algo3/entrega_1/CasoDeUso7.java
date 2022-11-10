@@ -30,6 +30,7 @@ public class CasoDeUso7 {
         Mena men = new Mena();
         Casilla casilla = new Casilla(0,0,new TierraEnergizada(),men, new Desocupada());
         NexoMineral nexo = new NexoMineral(casilla);
+        nexo.finalizarConstruccion();
 
         nexo.extraerMineral(a, men);
 

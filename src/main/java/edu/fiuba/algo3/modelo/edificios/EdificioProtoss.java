@@ -37,7 +37,10 @@ public abstract class EdificioProtoss extends Edificio {
         return escudo;
     }
 
-    public abstract void avanzarTurno();
+    public void avanzarTurno() {
+        regenerar();
+        tiempoConstruccion -= 1;
+    }
 
     public boolean estaEnergizado(){
         if (casilla.obtenerTerreno().getClass() == TierraEnergizada.class){

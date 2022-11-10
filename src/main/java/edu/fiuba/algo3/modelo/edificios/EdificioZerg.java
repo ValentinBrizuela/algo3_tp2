@@ -21,5 +21,8 @@ public abstract class EdificioZerg extends Edificio {
         }
     }
 
-    public abstract void avanzarTurno();
+    public void avanzarTurno() {
+        regenerar();
+        tiempoConstruccion -= 1;
+    }
 }
