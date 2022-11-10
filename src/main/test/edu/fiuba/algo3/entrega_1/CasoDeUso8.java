@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.errores.RecursosInsuficientes;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
@@ -19,7 +20,7 @@ public class CasoDeUso8 {
     public void test01NoPuedoConstruirUnCriaderoSiNoTengoLosRecursosNecesarios(){
         Almacen almacen = new Almacen();
         Casilla casilla = new Casilla(0,0, new Moho(), new RecursoVacio(), new Desocupada());
-        Criadero criadero = new Criadero();
+        Criadero criadero = new Criadero(new Mapa(), 25, 25);
 
         assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(criadero, almacen);});
     }

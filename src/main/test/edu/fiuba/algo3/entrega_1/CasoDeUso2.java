@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.errores.EdificioEnConstruccionError;
+import edu.fiuba.algo3.modelo.juego.Mapa;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,7 +10,7 @@ public class CasoDeUso2 {
 
     @Test
     public void test01EdificioNoEsOperativoAntesDeConstruirse() {
-        Criadero c = new Criadero();
+        Criadero c = new Criadero(new Mapa(), 25, 25);
         c.avanzarTurno();
         c.avanzarTurno();
         c.avanzarTurno();
@@ -20,7 +21,7 @@ public class CasoDeUso2 {
 
     @Test
     public void test02EdificioTardaLoQueCorrespondeEnConstruirse() {
-        Criadero c = new Criadero();
+        Criadero c = new Criadero(new Mapa(), 25, 25);
         c.avanzarTurno();
         c.avanzarTurno();
         c.avanzarTurno();

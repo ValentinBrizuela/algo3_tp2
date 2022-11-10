@@ -11,11 +11,17 @@ public class Mapa extends AlgoStar {
 
     public Mapa(){
 
+        casillas = new Casilla[50][50];
+
         for (int i=0; i<50; i++){
             for (int j=0; j<50; j++){
                 casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio(), new Desocupada());
             }
         }
+    }
+
+    public Casilla obtenerCasilla(int i, int j) {
+        return casillas[i][j];
     }
 
     public void avanzarTurno(){

@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
@@ -42,7 +43,7 @@ public class CasoDeUso3 {
     @Test
     public void test03NoSePuedeConstruirUnEdificioQueNoSeaExtractorOAsimiladorSobreGeiser(){
         Casilla casilla = new Casilla(0,0, new TierraEnergizada(),new Geiser(), new Desocupada());
-        Criadero criadero = new Criadero();
+        Criadero criadero = new Criadero(new Mapa(), 25, 25);
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
 
