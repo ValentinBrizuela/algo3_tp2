@@ -7,6 +7,8 @@ public class Guarida extends EdificioZerg {
 
     @Override
     public void avanzarTurno(){
+        this.tiempoConstruccion -= 1;
+        this.contadorTurnos += 1;
         regenerar();
     }
 }

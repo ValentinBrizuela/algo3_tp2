@@ -11,6 +11,8 @@ public class NexoMineral extends EdificioProtoss implements Mina {
     }
     @Override
     public void avanzarTurno(){
+        this.tiempoConstruccion -= 1;
+        this.contadorTurnos += 1;
         regenerar();
     }
     public void extraerMineral(Almacen almacen, Mena mena) {

@@ -13,6 +13,8 @@ public class Acceso extends EdificioProtoss {
 
     @Override
     public void avanzarTurno(){
+        this.tiempoConstruccion -= 1;
+        this.contadorTurnos += 1;
         regenerar();
     }
 }

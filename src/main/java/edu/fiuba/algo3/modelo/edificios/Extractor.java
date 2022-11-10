@@ -12,7 +12,6 @@ public class Extractor extends EdificioZerg implements RefineriaGas {
     public Extractor(){
         super(750,6, 100, 0);
         cantZanganos = 0;
-        this.raza = new Zerg();
     }
 
     @Override
@@ -29,6 +28,15 @@ public class Extractor extends EdificioZerg implements RefineriaGas {
 
     @Override
     public void avanzarTurno(){
+        if (!esUsable()){
+            this.tiempoConstruccion -= 1;
+            this.regenerar();
+            this.contadorTurnos += 1;
+            return;
+        }
+
+        contadorTurnos += 1;
+        /*extraerGas(almacen, geiser);*/
         regenerar();
     }
 }

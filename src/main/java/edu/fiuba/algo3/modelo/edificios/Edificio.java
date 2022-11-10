@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.juego.Almacen;
+import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Raza;
 
 public abstract class Edificio {
@@ -10,13 +11,17 @@ public abstract class Edificio {
     protected int tiempoConstruccion;
     protected Costo costo;
 
-    protected Raza raza;
+    protected int contadorTurnos;
 
-    public Edificio(int vida, int tiempoConstruccion, int costoMinerales, int costoGas) {
+    protected Casilla casilla;
+
+    public Edificio(int vida, int tiempoConstruccion, int costoMinerales, int costoGas, Casilla casilla) {
         this.costo = new Costo(costoMinerales, costoGas);
         this.vida = vida;
         this.vidaMax = vida;
         this.tiempoConstruccion = tiempoConstruccion;
+        this.casilla = casilla;
+        this.contadorTurnos = 0;
     }
 
     public boolean esUsable() {
@@ -30,8 +35,6 @@ public abstract class Edificio {
     public int tiempoDeConstruccion() {
         return tiempoConstruccion;
     }
-
-    public Raza obtenerRaza(){return raza;}
 
     public boolean puedoComprar(Almacen almacen){
         return costo.puedoComprar(almacen);

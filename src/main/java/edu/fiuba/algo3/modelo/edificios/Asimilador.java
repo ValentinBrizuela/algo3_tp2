@@ -8,7 +8,6 @@ public class Asimilador extends EdificioProtoss implements RefineriaGas {
 
     public Asimilador() {
         super(450,450, 6, 100, 0);
-        this.raza = new Protoss();
     }
 
     public void extraerGas(Almacen almacen, Geiser geiser){  /*verificar construccion*/
@@ -18,6 +17,8 @@ public class Asimilador extends EdificioProtoss implements RefineriaGas {
 
     @Override
     public void avanzarTurno(){
+        this.tiempoConstruccion -= 1;
+        this.contadorTurnos += 1;
         regenerar();
     }
 

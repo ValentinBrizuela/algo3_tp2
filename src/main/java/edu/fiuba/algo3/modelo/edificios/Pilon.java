@@ -11,6 +11,8 @@ public class Pilon extends EdificioProtoss {
     }
     @Override
     public void avanzarTurno() {
-        this.regenerar();
+        this.tiempoConstruccion -= 1;
+        this.contadorTurnos += 1;
+        regenerar();
     }
 }
