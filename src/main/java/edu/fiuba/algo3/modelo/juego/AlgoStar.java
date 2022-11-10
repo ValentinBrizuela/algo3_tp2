@@ -7,44 +7,52 @@ public class AlgoStar {
 
     private Jugador jugador;
 
-    public AlgoStar(Jugador jugador){
+    private Mapa mapa;
+
+    public AlgoStar(Jugador jugador, Mapa mapa){
         this.jugador=jugador;
+        this.mapa=mapa;
     }
 
-    public void construirGuarida(Casilla casilla,Almacen almacen){
+    public void construirGuarida(int x, int y){
         if(jugador.yaTiene(ReservaDeReproduccion.class)) {
-            casilla.construir(new Guarida(casilla), almacen);
+            Casilla casilla = mapa.obtenerCasilla(x,y);
+            casilla.construir(new Guarida(casilla), jugador.obtenerAlmacen());
             jugador.agregarEdificio(Guarida.class);
         }else{
             throw new ConstruccionNoPermitidaError();
         }
     }
 
-    public void construirReservaDeReproduccion(Casilla casilla,Almacen almacen){
-        casilla.construir(new ReservaDeReproduccion(casilla), almacen);
+    public void construirReservaDeReproduccion(int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+        casilla.construir(new ReservaDeReproduccion(casilla), jugador.obtenerAlmacen());
         jugador.agregarEdificio(ReservaDeReproduccion.class);
     }
 
-    public void construirEspiral(Casilla casilla,Almacen almacen){
+    public void construirEspiral(int x, int y){
         if(jugador.yaTiene(Guarida.class)) {
-            casilla.construir(new Espiral(casilla), almacen);
+            Casilla casilla = mapa.obtenerCasilla(x, y);
+            casilla.construir(new Espiral(casilla), jugador.obtenerAlmacen());
             jugador.agregarEdificio(Espiral.class);
         }else{
             throw new ConstruccionNoPermitidaError();
         }
     }
 
-    public void construirPuertoEstelar(Casilla casilla, Almacen almacen) {
+    public void construirPuertoEstelar(int x, int y) {
         if(jugador.yaTiene(Acceso.class)) {
-            casilla.construir(new PuertoEstelar(casilla), almacen);
+            Casilla casilla = mapa.obtenerCasilla(x, y);
+            casilla.construir(new PuertoEstelar(casilla), jugador.obtenerAlmacen());
             jugador.agregarEdificio(PuertoEstelar.class);
         }else{
             throw new ConstruccionNoPermitidaError();
         }
     }
 
-    public void construirAcceso(Casilla casilla, Almacen almacen) {
-        casilla.construir(new Acceso(casilla), almacen);
+    public void construirAcceso(int x, int y) {
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+        casilla.construir(new Acceso(casilla), jugador.obtenerAlmacen());
         jugador.agregarEdificio(Acceso.class);
     }
 }

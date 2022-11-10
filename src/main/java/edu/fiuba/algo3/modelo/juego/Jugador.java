@@ -9,7 +9,9 @@ public class Jugador {
 
     private ArrayList<Class> edificiosConstruidos;
 
-    public Jugador(){
+    private Almacen almacen;
+    public Jugador(Almacen almacen){
+        this.almacen = almacen;
         this.edificiosConstruidos= new ArrayList<Class>();
     }
 
@@ -18,4 +20,8 @@ public class Jugador {
     }
 
     public void agregarEdificio(Class edificio){edificiosConstruidos.add(edificio);}
+
+    public Almacen obtenerAlmacen(){
+        return almacen;
+    }
 }

@@ -5,12 +5,10 @@ import edu.fiuba.algo3.modelo.edificios.Guarida;
 import edu.fiuba.algo3.modelo.edificios.PuertoEstelar;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
-import edu.fiuba.algo3.modelo.juego.AlgoStar;
-import edu.fiuba.algo3.modelo.juego.Almacen;
-import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.juego.Jugador;
+import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
+import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 
@@ -21,106 +19,97 @@ public class CasoDeUso17 {
 
     @Test
     public void test01UnaGuaridaNoSePuedeConstruirSiNoHayYaConstruidaUnaReservaDeReproduccion(){
-        AlgoStar algoStar =new AlgoStar(new Jugador());
+        Mapa mapa = new Mapa();
+        Almacen almacen = new Almacen();
+        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
 
 
-        Casilla casilla= new Casilla(0,0,new Moho(),new RecursoVacio(),new Desocupada());
-
-        Almacen almacen=new Almacen();
         almacen.almacenarMineral(500);
         almacen.almacenarGas(500);
+        mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirGuarida(casilla,almacen);});
-
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirGuarida(0,0);});
     }
 
     @Test
     public void test02UnaGuaridaSePuedeConstruirSiAntesSeConstruyoUnaReservaDeReproduccion(){
-        AlgoStar algoStar =new AlgoStar(new Jugador());
+        Mapa mapa = new Mapa();
+        Almacen almacen = new Almacen();
+        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
 
-
-        Casilla casilla1= new Casilla(0,0,new Moho(),new RecursoVacio(),new Desocupada());
-        Casilla casilla2= new Casilla(1,0,new Moho(),new RecursoVacio(),new Desocupada());
-
-        Almacen almacen=new Almacen();
         almacen.almacenarMineral(500);
         almacen.almacenarGas(500);
+        mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(1,0).cambiarTerreno(new Moho());
 
-        algoStar.construirReservaDeReproduccion(casilla1,almacen);
-        algoStar.construirGuarida(casilla2,almacen);
+        algoStar.construirReservaDeReproduccion(0,0);
+        algoStar.construirGuarida(1,0);
 
-        assertSame(Guarida.class, casilla2.obtenerEdificio().getClass());
+        assertSame(Guarida.class, mapa.obtenerCasilla(1,0).obtenerEdificio().getClass());
 
     }
 
     @Test
     public void test03UnEspiralNoSePuedeConstruirSiNoHayYaConstruidaUnaGuarida(){
-        AlgoStar algoStar =new AlgoStar(new Jugador());
-
-
-        Casilla casilla= new Casilla(0,0,new Moho(),new RecursoVacio(),new Desocupada());
-
+        Mapa mapa = new Mapa();
         Almacen almacen=new Almacen();
+        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
+
         almacen.almacenarMineral(500);
         almacen.almacenarGas(500);
+        mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirEspiral(casilla,almacen);});
-
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirEspiral(0,0);});
     }
 
     @Test
     public void test04UnEspiralSePuedeConstruirSiAntesSeConstruyoUnaGuarida(){
-        AlgoStar algoStar =new AlgoStar(new Jugador());
+        Mapa mapa = new Mapa();
+        Almacen almacen = new Almacen();
+        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
 
-
-        Casilla casilla1= new Casilla(0,0,new Moho(),new RecursoVacio(),new Desocupada());
-        Casilla casilla2= new Casilla(1,0,new Moho(),new RecursoVacio(),new Desocupada());
-        Casilla casilla3= new Casilla(1,0,new Moho(),new RecursoVacio(),new Desocupada());
-
-        Almacen almacen=new Almacen();
         almacen.almacenarMineral(500);
         almacen.almacenarGas(500);
+        mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(1,0).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(1,1).cambiarTerreno(new Moho());
 
-        algoStar.construirReservaDeReproduccion(casilla1,almacen);
-        algoStar.construirGuarida(casilla2,almacen);
-        algoStar.construirEspiral(casilla3,almacen);
+        algoStar.construirReservaDeReproduccion(0,0);
+        algoStar.construirGuarida(1,0);
+        algoStar.construirEspiral(1,1);
 
-        assertSame(Espiral.class, casilla3.obtenerEdificio().getClass());
+        assertSame(Espiral.class, mapa.obtenerCasilla(1,1).obtenerEdificio().getClass());
 
     }
 
     @Test
     public void test05UnPuertoEstelarNoSePuedeConstruirSiNoHayYaConstruidoUnAcceso(){
-        AlgoStar algoStar =new AlgoStar(new Jugador());
+        Mapa mapa = new Mapa();
+        Almacen almacen = new Almacen();
+        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
 
-
-        Casilla casilla= new Casilla(0,0,new TierraEnergizada(),new RecursoVacio(),new Desocupada());
-
-        Almacen almacen=new Almacen();
         almacen.almacenarMineral(500);
         almacen.almacenarGas(500);
+        mapa.obtenerCasilla(0,0).cambiarTerreno(new TierraEnergizada());
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirPuertoEstelar(casilla,almacen);});
-
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirPuertoEstelar(0,0);});
     }
 
     @Test
     public void test06UnEspiralSePuedeConstruirSiAntesSeConstruyoUnPuertoEstelar(){
-        AlgoStar algoStar =new AlgoStar(new Jugador());
+        Mapa mapa = new Mapa();
+        Almacen almacen = new Almacen();
+        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
 
-
-        Casilla casilla1= new Casilla(0,0,new TierraEnergizada(),new RecursoVacio(),new Desocupada());
-        Casilla casilla2= new Casilla(1,0,new TierraEnergizada(),new RecursoVacio(),new Desocupada());
-
-        Almacen almacen=new Almacen();
         almacen.almacenarMineral(500);
         almacen.almacenarGas(500);
+        mapa.obtenerCasilla(0,0).cambiarTerreno(new TierraEnergizada());
+        mapa.obtenerCasilla(1,0).cambiarTerreno(new TierraEnergizada());
 
-        algoStar.construirAcceso(casilla1,almacen);
-        algoStar.construirPuertoEstelar(casilla2,almacen);
+        algoStar.construirAcceso(0,0);
+        algoStar.construirPuertoEstelar(1,0);
 
-        assertSame(PuertoEstelar.class, casilla2.obtenerEdificio().getClass());
-
+        assertSame(PuertoEstelar.class, mapa.obtenerCasilla(1,0).obtenerEdificio().getClass());
     }
 
 }
