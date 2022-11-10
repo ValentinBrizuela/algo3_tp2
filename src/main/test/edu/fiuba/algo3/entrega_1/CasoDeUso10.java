@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Criadero;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
@@ -11,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CasoDeUso10 {
     @Test
     public void construccionZergRecuperaVidaPorTurnoHastaElMaximo() { /*Supuesto: Recupera 10% por turno*/
-        Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio(), new Desocupada());
+        Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
         Criadero criadero = new Criadero(new Mapa(), casilla);
         criadero.atacar(100);
 

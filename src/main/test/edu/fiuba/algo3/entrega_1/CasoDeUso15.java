@@ -2,7 +2,6 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.edificios.NexoMineral;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zangano;
@@ -23,7 +22,7 @@ public class CasoDeUso15 {
         Mena mena=new Mena();
         //vacio la mena
         mena.extraer(2000);
-        Casilla casilla = new Casilla(0,0,new TierraEnergizada(), mena, new Desocupada());
+        Casilla casilla = new Casilla(0,0,new TierraEnergizada(), mena);
         Almacen almacen= new Almacen();
         almacen.almacenarMineral(0);
         NexoMineral nexoMineral= new NexoMineral(casilla);
@@ -43,7 +42,7 @@ public class CasoDeUso15 {
         mena.extraer(1985);
         Almacen almacen= new Almacen();
         almacen.almacenarMineral(0);
-        Casilla casilla = new Casilla(0,0,new TierraEnergizada(), mena, new Desocupada());
+        Casilla casilla = new Casilla(0,0,new TierraEnergizada(), mena);
 
         NexoMineral nexoMineral= new NexoMineral(casilla);
         nexoMineral.finalizarConstruccion();
@@ -63,7 +62,7 @@ public class CasoDeUso15 {
         Geiser geiser=new Geiser();
         geiser.extraerGas(5000);
         Almacen almacen=new Almacen();
-        Casilla casilla = new Casilla(0,0,new Moho(), geiser, new Desocupada());
+        Casilla casilla = new Casilla(0,0,new Moho(), geiser);
         Extractor extractor=new Extractor(casilla);
         extractor.finalizarConstruccion();
         extractor.meterZangano();
@@ -79,7 +78,7 @@ public class CasoDeUso15 {
         //dejo 5 unidades de gas
         geiser.extraerGas(4995);
         Almacen almacen=new Almacen();
-        Casilla casilla = new Casilla(0,0,new Moho(), geiser,  new Desocupada());
+        Casilla casilla = new Casilla(0,0,new Moho(), geiser);
         Extractor extractor=new Extractor(casilla);
         extractor.finalizarConstruccion();
         extractor.meterZangano();
@@ -95,7 +94,7 @@ public class CasoDeUso15 {
         //dejo 5 unidades de gas
         geiser.extraerGas(4980);
         Almacen almacen=new Almacen();
-        Casilla casilla = new Casilla(0,0,new Moho(), geiser, new Desocupada());
+        Casilla casilla = new Casilla(0,0,new Moho(), geiser);
         Extractor extractor=new Extractor(casilla);
         extractor.finalizarConstruccion();
         extractor.meterZangano();
@@ -113,11 +112,12 @@ public class CasoDeUso15 {
         Mena mena=new Mena();
         //vacio la mena
         mena.extraer(2000);
-        Casilla casilla = new Casilla(0,0,new Tierra(), mena, new Desocupada());
+        Casilla casilla = new Casilla(0,0,new Moho(), mena);
         Almacen almacen= new Almacen();
         almacen.almacenarMineral(0);
         Zangano zangano= new Zangano();
 
+        zangano.asentarseEnMena(casilla,almacen);
         zangano.extraerMineral(almacen,mena);
 
         assertEquals(0,almacen.cantMineral());

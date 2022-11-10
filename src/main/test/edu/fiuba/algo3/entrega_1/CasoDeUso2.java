@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.errores.EdificioEnConstruccionError;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
@@ -14,7 +13,7 @@ public class CasoDeUso2 {
 
     @Test
     public void test01EdificioNoEsOperativoAntesDeConstruirse() {
-        Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio(), new Desocupada());
+        Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
         Criadero c = new Criadero(new Mapa(), casilla);
         c.avanzarTurno();
         c.avanzarTurno();
@@ -26,7 +25,7 @@ public class CasoDeUso2 {
 
     @Test
     public void test02EdificioTardaLoQueCorrespondeEnConstruirse() {
-        Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio(), new Desocupada());
+        Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
         Criadero c = new Criadero(new Mapa(), casilla);
         c.avanzarTurno();
         c.avanzarTurno();

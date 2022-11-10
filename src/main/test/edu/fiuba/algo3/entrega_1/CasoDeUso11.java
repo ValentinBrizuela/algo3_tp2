@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.edificios.Pilon;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
@@ -13,7 +12,7 @@ public class CasoDeUso11 {
     @Test
     public void construccionProtossRecuperaEscudoPorTurnoHastaElMaximo() {
         Mapa mapa = new Mapa();
-        Casilla casilla = new Casilla(25,25, new TierraEnergizada(), new RecursoVacio(), new Desocupada());
+        Casilla casilla = new Casilla(25,25, new TierraEnergizada(), new RecursoVacio());
         Pilon pilon = new Pilon(mapa, casilla);
         pilon.atacar(100);
 
