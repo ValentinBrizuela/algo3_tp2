@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 
 public class Mena extends Recurso {
     private int cant;
-
     public Mena() {
         cant = 2000;
     }
