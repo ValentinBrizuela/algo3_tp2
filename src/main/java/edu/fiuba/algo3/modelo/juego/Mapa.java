@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.estados.Desocupada;
-import edu.fiuba.algo3.modelo.juego.AlgoStar;
-import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 
-public class Mapa extends AlgoStar {
+public class Mapa {
     private Casilla[][] casillas;
 
     public Mapa(){
