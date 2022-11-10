@@ -21,6 +21,12 @@ public class Mena extends Recurso {
             this.cant -= cant;
             return cant;
         }
+        if ((this.cant - cant)>-cant && (this.cant - cant)<0){
+            int restante;
+            restante=this.cant;
+            this.cant=0;
+            return restante;
+        }
         return 0;
     }
 }

@@ -17,8 +17,7 @@ public class Extractor extends EdificioZerg implements RefineriaGas {
 
     @Override
     public void extraerGas(Almacen almacen, Geiser geiser) {  /*verificar construccion*/
-        geiser.extraerGas(cantZanganos*10);
-        almacen.almacenarGas(cantZanganos*10);
+        almacen.almacenarGas(geiser.extraerGas(cantZanganos*10));
     }
 
     public void meterZangano() {  /*verificar construccion*/

@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.recursos;
 import edu.fiuba.algo3.modelo.edificios.Edificio;
 import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
-import edu.fiuba.algo3.modelo.errores.RecursosInsuficientes;
+
 
 public class Geiser extends Recurso {
 
@@ -18,10 +18,17 @@ public class Geiser extends Recurso {
         }
     }
 
-    public void extraerGas(int cant) {
-        if (this.cant <= 0) {
-            throw new RecursosInsuficientes();
+    public int extraerGas(int cant) {
+        if (this.cant - cant >= 0) {
+            this.cant -= cant;
+            return cant;
         }
-        this.cant -= cant;
+        if ((this.cant - cant)>-cant && (this.cant - cant)<0){
+            int restante;
+            restante=this.cant;
+            this.cant=0;
+            return restante;
+        }
+        return 0;
     }
 }
