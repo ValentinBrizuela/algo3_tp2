@@ -107,11 +107,12 @@ public class CasoDeUso15 {
         Mena mena=new Mena();
         //vacio la mena
         mena.extraer(2000);
-        Casilla casilla = new Casilla(0,0,new Tierra(), mena);
+        Casilla casilla = new Casilla(0,0,new Moho(), mena);
         Almacen almacen= new Almacen();
         almacen.almacenarMineral(0);
         Zangano zangano= new Zangano();
 
+        zangano.asentarseEnMena(casilla,almacen);
         zangano.extraerMineral(almacen,mena);
 
         assertEquals(0,almacen.cantMineral());
