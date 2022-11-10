@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.juego.Casilla;
+
 public abstract class EdificioZerg extends Edificio {
 
     public EdificioZerg(int vida, int tiempoConstruccion, int costoMinerales, int costoGas) {

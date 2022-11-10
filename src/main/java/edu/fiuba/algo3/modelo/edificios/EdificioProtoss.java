@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.juego.Casilla;
+
 public abstract class EdificioProtoss extends Edificio {
     protected int escudo;
     protected int escudoMax;

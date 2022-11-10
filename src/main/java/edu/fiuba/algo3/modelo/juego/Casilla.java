@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.modelo.juego;
 
-import edu.fiuba.algo3.modelo.edificios.Costo;
-import edu.fiuba.algo3.modelo.edificios.Edificio;
-import edu.fiuba.algo3.modelo.edificios.EdificioProtoss;
-import edu.fiuba.algo3.modelo.edificios.EdificioZerg;
+import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.RecursosInsuficientes;
+import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
@@ -25,7 +23,7 @@ public class Casilla {
         this.terreno = terreno;
         this.estado = estado;
         this.recurso = recurso;
-        this.edificio = null;
+        this.edificio = new EdificioVacio();
     }
 
     public void construir(EdificioProtoss edificio, Almacen almacen){
@@ -66,7 +64,7 @@ public class Casilla {
         this.estado = estado;
     }
 
-    private void cambiarEdificio(Edificio edificio){
+    public void cambiarEdificio(Edificio edificio){
         this.edificio = edificio;
     }
 
@@ -87,6 +85,10 @@ public class Casilla {
     }
 
     public void avanzarTurno(){
+        if (edificio.estaDestruido()) {
+            cambiarEstado(new Desocupada());
+            cambiarEdificio(new EdificioVacio());
+        }
         edificio.avanzarTurno();
     }
 }

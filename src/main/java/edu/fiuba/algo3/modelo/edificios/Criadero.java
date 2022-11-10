@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.errores.EdificioEnConstruccionError;
+import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
@@ -24,7 +25,6 @@ public class Criadero extends EdificioZerg {
         this.mapa = mapa;
         this.radio = 5;
         this.contador = 0;
-        this.raza = new Zerg();
     }
     public void engendrarZangano(){
         if (!esUsable()) {

@@ -8,7 +8,6 @@ public class Acceso extends EdificioProtoss {
     public Acceso() {
         super(500, 500,8, 150, 0);
         this.escudo = 500;
-        this.raza = new Protoss();
     }
 
     @Override

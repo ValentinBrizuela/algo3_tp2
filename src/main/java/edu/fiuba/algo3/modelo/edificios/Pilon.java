@@ -7,7 +7,6 @@ public class Pilon extends EdificioProtoss {
     public Pilon() {
         super(300, 300, 5, 100, 0);
         escudo = 300;
-        this.raza = new Protoss();
     }
     @Override
     public void avanzarTurno() {
