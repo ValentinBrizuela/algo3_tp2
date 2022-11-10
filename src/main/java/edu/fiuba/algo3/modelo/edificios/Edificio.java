@@ -44,4 +44,6 @@ public abstract class Edificio {
     public int vida() {
         return this.vida;
     }
+
+    public abstract void avanzarTurno();
 }

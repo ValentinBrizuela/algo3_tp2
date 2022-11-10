@@ -27,4 +27,9 @@ public class Extractor extends EdificioZerg implements RefineriaGas {
         }
         cantZanganos += 1;
     }
+
+    @Override
+    public void avanzarTurno(){
+        regenerar();
+    }
 }

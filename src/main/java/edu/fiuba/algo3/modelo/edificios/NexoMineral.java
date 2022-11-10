@@ -9,7 +9,10 @@ public class NexoMineral extends EdificioProtoss implements Mina {
         super(250, 250, 4, 50, 0);
 
     }
-
+    @Override
+    public void avanzarTurno(){
+        regenerar();
+    }
     public void extraerMineral(Almacen almacen, Mena mena) {
         almacen.almacenarMineral(mena.extraer(20));
     }

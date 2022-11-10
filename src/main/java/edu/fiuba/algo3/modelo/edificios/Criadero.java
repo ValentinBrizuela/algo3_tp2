@@ -19,6 +19,7 @@ public class Criadero extends EdificioZerg {
         cantidadLarvas -= 1;
     }
 
+    @Override
     public void avanzarTurno() {
         if (cantidadLarvas() < 3) {
         cantidadLarvas += 1;

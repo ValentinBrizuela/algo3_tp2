@@ -10,4 +10,9 @@ public class Acceso extends EdificioProtoss {
         this.escudo = 500;
         this.raza = new Protoss();
     }
+
+    @Override
+    public void avanzarTurno(){
+        regenerar();
+    }
 }

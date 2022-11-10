@@ -9,7 +9,7 @@ public class Pilon extends EdificioProtoss {
         escudo = 300;
         this.raza = new Protoss();
     }
-
+    @Override
     public void avanzarTurno() {
         this.regenerar();
     }

@@ -16,4 +16,9 @@ public class Asimilador extends EdificioProtoss implements RefineriaGas {
         almacen.almacenarGas(20);
     }
 
+    @Override
+    public void avanzarTurno(){
+        regenerar();
+    }
+
 }
