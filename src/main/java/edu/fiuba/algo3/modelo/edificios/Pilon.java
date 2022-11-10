@@ -28,7 +28,9 @@ public class Pilon extends EdificioProtoss {
     public void generar(Terreno terreno) {
         for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
             for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
-                mapa.obtenerCasilla(i, j).cambiarTerreno(terreno);
+                if (!(mapa.obtenerCasilla(i, j).obtenerTerreno().getClass() == Moho.class)) {
+                    mapa.obtenerCasilla(i, j).cambiarTerreno(terreno);
+                }
             }
         }
     }

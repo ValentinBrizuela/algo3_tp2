@@ -47,9 +47,11 @@ public class Criadero extends EdificioZerg {
     }
 
     public void generarMoho() {
-        for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
-            for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
-                mapa.obtenerCasilla(i, j).cambiarTerreno(new Moho());
+        for (int i = casilla.obtenerPosX() - rango; i <= casilla.obtenerPosX() + rango; i++) {
+            for (int j = casilla.obtenerPosY() - rango; j <= casilla.obtenerPosY() + rango; j++) {
+                if (mapa.obtenerCasilla(i, j).obtenerEstado().getClass() == Desocupada.class) {
+                    mapa.obtenerCasilla(i, j).cambiarTerreno(new Moho());
+                }
             }
         }
     }
