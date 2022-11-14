@@ -3,7 +3,7 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.NexoMineral;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.razas.Zangano;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;

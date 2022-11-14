@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.razas;
+package edu.fiuba.algo3.modelo.unidades;
 
 import edu.fiuba.algo3.modelo.edificios.EdificioVacio;
 import edu.fiuba.algo3.modelo.edificios.Mina;

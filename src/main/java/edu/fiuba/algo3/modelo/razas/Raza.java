@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.modelo.razas;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
-import edu.fiuba.algo3.modelo.juego.Casilla;
+public interface Raza {
+    public void recibirAtaque(Zerg zerg);
 
-public abstract class Raza {
+    public void recibirAtaque(Protoss protoss);
 
-    public abstract void construir(Edificio edificio, Casilla casilla);
 }

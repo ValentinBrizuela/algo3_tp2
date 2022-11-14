@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.razas.Raza;
 
 public abstract class Edificio {
     protected int vida;
