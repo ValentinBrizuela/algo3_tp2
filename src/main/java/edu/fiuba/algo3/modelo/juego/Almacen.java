@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.Costo;
+import edu.fiuba.algo3.modelo.errores.RecursosInsuficientes;
 
 public class Almacen {
     private int gas;
@@ -19,6 +20,9 @@ public class Almacen {
     }
 
     public void cobrar(Costo costo){
+        if (gas < costo.obtenerCostoGas() | mineral < costo.obtenerCostoMineral()) {
+            throw new RecursosInsuficientes();
+        }
         gas -= costo.obtenerCostoGas();
         mineral -= costo.obtenerCostoMineral();
     }

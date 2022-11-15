@@ -2,8 +2,11 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.Costo;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
+import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.interfaces.Atacable;
 import edu.fiuba.algo3.modelo.razas.Raza;
+
+import java.util.concurrent.Callable;
 
 public abstract class Entidad implements Atacable {
     protected int vida;
@@ -26,7 +29,8 @@ public abstract class Entidad implements Atacable {
 
     public void meQuedeSinVida() {
         if (vida <= 0){
-            casilla.cambiarEstado(new Desocupada());
+            Estado estado = casilla.obtenerEstado();
+            casilla.cambiarEstado(new Desocupada(estado.terreno, estado.recurso));
         }
     }
 

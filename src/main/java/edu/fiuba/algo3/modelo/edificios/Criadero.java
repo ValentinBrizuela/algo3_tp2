@@ -2,10 +2,16 @@ package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.errores.EdificioEnConstruccionError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
+import edu.fiuba.algo3.modelo.estados.Estado;
+import edu.fiuba.algo3.modelo.estados.Ocupada;
+import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Zerg;
+import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
+import edu.fiuba.algo3.modelo.terrenos.Tierra;
+import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
 public class Criadero extends EdificioZerg {
     private int cantidadLarvas;
@@ -67,12 +73,9 @@ public class Criadero extends EdificioZerg {
     }
 
     @Override
-    public void recibirDanio(int danio){
-        vida -= danio;
-        if (estaDestruido()){
-            casilla.cambiarEstado(new Desocupada());
-            casilla.cambiarEdificio(new EdificioVacio(casilla));
-        }
+    public void construir(Tierra tierra, Almacen almacen) {
+        almacen.cobrar(this.costo);
+        casilla.cambiarEstado(new Ocupada(new Moho(), new RecursoVacio(), this));
     }
 
 }

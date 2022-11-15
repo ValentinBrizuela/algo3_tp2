@@ -18,7 +18,7 @@ public class CasoDeUso14 {
         Pilon pilon = new Pilon(mapa, mapa.obtenerCasilla(25, 25));
 
 
-        assertEquals(mapa.obtenerCasilla(26, 25).obtenerTerreno().getClass(), Moho.class);
+        assertEquals(mapa.obtenerCasilla(26, 25).obtenerEstado().terreno.getClass(), Moho.class);
     }
 
     @Test
@@ -31,6 +31,6 @@ public class CasoDeUso14 {
 
         Criadero criadero = new Criadero(mapa, mapa.obtenerCasilla(24, 24));
 
-        assertEquals(mapa.obtenerCasilla(25, 25).obtenerTerreno().getClass(), TierraEnergizada.class);
+        assertEquals(mapa.obtenerCasilla(25, 25).obtenerEstado().terreno.getClass(), TierraEnergizada.class);
     }
 }

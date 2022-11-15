@@ -11,84 +11,44 @@ import edu.fiuba.algo3.modelo.terrenos.Terreno;
 public class Casilla {
     private final int posX;
     private final int posY;
-    private Terreno terreno;
-
-    private Recurso recurso;
     private Estado estado;
-    private Edificio edificio;
+
     public Casilla(int posX, int posY, Terreno terreno, Recurso recurso){
         this.posX = posX;
         this.posY = posY;
-        this.terreno = terreno;
-        this.estado = new Desocupada();
-        this.recurso = recurso;
-        this.edificio = new EdificioVacio(this);
+        this.estado = new Desocupada(terreno, recurso);
     }
 
-    public void construir(EdificioProtoss edificio, Almacen almacen){
-
-        estado.construir();
-        terreno.construir(edificio);
-        recurso.construir(edificio);
-
-        if (edificio.puedoComprar(almacen)){
-            cambiarEstado(new Ocupada());
-            cambiarEdificio(edificio);
-            Costo costo = edificio.obtenerCosto();
-            almacen.cobrar(costo);
-
-        } else {
-            throw new RecursosInsuficientes();
-        }
-    }
-
-    public void construir(EdificioZerg edificio, Almacen almacen){
-
-        estado.construir();
-        terreno.construir(edificio);
-        recurso.construir(edificio);
-
-        if (edificio.puedoComprar(almacen)){
-            cambiarEstado(new Ocupada());
-            cambiarEdificio(edificio);
-            Costo costo = edificio.obtenerCosto();
-            almacen.cobrar(costo);
-
-        } else {
-            throw new RecursosInsuficientes();
-        }
+    public void construir(Edificio edificio, Almacen almacen){
+        estado.construir(edificio, almacen);
     }
 
     public void cambiarEstado(Estado estado){
         this.estado = estado;
     }
 
-    public void cambiarEdificio(Edificio edificio){
+    /*public void cambiarEdificio(Edificio edificio){
         this.edificio = edificio;
-    }
+    }*/
 
     public void cambiarTerreno(Terreno terreno){
-        this.terreno = terreno;
+        estado.terreno = terreno;
     }
 
-    public Edificio obtenerEdificio(){
+    /*public Edificio obtenerEdificio(){
         return edificio;
-    }
+    }*/
 
     public Estado obtenerEstado(){
         return estado;
     }
 
-    public Terreno obtenerTerreno(){
+    /*public Terreno obtenerTerreno(){
         return terreno;
-    }
+    }*/
 
-    public void avanzarTurno(){
-        if (edificio.estaDestruido()) {
-            cambiarEstado(new Desocupada());
-            cambiarEdificio(new EdificioVacio(this));
-        }
-        edificio.avanzarTurno();
+    public void avanzarTurno() {
+        estado.avanzarTurno();
     }
 
     public int obtenerPosX(){
