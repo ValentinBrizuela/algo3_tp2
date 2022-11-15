@@ -44,12 +44,10 @@ public class Mutalisco extends UnidadVoladora  implements Atacante {
     }
 
     public Guardian evolucionar(Almacen almacen) {
-        Costo costo = new Costo(50, 100);
-        if (costo.puedoComprar(almacen)) {
-            return new Guardian(casilla);
-        }
-        else{
-            throw new RecursosInsuficientes();
-        }
+        Guardian guardian=new Guardian(casilla);
+        guardian.crear(almacen);
+
+        return guardian;
+
     }
 }

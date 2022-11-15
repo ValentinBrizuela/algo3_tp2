@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.unidades;
 import edu.fiuba.algo3.modelo.edificios.Edificio;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalido;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
+import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
@@ -36,5 +37,9 @@ public class Guardian extends UnidadVoladora  implements Atacante {
     @Override
     public void atacarA(Edificio edificio) {
 
+    }
+
+    public void crear(Almacen almacen){
+        almacen.cobrar(costo);
     }
 }
