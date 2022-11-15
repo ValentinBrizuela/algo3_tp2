@@ -16,9 +16,9 @@ public class CasoDeUso7 {
     @Test
     public void zanganoExtrae10MineralesPorTurno() {
         Almacen almacen = new Almacen();
-        Zangano zangano = new Zangano();
         Mena mena = new Mena();
         Casilla casilla = new Casilla(0,0,new Moho(),mena);
+        Zangano zangano = new Zangano(casilla);
 
         zangano.asentarseEnMena(casilla,almacen);
         zangano.extraerMineral(almacen,mena);

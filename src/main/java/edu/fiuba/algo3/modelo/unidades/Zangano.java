@@ -5,13 +5,15 @@ import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.edificios.ZanganoTrabajador;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 
-public class Zangano implements Mina {
+public class Zangano extends UnidadTerrestre implements Mina {
 
     private ZanganoTrabajador edificioDeExtraccion;
 
-    public Zangano(){
+    public Zangano(Casilla casilla){
+        super(25, 25, 0, 1, new Zerg(), casilla);
         this.edificioDeExtraccion= null;
     }
 
@@ -23,5 +25,10 @@ public class Zangano implements Mina {
         ZanganoTrabajador zanganoTrabajador=new ZanganoTrabajador(casilla);
         casilla.construir(zanganoTrabajador,almacen);
         edificioDeExtraccion=zanganoTrabajador;
+    }
+
+    @Override
+    public void recibirAtaque(int danio) {
+        vida -= danio;
     }
 }

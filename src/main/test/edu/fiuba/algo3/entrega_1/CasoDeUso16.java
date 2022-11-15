@@ -48,7 +48,7 @@ public class CasoDeUso16 {
         Mena mena=new Mena();
         Casilla casilla= new Casilla(0,0, new Tierra(),mena);
         casilla.construir(new NexoMineral(casilla),almacen);
-        Zangano zangano=new Zangano();
+        Zangano zangano=new Zangano(casilla);
         assertThrows(EdificioYaConstruidoError.class, () -> {zangano.asentarseEnMena(casilla,almacen);});
     }
     @Test
@@ -57,7 +57,7 @@ public class CasoDeUso16 {
         almacen.almacenarMineral(500);
         Mena mena=new Mena();
         Casilla casilla= new Casilla(0,0, new Moho(),mena);
-        Zangano zangano=new Zangano();
+        Zangano zangano=new Zangano(casilla);
         zangano.asentarseEnMena(casilla,almacen);
         assertThrows(EdificioYaConstruidoError.class, () -> {casilla.construir(new NexoMineral(casilla),almacen);});
     }
