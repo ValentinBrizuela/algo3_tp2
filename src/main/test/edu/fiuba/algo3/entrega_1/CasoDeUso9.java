@@ -28,7 +28,7 @@ public class CasoDeUso9 {
 
         assertTrue(acceso.estaEnergizado());
 
-        pilon2.atacar(2000);
+        pilon2.recibirDanio(2000);
 
         mapa.obtenerCasilla(10, 10).avanzarTurno();
 

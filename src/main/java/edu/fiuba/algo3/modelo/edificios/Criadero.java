@@ -67,7 +67,7 @@ public class Criadero extends EdificioZerg {
     }
 
     @Override
-    public void atacar(int danio){
+    public void recibirDanio(int danio){
         vida -= danio;
         if (estaDestruido()){
             casilla.cambiarEstado(new Desocupada());

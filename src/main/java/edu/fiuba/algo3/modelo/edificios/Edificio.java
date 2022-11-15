@@ -24,7 +24,7 @@ public abstract class Edificio {
         return this.tiempoConstruccion < 1;
     }
 
-    public abstract void atacar(int dano);
+    public abstract void recibirDanio(int dano);
 
     public abstract void regenerar();
 

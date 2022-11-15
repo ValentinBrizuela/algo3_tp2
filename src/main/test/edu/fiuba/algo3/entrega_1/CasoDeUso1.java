@@ -14,8 +14,7 @@ public class CasoDeUso1 {
     public void test01CriaderoRegeneraUnaLarvaAlConsumirLuegoDeUnTurno(){
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
         Criadero c = new Criadero(new Mapa(), casilla);
-        //Se hizo avanzarTurno() asi temporalmente para poder avanzar con los tests
-        //Hay que hacer una funcion donde se pasen la cantidad de turnos
+
         c.avanzarTurno();
         c.avanzarTurno();
         c.avanzarTurno();
@@ -38,7 +37,6 @@ public class CasoDeUso1 {
         c.avanzarTurno();
         c.avanzarTurno();
 
-        //Idem a lo que pasa con avanzarTurno()
         c.engendrarZangano();
         c.engendrarZangano();
 

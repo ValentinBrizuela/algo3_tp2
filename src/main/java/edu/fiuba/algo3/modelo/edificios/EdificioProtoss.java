@@ -13,7 +13,7 @@ public abstract class EdificioProtoss extends Edificio {
         this.escudoMax = escudo;
     }
     @Override
-    public void atacar(int cant) {
+    public void recibirDanio(int cant) {
         if (cant > escudo) {
             vida -= (cant - escudo);
             escudo = 0;

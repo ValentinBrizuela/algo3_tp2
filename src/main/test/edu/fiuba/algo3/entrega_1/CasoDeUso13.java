@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
-import edu.fiuba.algo3.modelo.edificios.Asimilador;
 import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.edificios.EdificioVacio;
-import edu.fiuba.algo3.modelo.edificios.Pilon;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
@@ -28,7 +26,7 @@ public class CasoDeUso13 {
 
         assertEquals(casilla.obtenerTerreno().getClass(), Moho.class);
 
-        criadero.atacar(1000);
+        criadero.recibirDanio(1000);
         casilla.avanzarTurno();
 
         assertEquals(casilla.obtenerEdificio().getClass(), EdificioVacio.class);

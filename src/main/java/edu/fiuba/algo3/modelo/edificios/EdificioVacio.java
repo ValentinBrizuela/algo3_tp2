@@ -9,7 +9,7 @@ public class EdificioVacio extends Edificio{
     }
 
     @Override
-    public void atacar(int dano) {
+    public void recibirDanio(int dano) {
 
     }
 

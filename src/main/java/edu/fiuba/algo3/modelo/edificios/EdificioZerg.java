@@ -8,7 +8,7 @@ public abstract class EdificioZerg extends Edificio {
         super(vida, tiempoConstruccion, costoMinerales, costoGas, casilla);
     }
 
-    public void atacar(int dano) {
+    public void recibirDanio(int dano) {
         vida -= dano;
     }
     @Override
