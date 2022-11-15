@@ -17,6 +17,7 @@ public class Dragon extends UnidadTerrestre implements Atacante {
         this.danioTerrestre = 20;
         this.danioAereo = 20;
         this.escudo = 80;
+        this.rangoAtaque = 4;
     }
 
     @Override
@@ -32,6 +33,7 @@ public class Dragon extends UnidadTerrestre implements Atacante {
 
     @Override
     public void atacarA(UnidadVoladora unidadVoladora) {
+        unidadVoladora.estasEnRango(casilla, rangoAtaque);
         unidadVoladora.recibirAtaque(this.danioAereo);
     }
 

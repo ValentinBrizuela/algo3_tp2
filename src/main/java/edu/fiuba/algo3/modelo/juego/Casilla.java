@@ -98,4 +98,17 @@ public class Casilla {
     public int obtenerPosY(){
         return posY;
     }
+
+    public boolean estasEnRango(int posX, int posY, int rango){
+        for (int i=(this.posX - rango); i < (this.posX + rango); i++){
+            for (int j=(this.posY - rango); j < (this.posY + rango); j++){
+
+                if (i == posX && j == posY){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }

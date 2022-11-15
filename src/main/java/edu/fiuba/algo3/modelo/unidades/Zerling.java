@@ -23,6 +23,7 @@ public class Zerling extends UnidadTerrestre  implements Atacante{
 
     @Override
     public void atacarA(UnidadTerrestre unidadTerrestre) {
+        unidadTerrestre.estasEnRango(casilla, rangoAtaque);
         unidadTerrestre.recibirAtaque(this.danio);
     }
 
