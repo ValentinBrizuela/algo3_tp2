@@ -23,6 +23,7 @@ public class Scout extends UnidadVoladora  implements Atacante {
 
     @Override
     public void atacarA(UnidadVoladora unidadVoladora) {
+        unidadVoladora.estasEnRango(casilla, rangoAtaque);
         unidadVoladora.recibirAtaque(danioAereo);
     }
 

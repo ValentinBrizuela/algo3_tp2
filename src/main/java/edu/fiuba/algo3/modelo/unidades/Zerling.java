@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.unidades;
 
 import edu.fiuba.algo3.modelo.edificios.Edificio;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalido;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
@@ -24,6 +23,7 @@ public class Zerling extends UnidadTerrestre  implements Atacante{
 
     @Override
     public void atacarA(UnidadTerrestre unidadTerrestre) {
+        unidadTerrestre.estasEnRango(casilla, rangoAtaque);
         unidadTerrestre.recibirAtaque(this.danio);
     }
 
