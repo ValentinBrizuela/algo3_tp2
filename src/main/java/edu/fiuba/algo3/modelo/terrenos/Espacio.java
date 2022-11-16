@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.unidades.Unidad;
 
-public class Espacio extends Terreno{
+public class Espacio implements Terreno{
 
     public void construir(Construible edificio, Almacen almacen) {
         throw new ConstruccionNoPermitidaError();
