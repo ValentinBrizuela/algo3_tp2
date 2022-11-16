@@ -11,7 +11,7 @@ public class Terrestre extends TipoDeUnidad {
     }
 
     public Terrestre(int danio) {
-        super(danio);
+        this.danio = danio;
     }
 
     public void puedoMoverA(Espacio espacio) {
