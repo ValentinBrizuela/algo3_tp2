@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.edificios.PuertoEstelar;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.*;
+import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
@@ -21,11 +22,11 @@ public class CasoDeUso17 {
     public void test01UnaGuaridaNoSePuedeConstruirSiNoHayYaConstruidaUnaReservaDeReproduccion(){
         Mapa mapa = new Mapa();
         Almacen almacen = new Almacen();
-        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
+        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        AlgoStar algoStar =new AlgoStar(mapa);
+        algoStar.registrarJugador(jugador1);
 
-
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
+        jugador1.llenarArcas();
         mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
 
         assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirGuarida(0,0);});
@@ -35,10 +36,11 @@ public class CasoDeUso17 {
     public void test02UnaGuaridaSePuedeConstruirSiAntesSeConstruyoUnaReservaDeReproduccion(){
         Mapa mapa = new Mapa();
         Almacen almacen = new Almacen();
-        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
+        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        AlgoStar algoStar =new AlgoStar(mapa);
+        algoStar.registrarJugador(jugador1);
 
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
+        jugador1.llenarArcas();
         mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
         mapa.obtenerCasilla(1,0).cambiarTerreno(new Moho());
 
@@ -52,11 +54,12 @@ public class CasoDeUso17 {
     @Test
     public void test03UnEspiralNoSePuedeConstruirSiNoHayYaConstruidaUnaGuarida(){
         Mapa mapa = new Mapa();
-        Almacen almacen=new Almacen();
-        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
+        Almacen almacen = new Almacen();
+        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        AlgoStar algoStar =new AlgoStar(mapa);
+        algoStar.registrarJugador(jugador1);
 
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
+        jugador1.llenarArcas();
         mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
 
         assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirEspiral(0,0);});
@@ -66,10 +69,11 @@ public class CasoDeUso17 {
     public void test04UnEspiralSePuedeConstruirSiAntesSeConstruyoUnaGuarida(){
         Mapa mapa = new Mapa();
         Almacen almacen = new Almacen();
-        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
+        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        AlgoStar algoStar =new AlgoStar(mapa);
+        algoStar.registrarJugador(jugador1);
 
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
+        jugador1.llenarArcas();
         mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
         mapa.obtenerCasilla(1,0).cambiarTerreno(new Moho());
         mapa.obtenerCasilla(1,1).cambiarTerreno(new Moho());
@@ -86,10 +90,11 @@ public class CasoDeUso17 {
     public void test05UnPuertoEstelarNoSePuedeConstruirSiNoHayYaConstruidoUnAcceso(){
         Mapa mapa = new Mapa();
         Almacen almacen = new Almacen();
-        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
+        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        AlgoStar algoStar =new AlgoStar(mapa);
+        algoStar.registrarJugador(jugador1);
 
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
+        jugador1.llenarArcas();
         mapa.obtenerCasilla(0,0).cambiarTerreno(new TierraEnergizada());
 
         assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirPuertoEstelar(0,0);});
@@ -99,10 +104,11 @@ public class CasoDeUso17 {
     public void test06UnEspiralSePuedeConstruirSiAntesSeConstruyoUnPuertoEstelar(){
         Mapa mapa = new Mapa();
         Almacen almacen = new Almacen();
-        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
+        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        AlgoStar algoStar =new AlgoStar(mapa);
+        algoStar.registrarJugador(jugador1);
 
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
+        jugador1.llenarArcas();
         mapa.obtenerCasilla(0,0).cambiarTerreno(new TierraEnergizada());
         mapa.obtenerCasilla(1,0).cambiarTerreno(new TierraEnergizada());
 

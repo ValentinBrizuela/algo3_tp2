@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.edificios.EdificioZerg;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.unidades.Unidad;
 
-public class Moho extends Terreno {
+public class Moho implements Terreno {
 
     public void construir(Edificio edificio, Almacen almacen) {
         edificio.construir(this, almacen);

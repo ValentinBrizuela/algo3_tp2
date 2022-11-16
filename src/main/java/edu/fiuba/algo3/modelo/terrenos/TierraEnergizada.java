@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.errores.MovimientoInvalidoError;
 import edu.fiuba.algo3.modelo.unidades.Unidad;
 
-public class TierraEnergizada extends Terreno {
+public class TierraEnergizada implements Terreno {
 
     public void construir(Edificio edificio, Almacen almacen) {
         edificio.construir(this, almacen);

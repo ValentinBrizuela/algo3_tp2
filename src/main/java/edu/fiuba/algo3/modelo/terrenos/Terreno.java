@@ -8,18 +8,13 @@ import edu.fiuba.algo3.modelo.unidades.Unidad;
 import edu.fiuba.algo3.modelo.unidades.UnidadAerea;
 import edu.fiuba.algo3.modelo.unidades.UnidadTerrestre;
 
-public abstract class Terreno {
+public interface Terreno {
 
-    /*private boolean energizado = false; */
-    public abstract void construir(Edificio edificio, Almacen almacen);
+    public void construir(Edificio edificio, Almacen almacen);
 
-
-    /*public void energizarse(){
-        energizado = true;
-    }*/
-
-
+    
     public abstract void puedoMover(Unidad unidad);
+
     //movVolador tiene moverA(Espacio) NADA y moverA(Terreno) EXC
 
     //movTerrestre tiene moverA(Espacio) TIRA EXC y moverA(Terreno) NADA
