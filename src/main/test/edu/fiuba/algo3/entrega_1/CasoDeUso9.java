@@ -31,7 +31,7 @@ public class CasoDeUso9 {
 
         assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
 
-        pilon2.recibirDanio(2000);
+        pilon2.recibirAtaque(2000);
 
         mapa.obtenerCasilla(10, 10).avanzarTurno();
 

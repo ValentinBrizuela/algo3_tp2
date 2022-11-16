@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.estados;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
@@ -9,9 +9,9 @@ import edu.fiuba.algo3.modelo.terrenos.Terreno;
 public abstract class Estado {
     protected Terreno terreno;
     protected Recurso recurso;
-    protected Edificio edificio;
+    protected Entidad entidad;
 
-    public abstract void construir(Edificio edificio, Almacen almacen);
+    public abstract void construir(Construible edificio, Almacen almacen);
 
     public abstract void avanzarTurno();
 
@@ -27,11 +27,11 @@ public abstract class Estado {
         this.terreno = terreno;
     }
 
-    public Edificio obtenerEdificio(){
-        return edificio;
+    public Entidad obtenerEdificio(){
+        return entidad;
     }
 
-    public void cambiarEdificio(Edificio edificio){
-        this.edificio = edificio;
+    public void cambiarEdificio(Entidad edificio){
+        this.entidad = edificio;
     }
 }

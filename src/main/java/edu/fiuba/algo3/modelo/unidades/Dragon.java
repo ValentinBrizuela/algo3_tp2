@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.edificios.Construible;
+import edu.fiuba.algo3.modelo.edificios.VidaProtoss;
 import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -13,7 +14,7 @@ public class Dragon extends Unidad implements Atacante {
     private int escudo;
 
     public Dragon(Casilla casilla){
-        super(100, 125, 50, 6, new Protoss(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{
+        super(new VidaProtoss(100, 80), 125, 50, 6, new Protoss(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{
             add(new UnidadTerrestre(20));
             add(new UnidadAerea(20));
         }});
@@ -24,13 +25,7 @@ public class Dragon extends Unidad implements Atacante {
 
     @Override
     public void recibirAtaque(int danio) {
-        if (danio > escudo) {
-            vida -= (danio - escudo);
-            escudo = 0;
-        }
-        else {
-            escudo -= danio;
-        }
+        vida.recibirAtaque(danio);
     }
 
     @Override
@@ -41,17 +36,13 @@ public class Dragon extends Unidad implements Atacante {
     }
 
     @Override
-    public void atacarA(Edificio edificio) {
+    public void atacarA(Construible edificio) {
     }
 
     /*@Override
     public void atacarA(Unidad unidad) {
         unidadTerrestre.recibirAtaque(this.danioTerrestre);
     }*/
-
-    public int obtenerEscudo(){
-        return escudo;
-    }
 
     @Override
     public void avanzarTurno() {

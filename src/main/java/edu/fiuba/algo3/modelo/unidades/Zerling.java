@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.edificios.Construible;
+import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
@@ -14,7 +15,7 @@ public class Zerling extends Unidad implements Atacante{
 
 
     public Zerling(Casilla casilla){
-        super(35, 25, 0, 4, new Zerg(), casilla,new UnidadTerrestre(),new ArrayList<TipoDeUnidad>(){{
+        super(new VidaZerg(35), 25, 0, 4, new Zerg(), casilla,new UnidadTerrestre(),new ArrayList<TipoDeUnidad>(){{
             add(new UnidadTerrestre(4));
         }});
         this.rangoAtaque = 1;
@@ -28,13 +29,13 @@ public class Zerling extends Unidad implements Atacante{
     }
 
     @Override
-    public void atacarA(Edificio edificio) {
+    public void atacarA(Construible edificio) {
 
     }
 
     @Override
     public void recibirAtaque(int danio) {
-        vida -= danio;
+        vida.recibirAtaque(danio);
     }
 
     @Override

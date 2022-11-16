@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.juego.Almacen;
 
 public class Tierra extends Terreno {
 
-    public void construir(Edificio edificio, Almacen almacen) {
+    public void construir(Construible edificio, Almacen almacen) {
         edificio.construir(this, almacen);
     }
 

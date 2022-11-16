@@ -24,7 +24,7 @@ public class CasoDeUso18 {
 
         z.atacarA(d);
 
-        assertEquals(76, d.obtenerEscudo());
+        assertEquals(76, d.escudo());
 
     }
 }

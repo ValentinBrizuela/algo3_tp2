@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.errores.EdificioEnConstruccionError;
+import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
@@ -19,7 +20,7 @@ public class CasoDeUso2 {
         c.avanzarTurno();
         c.avanzarTurno();
 
-        assertThrows(EdificioEnConstruccionError.class, c::engendrarZangano);
+        assertThrows(EnConstruccionError.class, c::engendrarZangano);
 
     }
 

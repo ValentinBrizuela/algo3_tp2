@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
+import edu.fiuba.algo3.modelo.edificios.Vida;
+import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.juego.Casilla;
@@ -16,7 +18,7 @@ public abstract class Unidad extends Entidad {
     private List<TipoDeUnidad> tiposDeAtaque;
 
 
-    public Unidad(int vida, int costoMineral, int costoGas, int tiempoConstruccion, Raza raza, Casilla casilla, TipoDeUnidad tipo, List<TipoDeUnidad> tiposdeataques){
+    public Unidad(Vida vida, int costoMineral, int costoGas, int tiempoConstruccion, Raza raza, Casilla casilla, TipoDeUnidad tipo, List<TipoDeUnidad> tiposdeataques){
         super(vida, costoMineral, costoGas, tiempoConstruccion, raza, casilla);
         tipoUnidad = tipo;
         tiposDeAtaque = tiposdeataques;

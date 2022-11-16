@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.edificios.Construible;
+import edu.fiuba.algo3.modelo.edificios.VidaProtoss;
 import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -14,7 +15,7 @@ public class Scout extends Unidad  implements Atacante {
     private int rangoAtaque;
 
     public Scout(Casilla casilla){
-        super(150, 300, 150, 9, new Protoss(), casilla, new UnidadAerea(), new ArrayList<TipoDeUnidad>(){{
+        super(new VidaProtoss(150, 100), 300, 150, 9, new Protoss(), casilla, new UnidadAerea(), new ArrayList<TipoDeUnidad>(){{
             add(new UnidadTerrestre(8));
             add(new UnidadAerea(14));
         }});
@@ -31,17 +32,11 @@ public class Scout extends Unidad  implements Atacante {
 
     @Override
     public void recibirAtaque(int danio) {
-        if (danio > escudo) {
-            vida -= (danio - escudo);
-            escudo = 0;
-        }
-        else {
-            escudo -= danio;
-        }
+        vida.recibirAtaque(danio);
     }
 
     @Override
-    public void atacarA(Edificio edificio) {
+    public void atacarA(Construible edificio) {
 
     }
 

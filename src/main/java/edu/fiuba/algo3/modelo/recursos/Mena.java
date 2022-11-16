@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.recursos;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 
@@ -10,7 +10,7 @@ public class Mena extends Recurso {
         cant = 2000;
     }
 
-    public void construir(Edificio edificio) {
+    public void construir(Construible edificio) {
         if (!(edificio instanceof Mina)) {
             throw new ConstruccionNoPermitidaError();
         }

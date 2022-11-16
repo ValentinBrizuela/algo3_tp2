@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.edificios.Construible;
+import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
@@ -14,7 +15,7 @@ public class Mutalisco extends Unidad  implements Atacante {
     private int rangoAtaque;
 
     public Mutalisco(Casilla casilla){
-        super(120, 100, 100, 7, new Zerg(), casilla, new UnidadAerea(),  new ArrayList<TipoDeUnidad>(){{
+        super(new VidaZerg(120), 100, 100, 7, new Zerg(), casilla, new UnidadAerea(),  new ArrayList<TipoDeUnidad>(){{
             add(new UnidadTerrestre(9));
             add(new UnidadAerea(9));
         }});
@@ -23,7 +24,7 @@ public class Mutalisco extends Unidad  implements Atacante {
 
     @Override
     public void recibirAtaque(int danio) {
-        vida -= danio;
+        vida.recibirAtaque(danio);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class Mutalisco extends Unidad  implements Atacante {
         unidad.recibirAtaque(this.obtenerTiposDeAtaque());
     }
     @Override
-    public void atacarA(Edificio edificio) {
+    public void atacarA(Construible edificio) {
 
     }
 

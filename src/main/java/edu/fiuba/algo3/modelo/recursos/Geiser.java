@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.recursos;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 
@@ -12,7 +12,7 @@ public class Geiser extends Recurso {
         this.cant = 5000;
     }
 
-    public void construir(Edificio edificio) {
+    public void construir(Construible edificio) {
         if (!(edificio instanceof RefineriaGas)) {
             throw new ConstruccionNoPermitidaError();
         }

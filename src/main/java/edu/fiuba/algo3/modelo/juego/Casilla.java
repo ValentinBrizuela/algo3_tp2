@@ -17,7 +17,7 @@ public class Casilla {
         this.estado = new Desocupada(terreno, recurso);
     }
 
-    public void construir(Edificio edificio, Almacen almacen){
+    public void construir(Construible edificio, Almacen almacen){
         estado.construir(edificio, almacen);
     }
 

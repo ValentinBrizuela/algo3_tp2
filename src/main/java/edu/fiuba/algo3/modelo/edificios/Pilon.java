@@ -1,31 +1,31 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
-import edu.fiuba.algo3.modelo.terrenos.Moho;
-import edu.fiuba.algo3.modelo.terrenos.Terreno;
-import edu.fiuba.algo3.modelo.terrenos.Tierra;
-import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
+import edu.fiuba.algo3.modelo.terrenos.*;
 
-public class Pilon extends EdificioProtoss {
+public class Pilon extends Entidad implements Construible {
     private int rango;
     private Mapa mapa;
     public Pilon(Mapa mapa, Casilla casilla) {
-        super(300, 300, 5, 100, 0, casilla);
+        super(new VidaProtoss(300, 300), 100, 0, 5, new Protoss(), casilla);
         this.mapa = mapa;
         this.rango = 3;
         generar(new TierraEnergizada());
     }
+
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
-        this.regenerar();
+        vida.regenerar();
         generar(new TierraEnergizada());
     }
 
@@ -39,26 +39,32 @@ public class Pilon extends EdificioProtoss {
         }
     }
 
-    @Override
-    public void recibirDanio(int cant){
-        if (cant > escudo) {
-            vida -= (cant - escudo);
-            escudo = 0;
-        }
-        else {
-            escudo -= cant;
-        }
-
-        if (estaDestruido()){
-            Estado estado = casilla.obtenerEstado();
-            casilla.cambiarEstado(new Desocupada(estado.obtenerTerreno(), estado.obtenerRecurso()));
-            generar(new Tierra());
-        }
+    public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
+        almacen.cobrar(this.costo);
+        casilla.cambiarEstado(new Ocupada(tierraEnergizada, casilla.obtenerRecurso(), this));
     }
 
     @Override
     public void construir(Tierra tierra, Almacen almacen) {
         almacen.cobrar(this.costo);
-        casilla.cambiarEstado(new Ocupada(new TierraEnergizada(), new RecursoVacio(), this));
+        casilla.cambiarEstado(new Ocupada(tierra, casilla.obtenerRecurso(), this));
+    }
+
+    @Override
+    public void construir(Moho moho, Almacen almacen) {
+        throw new ConstruccionNoPermitidaError();
+    }
+
+    @Override
+    public void construir(Espacio espacio, Almacen almacen) {
+        throw new ConstruccionNoPermitidaError();
+    }
+
+    @Override
+    public void recibirAtaque(int danio) {
+        vida.recibirAtaque(danio);
+        if (vida.obtenerVida() <= 0) {
+            casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
+        }
     }
 }

@@ -1,19 +1,22 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.errores.EdificioEnConstruccionError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
+import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
-public class Criadero extends EdificioZerg {
+public class Criadero extends Entidad implements Construible {
     private int cantidadLarvas;
 
     Casilla casilla;
@@ -25,7 +28,7 @@ public class Criadero extends EdificioZerg {
 
     public Criadero(Mapa mapa, Casilla casilla){
 
-        super(500, 4, 50, 0, casilla);
+        super(new VidaZerg(500), 50, 0, 4, new Zerg(), casilla);
         this.cantidadLarvas = 3;
         this.casilla = casilla;
         this.mapa = mapa;
@@ -34,9 +37,7 @@ public class Criadero extends EdificioZerg {
         generarMoho();
     }
     public void engendrarZangano(){
-        if (!esUsable()) {
-            throw new EdificioEnConstruccionError();
-        }
+        esUsable();
         cantidadLarvas -= 1;
     }
 
@@ -46,7 +47,7 @@ public class Criadero extends EdificioZerg {
         cantidadLarvas += 1;
         }
         this.tiempoConstruccion -= 1;
-        this.regenerar();
+        vida.regenerar();
         this.contador += 1;
         generarMoho();
         incrementarRango();
@@ -73,9 +74,33 @@ public class Criadero extends EdificioZerg {
     }
 
     @Override
+    public void construir(Moho moho, Almacen almacen) {
+        almacen.cobrar(this.costo);
+        casilla.cambiarEstado(new Ocupada(new Moho(), new RecursoVacio(), this));
+    }
+
+    @Override
     public void construir(Tierra tierra, Almacen almacen) {
         almacen.cobrar(this.costo);
         casilla.cambiarEstado(new Ocupada(new Moho(), new RecursoVacio(), this));
+    }
+
+    @Override
+    public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
+        throw new ConstruccionNoPermitidaError();
+    }
+
+    @Override
+    public void construir(Espacio espacio, Almacen almacen) {
+        throw new ConstruccionNoPermitidaError();
+    }
+
+    @Override
+    public void recibirAtaque(int danio) {
+        vida.recibirAtaque(danio);
+        if (vida.obtenerVida() <= 0) {
+            casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
+        }
     }
 
 }

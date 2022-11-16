@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
 import edu.fiuba.algo3.modelo.edificios.Mina;
+import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.edificios.ZanganoTrabajador;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
@@ -14,7 +15,7 @@ public class Zangano extends Unidad implements Mina {
     private ZanganoTrabajador edificioDeExtraccion;
 
     public Zangano(Casilla casilla){
-        super(25, 25, 0, 1, new Zerg(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{}});
+        super(new VidaZerg(25), 25, 0, 1, new Zerg(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{}});
         this.edificioDeExtraccion= null;
     }
 
@@ -32,7 +33,7 @@ public class Zangano extends Unidad implements Mina {
 
     @Override
     public void recibirAtaque(int danio) {
-        vida -= danio;
+        vida.recibirAtaque(danio);
     }
 
     @Override

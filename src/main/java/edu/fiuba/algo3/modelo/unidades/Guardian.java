@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.edificios.Edificio;
+import edu.fiuba.algo3.modelo.edificios.Construible;
+import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
@@ -14,7 +15,7 @@ public class Guardian extends Unidad  implements Atacante {
     private int rangoAtaque;
 
     public Guardian(Casilla casilla) {
-        super(100, 50, 100, 4, new Zerg(), casilla,  new UnidadAerea(),  new ArrayList<TipoDeUnidad>(){{
+        super(new VidaZerg(100), 50, 100, 4, new Zerg(), casilla,  new UnidadAerea(),  new ArrayList<TipoDeUnidad>(){{
             add(new UnidadTerrestre(25));
         }});
         this.rangoAtaque = 10;
@@ -27,11 +28,11 @@ public class Guardian extends Unidad  implements Atacante {
     }
     @Override
     public void recibirAtaque(int danio) {
-        vida -= danio;
+        vida.recibirAtaque(danio);
     }
 
     @Override
-    public void atacarA(Edificio edificio) {
+    public void atacarA(Construible edificio) {
 
     }
 
