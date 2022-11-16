@@ -19,6 +19,10 @@ public class CasoDeUso23 {
         Zerling z = new Zerling(casilla1);
         Dragon d = new Dragon(casilla2);
 
+        for (int i=0; i<25; i++){
+            z.avanzarTurno();
+        }
+
         assertThrows(AtaqueInvalido.class, () -> {z.atacarA(d);});
     }
 

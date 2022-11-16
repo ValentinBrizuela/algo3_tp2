@@ -20,6 +20,10 @@ public class CasoDeUso21 {
         Mutalisco mutalisco = new Mutalisco(casilla);
         Almacen almacen = new Almacen();
 
+        for (int i=0; i<25; i++){
+            mutalisco.avanzarTurno();
+        }
+
         assertThrows(RecursosInsuficientes.class, () -> {mutalisco.evolucionar(almacen);});
 
 
@@ -35,6 +39,10 @@ public class CasoDeUso21 {
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(500);
         almacen.almacenarGas(500);
+
+        for (int i=0; i<25; i++){
+            mutalisco.avanzarTurno();
+        }
 
         assertSame(Guardian.class , mutalisco.evolucionar(almacen).getClass());
     }

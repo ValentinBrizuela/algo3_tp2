@@ -29,13 +29,13 @@ public class CasoDeUso9 {
         casilla.construir(acceso, almacen);
 
 
-        assertEquals(casilla.obtenerEstado().terreno.getClass(), TierraEnergizada.class);
+        assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
 
         pilon2.recibirDanio(2000);
 
         mapa.obtenerCasilla(10, 10).avanzarTurno();
 
-        assertEquals(casilla.obtenerEstado().terreno.getClass(), TierraEnergizada.class);
+        assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
         /*assertTrue(acceso.estaEnergizado());*/
     }
 }

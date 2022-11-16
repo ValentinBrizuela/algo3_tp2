@@ -36,6 +36,7 @@ public class Dragon extends Unidad implements Atacante {
 
     @Override
     public void atacarA(Unidad unidad) {
+        esUsable();
         unidad.estasEnRango(casilla, rangoAtaque);
         unidad.recibirAtaque(this.obtenerTiposDeAtaque());
     }
@@ -51,5 +52,11 @@ public class Dragon extends Unidad implements Atacante {
 
     public int obtenerEscudo(){
         return escudo;
+    }
+
+    @Override
+    public void avanzarTurno() {
+        tiempoConstruccion -= 1;
+        /*regenerar*/
     }
 }

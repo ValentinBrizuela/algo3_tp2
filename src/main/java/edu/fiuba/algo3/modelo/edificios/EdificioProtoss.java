@@ -31,7 +31,7 @@ public abstract class EdificioProtoss extends Edificio {
         }
         if (vida <= 0){
             Estado estado = casilla.obtenerEstado();
-            casilla.cambiarEstado(new Desocupada(estado.terreno, estado.recurso));
+            casilla.cambiarEstado(new Desocupada(estado.obtenerTerreno(), estado.obtenerRecurso()));
         }
     }
 
@@ -54,12 +54,12 @@ public abstract class EdificioProtoss extends Edificio {
         tiempoConstruccion -= 1;
     }
 
-    public boolean estaEnergizado(){
+    /*public boolean estaEnergizado(){
         if (casilla.obtenerEstado().terreno.getClass() == TierraEnergizada.class){
             return true;
         }
         return false;
-    }
+    }*/
 
 
     public void construir(Moho moho, Almacen almacen) {

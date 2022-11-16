@@ -116,6 +116,10 @@ public class CasoDeUso15 {
         almacen.almacenarMineral(0);
         Zangano zangano= new Zangano(casilla);
 
+        for (int i=0; i<25; i++){
+            zangano.avanzarTurno();
+        }
+
         zangano.asentarseEnMena(casilla,almacen);
         zangano.extraerMineral(almacen,mena);
 

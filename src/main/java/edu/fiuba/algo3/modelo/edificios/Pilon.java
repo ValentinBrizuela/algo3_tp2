@@ -32,7 +32,7 @@ public class Pilon extends EdificioProtoss {
     public void generar(Terreno terreno) {
         for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
             for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
-                if (!(mapa.obtenerCasilla(i, j).obtenerEstado().terreno.getClass() == Moho.class)) {
+                if (!(mapa.obtenerCasilla(i, j).obtenerEstado().obtenerTerreno().getClass() == Moho.class)) {
                     mapa.obtenerCasilla(i, j).cambiarTerreno(terreno);
                 }
             }
@@ -51,7 +51,7 @@ public class Pilon extends EdificioProtoss {
 
         if (estaDestruido()){
             Estado estado = casilla.obtenerEstado();
-            casilla.cambiarEstado(new Desocupada(estado.terreno, estado.recurso));
+            casilla.cambiarEstado(new Desocupada(estado.obtenerTerreno(), estado.obtenerRecurso()));
             generar(new Tierra());
         }
     }

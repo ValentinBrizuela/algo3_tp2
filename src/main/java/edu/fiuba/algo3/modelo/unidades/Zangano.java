@@ -20,10 +20,12 @@ public class Zangano extends Unidad implements Mina {
     }
 
     public void extraerMineral(Almacen almacen, Mena mena) {
+        esUsable();
         edificioDeExtraccion.extraerMineral(almacen,mena);
     }
 
     public void asentarseEnMena(Casilla casilla,Almacen almacen) {
+        esUsable();
         ZanganoTrabajador zanganoTrabajador=new ZanganoTrabajador(casilla);
         casilla.construir(zanganoTrabajador,almacen);
         edificioDeExtraccion=zanganoTrabajador;
@@ -32,5 +34,11 @@ public class Zangano extends Unidad implements Mina {
     @Override
     public void recibirAtaque(int danio) {
         vida -= danio;
+    }
+
+    @Override
+    public void avanzarTurno() {
+        tiempoConstruccion -= 1;
+        /*regenerar*/
     }
 }

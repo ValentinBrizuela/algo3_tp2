@@ -19,6 +19,9 @@ public class CasoDeUso7 {
         Mena mena = new Mena();
         Casilla casilla = new Casilla(0,0,new Moho(),mena);
         Zangano zangano = new Zangano(casilla);
+        for (int i=0; i<25; i++){
+            zangano.avanzarTurno();
+        }
 
         zangano.asentarseEnMena(casilla,almacen);
         zangano.extraerMineral(almacen,mena);

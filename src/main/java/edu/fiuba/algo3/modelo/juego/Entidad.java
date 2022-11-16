@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.Costo;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalido;
+import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.interfaces.Atacable;
@@ -31,7 +32,7 @@ public abstract class Entidad implements Atacable {
     public void meQuedeSinVida() {
         if (vida <= 0){
             Estado estado = casilla.obtenerEstado();
-            casilla.cambiarEstado(new Desocupada(estado.terreno, estado.recurso));
+            casilla.cambiarEstado(new Desocupada(estado.obtenerTerreno(), estado.obtenerRecurso()));
         }
     }
 
@@ -39,6 +40,14 @@ public abstract class Entidad implements Atacable {
         if (!(this.casilla.estasEnRango(casilla.obtenerPosX(), casilla.obtenerPosY(), rango))){
             throw new AtaqueInvalido();
         }
+    }
+
+    public abstract void avanzarTurno();
+
+    public void esUsable() {
+        if (tiempoConstruccion > 0){
+            throw new EnConstruccionError();
+        };
     }
 
 }

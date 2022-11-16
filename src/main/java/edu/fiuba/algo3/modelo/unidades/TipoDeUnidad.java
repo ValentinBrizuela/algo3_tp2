@@ -7,8 +7,8 @@ public abstract class TipoDeUnidad {
 
     private int danio;
 
-    public TipoDeUnidad(int d){
-        danio = d;
+    public TipoDeUnidad(int danio){
+        danio = danio;
     }
 
     public TipoDeUnidad(){

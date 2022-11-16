@@ -10,8 +10,8 @@ public class Terrestre extends TipoDeUnidad {
     public Terrestre() {
     }
 
-    public Terrestre(int i) {
-        super(i);
+    public Terrestre(int danio) {
+        super(danio);
     }
 
     public void puedoMoverA(Espacio espacio) {

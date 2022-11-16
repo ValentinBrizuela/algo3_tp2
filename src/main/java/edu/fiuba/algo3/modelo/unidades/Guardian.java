@@ -7,31 +7,28 @@ import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
-public class Guardian extends UnidadVoladora  implements Atacante {
+import java.util.ArrayList;
 
-    private int danioTerrestre;
+public class Guardian extends Unidad  implements Atacante {
+
 
     private int rangoAtaque;
 
     public Guardian(Casilla casilla) {
-        super(100, 50, 100, 4, new Zerg(), casilla);
-        this.danioTerrestre = 25;
+        super(100, 50, 100, 4, new Zerg(), casilla,  new Volador(),  new ArrayList<TipoDeUnidad>(){{
+            add(new Terrestre(25));
+        }});
         this.rangoAtaque = 10;
     }
 
     @Override
-    public void atacarA(UnidadVoladora unidadVoladora) {
-        throw new AtaqueInvalido();
+    public void atacarA(Unidad unidad) {
+        unidad.estasEnRango(casilla, rangoAtaque);
+        unidad.recibirAtaque(this.obtenerTiposDeAtaque());
     }
-
     @Override
     public void recibirAtaque(int danio) {
         vida -= danio;
-    }
-
-    @Override
-    public void atacarA(UnidadTerrestre unidadTerrestre) {
-        unidadTerrestre.recibirAtaque(danioTerrestre);
     }
 
     @Override
@@ -41,5 +38,11 @@ public class Guardian extends UnidadVoladora  implements Atacante {
 
     public void crear(Almacen almacen){
         almacen.cobrar(costo);
+    }
+
+    @Override
+    public void avanzarTurno() {
+        tiempoConstruccion -= 1;
+        /*regenerar*/
     }
 }

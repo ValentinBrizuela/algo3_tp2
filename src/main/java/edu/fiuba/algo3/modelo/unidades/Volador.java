@@ -6,8 +6,8 @@ import edu.fiuba.algo3.modelo.terrenos.Terreno;
 
 public class Volador extends TipoDeUnidad {
 
-    public Volador(int i) {
-        super(i);
+    public Volador(int danio) {
+        super(danio);
     }
 
     public Volador() {

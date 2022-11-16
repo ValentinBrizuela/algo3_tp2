@@ -25,6 +25,7 @@ public class Scout extends Unidad  implements Atacante {
 
     @Override
     public void atacarA(Unidad unidad) {
+        esUsable();
         unidad.estasEnRango(casilla, rangoAtaque);
         unidad.recibirAtaque(this.obtenerTiposDeAtaque());
     }
@@ -45,4 +46,9 @@ public class Scout extends Unidad  implements Atacante {
 
     }
 
+    @Override
+    public void avanzarTurno() {
+        tiempoConstruccion -= 1;
+        /*regenerar*/
+    }
 }

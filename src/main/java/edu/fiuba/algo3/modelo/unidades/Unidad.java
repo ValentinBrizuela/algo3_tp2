@@ -36,7 +36,8 @@ public abstract class Unidad extends Entidad {
 
     public void recibirAtaque(List<TipoDeUnidad> tipos){
         for(TipoDeUnidad tipo : tipos){
-            if (tipo.getClass() == tipoUnidad.getClass()){ tipo.Atacar(this); return;}
+            if (tipo.getClass() == tipoUnidad.getClass()){
+                tipo.Atacar(this); return;}
         }
         throw new AtaqueInvalido();
     }

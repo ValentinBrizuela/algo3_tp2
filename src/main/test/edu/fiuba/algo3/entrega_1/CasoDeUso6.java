@@ -17,15 +17,15 @@ public class CasoDeUso6 {
         Criadero criadero = new Criadero(mapa, casilla);
 
         criadero.avanzarTurno();
-        assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().terreno.getClass());
-        assertEquals(Tierra.class, mapa.obtenerCasilla(31, 31).obtenerEstado().terreno.getClass());
+        assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().obtenerTerreno().getClass());
+        assertEquals(Tierra.class, mapa.obtenerCasilla(31, 31).obtenerEstado().obtenerTerreno().getClass());
 
         criadero.avanzarTurno();
-        assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().terreno.getClass());
-        assertEquals(Tierra.class, mapa.obtenerCasilla(31, 31).obtenerEstado().terreno.getClass());
+        assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().obtenerTerreno().getClass());
+        assertEquals(Tierra.class, mapa.obtenerCasilla(31, 31).obtenerEstado().obtenerTerreno().getClass());
 
         criadero.avanzarTurno();
-        assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().terreno.getClass());
-        assertEquals(Moho.class, mapa.obtenerCasilla(31, 31).obtenerEstado().terreno.getClass());
+        assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().obtenerTerreno().getClass());
+        assertEquals(Moho.class, mapa.obtenerCasilla(31, 31).obtenerEstado().obtenerTerreno().getClass());
     }
 }

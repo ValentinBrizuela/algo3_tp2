@@ -32,7 +32,7 @@ public class Casilla {
     }*/
 
     public void cambiarTerreno(Terreno terreno){
-        estado.terreno = terreno;
+        estado.cambiarTerreno(terreno);
     }
 
     /*public Edificio obtenerEdificio(){
@@ -43,9 +43,9 @@ public class Casilla {
         return estado;
     }
 
-    /*public Terreno obtenerTerreno(){
-        return terreno;
-    }*/
+    public Terreno obtenerTerreno(){
+        return estado.obtenerTerreno();
+    }
 
     public void avanzarTurno() {
         estado.avanzarTurno();

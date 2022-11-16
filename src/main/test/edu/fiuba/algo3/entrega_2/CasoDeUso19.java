@@ -19,6 +19,10 @@ public class CasoDeUso19 {
         Zerling z = new Zerling(casilla1);
         Scout s = new Scout(casilla2);
 
+        for (int i=0; i<25; i++){
+            z.avanzarTurno();
+        }
+
         assertThrows(AtaqueInvalido.class, () -> {z.atacarA(s);});
     }
 }

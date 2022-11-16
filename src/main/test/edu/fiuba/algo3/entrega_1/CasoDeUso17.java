@@ -45,7 +45,7 @@ public class CasoDeUso17 {
         algoStar.construirReservaDeReproduccion(0,0);
         algoStar.construirGuarida(1,0);
 
-        assertSame(Guarida.class, mapa.obtenerCasilla(1,0).obtenerEstado().edificio.getClass());
+        assertSame(Guarida.class, mapa.obtenerCasilla(1,0).obtenerEstado().obtenerEdificio().getClass());
 
     }
 
@@ -78,7 +78,7 @@ public class CasoDeUso17 {
         algoStar.construirGuarida(1,0);
         algoStar.construirEspiral(1,1);
 
-        assertSame(Espiral.class, mapa.obtenerCasilla(1,1).obtenerEstado().edificio.getClass());
+        assertSame(Espiral.class, mapa.obtenerCasilla(1,1).obtenerEstado().obtenerEdificio().getClass());
 
     }
 
@@ -109,7 +109,7 @@ public class CasoDeUso17 {
         algoStar.construirAcceso(0,0);
         algoStar.construirPuertoEstelar(1,0);
 
-        assertSame(PuertoEstelar.class, mapa.obtenerCasilla(1,0).obtenerEstado().edificio.getClass());
+        assertSame(PuertoEstelar.class, mapa.obtenerCasilla(1,0).obtenerEstado().obtenerEdificio().getClass());
     }
 
 }

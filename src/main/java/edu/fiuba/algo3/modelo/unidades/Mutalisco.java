@@ -8,24 +8,19 @@ import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
-public class Mutalisco extends UnidadVoladora  implements Atacante {
+import java.util.ArrayList;
 
-    private int danioAereo;
-    private int danioTerrestre;
+public class Mutalisco extends Unidad  implements Atacante {
+
 
     private int rangoAtaque;
 
     public Mutalisco(Casilla casilla){
-        super(120, 100, 100, 7, new Zerg(), casilla);
-        this.danioAereo = 9;
-        this.danioTerrestre = 9;
+        super(120, 100, 100, 7, new Zerg(), casilla, new Volador(),  new ArrayList<TipoDeUnidad>(){{
+            add(new Terrestre(9));
+            add(new Volador(9));
+        }});
         this.rangoAtaque = 3;
-    }
-
-    @Override
-    public void atacarA(UnidadVoladora unidadVoladora) {
-        unidadVoladora.estasEnRango(casilla, rangoAtaque);
-        unidadVoladora.recibirAtaque(danioAereo);
     }
 
     @Override
@@ -34,20 +29,28 @@ public class Mutalisco extends UnidadVoladora  implements Atacante {
     }
 
     @Override
-    public void atacarA(UnidadTerrestre unidadTerrestre) {
-        unidadTerrestre.recibirAtaque(danioTerrestre);
+    public void atacarA(Unidad unidad) {
+        esUsable();
+        unidad.estasEnRango(casilla, rangoAtaque);
+        unidad.recibirAtaque(this.obtenerTiposDeAtaque());
     }
-
     @Override
     public void atacarA(Edificio edificio) {
 
     }
 
     public Guardian evolucionar(Almacen almacen) {
+        esUsable();
         Guardian guardian=new Guardian(casilla);
         guardian.crear(almacen);
 
         return guardian;
 
+    }
+
+    @Override
+    public void avanzarTurno() {
+        tiempoConstruccion -= 1;
+        /*regenerar*/
     }
 }

@@ -21,7 +21,7 @@ public abstract class EdificioZerg extends Edificio {
         vida -= dano;
         if (vida <= 0){
             Estado estado = casilla.obtenerEstado();
-            casilla.cambiarEstado(new Desocupada(estado.terreno, estado.recurso));
+            casilla.cambiarEstado(new Desocupada(estado.obtenerTerreno(), estado.obtenerRecurso()));
         }
     }
     @Override
