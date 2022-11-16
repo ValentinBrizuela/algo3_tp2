@@ -4,20 +4,11 @@ import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.errores.MovimientoInvalidoError;
 import edu.fiuba.algo3.modelo.unidades.Unidad;
+import edu.fiuba.algo3.modelo.juego.Almacen;
 
 public class Tierra extends Terreno {
-    @Override
-    public void construir(EdificioZerg edificio) {
-        if(!(edificio instanceof Criadero)){
-            throw new ConstruccionNoPermitidaError();
-        }
-    }
-    @Override
-    public void construir(EdificioProtoss edificio) {
-        if(!(edificio instanceof Pilon) && !(edificio instanceof NexoMineral)){
-            throw new ConstruccionNoPermitidaError();
-        }
-    }
 
-
+    public void construir(Edificio edificio, Almacen almacen) {
+        edificio.construir(this, almacen);
+    }
 }

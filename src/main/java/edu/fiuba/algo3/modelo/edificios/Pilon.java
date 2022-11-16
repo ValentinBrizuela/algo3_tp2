@@ -1,9 +1,13 @@
 package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.estados.Desocupada;
+import edu.fiuba.algo3.modelo.estados.Estado;
+import edu.fiuba.algo3.modelo.estados.Ocupada;
+import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
+import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
@@ -28,7 +32,7 @@ public class Pilon extends EdificioProtoss {
     public void generar(Terreno terreno) {
         for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
             for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
-                if (!(mapa.obtenerCasilla(i, j).obtenerTerreno().getClass() == Moho.class)) {
+                if (!(mapa.obtenerCasilla(i, j).obtenerEstado().terreno.getClass() == Moho.class)) {
                     mapa.obtenerCasilla(i, j).cambiarTerreno(terreno);
                 }
             }
@@ -46,9 +50,15 @@ public class Pilon extends EdificioProtoss {
         }
 
         if (estaDestruido()){
-            casilla.cambiarEstado(new Desocupada());
-            casilla.cambiarEdificio(new EdificioVacio(casilla));
+            Estado estado = casilla.obtenerEstado();
+            casilla.cambiarEstado(new Desocupada(estado.terreno, estado.recurso));
             generar(new Tierra());
         }
+    }
+
+    @Override
+    public void construir(Tierra tierra, Almacen almacen) {
+        almacen.cobrar(this.costo);
+        casilla.cambiarEstado(new Ocupada(new TierraEnergizada(), new RecursoVacio(), this));
     }
 }

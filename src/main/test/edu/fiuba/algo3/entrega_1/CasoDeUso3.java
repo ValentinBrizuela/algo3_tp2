@@ -24,7 +24,7 @@ public class CasoDeUso3 {
 
         casilla.construir(asimilador, almacen);
 
-        assertEquals(asimilador, casilla.obtenerEdificio());
+        assertEquals(asimilador, casilla.obtenerEstado().edificio);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class CasoDeUso3 {
 
         casilla.construir(extractor, almacen);
 
-        assertEquals(extractor, casilla.obtenerEdificio());
+        assertEquals(extractor, casilla.obtenerEstado().edificio);
     }
 
     @Test
