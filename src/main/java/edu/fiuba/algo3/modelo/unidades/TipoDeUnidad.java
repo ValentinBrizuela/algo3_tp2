@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.terrenos.Espacio;
-import edu.fiuba.algo3.modelo.terrenos.Terreno;
+import edu.fiuba.algo3.modelo.terrenos.*;
 
 public abstract class TipoDeUnidad {
 
@@ -14,12 +13,12 @@ public abstract class TipoDeUnidad {
     public TipoDeUnidad(){
         danio=0;
     }
-    public void puedoMoverA(Espacio espacio) {
-    }
-    public void puedoMoverA(Terreno terreno){
-    }
+    public abstract void puedoMoverA(Espacio espacio);
+    public abstract void puedoMoverA(Moho moho);
+    public abstract void puedoMoverA(Tierra tierra);
+    public abstract void puedoMoverA(TierraEnergizada tierraEnergizada);
 
-    public void Atacar(Unidad unidad) {
+    public void atacar(Unidad unidad) {
         unidad.recibirAtaque(danio);
     }
 }

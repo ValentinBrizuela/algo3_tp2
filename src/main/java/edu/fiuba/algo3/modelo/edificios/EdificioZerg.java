@@ -41,7 +41,7 @@ public abstract class EdificioZerg extends Edificio {
 
     public void construir(Moho moho, Almacen almacen) {
         almacen.cobrar(this.costo);
-        casilla.cambiarEstado(new Ocupada(moho, new RecursoVacio(), this));
+        casilla.cambiarEstado(new Ocupada(moho, casilla.obtenerRecurso(), this));
     }
 
     public void construir(Tierra tierra, Almacen almacen) {

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.entrega_2;
 
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalido;
+import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.unidades.Scout;
@@ -23,6 +23,6 @@ public class CasoDeUso19 {
             z.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalido.class, () -> {z.atacarA(s);});
+        assertThrows(AtaqueInvalidoError.class, () -> {z.atacarA(s);});
     }
 }

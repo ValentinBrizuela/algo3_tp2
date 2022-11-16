@@ -72,6 +72,6 @@ public abstract class EdificioProtoss extends Edificio {
 
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
         almacen.cobrar(this.costo);
-        casilla.cambiarEstado(new Ocupada(tierraEnergizada, new RecursoVacio(), this));
+        casilla.cambiarEstado(new Ocupada(tierraEnergizada, casilla.obtenerRecurso(), this));
     }
 }

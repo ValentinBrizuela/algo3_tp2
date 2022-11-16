@@ -13,5 +13,8 @@ public class Espacio extends Terreno{
         throw new ConstruccionNoPermitidaError();
     }
 
-
+    @Override
+    public void puedoMover(Unidad unidad) {
+        unidad.obtenerTipoMovimiento().puedoMoverA(this);
+    }
 }

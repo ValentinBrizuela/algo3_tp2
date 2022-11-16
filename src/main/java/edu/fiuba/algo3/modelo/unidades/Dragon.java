@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Dragon extends Unidad implements Atacante {
 
@@ -14,9 +13,9 @@ public class Dragon extends Unidad implements Atacante {
     private int escudo;
 
     public Dragon(Casilla casilla){
-        super(100, 125, 50, 6, new Protoss(), casilla, new Terrestre(), new ArrayList<TipoDeUnidad>(){{
-            add(new Terrestre(20));
-            add(new Volador(20));
+        super(100, 125, 50, 6, new Protoss(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{
+            add(new UnidadTerrestre(20));
+            add(new UnidadAerea(20));
         }});
 
         this.escudo = 80;

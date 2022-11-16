@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.*;
-import edu.fiuba.algo3.modelo.errores.RecursosInsuficientes;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
-import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
 
@@ -72,4 +70,7 @@ public class Casilla {
         return false;
     }
 
+    public Recurso obtenerRecurso(){
+        return estado.obtenerRecurso();
+    }
 }

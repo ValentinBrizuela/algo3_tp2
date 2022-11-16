@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.edificios.*;
-import edu.fiuba.algo3.modelo.errores.RecursosInsuficientes;
+import edu.fiuba.algo3.modelo.errores.RecursosInsuficientesError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
@@ -21,7 +21,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
         Criadero criadero = new Criadero(new Mapa(), casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(criadero, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(criadero, almacen);});
     }
     @Test
     public void test02NoPuedoConstruirUnExtractorSiNoTengoLosRecursosNecesarios(){
@@ -29,7 +29,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(0,0, new Moho(), new Geiser());
         Extractor extractor = new Extractor(casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(extractor, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(extractor, almacen);});
     }
     @Test
     public void test03NoPuedoConstruirReservaDeReproduccionSiNoTengoLosRecursosNecesarios(){
@@ -37,7 +37,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(0,0, new Moho(), new RecursoVacio());
         ReservaDeReproduccion reserva = new ReservaDeReproduccion(casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(reserva, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(reserva, almacen);});
     }
     @Test
     public void test04NoPuedoConstruirUnaGuaridaSiNoTengoLosRecursosNecesarios(){
@@ -45,7 +45,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(0,0, new Moho(), new RecursoVacio());
         Guarida guarida = new Guarida(casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(guarida, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(guarida, almacen);});
     }
     @Test
     public void test05NoPuedoConstruirUnaEspiralSiNoTengoLosRecursosNecesarios(){
@@ -53,7 +53,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(0,0, new Moho(), new RecursoVacio());
         Espiral espiral = new Espiral(casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(espiral, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(espiral, almacen);});
     }
     @Test
     public void test06NoPuedoConstruirUnNexoMineralSiNoTengoLosRecursosNecesarios(){
@@ -61,7 +61,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(0,0, new TierraEnergizada(), new Mena());
         NexoMineral nexo = new NexoMineral(casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(nexo, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(nexo, almacen);});
     }
     @Test
     public void test07NoPuedoConstruirUnPilonSiNoTengoLosRecursosNecesarios(){
@@ -70,7 +70,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(25,25, new TierraEnergizada(), new RecursoVacio());
         Pilon pilon = new Pilon(mapa, casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(pilon, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(pilon, almacen);});
     }
     @Test
     public void test08NoPuedoConstruirUnAsimilidaorSiNoTengoLosRecursosNecesarios(){
@@ -78,7 +78,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(0,0, new TierraEnergizada(), new Geiser());
         Asimilador asimilador = new Asimilador(casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(asimilador, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(asimilador, almacen);});
     }
     @Test
     public void test09NoPuedoConstruirUnAccesoSiNoTengoLosRecursosNecesarios(){
@@ -86,7 +86,7 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(0,0, new TierraEnergizada(), new RecursoVacio());
         Acceso acceso = new Acceso(casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(acceso, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(acceso, almacen);});
     }
     @Test
     public void test10NoPuedoConstruirUnPuertoEstelarSiNoTengoLosRecursosNecesarios(){
@@ -94,6 +94,6 @@ public class CasoDeUso8 {
         Casilla casilla = new Casilla(0,0, new TierraEnergizada(), new RecursoVacio());
         PuertoEstelar puerto = new PuertoEstelar(casilla);
 
-        assertThrows(RecursosInsuficientes.class, () -> {casilla.construir(puerto, almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(puerto, almacen);});
     }
 }

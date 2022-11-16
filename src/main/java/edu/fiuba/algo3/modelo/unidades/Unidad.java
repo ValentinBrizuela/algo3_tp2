@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalido;
+import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
+import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.razas.Raza;
+import edu.fiuba.algo3.modelo.terrenos.Terreno;
 
 import java.util.List;
 
@@ -25,9 +27,11 @@ public abstract class Unidad extends Entidad {
     }
     public abstract void recibirAtaque(int danio);
 
-    public void moverA(Casilla c){
-        c.obtenerTerreno().mover(this);
-        casilla = c;
+    public void moverA(Casilla casillaDestino){
+        Terreno terreno = casillaDestino.obtenerTerreno();
+        terreno.puedoMover(this);
+        casilla = casillaDestino;
+        /*casillaDestino.cambiarEstado(new Ocupada(terreno, casillaDestino.obtenerRecurso(), this));*/
     }
 
     public void avanzarCasilla(){
@@ -37,9 +41,9 @@ public abstract class Unidad extends Entidad {
     public void recibirAtaque(List<TipoDeUnidad> tipos){
         for(TipoDeUnidad tipo : tipos){
             if (tipo.getClass() == tipoUnidad.getClass()){
-                tipo.Atacar(this); return;}
+                tipo.atacar(this); return;}
         }
-        throw new AtaqueInvalido();
+        throw new AtaqueInvalidoError();
     }
     public TipoDeUnidad obtenerTipoMovimiento() {return tipoUnidad;}
 }

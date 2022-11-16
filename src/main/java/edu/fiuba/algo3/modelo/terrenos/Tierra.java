@@ -11,4 +11,9 @@ public class Tierra extends Terreno {
     public void construir(Edificio edificio, Almacen almacen) {
         edificio.construir(this, almacen);
     }
+
+    @Override
+    public void puedoMover(Unidad unidad) {
+        unidad.obtenerTipoMovimiento().puedoMoverA(this);
+    }
 }

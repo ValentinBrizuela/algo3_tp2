@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.edificios.Costo;
 import edu.fiuba.algo3.modelo.edificios.Edificio;
-import edu.fiuba.algo3.modelo.errores.RecursosInsuficientes;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
@@ -16,9 +14,9 @@ public class Mutalisco extends Unidad  implements Atacante {
     private int rangoAtaque;
 
     public Mutalisco(Casilla casilla){
-        super(120, 100, 100, 7, new Zerg(), casilla, new Volador(),  new ArrayList<TipoDeUnidad>(){{
-            add(new Terrestre(9));
-            add(new Volador(9));
+        super(120, 100, 100, 7, new Zerg(), casilla, new UnidadAerea(),  new ArrayList<TipoDeUnidad>(){{
+            add(new UnidadTerrestre(9));
+            add(new UnidadAerea(9));
         }});
         this.rangoAtaque = 3;
     }

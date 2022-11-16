@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.entrega_2;
 
-import edu.fiuba.algo3.modelo.errores.RecursosInsuficientes;
+import edu.fiuba.algo3.modelo.errores.RecursosInsuficientesError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
@@ -24,7 +24,7 @@ public class CasoDeUso21 {
             mutalisco.avanzarTurno();
         }
 
-        assertThrows(RecursosInsuficientes.class, () -> {mutalisco.evolucionar(almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {mutalisco.evolucionar(almacen);});
 
 
     }

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.edificios.EdificioVacio;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.edificios.ZanganoTrabajador;
 import edu.fiuba.algo3.modelo.juego.Almacen;
@@ -15,7 +14,7 @@ public class Zangano extends Unidad implements Mina {
     private ZanganoTrabajador edificioDeExtraccion;
 
     public Zangano(Casilla casilla){
-        super(25, 25, 0, 1, new Zerg(), casilla, new Terrestre(), new ArrayList<TipoDeUnidad>(){{}});
+        super(25, 25, 0, 1, new Zerg(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{}});
         this.edificioDeExtraccion= null;
     }
 

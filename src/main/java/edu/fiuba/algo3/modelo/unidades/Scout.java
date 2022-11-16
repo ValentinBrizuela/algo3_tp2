@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Scout extends Unidad  implements Atacante {
 
@@ -15,9 +14,9 @@ public class Scout extends Unidad  implements Atacante {
     private int rangoAtaque;
 
     public Scout(Casilla casilla){
-        super(150, 300, 150, 9, new Protoss(), casilla, new Volador(), new ArrayList<TipoDeUnidad>(){{
-            add(new Terrestre(8));
-            add(new Volador(14));
+        super(150, 300, 150, 9, new Protoss(), casilla, new UnidadAerea(), new ArrayList<TipoDeUnidad>(){{
+            add(new UnidadTerrestre(8));
+            add(new UnidadAerea(14));
         }});
         this.escudo = 100;
         this.rangoAtaque = 4;

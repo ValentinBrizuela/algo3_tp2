@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.entrega_2;
 
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalido;
+import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.juego.*;
-import edu.fiuba.algo3.modelo.terrenos.Moho;
-import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
 import edu.fiuba.algo3.modelo.unidades.Zerling;
 import org.junit.jupiter.api.Test;
@@ -23,7 +21,7 @@ public class CasoDeUso23 {
             z.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalido.class, () -> {z.atacarA(d);});
+        assertThrows(AtaqueInvalidoError.class, () -> {z.atacarA(d);});
     }
 
     /*@Test
