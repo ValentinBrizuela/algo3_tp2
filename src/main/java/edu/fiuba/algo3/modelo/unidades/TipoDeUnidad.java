@@ -5,10 +5,10 @@ import edu.fiuba.algo3.modelo.terrenos.Terreno;
 
 public abstract class TipoDeUnidad {
 
-    private int danio;
+    protected int danio;
 
     public TipoDeUnidad(int danio){
-        danio = danio;
+        this.danio = danio;
     }
 
     public TipoDeUnidad(){

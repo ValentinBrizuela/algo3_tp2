@@ -15,7 +15,7 @@ public class CasoDeUso18 {
         Mapa mapa = new Mapa();
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
-        Zerling z = new Zerling(casilla1);
+        Zerling z = new Zerling(casilla1);  /*Cambie el constructor de Terrestre para que no haga super y lo cambie ahí al daño*/
         Dragon d = new Dragon(casilla2);
 
         for (int i=0; i<25; i++){

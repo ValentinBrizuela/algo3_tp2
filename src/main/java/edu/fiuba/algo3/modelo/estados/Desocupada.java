@@ -21,8 +21,8 @@ public class Desocupada extends Estado {
     }
 
     public void construir(Edificio edificio, Almacen almacen){
-        terreno.construir(edificio, almacen);
         recurso.construir(edificio);
+        terreno.construir(edificio, almacen);
     }
 
     public void avanzarTurno() {
