@@ -6,25 +6,25 @@ import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
-public class Zerling extends UnidadTerrestre  implements Atacante{
-    private int danio;
+import java.util.ArrayList;
+
+public class Zerling extends Unidad implements Atacante{
+
     private int rangoAtaque;
 
+
+
     public Zerling(Casilla casilla){
-        super(35, 25, 0, 4, new Zerg(), casilla);
-        this.danio = 4;
+        super(35, 25, 0, 4, new Zerg(), casilla,new Terrestre(),new ArrayList<TipoDeUnidad>(){{
+            add(new Terrestre(4));
+        }});
         this.rangoAtaque = 1;
     }
 
     @Override
-    public void atacarA(UnidadVoladora unidadVoladora) {
-        throw new AtaqueInvalido();
-    }
-
-    @Override
-    public void atacarA(UnidadTerrestre unidadTerrestre) {
-        unidadTerrestre.estasEnRango(casilla, rangoAtaque);
-        unidadTerrestre.recibirAtaque(this.danio);
+    public void atacarA(Unidad unidad) {
+        unidad.estasEnRango(casilla, rangoAtaque);
+        unidad.recibirAtaque(this.obtenerTiposDeAtaque());
     }
 
     @Override

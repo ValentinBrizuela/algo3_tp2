@@ -8,12 +8,14 @@ import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 
-public class Zangano extends UnidadTerrestre implements Mina {
+import java.util.ArrayList;
+
+public class Zangano extends Unidad implements Mina {
 
     private ZanganoTrabajador edificioDeExtraccion;
 
     public Zangano(Casilla casilla){
-        super(25, 25, 0, 1, new Zerg(), casilla);
+        super(25, 25, 0, 1, new Zerg(), casilla, new Terrestre(), new ArrayList<TipoDeUnidad>(){{}});
         this.edificioDeExtraccion= null;
     }
 

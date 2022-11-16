@@ -5,26 +5,28 @@ import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 
-public class Scout extends UnidadVoladora  implements Atacante {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Scout extends Unidad  implements Atacante {
 
     private int escudo;
-    private int danioAereo;
-    private int danioTerrestre;
 
     private int rangoAtaque;
 
     public Scout(Casilla casilla){
-        super(150, 300, 150, 9, new Protoss(), casilla);
-        this.danioAereo = 14;
-        this.danioTerrestre = 8;
+        super(150, 300, 150, 9, new Protoss(), casilla, new Volador(), new ArrayList<TipoDeUnidad>(){{
+            add(new Terrestre(8));
+            add(new Volador(14));
+        }});
         this.escudo = 100;
         this.rangoAtaque = 4;
     }
 
     @Override
-    public void atacarA(UnidadVoladora unidadVoladora) {
-        unidadVoladora.estasEnRango(casilla, rangoAtaque);
-        unidadVoladora.recibirAtaque(danioAereo);
+    public void atacarA(Unidad unidad) {
+        unidad.estasEnRango(casilla, rangoAtaque);
+        unidad.recibirAtaque(this.obtenerTiposDeAtaque());
     }
 
     @Override
@@ -39,12 +41,8 @@ public class Scout extends UnidadVoladora  implements Atacante {
     }
 
     @Override
-    public void atacarA(UnidadTerrestre unidadTerrestre) {
-        unidadTerrestre.recibirAtaque(danioTerrestre);
-    }
-
-    @Override
     public void atacarA(Edificio edificio) {
 
     }
+
 }

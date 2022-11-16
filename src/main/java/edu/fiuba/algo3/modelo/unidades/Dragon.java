@@ -5,17 +5,20 @@ import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 
-public class Dragon extends UnidadTerrestre implements Atacante {
+import java.util.ArrayList;
+import java.util.List;
 
-    private int danioTerrestre;
-    private int danioAereo;
+public class Dragon extends Unidad implements Atacante {
+
     private int rangoAtaque;
     private int escudo;
 
     public Dragon(Casilla casilla){
-        super(100, 125, 50, 6, new Protoss(), casilla);
-        this.danioTerrestre = 20;
-        this.danioAereo = 20;
+        super(100, 125, 50, 6, new Protoss(), casilla, new Terrestre(), new ArrayList<TipoDeUnidad>(){{
+            add(new Terrestre(20));
+            add(new Volador(20));
+        }});
+
         this.escudo = 80;
         this.rangoAtaque = 4;
     }
@@ -32,19 +35,19 @@ public class Dragon extends UnidadTerrestre implements Atacante {
     }
 
     @Override
-    public void atacarA(UnidadVoladora unidadVoladora) {
-        unidadVoladora.estasEnRango(casilla, rangoAtaque);
-        unidadVoladora.recibirAtaque(this.danioAereo);
+    public void atacarA(Unidad unidad) {
+        unidad.estasEnRango(casilla, rangoAtaque);
+        unidad.recibirAtaque(this.obtenerTiposDeAtaque());
     }
 
     @Override
     public void atacarA(Edificio edificio) {
     }
 
-    @Override
-    public void atacarA(UnidadTerrestre unidadTerrestre) {
+    /*@Override
+    public void atacarA(Unidad unidad) {
         unidadTerrestre.recibirAtaque(this.danioTerrestre);
-    }
+    }*/
 
     public int obtenerEscudo(){
         return escudo;
