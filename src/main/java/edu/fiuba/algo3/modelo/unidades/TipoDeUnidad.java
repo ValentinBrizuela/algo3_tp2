@@ -8,7 +8,7 @@ public abstract class TipoDeUnidad {
     private int danio;
 
     public TipoDeUnidad(int danio){
-        danio = danio;
+        this.danio = danio;
     }
 
     public TipoDeUnidad(){
