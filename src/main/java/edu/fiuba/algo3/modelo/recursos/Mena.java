@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 
-public class Mena extends Recurso {
+public class Mena implements Recurso {
     private int cant;
     public Mena() {
         cant = 2000;
