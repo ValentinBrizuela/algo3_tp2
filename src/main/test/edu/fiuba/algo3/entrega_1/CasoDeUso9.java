@@ -16,7 +16,7 @@ public class CasoDeUso9 {
     public void EdificioProtossSigueEnergizadoSiLeDestruyenElPilonQueLoEnergizaPeroTieneOtroEnRango(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
-        Casilla casilla = mapa.obtenerCasilla(10, 12);
+        Casilla casilla = mapa.obtenerCasilla(49, 49);
         Pilon pilon1 = new Pilon(mapa, mapa.obtenerCasilla(50, 50));
         Pilon pilon2 = new Pilon(mapa, mapa.obtenerCasilla(50, 51));
         Acceso acceso = new Acceso(casilla);

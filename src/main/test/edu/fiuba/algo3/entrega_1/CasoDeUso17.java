@@ -74,15 +74,15 @@ public class CasoDeUso17 {
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
-        mapa.obtenerCasilla(1,0).cambiarTerreno(new Moho());
-        mapa.obtenerCasilla(1,1).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(50,50).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(51,50).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(51,51).cambiarTerreno(new Moho());
 
-        algoStar.construirReservaDeReproduccion(0,0);
-        algoStar.construirGuarida(1,0);
-        algoStar.construirEspiral(1,1);
+        algoStar.construirReservaDeReproduccion(50,50);
+        algoStar.construirGuarida(51,50);
+        algoStar.construirEspiral(51,51);
 
-        assertSame(Espiral.class, mapa.obtenerCasilla(1,1).obtenerEstado().obtenerEdificio().getClass());
+        assertSame(Espiral.class, mapa.obtenerCasilla(51,51).obtenerEstado().obtenerEdificio().getClass());
 
     }
 
@@ -101,7 +101,7 @@ public class CasoDeUso17 {
     }
 
     @Test
-    public void test06UnEspiralSePuedeConstruirSiAntesSeConstruyoUnPuertoEstelar(){
+    public void test06UnPuertoEstelarSePuedeConstruirSiHayYaConstruidoUnAcceso(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Jugador jugador1=new Jugador("andres","rojo",new Protoss());
@@ -109,13 +109,13 @@ public class CasoDeUso17 {
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(0,0).cambiarTerreno(new TierraEnergizada());
-        mapa.obtenerCasilla(1,0).cambiarTerreno(new TierraEnergizada());
+        mapa.obtenerCasilla(50,50).cambiarTerreno(new TierraEnergizada());
+        mapa.obtenerCasilla(51,50).cambiarTerreno(new TierraEnergizada());
 
-        algoStar.construirAcceso(0,0);
-        algoStar.construirPuertoEstelar(1,0);
+        algoStar.construirAcceso(50,50);
+        algoStar.construirPuertoEstelar(51,50);
 
-        assertSame(PuertoEstelar.class, mapa.obtenerCasilla(1,0).obtenerEstado().obtenerEdificio().getClass());
+        assertSame(PuertoEstelar.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEdificio().getClass());
     }
 
 }
