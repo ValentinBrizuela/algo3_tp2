@@ -29,6 +29,10 @@ public class Mapa {
         crearBasesRandomYEspejadas();
     }
 
+    public int tamanioMapa() {
+        return tamMapa;
+    }
+
     public Casilla obtenerCasilla(int i, int j) {
         return casillas[i][j];
     }
@@ -96,4 +100,6 @@ public class Mapa {
 
         return true;
     }
+
+
 }

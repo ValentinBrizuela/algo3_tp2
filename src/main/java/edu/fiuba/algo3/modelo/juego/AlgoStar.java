@@ -14,6 +14,7 @@ public class AlgoStar {
     private ArrayList<Jugador> jugadores;
 
     private Mapa mapa;
+    private int cantJugadores;
 
     public AlgoStar(Mapa mapa){
         this.jugadores=new ArrayList<Jugador>();
@@ -25,12 +26,14 @@ public class AlgoStar {
            throw new NombreDeJugadorInvalidoError();
        }
         if(jugadores.isEmpty()) {
-            jugadores.add(jugador);
+            jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.1)), (int) (mapa.tamanioMapa()*(0.1)));
         }else{
             if(jugador.sosIgualA(jugadores.get(0))){
                 throw new JugadorInvalidoError();
             }
+            jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
         }
+        jugadores.add(jugador);
     }
     public void construirGuarida(int x, int y){
         if(jugadores.get(0).yaTiene(ReservaDeReproduccion.class)) {
@@ -73,6 +76,22 @@ public class AlgoStar {
         casilla.construir(new Acceso(casilla), jugadores.get(0).obtenerAlmacen());
         jugadores.get(0).agregarEdificio(Acceso.class);
     }
+
+    /*public void construirZangano(int x, int y) {
+        if(jugadores.get(0).yaTiene(Criadero.class)) {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
+            casilla.construir(new PuertoEstelar(casilla), jugadores.get(0).obtenerAlmacen());
+            jugadores.get(0).agregarEdificio(PuertoEstelar.class);
+        }else{
+            throw new ConstruccionNoPermitidaError();
+        }
+    }*/
+
+    /*public void construirZangano(int x, int y) {
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+        casilla.construir(new Acceso(casilla), jugadores.get(0).obtenerAlmacen());
+        jugadores.get(0).agregarEdificio(Acceso.class);
+    }*/
 
     private boolean chequearNombre(Jugador jugador){
         return jugador.obtenerNombre().length()<6;

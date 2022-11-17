@@ -16,6 +16,9 @@ public class Jugador {
     private String color;
     private Raza raza;
 
+    private int posx;
+    private int posy;
+
     public Jugador(String nombre, String color, Raza raza){
         this.edificiosConstruidos= new ArrayList<Class>();
         this.almacen= new Almacen();
@@ -56,4 +59,18 @@ public class Jugador {
     public String obtenerColor(){
         return color;
     }
+
+    public void setearPosicion(int x, int y) {
+        this.posx = x;
+        this.posy = y;
+    }
+
+    public int posX() {
+        return posx;
+    }
+
+    public int posY() {
+        return posy;
+    }
+
 }
