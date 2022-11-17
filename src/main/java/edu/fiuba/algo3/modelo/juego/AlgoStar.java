@@ -2,8 +2,10 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.CreacionDeUnidadInvalida;
 import edu.fiuba.algo3.modelo.errores.JugadorInvalidoError;
 import edu.fiuba.algo3.modelo.errores.NombreDeJugadorInvalidoError;
+import edu.fiuba.algo3.modelo.unidades.Zerling;
 
 import java.util.ArrayList;
 
@@ -17,7 +19,6 @@ public class AlgoStar {
         this.jugadores=new ArrayList<Jugador>();
         this.mapa=mapa;
     }
-
 
     public void registrarJugador(Jugador jugador){
        if(this.chequearNombre(jugador)){
@@ -76,4 +77,19 @@ public class AlgoStar {
     private boolean chequearNombre(Jugador jugador){
         return jugador.obtenerNombre().length()<6;
     }
+
+    public Zerling crearZerling(Jugador j, int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+
+        //crear logica
+        if(j.yaTiene(ReservaDeReproduccion.class)){
+            Zerling z = new Zerling(casilla);
+            return z;
+        }
+        else{
+            throw new CreacionDeUnidadInvalida();
+        }
+
+    }
 }
+
