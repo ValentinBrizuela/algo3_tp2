@@ -19,9 +19,7 @@ public class Zealot extends Unidad implements Atacante, AtacableTerrestre {
     private int danio;
 
     public Zealot(Casilla casilla){
-        super(new VidaProtoss(100, 60), 100, 0, 4, new Protoss(), casilla,new UnidadTerrestre(),new ArrayList<TipoDeUnidad>(){{
-            add(new UnidadTerrestre(8));
-        }});
+        super(new VidaProtoss(100, 60), 100, 0, 4, new Protoss(), casilla,new UnidadTerrestre());
         this.rangoAtaque = 1;
         this.danio = 8;
     }

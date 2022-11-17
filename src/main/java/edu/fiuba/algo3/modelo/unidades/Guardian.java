@@ -19,9 +19,7 @@ public class Guardian extends Unidad  implements Atacante, AtacableAereo {
     private int danio;
 
     public Guardian(Casilla casilla) {
-        super(new VidaZerg(100), 50, 100, 4, new Zerg(), casilla,  new UnidadAerea(),  new ArrayList<TipoDeUnidad>(){{
-            add(new UnidadTerrestre(25));
-        }});
+        super(new VidaZerg(100), 50, 100, 4, new Zerg(), casilla,  new UnidadAerea());
         this.rangoAtaque = 10;
         this.danio = 25;
     }

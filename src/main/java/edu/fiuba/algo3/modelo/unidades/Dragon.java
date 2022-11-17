@@ -17,10 +17,7 @@ public class Dragon extends Unidad implements Atacante, AtacableTerrestre {
     private int danioAereo;
 
     public Dragon(Casilla casilla){
-        super(new VidaProtoss(100, 80), 125, 50, 6, new Protoss(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{
-            add(new UnidadTerrestre(20));
-            add(new UnidadAerea(20));
-        }});
+        super(new VidaProtoss(100, 80), 125, 50, 6, new Protoss(), casilla, new UnidadTerrestre());
 
         this.rangoAtaque = 4;
         this.danioAereo = 20;

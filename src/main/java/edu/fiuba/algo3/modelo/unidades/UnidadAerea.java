@@ -3,11 +3,7 @@ package edu.fiuba.algo3.modelo.unidades;
 import edu.fiuba.algo3.modelo.errores.MovimientoInvalidoError;
 import edu.fiuba.algo3.modelo.terrenos.*;
 
-public class UnidadAerea extends TipoDeUnidad {
-
-    public UnidadAerea(int danio) {
-        super(danio);
-    }
+public class UnidadAerea implements TipoDeUnidad {
 
     public UnidadAerea() {
     }

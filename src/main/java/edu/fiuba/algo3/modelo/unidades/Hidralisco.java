@@ -18,10 +18,7 @@ public class Hidralisco extends Unidad implements Atacante, AtacableTerrestre {
     private int danioAereo;
 
     public Hidralisco(Casilla casilla){
-        super(new VidaZerg(80), 75, 25, 4, new Zerg(), casilla,new UnidadTerrestre(),new ArrayList<TipoDeUnidad>(){{
-            add(new UnidadTerrestre(10));
-            add(new UnidadAerea(10));
-        }});
+        super(new VidaZerg(80), 75, 25, 4, new Zerg(), casilla,new UnidadTerrestre());
         this.rangoAtaque = 4;
         this.danioAereo = 10;
         this.danioTerrestre = 10;

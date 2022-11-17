@@ -16,7 +16,7 @@ public abstract class Unidad extends Entidad {
     private TipoDeUnidad tipoUnidad;
 
 
-    public Unidad(Vida vida, int costoMineral, int costoGas, int tiempoConstruccion, Raza raza, Casilla casilla, TipoDeUnidad tipo, List<TipoDeUnidad> tiposdeataques){
+    public Unidad(Vida vida, int costoMineral, int costoGas, int tiempoConstruccion, Raza raza, Casilla casilla, TipoDeUnidad tipo){
         super(vida, costoMineral, costoGas, tiempoConstruccion, raza, casilla);
         tipoUnidad = tipo;
     }

@@ -15,10 +15,7 @@ public class Scout extends Unidad  implements Atacante, AtacableAereo {
     private int danioAereo;
 
     public Scout(Casilla casilla){
-        super(new VidaProtoss(150, 100), 300, 150, 9, new Protoss(), casilla, new UnidadAerea(), new ArrayList<TipoDeUnidad>(){{
-            add(new UnidadTerrestre(8));
-            add(new UnidadAerea(14));
-        }});
+        super(new VidaProtoss(150, 100), 300, 150, 9, new Protoss(), casilla, new UnidadAerea());
         this.rangoAtaque = 4;
         this.danioAereo = 14;
         this.danioTerrestre = 8;

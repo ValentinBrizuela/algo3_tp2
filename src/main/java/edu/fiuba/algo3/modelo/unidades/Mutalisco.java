@@ -19,10 +19,7 @@ public class Mutalisco extends Unidad  implements Atacante, AtacableAereo {
     private int danioAereo;
 
     public Mutalisco(Casilla casilla){
-        super(new VidaZerg(120), 100, 100, 7, new Zerg(), casilla, new UnidadAerea(),  new ArrayList<TipoDeUnidad>(){{
-            add(new UnidadTerrestre(9));
-            add(new UnidadAerea(9));
-        }});
+        super(new VidaZerg(120), 100, 100, 7, new Zerg(), casilla, new UnidadAerea());
         this.rangoAtaque = 3;
         this.danioAereo = 9;
         this.danioTerrestre = 9;

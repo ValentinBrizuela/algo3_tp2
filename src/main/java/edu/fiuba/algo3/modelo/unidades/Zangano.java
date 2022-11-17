@@ -17,7 +17,7 @@ public class Zangano extends Unidad implements Mina, AtacableTerrestre {
     private ZanganoTrabajador edificioDeExtraccion;
 
     public Zangano(Casilla casilla){
-        super(new VidaZerg(25), 25, 0, 1, new Zerg(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{}});
+        super(new VidaZerg(25), 25, 0, 1, new Zerg(), casilla, new UnidadTerrestre());
         this.edificioDeExtraccion= null;
     }
 

@@ -17,9 +17,7 @@ public class Zerling extends Unidad implements Atacante, AtacableTerrestre{
 
 
     public Zerling(Casilla casilla){
-        super(new VidaZerg(35), 25, 0, 2, new Zerg(), casilla,new UnidadTerrestre(),new ArrayList<TipoDeUnidad>(){{
-            add(new UnidadTerrestre(4));
-        }});
+        super(new VidaZerg(35), 25, 0, 2, new Zerg(), casilla,new UnidadTerrestre());
         this.rangoAtaque = 1;
         this.danio = 4;
     }
