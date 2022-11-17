@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CasoDeUso13 {
+public class CasoDeUso13Test {
     @Test
     public void criaderoSeDestruyeYElMohoSigueEstando() {
         Mapa mapa = new Mapa(2);

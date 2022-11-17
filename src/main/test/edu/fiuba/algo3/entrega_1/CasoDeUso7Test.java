@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso7 {
+public class CasoDeUso7Test {
 
     @Test
     public void zanganoExtrae10MineralesPorTurno() {

@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.entrega_2;
 
-import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.errores.CasillaOcupadaError;
 import edu.fiuba.algo3.modelo.errores.MovimientoInvalidoError;
-import edu.fiuba.algo3.modelo.estados.Ocupada;
-import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.terrenos.Espacio;
@@ -15,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso20 {
+public class CasoDeUso20Test {
     @Test
     public void UnaUnidadTerrestreNoPuedeMoversePorUnAreaEspacial(){
         Mapa mapa = new Mapa(2);

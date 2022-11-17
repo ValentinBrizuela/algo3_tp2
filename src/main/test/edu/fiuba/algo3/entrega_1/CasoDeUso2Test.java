@@ -1,35 +1,30 @@
 package edu.fiuba.algo3.entrega_1;
-
+import edu.fiuba.algo3.modelo.edificios.Criadero;
+import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import org.junit.jupiter.api.Test;
-import edu.fiuba.algo3.modelo.edificios.Criadero;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+public class CasoDeUso2Test {
 
-public class CasoDeUso1 {
     @Test
-    public void test01CriaderoRegeneraUnaLarvaAlConsumirLuegoDeUnTurno(){
+    public void test01EdificioNoEsOperativoAntesDeConstruirse() {
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
         Criadero c = new Criadero(new Mapa(2), casilla);
-
         c.avanzarTurno();
         c.avanzarTurno();
-        c.avanzarTurno();
-        c.avanzarTurno();
-        c.engendrarZangano();
-
-        assertEquals(2, c.cantidadLarvas());
-
         c.avanzarTurno();
 
-        assertEquals(3, c.cantidadLarvas());
+        assertThrows(EnConstruccionError.class, c::engendrarZangano);
+
     }
 
     @Test
-    public void test02CriaderoRegeneraDosLarvasAlConsumir2LuegoDeDosTurnos(){
+    public void test02EdificioTardaLoQueCorrespondeEnConstruirse() {
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
         Criadero c = new Criadero(new Mapa(2), casilla);
         c.avanzarTurno();
@@ -37,14 +32,7 @@ public class CasoDeUso1 {
         c.avanzarTurno();
         c.avanzarTurno();
 
-        c.engendrarZangano();
-        c.engendrarZangano();
+       assertEquals(0, c.tiempoDeConstruccion());
 
-        assertEquals(1, c.cantidadLarvas());
-
-        c.avanzarTurno();
-        c.avanzarTurno();
-
-        assertEquals(3, c.cantidadLarvas());
     }
 }

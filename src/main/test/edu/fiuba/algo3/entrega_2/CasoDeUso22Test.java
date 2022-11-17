@@ -2,14 +2,12 @@ package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.errores.CreacionDeUnidadInvalida;
 import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
-import edu.fiuba.algo3.modelo.errores.UnidadEnConstruccionError;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
-import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
 import edu.fiuba.algo3.modelo.unidades.Zerling;
 import org.junit.jupiter.api.Test;
@@ -17,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class    CasoDeUso22 {
+public class CasoDeUso22Test {
     @Test
     public void NoPuedoUsarUnidadSiNoSeTerminoDeConstruir(){
         Mapa mapa = new Mapa(2);

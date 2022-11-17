@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.entrega_2;
 
-import edu.fiuba.algo3.modelo.errores.JugadorInvalidoError;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
@@ -11,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso24 {
+public class CasoDeUso24Test {
     @Test
     public void losJugadoresArrancanEnExtremosOpuestos() {
         Mapa mapa=new Mapa(2);

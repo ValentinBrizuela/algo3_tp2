@@ -4,19 +4,16 @@ import edu.fiuba.algo3.modelo.edificios.Espiral;
 import edu.fiuba.algo3.modelo.edificios.Guarida;
 import edu.fiuba.algo3.modelo.edificios.PuertoEstelar;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
-import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
-import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso17 {
+public class CasoDeUso17Test {
 
     @Test
     public void test01UnaGuaridaNoSePuedeConstruirSiNoHayYaConstruidaUnaReservaDeReproduccion(){

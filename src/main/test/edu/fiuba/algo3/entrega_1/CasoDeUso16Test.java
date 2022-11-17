@@ -3,7 +3,6 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.edificios.NexoMineral;
 import edu.fiuba.algo3.modelo.errores.CasillaOcupadaError;
-import edu.fiuba.algo3.modelo.errores.EdificioYaConstruidoError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.unidades.Zangano;
@@ -15,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso16 {
+public class CasoDeUso16Test {
     @Test
     public void test01NoPuedoConstruirSobreGeiserYaConstruidoPropio(){
         Casilla casilla = new Casilla(0,0, new Moho(),new Geiser());

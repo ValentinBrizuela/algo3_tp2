@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CasoDeUso10 {
+public class CasoDeUso10Test {
     @Test
     public void construccionZergRecuperaVidaPorTurnoHastaElMaximo() { /*Supuesto: Recupera 10% por turno*/
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());

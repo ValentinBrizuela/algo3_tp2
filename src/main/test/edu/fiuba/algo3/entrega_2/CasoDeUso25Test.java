@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso25 {
+public class CasoDeUso25Test {
 
     @Test
     public void NoSePuedenIniciarDosJugadoresConNombresIguales(){

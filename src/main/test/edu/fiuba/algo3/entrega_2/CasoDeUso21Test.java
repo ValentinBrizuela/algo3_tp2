@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso21 {
+public class CasoDeUso21Test {
 
     @Test
     public void unMutaliscoNoPuedeEvolucionarAGuardianSiNoHayRecursosSuficientes(){

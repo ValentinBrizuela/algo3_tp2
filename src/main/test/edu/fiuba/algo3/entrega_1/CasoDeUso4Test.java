@@ -11,7 +11,7 @@ import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-public class CasoDeUso4 {
+public class CasoDeUso4Test {
 
     @Test
     public void extractorSinZanganosNoGeneraGas() {  /*falta verificar construccion*/

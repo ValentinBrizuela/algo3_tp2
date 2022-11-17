@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CasoDeUso14 {
+public class CasoDeUso14Test {
     @Test
     public void unPilonNoPuedeEnergizarUnAreaCubiertaPorMoho() {
         Mapa mapa = new Mapa(2);

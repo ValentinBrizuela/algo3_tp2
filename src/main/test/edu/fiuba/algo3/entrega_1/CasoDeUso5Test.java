@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso5 {
+public class CasoDeUso5Test {
     
     @Test
     public void construyoEdificioZergEnTierraYNoSePuede() {

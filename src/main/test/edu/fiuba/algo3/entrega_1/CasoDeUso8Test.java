@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CasoDeUso8 {
+public class CasoDeUso8Test {
     @Test
     public void test01NoPuedoConstruirUnCriaderoSiNoTengoLosRecursosNecesarios(){
         Almacen almacen = new Almacen();

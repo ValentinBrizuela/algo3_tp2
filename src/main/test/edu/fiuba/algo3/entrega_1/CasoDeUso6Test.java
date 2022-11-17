@@ -5,11 +5,10 @@ import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
-import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CasoDeUso6 {
+public class CasoDeUso6Test {
     @Test
     public void mohoSeExpandeSegunLoEsperado() {
         Mapa mapa = new Mapa(2);

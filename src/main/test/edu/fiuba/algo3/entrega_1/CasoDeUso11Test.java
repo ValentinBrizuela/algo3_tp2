@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CasoDeUso11 {
+public class CasoDeUso11Test {
     @Test
     public void construccionProtossRecuperaEscudoPorTurnoHastaElMaximo() {
         Mapa mapa = new Mapa(2);
