@@ -41,13 +41,13 @@ public class CasoDeUso17 {
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
-        mapa.obtenerCasilla(1,0).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(50,50).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(51,50).cambiarTerreno(new Moho());
 
-        algoStar.construirReservaDeReproduccion(0,0);
-        algoStar.construirGuarida(1,0);
+        algoStar.construirReservaDeReproduccion(50,50);
+        algoStar.construirGuarida(51,50);
 
-        assertSame(Guarida.class, mapa.obtenerCasilla(1,0).obtenerEstado().obtenerEdificio().getClass());
+        assertSame(Guarida.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEdificio().getClass());
 
     }
 
