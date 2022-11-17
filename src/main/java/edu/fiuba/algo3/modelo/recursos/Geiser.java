@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 
 
-public class Geiser extends Recurso {
+public class Geiser implements Recurso {
 
     private int cant;
     public Geiser() {
