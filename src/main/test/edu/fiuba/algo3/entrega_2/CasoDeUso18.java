@@ -12,7 +12,7 @@ public class CasoDeUso18 {
 
     @Test
     public void UnZerlingHace4DeDanioAUnidadTerrestre(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Zerling z = new Zerling(casilla1);  /*Cambie el constructor de Terrestre para que no haga super y lo cambie ahí al daño*/
@@ -30,7 +30,7 @@ public class CasoDeUso18 {
 
     @Test
     public void UnHidraliscoHace10DeDanioAUnidadTerrestreY10DeDanioAUnidadAerea(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Casilla casilla3 = mapa.obtenerCasilla(7,7);
@@ -53,7 +53,7 @@ public class CasoDeUso18 {
 
     @Test
     public void UnMutaliscoHace9DeDanioAUnidadTerrestreY9DeDanioAUnidadAerea(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Casilla casilla3 = mapa.obtenerCasilla(7,7);
@@ -76,7 +76,7 @@ public class CasoDeUso18 {
 
     @Test
     public void UnGuardianHace25DeDanioAUnidadTerrestre(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Guardian g = new Guardian(casilla1);
@@ -94,7 +94,7 @@ public class CasoDeUso18 {
 
     @Test
     public void UnZealotHace8DeDanioAUnidadTerrestre(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Zealot z = new Zealot(casilla1);
@@ -111,7 +111,7 @@ public class CasoDeUso18 {
 
     @Test
     public void UnDragonHace20DeDanioAUnidadTerrestreY20DeDanioAUnidadAerea(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Casilla casilla3 = mapa.obtenerCasilla(7,7);
@@ -135,7 +135,7 @@ public class CasoDeUso18 {
 
     @Test
     public void UnScoutHace8DeDanioAUnidadTerrestreY14DeDanioAUnidadAerea(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Casilla casilla3 = mapa.obtenerCasilla(7,7);

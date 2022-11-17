@@ -13,7 +13,7 @@ public class CasoDeUso19 {
 
     @Test
     public void unZerlingNoPuedeAtacarAUnaUnidadVoladora(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Zerling z = new Zerling(casilla1);

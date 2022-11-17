@@ -20,7 +20,7 @@ public class CasoDeUso17 {
 
     @Test
     public void test01UnaGuaridaNoSePuedeConstruirSiNoHayYaConstruidaUnaReservaDeReproduccion(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Jugador jugador1=new Jugador("andres","rojo",new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
@@ -34,7 +34,7 @@ public class CasoDeUso17 {
 
     @Test
     public void test02UnaGuaridaSePuedeConstruirSiAntesSeConstruyoUnaReservaDeReproduccion(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Jugador jugador1=new Jugador("andres","rojo",new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
@@ -53,7 +53,7 @@ public class CasoDeUso17 {
 
     @Test
     public void test03UnEspiralNoSePuedeConstruirSiNoHayYaConstruidaUnaGuarida(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Jugador jugador1=new Jugador("andres","rojo",new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
@@ -67,7 +67,7 @@ public class CasoDeUso17 {
 
     @Test
     public void test04UnEspiralSePuedeConstruirSiAntesSeConstruyoUnaGuarida(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Jugador jugador1=new Jugador("andres","rojo",new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
@@ -88,7 +88,7 @@ public class CasoDeUso17 {
 
     @Test
     public void test05UnPuertoEstelarNoSePuedeConstruirSiNoHayYaConstruidoUnAcceso(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Jugador jugador1=new Jugador("andres","rojo",new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
@@ -102,7 +102,7 @@ public class CasoDeUso17 {
 
     @Test
     public void test06UnEspiralSePuedeConstruirSiAntesSeConstruyoUnPuertoEstelar(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Jugador jugador1=new Jugador("andres","rojo",new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);

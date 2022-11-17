@@ -15,7 +15,7 @@ public class CasoDeUso21 {
 
     @Test
     public void unMutaliscoNoPuedeEvolucionarAGuardianSiNoHayRecursosSuficientes(){
-        Mapa mapa= new Mapa();
+        Mapa mapa= new Mapa(2);
         Casilla casilla = mapa.obtenerCasilla(5,5);
         Mutalisco mutalisco = new Mutalisco(casilla);
         Almacen almacen = new Almacen();
@@ -33,7 +33,7 @@ public class CasoDeUso21 {
 
     @Test
     public void unMutaliscoSePuedeEvolucionarAGuardianSiHayRecursosSuficientes(){
-        Mapa mapa= new Mapa();
+        Mapa mapa= new Mapa(2);
         Casilla casilla = mapa.obtenerCasilla(5,5);
         Mutalisco mutalisco = new Mutalisco(casilla);
         Almacen almacen = new Almacen();

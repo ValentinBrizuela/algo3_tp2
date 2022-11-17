@@ -15,7 +15,7 @@ public class CasoDeUso25 {
 
     @Test
     public void NoSePuedenIniciarDosJugadoresConNombresIguales(){
-        Mapa mapa=new Mapa();
+        Mapa mapa=new Mapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila","rojo",new Protoss());
@@ -27,7 +27,7 @@ public class CasoDeUso25 {
 
     @Test
     public void NoSePuedenIniciarDosJugadoresConColoresIguales(){
-        Mapa mapa=new Mapa();
+        Mapa mapa=new Mapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("agustin","rojo",new Protoss());
@@ -39,7 +39,7 @@ public class CasoDeUso25 {
 
     @Test
     public void NoSePuedenIniciarDosJugadoresConRazasIguales(){
-        Mapa mapa=new Mapa();
+        Mapa mapa=new Mapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("agustin","verde",new Zerg());
@@ -51,7 +51,7 @@ public class CasoDeUso25 {
 
     @Test
     public void NoSePuedeRegistrarUnJugadorConUnNombreQueTengaMenosDe6Caracteres(){
-        Mapa mapa=new Mapa();
+        Mapa mapa=new Mapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("ola","verde",new Zerg());

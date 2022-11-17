@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CasoDeUso14 {
     @Test
     public void unPilonNoPuedeEnergizarUnAreaCubiertaPorMoho() {
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
 
         Criadero criadero = new Criadero(mapa, mapa.obtenerCasilla(24, 24));
         Pilon pilon = new Pilon(mapa, mapa.obtenerCasilla(25, 25));
@@ -23,7 +23,7 @@ public class CasoDeUso14 {
 
     @Test
     public void mohoNoSePuedeExpandirPorUnaCasillaOcupada() {
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
         Pilon pilon = new Pilon(mapa, mapa.obtenerCasilla(25, 25));

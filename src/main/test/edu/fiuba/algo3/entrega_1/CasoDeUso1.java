@@ -13,7 +13,7 @@ public class CasoDeUso1 {
     @Test
     public void test01CriaderoRegeneraUnaLarvaAlConsumirLuegoDeUnTurno(){
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
-        Criadero c = new Criadero(new Mapa(), casilla);
+        Criadero c = new Criadero(new Mapa(2), casilla);
 
         c.avanzarTurno();
         c.avanzarTurno();
@@ -31,7 +31,7 @@ public class CasoDeUso1 {
     @Test
     public void test02CriaderoRegeneraDosLarvasAlConsumir2LuegoDeDosTurnos(){
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
-        Criadero c = new Criadero(new Mapa(), casilla);
+        Criadero c = new Criadero(new Mapa(2), casilla);
         c.avanzarTurno();
         c.avanzarTurno();
         c.avanzarTurno();

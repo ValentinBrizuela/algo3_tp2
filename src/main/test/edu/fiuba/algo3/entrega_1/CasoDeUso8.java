@@ -19,7 +19,7 @@ public class CasoDeUso8 {
     public void test01NoPuedoConstruirUnCriaderoSiNoTengoLosRecursosNecesarios(){
         Almacen almacen = new Almacen();
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
-        Criadero criadero = new Criadero(new Mapa(), casilla);
+        Criadero criadero = new Criadero(new Mapa(2), casilla);
 
         assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(criadero, almacen);});
     }
@@ -65,7 +65,7 @@ public class CasoDeUso8 {
     }
     @Test
     public void test07NoPuedoConstruirUnPilonSiNoTengoLosRecursosNecesarios(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Casilla casilla = new Casilla(25,25, new TierraEnergizada(), new RecursoVacio());
         Pilon pilon = new Pilon(mapa, casilla);

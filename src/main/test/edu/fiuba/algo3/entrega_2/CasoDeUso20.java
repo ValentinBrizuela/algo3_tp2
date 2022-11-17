@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CasoDeUso20 {
     @Test
     public void UnaUnidadTerrestreNoPuedeMoversePorUnAreaEspacial(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casillaDestino = mapa.obtenerCasilla(5,5);
         casillaDestino.cambiarTerreno(new Espacio());
         Casilla casillaOrigen = mapa.obtenerCasilla(3,3);
@@ -29,7 +29,7 @@ public class CasoDeUso20 {
 
     @Test
     public void UnaUnidadAereaPuedeMoversePorUnAreaEspacial(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casillaDestino = mapa.obtenerCasilla(5,5);
         casillaDestino.cambiarTerreno(new Espacio());
         Casilla casillaOrigen = mapa.obtenerCasilla(3,3);

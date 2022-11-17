@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CasoDeUso22 {
     @Test
     public void NoPuedoUsarUnidadSiNoSeTerminoDeConstruir(){
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(5,6);
         Zerling z = new Zerling(casilla1);

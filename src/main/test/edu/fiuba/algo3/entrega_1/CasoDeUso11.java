@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CasoDeUso11 {
     @Test
     public void construccionProtossRecuperaEscudoPorTurnoHastaElMaximo() {
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla = new Casilla(25,25, new TierraEnergizada(), new RecursoVacio());
         Pilon pilon = new Pilon(mapa, casilla);
         pilon.recibirAtaque(100);

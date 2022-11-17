@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CasoDeUso13 {
     @Test
     public void criaderoSeDestruyeYElMohoSigueEstando() {
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(100);
         Casilla casilla = mapa.obtenerCasilla(25,25);

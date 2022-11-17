@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CasoDeUso6 {
     @Test
     public void mohoSeExpandeSegunLoEsperado() {
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(2);
         Casilla casilla = mapa.obtenerCasilla(25,25);
         Criadero criadero = new Criadero(mapa, casilla);
 

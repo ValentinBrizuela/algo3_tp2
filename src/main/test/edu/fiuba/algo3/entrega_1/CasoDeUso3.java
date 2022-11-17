@@ -42,7 +42,7 @@ public class CasoDeUso3 {
     @Test
     public void test03NoSePuedeConstruirUnEdificioQueNoSeaExtractorOAsimiladorSobreGeiser(){
         Casilla casilla = new Casilla(25,25, new TierraEnergizada(),new Geiser());
-        Criadero criadero = new Criadero(new Mapa(), casilla);
+        Criadero criadero = new Criadero(new Mapa(2), casilla);
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
 
