@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
+import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
 import edu.fiuba.algo3.modelo.unidades.Zerling;
 import org.junit.jupiter.api.Test;
@@ -39,8 +40,90 @@ public class    CasoDeUso22 {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-       // Zerling z = algoStar.crearZerling(j1,5,5);
-
         assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearZerling(j1,5,5);});
+    }
+
+    @Test
+    public void NoPuedoConstruirUnZanganoSinCriadero(){
+        Mapa mapa = new Mapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
+
+        Jugador j1 = new Jugador("mariano guglieri","fucsia",new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano","bordo",new Protoss());
+
+        algoStar.registrarJugador(j1);
+        algoStar.registrarJugador(j2);
+
+        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearZangano(j1,5,5);});
+    }
+
+    @Test
+    public void NoPuedoConstruirUnHidraliscoSinGuarida(){
+        Mapa mapa = new Mapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
+
+        Jugador j1 = new Jugador("mariano guglieri","fucsia",new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano","bordo",new Protoss());
+
+        algoStar.registrarJugador(j1);
+        algoStar.registrarJugador(j2);
+
+        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearHidralisco(j1,5,5);});
+    }
+
+    @Test
+    public void NoPuedoConstruirUnMutaliscoSinEspiral(){
+        Mapa mapa = new Mapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
+
+        Jugador j1 = new Jugador("mariano guglieri","fucsia",new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano","bordo",new Protoss());
+
+        algoStar.registrarJugador(j1);
+        algoStar.registrarJugador(j2);
+
+        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearMutalisco(j1,5,5);});
+    }
+
+    @Test
+    public void NoPuedoConstruirUnZealotSinAcceso(){
+        Mapa mapa = new Mapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
+
+        Jugador j1 = new Jugador("mariano guglieri","fucsia",new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano","bordo",new Protoss());
+
+        algoStar.registrarJugador(j1);
+        algoStar.registrarJugador(j2);
+
+        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearZealot(j1,5,5);});
+    }
+
+    @Test
+    public void NoPuedoConstruirUnDragonSinAcceso(){
+        Mapa mapa = new Mapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
+
+        Jugador j1 = new Jugador("mariano guglieri","fucsia",new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano","bordo",new Protoss());
+
+        algoStar.registrarJugador(j1);
+        algoStar.registrarJugador(j2);
+
+        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearDragon(j1,5,5);});
+    }
+
+    @Test
+    public void NoPuedoConstruirUnScoutSinPuertoEstelar(){
+        Mapa mapa = new Mapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
+
+        Jugador j1 = new Jugador("mariano guglieri","fucsia",new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano","bordo",new Protoss());
+
+        algoStar.registrarJugador(j1);
+        algoStar.registrarJugador(j2);
+
+        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearScout(j1,5,5);});
     }
 }

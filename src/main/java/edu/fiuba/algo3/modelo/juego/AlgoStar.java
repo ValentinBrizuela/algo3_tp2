@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.errores.CreacionDeUnidadInvalida;
 import edu.fiuba.algo3.modelo.errores.JugadorInvalidoError;
 import edu.fiuba.algo3.modelo.errores.NombreDeJugadorInvalidoError;
-import edu.fiuba.algo3.modelo.unidades.Zerling;
+import edu.fiuba.algo3.modelo.unidades.*;
 
 import java.util.ArrayList;
 
@@ -104,6 +104,90 @@ public class AlgoStar {
         if(j.yaTiene(ReservaDeReproduccion.class)){
             Zerling z = new Zerling(casilla);
             return z;
+        }
+        else{
+            throw new CreacionDeUnidadInvalida();
+        }
+
+    }
+
+    public Zangano crearZangano(Jugador j, int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+
+        //crear logica
+        if(j.yaTiene(Criadero.class)){
+            Zangano z = new Zangano(casilla);
+            return z;
+        }
+        else{
+            throw new CreacionDeUnidadInvalida();
+        }
+
+    }
+
+    public Hidralisco crearHidralisco(Jugador j, int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+
+        //crear logica
+        if(j.yaTiene(Guarida.class)){
+            Hidralisco h = new Hidralisco(casilla);
+            return h;
+        }
+        else{
+            throw new CreacionDeUnidadInvalida();
+        }
+
+    }
+
+    public Mutalisco crearMutalisco(Jugador j, int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+
+        //crear logica
+        if(j.yaTiene(Espiral.class)){
+            Mutalisco m = new Mutalisco(casilla);
+            return m;
+        }
+        else{
+            throw new CreacionDeUnidadInvalida();
+        }
+
+    }
+
+    public Zealot crearZealot(Jugador j, int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+
+        //crear logica
+        if(j.yaTiene(Acceso.class)){
+            Zealot z = new Zealot(casilla);
+            return z;
+        }
+        else{
+            throw new CreacionDeUnidadInvalida();
+        }
+
+    }
+
+    public Dragon crearDragon(Jugador j, int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+
+        //crear logica
+        if(j.yaTiene(Acceso.class)){
+            Dragon d = new Dragon(casilla);
+            return d;
+        }
+        else{
+            throw new CreacionDeUnidadInvalida();
+        }
+
+    }
+
+    public Scout crearScout(Jugador j, int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+
+        //crear logica
+        if(j.yaTiene(PuertoEstelar.class)){
+            Scout s = new Scout(casilla);
+            return s;
         }
         else{
             throw new CreacionDeUnidadInvalida();
