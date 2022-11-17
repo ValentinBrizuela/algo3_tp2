@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.entrega_2;
 
+import edu.fiuba.algo3.modelo.edificios.Acceso;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.unidades.*;
@@ -15,15 +16,15 @@ public class CasoDeUso18 {
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
         Zerling z = new Zerling(casilla1);  /*Cambie el constructor de Terrestre para que no haga super y lo cambie ahí al daño*/
-        Dragon d = new Dragon(casilla2);
+        Acceso acceso = new Acceso(casilla2);
 
         for (int i=0; i<25; i++){
             z.avanzarTurno();
         }
 
-        z.atacarA(d);
+        acceso.recibirAtaque(z);
 
-        assertEquals(76, d.escudo());
+        assertEquals(496, acceso.escudo());
 
     }
 
@@ -41,11 +42,11 @@ public class CasoDeUso18 {
             h.avanzarTurno();
         }
 
-        h.atacarA(d);
+        d.recibirAtaque(h);
 
         assertEquals(70, d.escudo());
 
-        h.atacarA(s);
+        s.recibirAtaque(h);
 
         assertEquals(90, s.escudo());
     }
@@ -64,11 +65,11 @@ public class CasoDeUso18 {
             m.avanzarTurno();
         }
 
-        m.atacarA(d);
+        d.recibirAtaque(m);
 
         assertEquals(71, d.escudo());
 
-        m.atacarA(s);
+        s.recibirAtaque(m);
 
         assertEquals(91, s.escudo());
     }
@@ -85,7 +86,7 @@ public class CasoDeUso18 {
             g.avanzarTurno();
         }
 
-        g.atacarA(d);
+        d.recibirAtaque(g);
 
         assertEquals(55, d.escudo());
 
@@ -103,7 +104,7 @@ public class CasoDeUso18 {
             z.avanzarTurno();
         }
 
-        z.atacarA(h);
+        h.recibirAtaque(z);
 
         assertEquals(72, h.vida());
     }
@@ -123,11 +124,11 @@ public class CasoDeUso18 {
             d.avanzarTurno();
         }
 
-        d.atacarA(z);
+        z.recibirAtaque(d);
 
         assertEquals(15, z.vida());
 
-        d.atacarA(m);
+        m.recibirAtaque(d);
 
         assertEquals(100, m.vida());
     }
@@ -146,11 +147,11 @@ public class CasoDeUso18 {
             s.avanzarTurno();
         }
 
-        s.atacarA(h);
+        h.recibirAtaque(s);
 
         assertEquals(72, h.vida());
 
-        s.atacarA(m);
+        m.recibirAtaque(s);
 
         assertEquals(106, m.vida());
     }

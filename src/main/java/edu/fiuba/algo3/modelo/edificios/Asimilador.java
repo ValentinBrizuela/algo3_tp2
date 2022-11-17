@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.errores.EdificioEnConstruccionError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
+import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
+import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Entidad;
@@ -14,7 +16,7 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
-public class Asimilador extends Entidad implements RefineriaGas, Construible {
+public class Asimilador extends Entidad implements RefineriaGas, Construible, AtacableTerrestre {
 
     public Asimilador(Casilla casilla) {
         super(new VidaProtoss(450, 450),100, 0, 6, new Protoss(), casilla);
@@ -47,12 +49,16 @@ public class Asimilador extends Entidad implements RefineriaGas, Construible {
         throw new ConstruccionNoPermitidaError();
     }
 
-    @Override
+
     public void recibirAtaque(int danio) {
         vida.recibirAtaque(danio);
         if (vida.obtenerVida() <= 0) {
             casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
         }
+    }
+
+    public void recibirAtaque(Atacante atacante) {
+        atacante.atacarA(this);
     }
 
     @Override

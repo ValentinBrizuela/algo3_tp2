@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
+import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
+import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Entidad;
@@ -12,7 +14,7 @@ import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.*;
 
-public class Pilon extends Entidad implements Construible {
+public class Pilon extends Entidad implements Construible, AtacableTerrestre {
     private int rango;
     private Mapa mapa;
     public Pilon(Mapa mapa, Casilla casilla) {
@@ -60,11 +62,15 @@ public class Pilon extends Entidad implements Construible {
         throw new ConstruccionNoPermitidaError();
     }
 
-    @Override
+
     public void recibirAtaque(int danio) {
         vida.recibirAtaque(danio);
         if (vida.obtenerVida() <= 0) {
             casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
         }
+    }
+
+    public void recibirAtaque(Atacante atacante) {
+        atacante.atacarA(this);
     }
 }

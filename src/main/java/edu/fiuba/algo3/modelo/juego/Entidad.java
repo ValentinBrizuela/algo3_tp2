@@ -7,9 +7,11 @@ import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.interfaces.Atacable;
+import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
+import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.razas.Raza;
 
-public abstract class Entidad implements Atacable {
+public abstract class Entidad {
     protected Costo costo;
     protected int tiempoConstruccion;
     protected Raza raza;
@@ -60,4 +62,9 @@ public abstract class Entidad implements Atacable {
     public int escudo() {
         return vida.obtenerEscudo();
     }
+
+    public void aplicarDanio(int danio) {
+        vida.recibirAtaque(danio);
+    }
+
 }

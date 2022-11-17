@@ -8,10 +8,14 @@ import edu.fiuba.algo3.modelo.razas.Protoss;
 
 import java.util.ArrayList;
 
-public class Dragon extends Unidad implements Atacante {
+public class Dragon extends Unidad implements Atacante, AtacableTerrestre {
 
     private int rangoAtaque;
     private int escudo;
+
+    private int danioTerrestre;
+
+    private int danioAereo;
 
     public Dragon(Casilla casilla){
         super(new VidaProtoss(100, 80), 125, 50, 6, new Protoss(), casilla, new UnidadTerrestre(), new ArrayList<TipoDeUnidad>(){{
@@ -21,6 +25,8 @@ public class Dragon extends Unidad implements Atacante {
 
         this.escudo = 80;
         this.rangoAtaque = 4;
+        this.danioAereo = 20;
+        this.danioTerrestre = 20;
     }
 
     @Override
@@ -28,15 +34,22 @@ public class Dragon extends Unidad implements Atacante {
         vida.recibirAtaque(danio);
     }
 
-    @Override
-    public void atacarA(Unidad unidad) {
+
+    public void atacarA(AtacableTerrestre atacableTerrestre) {
         esUsable();
-        unidad.estasEnRango(casilla, rangoAtaque);
-        unidad.recibirAtaque(this.obtenerTiposDeAtaque());
+        atacableTerrestre.estasEnRango(casilla, rangoAtaque);
+        atacableTerrestre.aplicarDanio(danioTerrestre);
     }
 
-    @Override
-    public void atacarA(Construible edificio) {
+
+    public void atacarA(AtacableAereo atacableAereo) {
+        esUsable();
+        atacableAereo.estasEnRango(casilla, rangoAtaque);
+        atacableAereo.aplicarDanio(danioAereo);
+    }
+
+    public void recibirAtaque(Atacante atacante) {
+        atacante.atacarA(this);
     }
 
     /*@Override

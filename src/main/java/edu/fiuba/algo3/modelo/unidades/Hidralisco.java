@@ -2,15 +2,20 @@ package edu.fiuba.algo3.modelo.unidades;
 
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
+import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
+import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
+import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
 import java.util.ArrayList;
 
-public class Hidralisco extends Unidad implements Atacante {
+public class Hidralisco extends Unidad implements Atacante, AtacableTerrestre {
 
     private int rangoAtaque;
+    private int danioTerrestre;
+    private int danioAereo;
 
     public Hidralisco(Casilla casilla){
         super(new VidaZerg(80), 75, 25, 4, new Zerg(), casilla,new UnidadTerrestre(),new ArrayList<TipoDeUnidad>(){{
@@ -18,18 +23,25 @@ public class Hidralisco extends Unidad implements Atacante {
             add(new UnidadAerea(10));
         }});
         this.rangoAtaque = 4;
+        this.danioAereo = 10;
+        this.danioTerrestre = 10;
     }
 
-    @Override
-    public void atacarA(Unidad unidad) {
+    public void atacarA(AtacableTerrestre atacableTerrestre) {
         esUsable();
-        unidad.estasEnRango(casilla, rangoAtaque);
-        unidad.recibirAtaque(this.obtenerTiposDeAtaque());
+        atacableTerrestre.estasEnRango(casilla, rangoAtaque);
+        atacableTerrestre.aplicarDanio(danioTerrestre);
     }
 
-    @Override
-    public void atacarA(Construible edificio) {
 
+    public void atacarA(AtacableAereo atacableAereo) {
+        esUsable();
+        atacableAereo.estasEnRango(casilla, rangoAtaque);
+        atacableAereo.aplicarDanio(danioTerrestre);
+    }
+
+    public void recibirAtaque(Atacante atacante) {
+        atacante.atacarA(this);
     }
 
     @Override

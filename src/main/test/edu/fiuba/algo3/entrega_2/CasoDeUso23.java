@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.entrega_2;
 
+import edu.fiuba.algo3.modelo.edificios.Acceso;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
@@ -24,20 +25,17 @@ public class CasoDeUso23 {
         assertThrows(AtaqueInvalidoError.class, () -> {z.atacarA(d);});
     }
 
-    /*@Test
+    @Test
     public void noPuedoAtacarUnEdificioSiNoEstaEnElRangoDeAtaque(){
         Mapa mapa = new Mapa();
-        Almacen almacen = new Almacen();
-        AlgoStar algoStar =new AlgoStar(new Jugador(almacen), mapa);
         Zerling z = new Zerling(mapa.obtenerCasilla(1,1));
+        z.finalizarConstruccion();
 
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
         Casilla casillaEdificio = mapa.obtenerCasilla(5,5);
-        casillaEdificio.cambiarTerreno(new TierraEnergizada());
 
-        algoStar.construirAcceso(5,5);
+        Acceso acceso = new Acceso(casillaEdificio);
+        acceso.finalizarConstruccion();
 
-        assertThrows(AtaqueInvalido.class, () -> {z.atacarA(casillaEdificio.obtenerEdificio());});
-    }*/
+        assertThrows(AtaqueInvalidoError.class, () -> {acceso.recibirAtaque(z);});
+    }
 }

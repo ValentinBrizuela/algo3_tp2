@@ -8,11 +8,13 @@ import edu.fiuba.algo3.modelo.razas.Protoss;
 
 import java.util.ArrayList;
 
-public class Scout extends Unidad  implements Atacante {
+public class Scout extends Unidad  implements Atacante, AtacableAereo {
 
     private int escudo;
 
     private int rangoAtaque;
+    private int danioTerrestre;
+    private int danioAereo;
 
     public Scout(Casilla casilla){
         super(new VidaProtoss(150, 100), 300, 150, 9, new Protoss(), casilla, new UnidadAerea(), new ArrayList<TipoDeUnidad>(){{
@@ -21,13 +23,25 @@ public class Scout extends Unidad  implements Atacante {
         }});
         this.escudo = 100;
         this.rangoAtaque = 4;
+        this.danioAereo = 14;
+        this.danioTerrestre = 8;
     }
 
-    @Override
-    public void atacarA(Unidad unidad) {
+    public void atacarA(AtacableTerrestre atacableTerrestre) {
         esUsable();
-        unidad.estasEnRango(casilla, rangoAtaque);
-        unidad.recibirAtaque(this.obtenerTiposDeAtaque());
+        atacableTerrestre.estasEnRango(casilla, rangoAtaque);
+        atacableTerrestre.aplicarDanio(danioTerrestre);
+    }
+
+
+    public void atacarA(AtacableAereo atacableAereo) {
+        esUsable();
+        atacableAereo.estasEnRango(casilla, rangoAtaque);
+        atacableAereo.aplicarDanio(danioAereo);
+    }
+
+    public void recibirAtaque(Atacante atacante) {
+        atacante.atacarA(this);
     }
 
     @Override
@@ -35,10 +49,6 @@ public class Scout extends Unidad  implements Atacante {
         vida.recibirAtaque(danio);
     }
 
-    @Override
-    public void atacarA(Construible edificio) {
-
-    }
 
     @Override
     public void avanzarTurno() {
