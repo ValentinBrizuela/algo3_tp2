@@ -34,4 +34,6 @@ public abstract class Estado {
     public void cambiarEdificio(Entidad edificio){
         this.entidad = edificio;
     }
+
+    public abstract void estaLibre();
 }

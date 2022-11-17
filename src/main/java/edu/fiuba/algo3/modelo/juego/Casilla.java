@@ -73,4 +73,8 @@ public class Casilla {
     public Recurso obtenerRecurso(){
         return estado.obtenerRecurso();
     }
+
+    public void estaLibre(){
+        estado.estaLibre();
+    }
 }

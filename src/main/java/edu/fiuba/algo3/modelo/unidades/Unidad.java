@@ -30,11 +30,11 @@ public abstract class Unidad extends Entidad {
     public abstract void recibirAtaque(int danio);
 
     public void moverA(Casilla casillaDestino){
-        /* falta chequear si la casillaDestino ya esta ocupada */
+        casillaDestino.estaLibre();
         Terreno terreno = casillaDestino.obtenerTerreno();
         terreno.puedoMover(this);
         casilla = casillaDestino;
-        /*casillaDestino.cambiarEstado(new Ocupada(terreno, casillaDestino.obtenerRecurso(), this));*/
+        casillaDestino.cambiarEstado(new Ocupada(terreno, casillaDestino.obtenerRecurso(), this));
     }
 
     public void avanzarCasilla(){
