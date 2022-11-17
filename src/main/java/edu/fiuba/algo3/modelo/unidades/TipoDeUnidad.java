@@ -17,8 +17,4 @@ public abstract class TipoDeUnidad {
     public abstract void puedoMoverA(Moho moho);
     public abstract void puedoMoverA(Tierra tierra);
     public abstract void puedoMoverA(TierraEnergizada tierraEnergizada);
-
-    public void atacar(Unidad unidad) {
-        unidad.recibirAtaque(danio);
-    }
 }

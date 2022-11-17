@@ -50,8 +50,4 @@ public class Hidralisco extends Unidad implements Atacante, AtacableTerrestre {
         /*regenerar*/
     }
 
-    @Override
-    public void recibirAtaque(int danio) {
-        vida.recibirAtaque(danio);
-    }
 }

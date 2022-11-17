@@ -46,9 +46,4 @@ public class Zealot extends Unidad implements Atacante, AtacableTerrestre {
         tiempoConstruccion -= 1;
         /*regenerar*/
     }
-
-    @Override
-    public void recibirAtaque(int danio) {
-        vida.recibirAtaque(danio);
-    }
 }

@@ -26,11 +26,6 @@ public class Guardian extends Unidad  implements Atacante, AtacableAereo {
         this.danio = 25;
     }
 
-    @Override
-    public void recibirAtaque(int danio) {
-        vida.recibirAtaque(danio);
-    }
-
     public void atacarA(AtacableTerrestre atacableTerrestre) {
         esUsable();
         atacableTerrestre.estasEnRango(casilla, rangoAtaque);

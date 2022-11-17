@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class Dragon extends Unidad implements Atacante, AtacableTerrestre {
 
     private int rangoAtaque;
-    private int escudo;
 
     private int danioTerrestre;
 
@@ -23,17 +22,10 @@ public class Dragon extends Unidad implements Atacante, AtacableTerrestre {
             add(new UnidadAerea(20));
         }});
 
-        this.escudo = 80;
         this.rangoAtaque = 4;
         this.danioAereo = 20;
         this.danioTerrestre = 20;
     }
-
-    @Override
-    public void recibirAtaque(int danio) {
-        vida.recibirAtaque(danio);
-    }
-
 
     public void atacarA(AtacableTerrestre atacableTerrestre) {
         esUsable();
@@ -51,11 +43,6 @@ public class Dragon extends Unidad implements Atacante, AtacableTerrestre {
     public void recibirAtaque(Atacante atacante) {
         atacante.atacarA(this);
     }
-
-    /*@Override
-    public void atacarA(Unidad unidad) {
-        unidadTerrestre.recibirAtaque(this.danioTerrestre);
-    }*/
 
     @Override
     public void avanzarTurno() {

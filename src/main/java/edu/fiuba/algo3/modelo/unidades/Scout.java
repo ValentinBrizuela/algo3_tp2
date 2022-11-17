@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 public class Scout extends Unidad  implements Atacante, AtacableAereo {
 
-    private int escudo;
-
     private int rangoAtaque;
     private int danioTerrestre;
     private int danioAereo;
@@ -21,7 +19,6 @@ public class Scout extends Unidad  implements Atacante, AtacableAereo {
             add(new UnidadTerrestre(8));
             add(new UnidadAerea(14));
         }});
-        this.escudo = 100;
         this.rangoAtaque = 4;
         this.danioAereo = 14;
         this.danioTerrestre = 8;
@@ -43,12 +40,6 @@ public class Scout extends Unidad  implements Atacante, AtacableAereo {
     public void recibirAtaque(Atacante atacante) {
         atacante.atacarA(this);
     }
-
-    @Override
-    public void recibirAtaque(int danio) {
-        vida.recibirAtaque(danio);
-    }
-
 
     @Override
     public void avanzarTurno() {

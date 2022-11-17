@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.unidades;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.edificios.ZanganoTrabajador;
+import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
+import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.razas.Zerg;
@@ -10,7 +12,7 @@ import edu.fiuba.algo3.modelo.recursos.Mena;
 
 import java.util.ArrayList;
 
-public class Zangano extends Unidad implements Mina {
+public class Zangano extends Unidad implements Mina, AtacableTerrestre {
 
     private ZanganoTrabajador edificioDeExtraccion;
 
@@ -32,13 +34,13 @@ public class Zangano extends Unidad implements Mina {
     }
 
     @Override
-    public void recibirAtaque(int danio) {
-        vida.recibirAtaque(danio);
-    }
-
-    @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
         /*regenerar*/
+    }
+
+    @Override
+    public void recibirAtaque(Atacante atacante) {
+        atacante.atacarA(this);
     }
 }
