@@ -41,12 +41,21 @@ public class Mutalisco extends Unidad  implements Atacante, AtacableAereo, Consu
         atacante.atacarA(this);
     }
 
-    public Guardian evolucionar(Almacen almacen) {
+    public Guardian evolucionarAGuardian(Almacen almacen) {
         esUsable();
         Guardian guardian=new Guardian(casilla);
         guardian.crear(almacen);
 
         return guardian;
+
+    }
+
+    public Devorador evolucionarADevorador(Almacen almacen) {
+        esUsable();
+        Devorador devorador = new Devorador(casilla);
+        devorador.crear(almacen);
+
+        return devorador;
 
     }
 

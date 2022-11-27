@@ -24,7 +24,7 @@ public class CasoDeUso21Test {
             mutalisco.avanzarTurno();
         }
 
-        assertThrows(RecursosInsuficientesError.class, () -> {mutalisco.evolucionar(almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {mutalisco.evolucionarAGuardian(almacen);});
 
 
     }
@@ -44,6 +44,6 @@ public class CasoDeUso21Test {
             mutalisco.avanzarTurno();
         }
 
-        assertSame(Guardian.class , mutalisco.evolucionar(almacen).getClass());
+        assertSame(Guardian.class , mutalisco.evolucionarAGuardian(almacen).getClass());
     }
 }

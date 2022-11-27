@@ -25,6 +25,7 @@ public abstract class Unidad extends Entidad {
     }
 
     public void moverA(Casilla casillaDestino){
+        esUsable();
         casillaDestino.estaLibre();
         Terreno terreno = casillaDestino.obtenerTerreno();
         terreno.puedoMover(this);
