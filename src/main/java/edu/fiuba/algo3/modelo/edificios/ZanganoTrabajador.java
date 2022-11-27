@@ -47,14 +47,6 @@ public class ZanganoTrabajador extends Entidad implements Mina, Construible, Ata
         throw new ConstruccionNoPermitidaError();
     }
 
-
-    public void recibirAtaque(int danio) {
-        vida.recibirAtaque(danio);
-        if (vida.obtenerVida() <= 0) {
-            casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
-        } /*Revisar esto*/
-    }
-
     public void recibirAtaque(Atacante atacante) {
         atacante.atacarA(this);
     }

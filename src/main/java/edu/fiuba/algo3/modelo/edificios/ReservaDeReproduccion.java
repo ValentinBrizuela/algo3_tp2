@@ -40,14 +40,6 @@ public class ReservaDeReproduccion extends Entidad implements Construible, Ataca
         throw new ConstruccionNoPermitidaError();
     }
 
-
-    public void recibirAtaque(int danio) {
-        vida.recibirAtaque(danio);
-        if (vida.obtenerVida() <= 0) {
-            casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
-        }
-    }
-
     public void recibirAtaque(Atacante atacante) {
         atacante.atacarA(this);
     }

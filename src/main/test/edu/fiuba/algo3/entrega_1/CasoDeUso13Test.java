@@ -25,7 +25,7 @@ public class CasoDeUso13Test {
 
         assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), Moho.class);
 
-        criadero.recibirAtaque(1000);
+        criadero.aplicarDanio(1000);
         casilla.avanzarTurno();
 
         assertEquals(casilla.obtenerEstado().obtenerEdificio(), null);

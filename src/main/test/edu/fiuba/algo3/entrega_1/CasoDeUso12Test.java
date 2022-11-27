@@ -15,7 +15,7 @@ public class CasoDeUso12Test {
         Mapa mapa = new Mapa(2);
         Casilla casilla = new Casilla(25,25,new TierraEnergizada(), new RecursoVacio());
         Pilon pilon = new Pilon(mapa, casilla);
-        pilon.recibirAtaque(400);
+        pilon.aplicarDanio(400);
 
         assertEquals(0, pilon.escudo());
         assertEquals(200, pilon.vida());

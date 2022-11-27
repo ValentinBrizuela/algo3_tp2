@@ -22,7 +22,7 @@ public class CasoDeUso32Test {
 
         algoStar.construirCriadero(50,50);
         Criadero c = (Criadero) mapa.obtenerCasilla(50,50).obtenerEstado().obtenerEdificio();
-        c.recibirAtaque(1000);
+        c.aplicarDanio(1000);
 
         assertTrue(algoStar.hayGanador());
     }

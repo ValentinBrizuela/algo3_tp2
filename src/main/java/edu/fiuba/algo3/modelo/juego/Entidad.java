@@ -62,6 +62,9 @@ public abstract class Entidad {
 
     public void aplicarDanio(int danio) {
         vida.recibirAtaque(danio);
+        if (estaDestruido()){
+            casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
+        }
     }
 
 }

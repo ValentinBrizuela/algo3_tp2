@@ -21,6 +21,10 @@ public class CasoDeUso20Test {
         Casilla casillaOrigen = mapa.obtenerCasilla(3,3);
         Zerling z = new Zerling(casillaOrigen);
 
+        for (int i=0; i<25; i++){
+            z.avanzarTurno();
+        }
+
         assertThrows(MovimientoInvalidoError.class, () -> {z.moverA(casillaDestino);});
     }
 
@@ -31,6 +35,10 @@ public class CasoDeUso20Test {
         casillaDestino.cambiarTerreno(new Espacio());
         Casilla casillaOrigen = mapa.obtenerCasilla(3,3);
         Scout s = new Scout(casillaOrigen);
+
+        for (int i=0; i<25; i++){
+            s.avanzarTurno();
+        }
 
         s.moverA(casillaDestino);
         assertThrows(CasillaOcupadaError.class, () -> {casillaDestino.estaLibre();});
