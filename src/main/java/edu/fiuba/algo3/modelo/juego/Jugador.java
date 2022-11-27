@@ -49,8 +49,8 @@ public class Jugador {
     }
 
     public void llenarArcas(){
-        almacen.almacenarMineral(1000);
-        almacen.almacenarGas(1000);
+        almacen.almacenarMineral(10000);
+        almacen.almacenarGas(10000);
     }
 
     public boolean sosIgualA(Jugador jugador){
@@ -89,6 +89,10 @@ public class Jugador {
 
     public int obtenerPoblacionUsable(){
         return this.poblacion.cantidadUsable();
+    }
+
+    public int obtenerPoblacionEnUso(){
+        return this.poblacion.cantidadEnUso();
     }
 
     public void generarPoblacion(){
