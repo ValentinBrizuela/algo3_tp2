@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.juego;
 
-import edu.fiuba.algo3.modelo.errores.LimiteDePoblacionSuperado;
 import edu.fiuba.algo3.modelo.errores.PoblacionInsuficienteError;
 import edu.fiuba.algo3.modelo.unidades.ConsumidorDeSuministro;
 
@@ -39,9 +38,7 @@ public class Poblacion {
     }
 
     public void utilizarPoblacion(int cantidadARestar){
-        if(capacidadEnUso+cantidadARestar>capacidadMaxima){
-            throw new LimiteDePoblacionSuperado();
-        }
+
         capacidadEnUso+=cantidadARestar;
     }
 
