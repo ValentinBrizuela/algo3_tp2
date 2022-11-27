@@ -99,6 +99,8 @@ public class Jugador {
         this.poblacion.aumentarPoblacion();
     }
 
+    public void degenerarPoblacion(){this.poblacion.disminuirPoblacion();}
+
 
     public boolean perdio(){
         if (edificiosConstruidos.size() == 0){

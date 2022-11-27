@@ -38,6 +38,8 @@ public abstract class Entidad {
 
     public abstract void avanzarTurno();
 
+    public abstract void recibirAtaque(Atacante atacante);
+
     public void esUsable() {
         if (tiempoConstruccion > 0){
             throw new EnConstruccionError();
@@ -62,9 +64,17 @@ public abstract class Entidad {
 
     public void aplicarDanio(int danio) {
         vida.recibirAtaque(danio);
-        if (estaDestruido()){
+       /* if (estaDestruido()){
             casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
-        }
+        }*/
+    }
+
+    public void liberarCasilla(){
+        casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
+    }
+
+    public  void destruir(Jugador jugador){
+
     }
 
 }

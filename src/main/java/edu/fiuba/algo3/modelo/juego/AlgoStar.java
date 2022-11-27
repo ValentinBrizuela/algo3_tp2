@@ -2,7 +2,11 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.*;
+import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
+import edu.fiuba.algo3.modelo.interfaces.Atacable;
+import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
+import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.unidades.*;
 
 import java.util.ArrayList;
@@ -70,6 +74,15 @@ public class AlgoStar {
         }
 
         return false;
+    }
+
+    public void ataque(Atacante atacante, Entidad atacado, Jugador jugador){
+        atacado.recibirAtaque(atacante);
+        if (atacado.estaDestruido()){
+            atacado.liberarCasilla();
+            atacado.destruir(jugador);
+        }
+
     }
 
     public void construirGuarida(int x, int y){

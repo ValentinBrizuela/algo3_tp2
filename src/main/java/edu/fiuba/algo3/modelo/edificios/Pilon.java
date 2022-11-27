@@ -6,10 +6,7 @@ import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
-import edu.fiuba.algo3.modelo.juego.Almacen;
-import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.juego.Entidad;
-import edu.fiuba.algo3.modelo.juego.Mapa;
+import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.*;
@@ -65,5 +62,10 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre {
 
     public void recibirAtaque(Atacante atacante) {
         atacante.atacarA(this);
+    }
+
+    @Override
+    public void destruir(Jugador jugador){
+        jugador.degenerarPoblacion();
     }
 }

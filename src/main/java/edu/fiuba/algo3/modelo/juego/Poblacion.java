@@ -24,6 +24,9 @@ public class Poblacion {
     }
 
     public int cantidadUsable(){
+        if(capacidad-capacidadEnUso<0){
+            return 0;
+        }
         return capacidad-capacidadEnUso;
     }
 
@@ -35,6 +38,9 @@ public class Poblacion {
         if(capacidad<capacidadMaxima) {
             capacidad += 5;
         }
+    }
+    public void disminuirPoblacion(){
+        capacidad-=5;
     }
 
     public void utilizarPoblacion(int cantidadARestar){
