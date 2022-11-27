@@ -77,6 +77,21 @@ public class AlgoStar {
         jugadores.get(0).agregarEdificio(Acceso.class);
     }
 
+    public void construirCriadero(int x,int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+        casilla.construir(new Criadero(this.mapa,casilla), jugadores.get(0).obtenerAlmacen());
+        jugadores.get(0).agregarEdificio(Criadero.class);
+        jugadores.get(0).generarPoblacion();
+    }
+
+    public void construirPilon(int x,int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+        casilla.construir(new Pilon(this.mapa,casilla), jugadores.get(0).obtenerAlmacen());
+        jugadores.get(0).agregarEdificio(Pilon.class);
+        jugadores.get(0).generarPoblacion();
+    }
+
+
     /*public void construirZangano(int x, int y) {
         if(jugadores.get(0).yaTiene(Criadero.class)) {
             Casilla casilla = mapa.obtenerCasilla(x, y);
@@ -103,6 +118,7 @@ public class AlgoStar {
         //crear logica
         if(j.yaTiene(ReservaDeReproduccion.class)){
             Zerling z = new Zerling(casilla);
+            j.verificarYConsumirSuministro(z);
             return z;
         }
         else{
@@ -117,6 +133,7 @@ public class AlgoStar {
         //crear logica
         if(j.yaTiene(Criadero.class)){
             Zangano z = new Zangano(casilla);
+            j.verificarYConsumirSuministro(z);
             return z;
         }
         else{
@@ -131,6 +148,7 @@ public class AlgoStar {
         //crear logica
         if(j.yaTiene(Guarida.class)){
             Hidralisco h = new Hidralisco(casilla);
+            j.verificarYConsumirSuministro(h);
             return h;
         }
         else{
@@ -145,6 +163,7 @@ public class AlgoStar {
         //crear logica
         if(j.yaTiene(Espiral.class)){
             Mutalisco m = new Mutalisco(casilla);
+            j.verificarYConsumirSuministro(m);
             return m;
         }
         else{
@@ -159,6 +178,7 @@ public class AlgoStar {
         //crear logica
         if(j.yaTiene(Acceso.class)){
             Zealot z = new Zealot(casilla);
+            j.verificarYConsumirSuministro(z);
             return z;
         }
         else{
@@ -173,6 +193,7 @@ public class AlgoStar {
         //crear logica
         if(j.yaTiene(Acceso.class)){
             Dragon d = new Dragon(casilla);
+            j.verificarYConsumirSuministro(d);
             return d;
         }
         else{
@@ -187,6 +208,7 @@ public class AlgoStar {
         //crear logica
         if(j.yaTiene(PuertoEstelar.class)){
             Scout s = new Scout(casilla);
+            j.verificarYConsumirSuministro(s);
             return s;
         }
         else{
@@ -194,5 +216,6 @@ public class AlgoStar {
         }
 
     }
+
 }
 

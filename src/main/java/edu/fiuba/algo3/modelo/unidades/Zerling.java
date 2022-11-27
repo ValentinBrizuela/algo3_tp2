@@ -1,18 +1,19 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
-import java.util.ArrayList;
-
-public class Zerling extends Unidad implements Atacante, AtacableTerrestre{
+public class Zerling extends Unidad implements Atacante, AtacableTerrestre, ConsumidorDeSuministro {
 
     private int rangoAtaque;
     private int danio;
+
+    private int costoSuministro;
+
 
 
 
@@ -20,6 +21,7 @@ public class Zerling extends Unidad implements Atacante, AtacableTerrestre{
         super(new VidaZerg(35), 25, 0, 2, new Zerg(), casilla,new UnidadTerrestre());
         this.rangoAtaque = 1;
         this.danio = 4;
+        this.costoSuministro=1;
     }
 
     @Override
@@ -43,4 +45,12 @@ public class Zerling extends Unidad implements Atacante, AtacableTerrestre{
         tiempoConstruccion -= 1;
         /*regenerar*/
     }
+    public boolean tenesEspacioConEstaCapacidad(int capacidadUsable) {
+        return costoSuministro<=capacidadUsable;
+    }
+
+    public void comunicarDescuentoDePoblacion(Poblacion poblacion){
+        poblacion.utilizarPoblacion(costoSuministro);
+    }
+
 }
