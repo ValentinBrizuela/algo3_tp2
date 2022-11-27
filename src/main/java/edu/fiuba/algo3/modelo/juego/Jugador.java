@@ -3,14 +3,14 @@ package edu.fiuba.algo3.modelo.juego;
 
 
 import edu.fiuba.algo3.modelo.razas.Raza;
-import edu.fiuba.algo3.modelo.unidades.ConsumidorDeSuministro;
 
+import edu.fiuba.algo3.modelo.unidades.ConsumidorDeSuministro;
 import java.util.ArrayList;
 
 
 public class Jugador {
 
-    private ArrayList<Class> edificiosConstruidos;
+    private ArrayList<Entidad> edificiosConstruidos;
 
     private Almacen almacen;
     private String nombre;
@@ -23,7 +23,7 @@ public class Jugador {
     private int posy;
 
     public Jugador(String nombre, String color, Raza raza){
-        this.edificiosConstruidos= new ArrayList<Class>();
+        this.edificiosConstruidos= new ArrayList<Entidad>();
         this.almacen= new Almacen();
         this.almacen.almacenarMineral(200);
         this.nombre=nombre;
@@ -34,10 +34,15 @@ public class Jugador {
     }
 
     public boolean yaTiene(Class edificio){
-        return edificiosConstruidos.contains(edificio);
+        for (Entidad e: edificiosConstruidos){
+            if (e.getClass() == edificio){
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void agregarEdificio(Class edificio){edificiosConstruidos.add(edificio);}
+    public void agregarEdificio(Entidad edificio){edificiosConstruidos.add(edificio);}
 
     public Almacen obtenerAlmacen(){
         return almacen;
@@ -90,5 +95,18 @@ public class Jugador {
         this.poblacion.aumentarPoblacion();
     }
 
+
+    public boolean perdio(){
+        if (edificiosConstruidos.size() == 0){
+            return false;
+        }
+
+        for (Entidad edificio: edificiosConstruidos){
+            if (!edificio.estaDestruido()){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

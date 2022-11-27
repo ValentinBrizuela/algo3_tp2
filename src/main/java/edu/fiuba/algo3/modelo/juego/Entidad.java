@@ -26,11 +26,8 @@ public abstract class Entidad {
         this.casilla = casilla;
     }
 
-    public void meQuedeSinVida() {
-        if (vida.obtenerVida() <= 0){
-            Estado estado = casilla.obtenerEstado();
-            casilla.cambiarEstado(new Desocupada(estado.obtenerTerreno(), estado.obtenerRecurso()));
-        }
+    public boolean estaDestruido() {
+        return vida.obtenerVida() <= 0;
     }
 
     public void estasEnRango(Casilla casilla, int rango){

@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.*;
-import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
-import edu.fiuba.algo3.modelo.errores.CreacionDeUnidadInvalida;
-import edu.fiuba.algo3.modelo.errores.JugadorInvalidoError;
-import edu.fiuba.algo3.modelo.errores.NombreDeJugadorInvalidoError;
+import edu.fiuba.algo3.modelo.errores.*;
+import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.unidades.*;
 
 import java.util.ArrayList;
@@ -15,10 +13,15 @@ public class AlgoStar {
 
     private Mapa mapa;
     private int cantJugadores;
+    private int turno;
+
+    private Jugador jugadorActual;
 
     public AlgoStar(Mapa mapa){
         this.jugadores=new ArrayList<Jugador>();
         this.mapa=mapa;
+        this.turno = 0;
+        this.jugadorActual = null;
     }
 
     public void registrarJugador(Jugador jugador){
@@ -27,6 +30,7 @@ public class AlgoStar {
        }
         if(jugadores.isEmpty()) {
             jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.1)), (int) (mapa.tamanioMapa()*(0.1)));
+            jugadorActual = jugador;
         }else{
             if(jugador.sosIgualA(jugadores.get(0))){
                 throw new JugadorInvalidoError();
@@ -35,37 +39,89 @@ public class AlgoStar {
         }
         jugadores.add(jugador);
     }
+
+    /*public Jugador jugarPartida(){
+        if (jugadores.size() != 2){ throw new JugadoresInsuficientesError();}
+
+        Turno turnero = new Turno(this, jugadores[0]);
+
+
+        while (!hayGanador()){
+
+            turno +=1;
+            esperar respuesta usuario
+            jugadorActual.
+
+
+        }
+
+
+    }*/
+    public void avanzarTurno(){
+        mapa.avanzarTurno();
+        turno += 1;
+        jugadorActual = jugadores.get(turno%2);
+    }
+    public boolean hayGanador(){
+        for (Jugador j: jugadores){
+            if (j.perdio()){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void construirGuarida(int x, int y){
-        if(jugadores.get(0).yaTiene(ReservaDeReproduccion.class)) {
+        if(jugadorActual.yaTiene(ReservaDeReproduccion.class)) {
             Casilla casilla = mapa.obtenerCasilla(x,y);
-            casilla.construir(new Guarida(casilla), jugadores.get(0).obtenerAlmacen());
-            jugadores.get(0).agregarEdificio(Guarida.class);
+            Guarida g = new Guarida(casilla);
+            casilla.construir(g, jugadorActual.obtenerAlmacen());
+            jugadorActual.agregarEdificio(g);
         }else{
             throw new ConstruccionNoPermitidaError();
         }
     }
 
+    public void construirCriadero(int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x,y);
+        Criadero c = new Criadero(mapa, casilla);
+        casilla.construir(c, jugadorActual.obtenerAlmacen());
+        jugadorActual.generarPoblacion();
+        jugadorActual.agregarEdificio(c);
+    }
+
+    public void construirPilon(int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x,y);
+        Pilon p = new Pilon(mapa, casilla);
+        casilla.construir(p, jugadorActual.obtenerAlmacen());
+        jugadorActual.generarPoblacion();
+        jugadorActual.agregarEdificio(p);
+    }
     public void construirReservaDeReproduccion(int x, int y){
         Casilla casilla = mapa.obtenerCasilla(x, y);
-        casilla.construir(new ReservaDeReproduccion(casilla), jugadores.get(0).obtenerAlmacen());
-        jugadores.get(0).agregarEdificio(ReservaDeReproduccion.class);
+        ReservaDeReproduccion r = new ReservaDeReproduccion(casilla);
+        casilla.construir(r, jugadorActual.obtenerAlmacen());
+        jugadorActual.agregarEdificio(r);
     }
 
     public void construirEspiral(int x, int y){
-        if(jugadores.get(0).yaTiene(Guarida.class)) {
+        if(jugadorActual.yaTiene(Guarida.class)) {
             Casilla casilla = mapa.obtenerCasilla(x, y);
-            casilla.construir(new Espiral(casilla), jugadores.get(0).obtenerAlmacen());
-            jugadores.get(0).agregarEdificio(Espiral.class);
+            Espiral e = new Espiral(casilla);
+            casilla.construir(e, jugadorActual.obtenerAlmacen());
+            jugadorActual.agregarEdificio(e);
         }else{
             throw new ConstruccionNoPermitidaError();
         }
     }
 
     public void construirPuertoEstelar(int x, int y) {
-        if(jugadores.get(0).yaTiene(Acceso.class)) {
+        if(jugadorActual.yaTiene(Acceso.class)) {
             Casilla casilla = mapa.obtenerCasilla(x, y);
-            casilla.construir(new PuertoEstelar(casilla), jugadores.get(0).obtenerAlmacen());
-            jugadores.get(0).agregarEdificio(PuertoEstelar.class);
+            PuertoEstelar p = new PuertoEstelar(casilla);
+            casilla.construir(p, jugadorActual.obtenerAlmacen());
+            jugadorActual.agregarEdificio(p);
         }else{
             throw new ConstruccionNoPermitidaError();
         }
@@ -73,40 +129,10 @@ public class AlgoStar {
 
     public void construirAcceso(int x, int y) {
         Casilla casilla = mapa.obtenerCasilla(x, y);
-        casilla.construir(new Acceso(casilla), jugadores.get(0).obtenerAlmacen());
-        jugadores.get(0).agregarEdificio(Acceso.class);
+        Acceso a = new Acceso(casilla);
+        casilla.construir(a, jugadorActual.obtenerAlmacen());
+        jugadorActual.agregarEdificio(a);
     }
-
-    public void construirCriadero(int x,int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
-        casilla.construir(new Criadero(this.mapa,casilla), jugadores.get(0).obtenerAlmacen());
-        jugadores.get(0).agregarEdificio(Criadero.class);
-        jugadores.get(0).generarPoblacion();
-    }
-
-    public void construirPilon(int x,int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
-        casilla.construir(new Pilon(this.mapa,casilla), jugadores.get(0).obtenerAlmacen());
-        jugadores.get(0).agregarEdificio(Pilon.class);
-        jugadores.get(0).generarPoblacion();
-    }
-
-
-    /*public void construirZangano(int x, int y) {
-        if(jugadores.get(0).yaTiene(Criadero.class)) {
-            Casilla casilla = mapa.obtenerCasilla(x, y);
-            casilla.construir(new PuertoEstelar(casilla), jugadores.get(0).obtenerAlmacen());
-            jugadores.get(0).agregarEdificio(PuertoEstelar.class);
-        }else{
-            throw new ConstruccionNoPermitidaError();
-        }
-    }*/
-
-    /*public void construirZangano(int x, int y) {
-        Casilla casilla = mapa.obtenerCasilla(x, y);
-        casilla.construir(new Acceso(casilla), jugadores.get(0).obtenerAlmacen());
-        jugadores.get(0).agregarEdificio(Acceso.class);
-    }*/
 
     private boolean chequearNombre(Jugador jugador){
         return jugador.obtenerNombre().length()<6;
@@ -164,6 +190,7 @@ public class AlgoStar {
         if(j.yaTiene(Espiral.class)){
             Mutalisco m = new Mutalisco(casilla);
             j.verificarYConsumirSuministro(m);
+            casilla.cambiarEstado(new Ocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso(), m));
             return m;
         }
         else{
