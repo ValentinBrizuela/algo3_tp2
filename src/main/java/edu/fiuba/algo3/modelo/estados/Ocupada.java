@@ -28,4 +28,9 @@ public class Ocupada extends Estado {
     public void estaLibre(){
         throw new CasillaOcupadaError();
     }
+
+    @Override
+    public boolean tieneEntidad(Class entidad) {
+        return this.entidad.getClass() == entidad;
+    }
 }

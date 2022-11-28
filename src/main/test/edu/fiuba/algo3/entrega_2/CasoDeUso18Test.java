@@ -22,7 +22,7 @@ public class CasoDeUso18Test {
             z.avanzarTurno();
         }
 
-        acceso.recibirAtaque(z);
+        acceso.recibirAtaque(z, mapa);
 
         assertEquals(496, acceso.escudo());
 
@@ -42,11 +42,11 @@ public class CasoDeUso18Test {
             h.avanzarTurno();
         }
 
-        d.recibirAtaque(h);
+        d.recibirAtaque(h, mapa);
 
         assertEquals(70, d.escudo());
 
-        s.recibirAtaque(h);
+        s.recibirAtaque(h, mapa);
 
         assertEquals(90, s.escudo());
     }
@@ -65,11 +65,11 @@ public class CasoDeUso18Test {
             m.avanzarTurno();
         }
 
-        d.recibirAtaque(m);
+        d.recibirAtaque(m, mapa);
 
         assertEquals(71, d.escudo());
 
-        s.recibirAtaque(m);
+        s.recibirAtaque(m, mapa);
 
         assertEquals(91, s.escudo());
     }
@@ -86,7 +86,7 @@ public class CasoDeUso18Test {
             g.avanzarTurno();
         }
 
-        d.recibirAtaque(g);
+        d.recibirAtaque(g, mapa);
 
         assertEquals(55, d.escudo());
 
@@ -104,7 +104,7 @@ public class CasoDeUso18Test {
             z.avanzarTurno();
         }
 
-        h.recibirAtaque(z);
+        h.recibirAtaque(z, mapa);
 
         assertEquals(72, h.vida());
     }
@@ -124,11 +124,11 @@ public class CasoDeUso18Test {
             d.avanzarTurno();
         }
 
-        z.recibirAtaque(d);
+        z.recibirAtaque(d, mapa);
 
         assertEquals(15, z.vida());
 
-        m.recibirAtaque(d);
+        m.recibirAtaque(d, mapa);
 
         assertEquals(100, m.vida());
     }
@@ -147,11 +147,11 @@ public class CasoDeUso18Test {
             s.avanzarTurno();
         }
 
-        h.recibirAtaque(s);
+        h.recibirAtaque(s, mapa);
 
         assertEquals(72, h.vida());
 
-        m.recibirAtaque(s);
+        m.recibirAtaque(s, mapa);
 
         assertEquals(106, m.vida());
     }

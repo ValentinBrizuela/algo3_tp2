@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.unidades;
 import edu.fiuba.algo3.modelo.edificios.VidaProtoss;
 import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 
@@ -35,7 +36,7 @@ public class Scout extends Unidad  implements Atacante, AtacableAereo, Consumido
         atacableAereo.aplicarDanio(danioAereo);
     }
 
-    public void recibirAtaque(Atacante atacante) {
+    public void recibirAtaque(Atacante atacante, Mapa mapa) {
         atacante.atacarA(this);
     }
 

@@ -74,6 +74,6 @@ public class CasoDeUso27Test {
             d.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {z.recibirAtaque(d);});
+        assertThrows(AtaqueInvalidoError.class, () -> {z.recibirAtaque(d, mapa);});
     }
 }

@@ -94,7 +94,7 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre 
         throw new ConstruccionNoPermitidaError();
     }
 
-    public void recibirAtaque(Atacante atacante) {
+    public void recibirAtaque(Atacante atacante, Mapa mapa) {
         atacante.atacarA(this);
     }
 

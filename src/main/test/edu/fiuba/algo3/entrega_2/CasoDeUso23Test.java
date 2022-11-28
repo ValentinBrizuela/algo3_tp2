@@ -36,6 +36,6 @@ public class CasoDeUso23Test {
         Acceso acceso = new Acceso(casillaEdificio);
         acceso.finalizarConstruccion();
 
-        assertThrows(AtaqueInvalidoError.class, () -> {acceso.recibirAtaque(z);});
+        assertThrows(AtaqueInvalidoError.class, () -> {acceso.recibirAtaque(z, mapa);});
     }
 }

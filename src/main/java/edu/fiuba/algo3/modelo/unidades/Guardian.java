@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class Guardian extends Unidad  implements Atacante, AtacableAereo {
         throw new AtaqueInvalidoError();
     }
 
-    public void recibirAtaque(Atacante atacante) {
+    public void recibirAtaque(Atacante atacante, Mapa mapa) {
         atacante.atacarA(this);
     }
 

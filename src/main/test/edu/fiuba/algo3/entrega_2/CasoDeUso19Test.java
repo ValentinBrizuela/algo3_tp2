@@ -25,7 +25,7 @@ public class CasoDeUso19Test {
             z.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(z);});
+        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(z, mapa);});
     }
 
     @Test
@@ -40,7 +40,7 @@ public class CasoDeUso19Test {
             g.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(g);});
+        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(g, mapa);});
     }
 
     @Test
@@ -55,7 +55,7 @@ public class CasoDeUso19Test {
             z.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(z);});
+        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(z, mapa);});
     }
 
 }

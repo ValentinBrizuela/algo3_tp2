@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
+import edu.fiuba.algo3.modelo.unidades.AmoSupremo;
 
 public class Mapa {
 
@@ -99,6 +100,17 @@ public class Mapa {
         }
 
         return true;
+    }
+
+    public boolean hayAmoSupremo(int x, int y,int radio) {
+        for (int i = x - radio; i <= x + radio ; i++) {
+            for (int j = y -radio; j <= y + radio; j++) {
+                if (this.obtenerCasilla(i, j).obtenerEstado().tieneEntidad(AmoSupremo.class)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 

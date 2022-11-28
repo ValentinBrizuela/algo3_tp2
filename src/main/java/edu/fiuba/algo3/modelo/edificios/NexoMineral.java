@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Entidad;
+import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
@@ -48,7 +49,7 @@ public class NexoMineral extends Entidad implements Mina, Construible, AtacableT
     public void construir(Espacio espacio, Almacen almacen) {
         throw new ConstruccionNoPermitidaError();
     }
-    public void recibirAtaque(Atacante atacante) {
+    public void recibirAtaque(Atacante atacante, Mapa mapa) {
         atacante.atacarA(this);
     }
 

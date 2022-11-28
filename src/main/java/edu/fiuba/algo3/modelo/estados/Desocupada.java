@@ -24,4 +24,9 @@ public class Desocupada extends Estado {
 
     public void estaLibre(){}
 
+    @Override
+    public boolean tieneEntidad(Class entidad) {
+        return false;
+    }
+
 }

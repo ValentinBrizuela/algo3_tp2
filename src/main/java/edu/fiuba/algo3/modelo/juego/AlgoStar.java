@@ -78,7 +78,7 @@ public class AlgoStar {
     }
 
     public void ataque(Atacante atacante, Entidad atacado, Jugador jugador){
-        atacado.recibirAtaque(atacante);
+        atacado.recibirAtaque(atacante, mapa);
         if (atacado.estaDestruido()){
             atacado.destruir(jugador);
         }

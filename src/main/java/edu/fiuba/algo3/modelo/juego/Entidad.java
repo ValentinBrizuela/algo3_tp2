@@ -38,7 +38,7 @@ public abstract class Entidad {
 
     public abstract void avanzarTurno();
 
-    public abstract void recibirAtaque(Atacante atacante);
+    public abstract void recibirAtaque(Atacante atacante, Mapa mapa);
 
     public void esUsable() {
         if (tiempoConstruccion > 0){

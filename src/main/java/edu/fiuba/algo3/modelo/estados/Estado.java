@@ -36,4 +36,7 @@ public abstract class Estado {
     }
 
     public abstract void estaLibre();
+
+    public abstract boolean tieneEntidad(Class entidad);
+
 }

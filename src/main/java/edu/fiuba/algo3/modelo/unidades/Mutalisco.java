@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
@@ -37,7 +38,7 @@ public class Mutalisco extends Unidad  implements Atacante, AtacableAereo, Consu
         atacableAereo.aplicarDanio(danioTerrestre);
     }
 
-    public void recibirAtaque(Atacante atacante) {
+    public void recibirAtaque(Atacante atacante, Mapa mapa) {
         atacante.atacarA(this);
     }
 

@@ -60,7 +60,7 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre {
     }
 
 
-    public void recibirAtaque(Atacante atacante) {
+    public void recibirAtaque(Atacante atacante, Mapa mapa) {
         atacante.atacarA(this);
     }
 
