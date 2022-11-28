@@ -2,8 +2,10 @@ package edu.fiuba.algo3.modelo.juego;
 
 
 
+import edu.fiuba.algo3.modelo.edificios.EdificioConArea;
 import edu.fiuba.algo3.modelo.razas.Raza;
 
+import edu.fiuba.algo3.modelo.terrenos.Terreno;
 import edu.fiuba.algo3.modelo.unidades.ConsumidorDeSuministro;
 import java.util.ArrayList;
 
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 public class Jugador {
 
     private ArrayList<Entidad> edificiosConstruidos;
+
+    private ArrayList<EdificioConArea> edificiosConAreas;
 
     private Almacen almacen;
     private String nombre;
@@ -24,6 +28,7 @@ public class Jugador {
 
     public Jugador(String nombre, String color, Raza raza){
         this.edificiosConstruidos= new ArrayList<Entidad>();
+        this.edificiosConAreas= new ArrayList<EdificioConArea>();
         this.almacen= new Almacen();
         this.almacen.almacenarMineral(200);
         this.nombre=nombre;
@@ -43,6 +48,14 @@ public class Jugador {
     }
 
     public void agregarEdificio(Entidad edificio){edificiosConstruidos.add(edificio);}
+
+    public void agregarEdificioConArea(EdificioConArea edificio){edificiosConAreas.add(edificio);}
+
+    public void actualizarAreas(Mapa mapa){
+        for (EdificioConArea edificio: edificiosConAreas){
+            edificio.actualizarTerreno(mapa);
+        }
+    }
 
     public Almacen obtenerAlmacen(){
         return almacen;

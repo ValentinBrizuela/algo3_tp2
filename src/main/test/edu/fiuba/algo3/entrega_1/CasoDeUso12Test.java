@@ -14,7 +14,7 @@ public class CasoDeUso12Test {
     public void construccionProtossRegeneraEscudoPeroNoVida() {
         Mapa mapa = new Mapa(2);
         Casilla casilla = new Casilla(25,25,new TierraEnergizada(), new RecursoVacio());
-        Pilon pilon = new Pilon(mapa, casilla);
+        Pilon pilon = new Pilon(casilla);
         pilon.aplicarDanio(400);
 
         assertEquals(0, pilon.escudo());

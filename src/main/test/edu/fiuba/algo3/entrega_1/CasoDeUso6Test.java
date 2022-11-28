@@ -1,8 +1,12 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.edificios.Criadero;
+import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
+import edu.fiuba.algo3.modelo.razas.Protoss;
+import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import org.junit.jupiter.api.Test;
@@ -12,18 +16,25 @@ public class CasoDeUso6Test {
     @Test
     public void mohoSeExpandeSegunLoEsperado() {
         Mapa mapa = new Mapa(2);
-        Casilla casilla = mapa.obtenerCasilla(25,25);
-        Criadero criadero = new Criadero(mapa, casilla);
+        AlgoStar algoStar=new AlgoStar(mapa);
+        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        Jugador jugador2=new Jugador("tomasa","azul",new Protoss());
+        algoStar.registrarJugador(jugador1);
+        algoStar.registrarJugador(jugador2);
+        //Casilla casilla = mapa.obtenerCasilla(25,25);
+        algoStar.construirCriadero(25,25);
 
-        criadero.avanzarTurno();
+        //Casilla casilla = mapa.obtenerCasilla(25,25);
+
+        algoStar.avanzarTurno();
         assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().obtenerTerreno().getClass());
         assertEquals(Tierra.class, mapa.obtenerCasilla(31, 31).obtenerEstado().obtenerTerreno().getClass());
 
-        criadero.avanzarTurno();
+        algoStar.avanzarTurno();
         assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().obtenerTerreno().getClass());
         assertEquals(Tierra.class, mapa.obtenerCasilla(31, 31).obtenerEstado().obtenerTerreno().getClass());
 
-        criadero.avanzarTurno();
+        algoStar.avanzarTurno();
         assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().obtenerTerreno().getClass());
         assertEquals(Moho.class, mapa.obtenerCasilla(31, 31).obtenerEstado().obtenerTerreno().getClass());
     }

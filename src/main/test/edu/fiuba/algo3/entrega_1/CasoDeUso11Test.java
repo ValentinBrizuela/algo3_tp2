@@ -13,7 +13,7 @@ public class CasoDeUso11Test {
     public void construccionProtossRecuperaEscudoPorTurnoHastaElMaximo() {
         Mapa mapa = new Mapa(2);
         Casilla casilla = new Casilla(25,25, new TierraEnergizada(), new RecursoVacio());
-        Pilon pilon = new Pilon(mapa, casilla);
+        Pilon pilon = new Pilon(casilla);
         pilon.aplicarDanio(100);
 
         assertEquals(200, pilon.escudo());

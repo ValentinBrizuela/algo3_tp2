@@ -7,6 +7,8 @@ import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.Atacable;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
+import edu.fiuba.algo3.modelo.terrenos.Moho;
+import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import edu.fiuba.algo3.modelo.unidades.*;
 
 import java.util.ArrayList;
@@ -64,6 +66,7 @@ public class AlgoStar {
     }*/
     public void avanzarTurno(){
         mapa.avanzarTurno();
+        jugadorActual.actualizarAreas(mapa);
         turno += 1;
         jugadorActual = jugadores.get(turno%2);
     }
@@ -80,7 +83,7 @@ public class AlgoStar {
     public void ataque(Atacante atacante, Entidad atacado, Jugador jugador){
         atacado.recibirAtaque(atacante, mapa);
         if (atacado.estaDestruido()){
-            atacado.destruir(jugador);
+            atacado.destruir(jugador,mapa);
         }
 
     }
@@ -98,18 +101,22 @@ public class AlgoStar {
 
     public void construirCriadero(int x, int y){
         Casilla casilla = mapa.obtenerCasilla(x,y);
-        Criadero c = new Criadero(mapa, casilla);
+        Criadero c = new Criadero(casilla);
         casilla.construir(c, jugadorActual.obtenerAlmacen());
         jugadorActual.generarPoblacion();
         jugadorActual.agregarEdificio(c);
+        jugadorActual.agregarEdificioConArea(c);
+        c.actualizarTerreno(mapa);
     }
 
     public void construirPilon(int x, int y){
         Casilla casilla = mapa.obtenerCasilla(x,y);
-        Pilon p = new Pilon(mapa, casilla);
+        Pilon p = new Pilon(casilla);
         casilla.construir(p, jugadorActual.obtenerAlmacen());
         jugadorActual.generarPoblacion();
         jugadorActual.agregarEdificio(p);
+        jugadorActual.agregarEdificioConArea(p);
+        p.actualizarTerreno(mapa);
     }
     public void construirReservaDeReproduccion(int x, int y){
         Casilla casilla = mapa.obtenerCasilla(x, y);
