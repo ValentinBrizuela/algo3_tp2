@@ -2,8 +2,12 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.edificios.Pilon;
+import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Almacen;
+import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
+import edu.fiuba.algo3.modelo.razas.Protoss;
+import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
@@ -13,23 +17,36 @@ public class CasoDeUso14Test {
     @Test
     public void unPilonNoPuedeEnergizarUnAreaCubiertaPorMoho() {
         Mapa mapa = new Mapa(2);
+        AlgoStar algoStar=new AlgoStar(mapa);
+        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        Jugador jugador2=new Jugador("tomasa","azul",new Protoss());
+        algoStar.registrarJugador(jugador1);
+        algoStar.registrarJugador(jugador2);
+        jugador1.llenarArcas();
 
-        Criadero criadero = new Criadero(mapa, mapa.obtenerCasilla(24, 24));
-        Pilon pilon = new Pilon(mapa, mapa.obtenerCasilla(25, 25));
+        algoStar.construirPilon(24,27);
+        algoStar.construirCriadero(24,23);
 
 
-        assertEquals(mapa.obtenerCasilla(26, 25).obtenerEstado().obtenerTerreno().getClass(), Moho.class);
+
+
+        assertEquals(mapa.obtenerCasilla(24, 24).obtenerEstado().obtenerTerreno().getClass(), Moho.class);
     }
 
     @Test
     public void mohoNoSePuedeExpandirPorUnaCasillaOcupada() {
         Mapa mapa = new Mapa(2);
-        Almacen almacen = new Almacen();
-        almacen.almacenarMineral(1000);
-        Pilon pilon = new Pilon(mapa, mapa.obtenerCasilla(25, 25));
-        mapa.obtenerCasilla(25, 25).construir(pilon, almacen);
+        AlgoStar algoStar=new AlgoStar(mapa);
+        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        Jugador jugador2=new Jugador("tomasa","azul",new Protoss());
+        algoStar.registrarJugador(jugador1);
+        algoStar.registrarJugador(jugador2);
+        jugador1.llenarArcas();
 
-        Criadero criadero = new Criadero(mapa, mapa.obtenerCasilla(24, 24));
+
+        algoStar.construirPilon(25,25);
+
+        algoStar.construirCriadero(25,29);
 
         assertEquals(mapa.obtenerCasilla(25, 25).obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
     }

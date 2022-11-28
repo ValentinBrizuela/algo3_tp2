@@ -11,24 +11,22 @@ import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.*;
 
-public class Pilon extends Entidad implements Construible, AtacableTerrestre {
+public class Pilon extends Entidad implements Construible, AtacableTerrestre,EdificioConArea {
     private int rango;
-    private Mapa mapa;
-    public Pilon(Mapa mapa, Casilla casilla) {
+
+    public Pilon(Casilla casilla) {
         super(new VidaProtoss(300, 300), 100, 0, 5, new Protoss(), casilla);
-        this.mapa = mapa;
         this.rango = 3;
-        generar(new TierraEnergizada());
+
     }
 
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
         vida.regenerar();
-        generar(new TierraEnergizada());
     }
 
-    public void generar(Terreno terreno) {
+    public void generar(Terreno terreno,Mapa mapa) {
         for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
             for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
                 if (!(mapa.obtenerCasilla(i, j).obtenerEstado().obtenerTerreno().getClass() == Moho.class)) {
@@ -64,10 +62,13 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre {
         atacante.atacarA(this);
     }
 
+    public void actualizarTerreno(Mapa mapa){
+        generar(new TierraEnergizada(),mapa);
+    }
     @Override
-    public  void destruir(Jugador jugador){
+    public  void destruir(Jugador jugador,Mapa mapa){
         casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
-        generar(new Tierra());
+        generar(new Tierra(),mapa);
         jugador.degenerarPoblacion();
     }
 }

@@ -20,7 +20,7 @@ public class CasoDeUso13Test {
         Casilla casilla = mapa.obtenerCasilla(25,25);
         assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), Tierra.class);
 
-        Criadero criadero = new Criadero(mapa, casilla);
+        Criadero criadero = new Criadero(casilla);
         casilla.construir(criadero, almacen);
 
         criadero.avanzarTurno();

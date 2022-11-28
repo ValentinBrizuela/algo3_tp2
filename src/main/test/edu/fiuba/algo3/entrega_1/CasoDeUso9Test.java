@@ -2,9 +2,9 @@ package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.edificios.Acceso;
 import edu.fiuba.algo3.modelo.edificios.Pilon;
-import edu.fiuba.algo3.modelo.juego.Almacen;
-import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.juego.Mapa;
+import edu.fiuba.algo3.modelo.juego.*;
+import edu.fiuba.algo3.modelo.razas.Protoss;
+import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 
@@ -15,25 +15,30 @@ public class CasoDeUso9Test {
     @Test
     public void EdificioProtossSigueEnergizadoSiLeDestruyenElPilonQueLoEnergizaPeroTieneOtroEnRango(){
         Mapa mapa = new Mapa(2);
-        Almacen almacen = new Almacen();
+        AlgoStar algoStar=new AlgoStar(mapa);
+        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        Jugador jugador2=new Jugador("tomasa","azul",new Protoss());
+        algoStar.registrarJugador(jugador1);
+        algoStar.registrarJugador(jugador2);
+        jugador1.llenarArcas();
+
         Casilla casilla = mapa.obtenerCasilla(49, 49);
-        Pilon pilon1 = new Pilon(mapa, mapa.obtenerCasilla(50, 50));
-        Pilon pilon2 = new Pilon(mapa, mapa.obtenerCasilla(50, 51));
-        Acceso acceso = new Acceso(casilla);
 
 
-        almacen.almacenarMineral(5000);
 
-        mapa.obtenerCasilla(50, 50).construir(pilon1, almacen);
-        mapa.obtenerCasilla(50, 51).construir(pilon2, almacen);
-        casilla.construir(acceso, almacen);
 
+        algoStar.construirPilon(50,50);
+        algoStar.construirPilon(50,51);
+
+        Pilon pilon2=(Pilon)mapa.obtenerCasilla(50,51).obtenerEstado().obtenerEdificio();
+        //Acceso acceso = new Acceso(casilla);
+        algoStar.construirAcceso(49,49);
 
         assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
 
         pilon2.aplicarDanio(2000);
 
-        mapa.obtenerCasilla(50, 50).avanzarTurno();
+        algoStar.avanzarTurno();
 
         assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
         /*assertTrue(acceso.estaEnergizado());*/

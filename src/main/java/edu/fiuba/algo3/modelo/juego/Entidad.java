@@ -70,7 +70,7 @@ public abstract class Entidad {
     }
 
 
-    public  void destruir(Jugador jugador){
+    public  void destruir(Jugador jugador,Mapa mapa){
         casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
     }
 

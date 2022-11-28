@@ -11,7 +11,7 @@ public class CasoDeUso10Test {
     @Test
     public void construccionZergRecuperaVidaPorTurnoHastaElMaximo() { /*Supuesto: Recupera 10% por turno*/
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
-        Criadero criadero = new Criadero(new Mapa(2), casilla);
+        Criadero criadero = new Criadero(casilla);
         criadero.aplicarDanio(100);
 
         assertEquals(400, criadero.vida());
