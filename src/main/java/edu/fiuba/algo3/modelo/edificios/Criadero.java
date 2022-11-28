@@ -99,7 +99,8 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre 
     }
 
     @Override
-    public void destruir(Jugador jugador){
+    public  void destruir(Jugador jugador){
+        casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
         jugador.degenerarPoblacion();
     }
 

@@ -15,6 +15,7 @@ public class AlgoStar {
 
     private ArrayList<Jugador> jugadores;
 
+
     private Mapa mapa;
     private int cantJugadores;
     private int turno;
@@ -79,7 +80,6 @@ public class AlgoStar {
     public void ataque(Atacante atacante, Entidad atacado, Jugador jugador){
         atacado.recibirAtaque(atacante);
         if (atacado.estaDestruido()){
-            atacado.liberarCasilla();
             atacado.destruir(jugador);
         }
 

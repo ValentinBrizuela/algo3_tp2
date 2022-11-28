@@ -69,12 +69,9 @@ public abstract class Entidad {
         }*/
     }
 
-    public void liberarCasilla(){
-        casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
-    }
 
     public  void destruir(Jugador jugador){
-
+        casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
     }
 
 }
