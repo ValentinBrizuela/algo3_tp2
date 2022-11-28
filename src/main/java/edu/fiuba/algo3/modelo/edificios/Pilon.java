@@ -67,6 +67,7 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre {
     @Override
     public  void destruir(Jugador jugador){
         casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
+        generar(new Tierra());
         jugador.degenerarPoblacion();
     }
 }
