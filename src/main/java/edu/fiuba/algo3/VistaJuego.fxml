@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="248.0" layoutY="56.0" prefHeight="43.0" prefWidth="183.0" />
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="139.0" layoutY="56.0" prefHeight="43.0" prefWidth="60.0" text="Nombre" />
+      <Label alignment="CENTER_RIGHT" layoutX="142.0" layoutY="124.0" prefHeight="43.0" prefWidth="60.0" text="Color" />
+      <ChoiceBox layoutX="248.0" layoutY="133.0" prefHeight="26.0" prefWidth="183.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="142.0" layoutY="190.0" prefHeight="43.0" prefWidth="60.0" text="Raza" />
+      <RadioButton layoutX="248.0" layoutY="203.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="88.0" text="Zerg" />
+      <RadioButton layoutX="356.0" layoutY="203.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="111.0" text="Protoss" />
+      <Button layoutX="245.0" layoutY="323.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="111.0" text="Confirmar">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
