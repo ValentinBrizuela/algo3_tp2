@@ -41,6 +41,7 @@ public class CasoDeUso26Test {
         Jugador jugador1=new Jugador("camila","rojo",new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
+
         mapa.obtenerCasilla(36,10).cambiarTerreno(new Moho());
         algoStar.construirCriadero(36,10);
         mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());
@@ -73,10 +74,25 @@ public class CasoDeUso26Test {
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         algoStar.construirPilon(36,10);
-        //mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());
         algoStar.construirAcceso(35,10);
         algoStar.crearDragon(jugador1, 5, 5);
         assertEquals(2,jugador1.obtenerPoblacionUsable());
+
+    }
+
+    @Test
+    public void test05SePuedeConstruirUnDragonSiAntesSeConstruyoUnAmoSupremo(){
+        Mapa mapa = new Mapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
+
+        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        algoStar.registrarJugador(jugador1);
+        jugador1.llenarArcas();
+        algoStar.crearAmoSupremo(jugador1,36,10);
+        mapa.obtenerCasilla(50,10).cambiarTerreno(new Moho());
+        algoStar.construirReservaDeReproduccion(50,10);
+        algoStar.crearZerling(jugador1, 5, 5);
+        assertEquals(4,jugador1.obtenerPoblacionUsable());
 
     }
 

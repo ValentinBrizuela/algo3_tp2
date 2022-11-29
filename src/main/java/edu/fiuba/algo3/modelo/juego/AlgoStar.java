@@ -264,5 +264,15 @@ public class AlgoStar {
 
     }
 
+    public AmoSupremo crearAmoSupremo(Jugador j, int x, int y){
+        Casilla casilla = mapa.obtenerCasilla(x, y);
+
+        //crear logica
+
+        AmoSupremo amoSupremo = new AmoSupremo(casilla);
+        jugadorActual.generarPoblacion();
+        return amoSupremo;
+    }
+
 }
 
