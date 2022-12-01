@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.entrega_1;
 
 import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import org.junit.jupiter.api.Test;
@@ -31,7 +30,7 @@ public class CasoDeUso1Test {
     @Test
     public void test02CriaderoRegeneraDosLarvasAlConsumir2LuegoDeDosTurnos(){
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
-        Criadero c = new Criadero( casilla);
+        Criadero c = new Criadero(casilla);
         c.avanzarTurno();
         c.avanzarTurno();
         c.avanzarTurno();

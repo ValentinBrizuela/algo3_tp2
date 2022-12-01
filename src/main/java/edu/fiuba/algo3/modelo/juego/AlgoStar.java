@@ -2,9 +2,14 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.*;
+import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
+import edu.fiuba.algo3.modelo.interfaces.Atacable;
+import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
+
 import edu.fiuba.algo3.modelo.unidades.*;
+
 
 import java.util.ArrayList;
 
@@ -13,7 +18,7 @@ public class AlgoStar {
     private ArrayList<Jugador> jugadores;
 
 
-    private Mapa mapa;
+    public Mapa mapa;
     private int cantJugadores;
     private int turno;
 
@@ -40,6 +45,17 @@ public class AlgoStar {
             jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
         }
         jugadores.add(jugador);
+    }
+
+    public void registrarJugadores(Jugador jugador1, Jugador jugador2){
+        if(jugador1.sosIgualA(jugador2)){
+            throw new JugadorInvalidoError();
+        }
+        jugador1.setearPosicion((int) (mapa.tamanioMapa()*(0.1)), (int) (mapa.tamanioMapa()*(0.1)));
+        jugador2.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+        jugadorActual = jugador1;
     }
 
     /*public Jugador jugarPartida(){
@@ -76,10 +92,16 @@ public class AlgoStar {
     }
 
     public void ataque(Atacante atacante, Entidad atacado, Jugador jugador){
+        try {
             atacado.recibirAtaque(atacante, mapa);
             if (atacado.estaDestruido()){
                 atacado.destruir(jugador,mapa);
             }
+
+        } catch (Exception e) {
+            System.out.println("No se pudo realizar el ataque.");
+        }
+
     }
 
     public void construirGuarida(int x, int y){
@@ -102,6 +124,9 @@ public class AlgoStar {
         } catch (Exception e) {
             System.out.println("No se pudo construir la Guarida. ");
         }
+
+
+
     }
 
     public void construirCriadero(int x, int y){

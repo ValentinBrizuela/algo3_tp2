@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.errores.NroBasesImparesError;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
+import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.unidades.AmoSupremo;
 
@@ -25,7 +26,12 @@ public class Mapa {
         casillas = new Casilla[tamMapa][tamMapa];
 
         inicializarMapa();
-        /* crear zonas espaciales */
+        /*for ( int i = 0; i < 3; i++) {
+            int num1 = (int)(Math.random()*((tamMapa-30)-30+1)+30);
+            int num2 = (int)(Math.random()*((tamMapa-30)-30+1)+30);
+            crearEspacio(num1, num2);
+        }*/
+        crearEspacio(70, 80);
         crearBasesEsquinas();
         crearBasesRandomYEspejadas();
     }
@@ -68,6 +74,15 @@ public class Mapa {
             }
         }
     }
+
+    private void crearEspacio(int posX, int posY) {
+        for (int i=(posX - 10); i< (posX + 10); i++){
+            for (int j=(posY - 10); j < (posY + 10); j++){
+                casillas[i][j] = new Casilla(i, j, new Espacio(), new RecursoVacio());
+            }
+        }
+    }
+
     private void crearBasesEsquinas(){
         int posicionBase1 = (int) (nroBases*50*0.05);
         int posicionBase2 = (int) (nroBases*50*0.95);

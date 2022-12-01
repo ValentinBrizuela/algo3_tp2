@@ -2,19 +2,28 @@ package edu.fiuba.algo3.entrega_3;
 
 import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
+import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
+import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
+import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
+
 
 public class CasoDeUso32Test {
+
     @Test
     public void laPartidaSeTerminaCuandoAUnJugadorLeDestruyenTodosSusEdificios(){
+
         Mapa mapa = new Mapa(2);
+
         AlgoStar algoStar = new AlgoStar(mapa);
 
         algoStar.registrarJugador(new Jugador("Lionel Messi", "Celeste", new Zerg()));

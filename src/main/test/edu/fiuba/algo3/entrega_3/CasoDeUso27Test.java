@@ -7,7 +7,9 @@ import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.terrenos.Espacio;
-import edu.fiuba.algo3.modelo.unidades.*;
+import edu.fiuba.algo3.modelo.unidades.Devorador;
+import edu.fiuba.algo3.modelo.unidades.Mutalisco;
+import edu.fiuba.algo3.modelo.unidades.Zealot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertSame;

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.errores.MovimientoInvalidoError;
+
 import edu.fiuba.algo3.modelo.terrenos.*;
 
 public class UnidadAerea implements TipoDeUnidad {

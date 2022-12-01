@@ -10,4 +10,6 @@ public interface AtacableAereo {
     public void aplicarDanio(int danio);
 
     public void estasEnRango(Casilla casilla, int rango);
+
+    public boolean estaDestruido();
 }

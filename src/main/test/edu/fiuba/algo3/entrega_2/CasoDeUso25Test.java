@@ -54,8 +54,8 @@ public class CasoDeUso25Test {
         Mapa mapa=new Mapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("ola","verde",new Zerg());
-        assertThrows(NombreDeJugadorInvalidoError.class, () -> {algoStar.registrarJugador(jugador1);});
+
+        assertThrows(NombreDeJugadorInvalidoError.class, () -> {new Jugador("ola","verde",new Zerg());});
 
     }
 }

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-
+/*
 import javafx.event.ActionEvent;
 //import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -30,3 +30,4 @@ public class ControlVistas {
         stage.show();
     }
 }
+*/

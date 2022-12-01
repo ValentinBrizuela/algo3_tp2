@@ -9,7 +9,7 @@ import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
-public class Hidralisco extends Unidad implements Atacante, AtacableTerrestre, ConsumidorDeSuministro {
+public class    Hidralisco extends Unidad implements Atacante, AtacableTerrestre, ConsumidorDeSuministro {
 
     private int rangoAtaque;
     private int danioTerrestre;

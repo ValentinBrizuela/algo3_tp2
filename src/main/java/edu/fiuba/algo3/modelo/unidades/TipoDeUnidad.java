@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.unidades;
 
-import edu.fiuba.algo3.modelo.terrenos.*;
+import edu.fiuba.algo3.modelo.terrenos.Espacio;
+import edu.fiuba.algo3.modelo.terrenos.Moho;
+import edu.fiuba.algo3.modelo.terrenos.Tierra;
+import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
 public interface TipoDeUnidad {
 

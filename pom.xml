@@ -3,22 +3,27 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.fiuba.algo3</groupId>
     <artifactId>tp2</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <junit.jupiter.version>5.4.0</junit.jupiter.version>
-        <mockito-mockito-core-version>3.3.0</mockito-mockito-core-version>
+        <junit.jupiter.version>5.8.2</junit.jupiter.version>
+        <mockito-mockito-inline-version>4.9.0</mockito-mockito-inline-version>
         <maven-surefire-version>3.0.0-M3</maven-surefire-version>
-        <archunit-version>0.21.0</archunit-version>
-        <javafx-version>15.0.1</javafx-version>
+        <archunit-version>0.23.1</archunit-version>
+        <javafx-version>18.0.1</javafx-version>
         <main-class>edu.fiuba.algo3.Main</main-class>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
+            <version>${javafx-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
             <version>${javafx-version}</version>
         </dependency>
         <dependency>
@@ -29,8 +34,9 @@
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>4.9.0</version>
+            <artifactId>mockito-inline</artifactId>
+            <version>${mockito-mockito-inline-version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.tngtech.archunit</groupId>
@@ -41,7 +47,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.30</version>
+            <version>1.7.36</version>
         </dependency>
     </dependencies>
     <profiles>

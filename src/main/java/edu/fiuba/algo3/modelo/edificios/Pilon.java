@@ -2,13 +2,11 @@ package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
-import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
-import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.*;
 
 public class Pilon extends Entidad implements Construible, AtacableTerrestre,EdificioConArea {
@@ -26,7 +24,7 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre,Edi
         vida.regenerar();
     }
 
-    public void generar(Terreno terreno,Mapa mapa) {
+    public void generar(Terreno terreno, Mapa mapa) {
         for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
             for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
                 if (!(mapa.obtenerCasilla(i, j).obtenerEstado().obtenerTerreno().getClass() == Moho.class)) {

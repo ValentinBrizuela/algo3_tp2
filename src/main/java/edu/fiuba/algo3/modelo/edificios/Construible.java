@@ -1,7 +1,10 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.terrenos.Espacio;
+import edu.fiuba.algo3.modelo.terrenos.Moho;
+import edu.fiuba.algo3.modelo.terrenos.Tierra;
+import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import edu.fiuba.algo3.modelo.juego.Almacen;
-import edu.fiuba.algo3.modelo.terrenos.*;
 
 public interface Construible {
 

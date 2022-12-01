@@ -6,4 +6,6 @@ public interface Recurso {
 
     public abstract void construir(Construible edificio);
 
+    /*public int extraer(int cant);*/
+
 }

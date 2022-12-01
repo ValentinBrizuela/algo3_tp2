@@ -2,8 +2,6 @@ package edu.fiuba.algo3.modelo.estados;
 
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.errores.CasillaOcupadaError;
-import edu.fiuba.algo3.modelo.errores.EdificioYaConstruidoError;
-import edu.fiuba.algo3.modelo.errores.MovimientoInvalidoError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.recursos.Recurso;

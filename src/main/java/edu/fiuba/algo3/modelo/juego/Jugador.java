@@ -4,8 +4,10 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.EdificioConArea;
+import edu.fiuba.algo3.modelo.errores.NombreDeJugadorInvalidoError;
 import edu.fiuba.algo3.modelo.razas.Raza;
 
+import edu.fiuba.algo3.modelo.terrenos.Terreno;
 import edu.fiuba.algo3.modelo.unidades.ConsumidorDeSuministro;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +33,10 @@ public class Jugador {
     private int posy;
 
     public Jugador(String nombre, String color, Raza raza){
+        this.edificiosConstruidos= new ArrayList<Construible>();
+        if (nombre.length() < 6) {
+            throw new NombreDeJugadorInvalidoError();
+        }
         this.edificiosConstruidos= new ArrayList<Construible>();
         this.edificiosConAreas= new ArrayList<EdificioConArea>();
         this.almacen= new Almacen();
@@ -77,7 +83,7 @@ public class Jugador {
     }
 
     public boolean sosIgualA(Jugador jugador){
-        return (nombre==jugador.obtenerNombre() || color== jugador.obtenerColor() || raza.getClass()==jugador.obtenerRaza().getClass());
+        return (nombre.equals(jugador.nombre) || color.equals(jugador.obtenerColor()) || raza.getClass()==jugador.obtenerRaza().getClass());
     }
 
     public void verificarYConsumirSuministro(ConsumidorDeSuministro unidad){
