@@ -38,7 +38,10 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearZerling(j1,5,5);});
+        algoStar.construirCriadero(50,50);
+        algoStar.crearZerling(j1, 25, 25);
+
+        assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
@@ -52,7 +55,10 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearZangano(j1,5,5);});
+        algoStar.crearAmoSupremo(j1, 50,50);
+        algoStar.crearZangano(j1, 25,25);
+
+        assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
@@ -66,7 +72,10 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearHidralisco(j1,5,5);});
+        algoStar.construirCriadero(50,50);
+        algoStar.crearHidralisco(j1, 25,25);
+
+        assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
@@ -80,7 +89,10 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearMutalisco(j1,5,5);});
+        algoStar.construirCriadero(50,50);
+        algoStar.crearMutalisco(j1, 25,25);
+
+        assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
@@ -94,7 +106,10 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearZealot(j1,5,5);});
+        algoStar.construirCriadero(50,50);
+        algoStar.crearZealot(j1, 25,25);
+
+        assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
@@ -108,7 +123,10 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearDragon(j1,5,5);});
+        algoStar.construirCriadero(50,50);
+        algoStar.crearDragon(j1, 25,25);
+
+        assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
@@ -122,6 +140,9 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        assertThrows(CreacionDeUnidadInvalida.class, () -> {algoStar.crearScout(j1,5,5);});
+        algoStar.construirCriadero(50,50);
+        algoStar.crearScout(j1, 25,25);
+
+        assertEquals(5, j1.obtenerPoblacionUsable());
     }
 }

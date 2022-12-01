@@ -4,14 +4,14 @@ import edu.fiuba.algo3.modelo.edificios.Espiral;
 import edu.fiuba.algo3.modelo.edificios.Guarida;
 import edu.fiuba.algo3.modelo.edificios.PuertoEstelar;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CasoDeUso17Test {
 
@@ -24,10 +24,11 @@ public class CasoDeUso17Test {
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
-        algoStar.construirGuarida(0,0);
+        Casilla casilla = mapa.obtenerCasilla(50,50);
+        casilla.cambiarTerreno(new Moho());
+        algoStar.construirGuarida(50,50);
 
-        //assertTrue(ConstruccionNoPermitidaError.class, () -> {algoStar.construirGuarida(0,0);});
+        assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
 
     @Test
@@ -58,9 +59,11 @@ public class CasoDeUso17Test {
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(0,0).cambiarTerreno(new Moho());
+        Casilla casilla = mapa.obtenerCasilla(50,50);
+        casilla.cambiarTerreno(new Moho());
+        algoStar.construirEspiral(50,50);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirEspiral(0,0);});
+        assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
 
     @Test
@@ -93,9 +96,11 @@ public class CasoDeUso17Test {
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(0,0).cambiarTerreno(new TierraEnergizada());
+        Casilla casilla = mapa.obtenerCasilla(50,50);
+        casilla.cambiarTerreno(new TierraEnergizada());
+        algoStar.construirPuertoEstelar(50,50);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {algoStar.construirPuertoEstelar(0,0);});
+        assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
 
     @Test

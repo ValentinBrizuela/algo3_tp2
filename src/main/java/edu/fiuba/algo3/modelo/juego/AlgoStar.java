@@ -84,9 +84,12 @@ public class AlgoStar {
 
     public void construirGuarida(int x, int y){
         try {
-            jugadorActual.yaTiene("ReservaDeReproduccion");
+            if (!jugadorActual.yaTiene("ReservaDeReproduccion")){
+                throw new ConstruccionNoPermitidaError();
+            }
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir una guarida necesitas una Reserva de Reproduccion. ");
+            return;
         }
 
         try {
@@ -146,10 +149,13 @@ public class AlgoStar {
 
     public void construirEspiral(int x, int y){
         try {
-            jugadorActual.yaTiene("Guarida");
+            if (!jugadorActual.yaTiene("Guarida")){
+                throw new ConstruccionNoPermitidaError();
+            }
 
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir un Espiral necesitas una Guarida. ");
+            return;
         }
 
         try {
@@ -166,10 +172,13 @@ public class AlgoStar {
 
     public void construirPuertoEstelar(int x, int y) {
         try {
-            jugadorActual.yaTiene("Acceso");
+            if (!jugadorActual.yaTiene("Acceso")){
+                throw new ConstruccionNoPermitidaError();
+            }
 
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir un Puerto Estelar necesitas un Acceso. ");
+            return;
         }
 
         try {
@@ -205,9 +214,12 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene("ReservaDeReproduccion");
-        } catch (Exception e) {
+            if (!j.yaTiene("ReservaDeReproduccion")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Zerling necesitas una Reserva de Reproduccion. ");
+            return null;
         }
 
         try {
@@ -227,9 +239,12 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene("Criadero");
-        } catch (Exception e) {
+            if (!j.yaTiene("Criadero")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Zangano necesitas un Criadero. ");
+            return null;
         }
 
         try {
@@ -248,9 +263,12 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene("Guarida");
-        } catch (Exception e) {
+            if (!j.yaTiene("Guarida")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Hidralisco necesitas una Guarida. ");
+            return null;
         }
 
         try {
@@ -270,9 +288,12 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene("Espiral");
-        } catch (Exception e) {
+            if (!j.yaTiene("Espiral")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Mutalisco necesitas un Espiral. ");
+            return null;
         }
 
         try {
@@ -293,9 +314,12 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene("Acceso");
-        } catch (Exception e){
+            if (!j.yaTiene("Acceso")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e){
             System.out.println("Para crear un Mutalisco necesitas un Acceso. ");
+            return null;
         }
 
         try {
@@ -315,9 +339,12 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene("Acceso");
-        } catch (Exception e) {
+            if (!j.yaTiene("Acceso")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Dragon necesitas un Acceso. ");
+            return null;
         }
 
         try {
@@ -337,9 +364,12 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene("PuertoEstelar");
-        } catch (Exception e) {
+            if (!j.yaTiene("PuertoEstelar")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Dragon necesitas un Acceso. ");
+            return null;
         }
 
         try {
