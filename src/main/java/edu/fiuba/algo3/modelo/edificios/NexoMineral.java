@@ -58,4 +58,5 @@ public class NexoMineral extends Entidad implements Mina, Construible, AtacableT
         tiempoConstruccion -= 1;
         vida.regenerar();
     }
+
 }

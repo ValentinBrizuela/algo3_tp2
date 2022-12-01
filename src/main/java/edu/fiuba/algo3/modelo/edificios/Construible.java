@@ -13,4 +13,7 @@ public interface Construible {
 
     public void construir(Espacio espacio, Almacen almacen);
 
+
+    public boolean estaDestruido();
+
 }

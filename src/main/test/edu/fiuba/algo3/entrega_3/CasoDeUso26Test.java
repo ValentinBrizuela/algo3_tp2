@@ -2,6 +2,7 @@ package edu.fiuba.algo3.entrega_3;
 
 import edu.fiuba.algo3.modelo.errores.PoblacionInsuficienteError;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
+import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -29,7 +30,8 @@ public class CasoDeUso26Test {
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());
         algoStar.construirReservaDeReproduccion(35,10);
-        assertThrows(PoblacionInsuficienteError.class, () -> {algoStar.crearZerling(jugador1, 5, 5);});
+        algoStar.crearZerling(jugador1, 5, 5);
+        assertEquals(null,mapa.obtenerCasilla(5,5).obtenerEstado().obtenerEdificio());
 
     }
 
@@ -61,7 +63,8 @@ public class CasoDeUso26Test {
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new TierraEnergizada());
         algoStar.construirAcceso(35,10);
-        assertThrows(PoblacionInsuficienteError.class, () -> {algoStar.crearDragon(jugador1, 5, 5);});
+        algoStar.crearDragon(jugador1, 5, 5);
+        assertEquals(null,mapa.obtenerCasilla(5,5).obtenerEstado().obtenerEdificio());
 
     }
 

@@ -59,4 +59,5 @@ public class Asimilador extends Entidad implements RefineriaGas, Construible, At
         tiempoConstruccion -= 1;
         vida.regenerar();
     }
+
 }

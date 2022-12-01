@@ -33,6 +33,8 @@ public class CasoDeUso30Test {
         }
         assertEquals(200,jugador1.obtenerPoblacionEnUso());
 
-        assertThrows(PoblacionInsuficienteError.class, () -> {algoStar.crearScout(jugador1, 40, 5);});
+        algoStar.crearScout(jugador1, 40, 5);
+
+        assertEquals(null,mapa.obtenerCasilla(40,5).obtenerEstado().obtenerEdificio());
     }
 }

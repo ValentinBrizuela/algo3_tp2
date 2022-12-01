@@ -51,4 +51,5 @@ public class Acceso extends Entidad implements Construible, AtacableTerrestre {
         tiempoConstruccion -= 1;
         vida.regenerar();
     }
+
 }

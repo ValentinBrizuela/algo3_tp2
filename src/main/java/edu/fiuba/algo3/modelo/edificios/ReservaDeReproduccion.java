@@ -51,4 +51,5 @@ public class ReservaDeReproduccion extends Entidad implements Construible, Ataca
         vida.regenerar();
     }
 
+
 }

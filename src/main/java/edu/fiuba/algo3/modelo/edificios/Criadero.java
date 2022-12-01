@@ -100,4 +100,5 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
         jugador.degenerarPoblacion();
     }
 
+
 }

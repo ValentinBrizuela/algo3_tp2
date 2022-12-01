@@ -71,4 +71,5 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre,Edi
         generar(new Tierra(),mapa);
         jugador.degenerarPoblacion();
     }
+
 }

@@ -15,7 +15,7 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
-public class Espiral extends Entidad implements Construible, AtacableTerrestre {
+public class Espiral extends Entidad implements AtacableTerrestre,Construible {
 
     public Espiral(Casilla casilla) {
         super(new VidaZerg(1300), 150, 100, 10, new Zerg(), casilla);
@@ -51,5 +51,6 @@ public class Espiral extends Entidad implements Construible, AtacableTerrestre {
         tiempoConstruccion -= 1;
         vida.regenerar();
     }
+
 }
 

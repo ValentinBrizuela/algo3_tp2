@@ -2,17 +2,19 @@ package edu.fiuba.algo3.modelo.juego;
 
 
 
+import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.EdificioConArea;
 import edu.fiuba.algo3.modelo.razas.Raza;
 
-import edu.fiuba.algo3.modelo.terrenos.Terreno;
 import edu.fiuba.algo3.modelo.unidades.ConsumidorDeSuministro;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Jugador {
 
-    private ArrayList<Entidad> edificiosConstruidos;
+    private ArrayList<Construible> edificiosConstruidos;
 
     private ArrayList<EdificioConArea> edificiosConAreas;
 
@@ -23,11 +25,13 @@ public class Jugador {
 
     private Poblacion poblacion;
 
+    private Map<String,Boolean> diccionario;
+
     private int posx;
     private int posy;
 
     public Jugador(String nombre, String color, Raza raza){
-        this.edificiosConstruidos= new ArrayList<Entidad>();
+        this.edificiosConstruidos= new ArrayList<Construible>();
         this.edificiosConAreas= new ArrayList<EdificioConArea>();
         this.almacen= new Almacen();
         this.almacen.almacenarMineral(200);
@@ -35,19 +39,25 @@ public class Jugador {
         this.color=color;
         this.raza=raza;
         this.poblacion=new Poblacion();
-
+        this.diccionario=new HashMap<String, Boolean>();
+        diccionario.put("ReservaDeReproduccion",false);
+        diccionario.put("Guarida",false);
+        diccionario.put("Acceso",false);
+        diccionario.put("PuertoEstelar",false);
+        diccionario.put("Espiral",false);
+        diccionario.put("Criadero",false);
     }
 
-    public boolean yaTiene(Class edificio){
-        for (Entidad e: edificiosConstruidos){
-            if (e.getClass() == edificio){
-                return true;
-            }
-        }
-        return false;
+    public boolean yaTiene(String edificio){
+
+        return diccionario.get(edificio);
     }
 
-    public void agregarEdificio(Entidad edificio){edificiosConstruidos.add(edificio);}
+    public void construyo(String edificio){
+        diccionario.put(edificio,true);
+    }
+
+    public void agregarEdificio(Construible edificio){edificiosConstruidos.add(edificio);}
 
     public void agregarEdificioConArea(EdificioConArea edificio){edificiosConAreas.add(edificio);}
 
@@ -120,12 +130,15 @@ public class Jugador {
             return false;
         }
 
-        for (Entidad edificio: edificiosConstruidos){
+        for (Construible edificio: edificiosConstruidos){
             if (!edificio.estaDestruido()){
                 return false;
             }
         }
         return true;
     }
+
+
+
 
 }

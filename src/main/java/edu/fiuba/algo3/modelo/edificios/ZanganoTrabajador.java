@@ -58,5 +58,6 @@ public class ZanganoTrabajador extends Entidad implements Mina, Construible, Ata
         vida.regenerar();
     }
 
+
 }
 

@@ -2,13 +2,8 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.*;
-import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
-import edu.fiuba.algo3.modelo.interfaces.Atacable;
-import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
-import edu.fiuba.algo3.modelo.terrenos.Moho;
-import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import edu.fiuba.algo3.modelo.unidades.*;
 
 import java.util.ArrayList;
@@ -81,21 +76,15 @@ public class AlgoStar {
     }
 
     public void ataque(Atacante atacante, Entidad atacado, Jugador jugador){
-        try {
             atacado.recibirAtaque(atacante, mapa);
             if (atacado.estaDestruido()){
                 atacado.destruir(jugador,mapa);
             }
-
-        } catch (Exception e) {
-            System.out.println("No se pudo realizar el ataque.");
-        }
-
     }
 
     public void construirGuarida(int x, int y){
         try {
-            jugadorActual.yaTiene(ReservaDeReproduccion.class);
+            jugadorActual.yaTiene("ReservaDeReproduccion");
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir una guarida necesitas una Reserva de Reproduccion. ");
         }
@@ -104,14 +93,12 @@ public class AlgoStar {
                 Casilla casilla = mapa.obtenerCasilla(x,y);
                 Guarida g = new Guarida(casilla);
                 casilla.construir(g, jugadorActual.obtenerAlmacen());
+                jugadorActual.construyo("Guarida");
                 jugadorActual.agregarEdificio(g);
 
         } catch (Exception e) {
             System.out.println("No se pudo construir la Guarida. ");
         }
-
-
-
     }
 
     public void construirCriadero(int x, int y){
@@ -119,6 +106,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x,y);
             Criadero c = new Criadero(casilla);
             casilla.construir(c, jugadorActual.obtenerAlmacen());
+            jugadorActual.construyo("Criadero");
             jugadorActual.generarPoblacion();
             jugadorActual.agregarEdificio(c);
             jugadorActual.agregarEdificioConArea(c);
@@ -148,6 +136,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             ReservaDeReproduccion r = new ReservaDeReproduccion(casilla);
             casilla.construir(r, jugadorActual.obtenerAlmacen());
+            jugadorActual.construyo("ReservaDeReproduccion");
             jugadorActual.agregarEdificio(r);
 
         } catch (Exception e){
@@ -157,7 +146,7 @@ public class AlgoStar {
 
     public void construirEspiral(int x, int y){
         try {
-            jugadorActual.yaTiene(Guarida.class);
+            jugadorActual.yaTiene("Guarida");
 
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir un Espiral necesitas una Guarida. ");
@@ -167,6 +156,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Espiral e = new Espiral(casilla);
             casilla.construir(e, jugadorActual.obtenerAlmacen());
+            jugadorActual.construyo("Espiral");
             jugadorActual.agregarEdificio(e);
 
         } catch (Exception e) {
@@ -176,7 +166,7 @@ public class AlgoStar {
 
     public void construirPuertoEstelar(int x, int y) {
         try {
-            jugadorActual.yaTiene(Acceso.class);
+            jugadorActual.yaTiene("Acceso");
 
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir un Puerto Estelar necesitas un Acceso. ");
@@ -186,6 +176,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             PuertoEstelar p = new PuertoEstelar(casilla);
             casilla.construir(p, jugadorActual.obtenerAlmacen());
+            jugadorActual.construyo("PuertoEstelar");
             jugadorActual.agregarEdificio(p);
 
         } catch (Exception e) {
@@ -198,6 +189,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Acceso a = new Acceso(casilla);
             casilla.construir(a, jugadorActual.obtenerAlmacen());
+            jugadorActual.construyo("Acceso");
             jugadorActual.agregarEdificio(a);
 
         } catch (Exception e){
@@ -213,7 +205,7 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene(ReservaDeReproduccion.class);
+            j.yaTiene("ReservaDeReproduccion");
         } catch (Exception e) {
             System.out.println("Para crear un Zerling necesitas una Reserva de Reproduccion. ");
         }
@@ -235,7 +227,7 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene(Criadero.class);
+            j.yaTiene("Criadero");
         } catch (Exception e) {
             System.out.println("Para crear un Zangano necesitas un Criadero. ");
         }
@@ -256,7 +248,7 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene(Guarida.class);
+            j.yaTiene("Guarida");
         } catch (Exception e) {
             System.out.println("Para crear un Hidralisco necesitas una Guarida. ");
         }
@@ -271,13 +263,14 @@ public class AlgoStar {
             System.out.println("No se pudo crear el Hidralisco. ");
             return null;
         }
+
     }
 
     public Mutalisco crearMutalisco(Jugador j, int x, int y){
 
         //crear logica
         try {
-            j.yaTiene(Espiral.class);
+            j.yaTiene("Espiral");
         } catch (Exception e) {
             System.out.println("Para crear un Mutalisco necesitas un Espiral. ");
         }
@@ -293,13 +286,14 @@ public class AlgoStar {
             System.out.println("No se pudo crear el Mutalisco");
             return null;
         }
+
     }
 
     public Zealot crearZealot(Jugador j, int x, int y){
 
         //crear logica
         try {
-            j.yaTiene(Acceso.class);
+            j.yaTiene("Acceso");
         } catch (Exception e){
             System.out.println("Para crear un Mutalisco necesitas un Acceso. ");
         }
@@ -314,13 +308,14 @@ public class AlgoStar {
             System.out.println("No se pudo crear el Zealot. ");
             return null;
         }
+
     }
 
     public Dragon crearDragon(Jugador j, int x, int y){
 
         //crear logica
         try {
-            j.yaTiene(Acceso.class);
+            j.yaTiene("Acceso");
         } catch (Exception e) {
             System.out.println("Para crear un Dragon necesitas un Acceso. ");
         }
@@ -342,7 +337,7 @@ public class AlgoStar {
 
         //crear logica
         try {
-            j.yaTiene(PuertoEstelar.class);
+            j.yaTiene("PuertoEstelar");
         } catch (Exception e) {
             System.out.println("Para crear un Dragon necesitas un Acceso. ");
         }

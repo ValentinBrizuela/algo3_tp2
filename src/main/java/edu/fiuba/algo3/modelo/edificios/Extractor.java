@@ -71,4 +71,5 @@ public class Extractor extends Entidad implements RefineriaGas, Construible, Ata
         vida.regenerar();
     }
 
+
 }
