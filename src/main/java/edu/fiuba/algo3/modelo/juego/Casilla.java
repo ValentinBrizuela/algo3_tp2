@@ -18,7 +18,12 @@ public class Casilla {
     }
 
     public void construir(Construible edificio, Almacen almacen){
-        estado.construir(edificio, almacen);
+        try {
+            estado.construir(edificio, almacen);
+
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public void cambiarEstado(Estado estado){

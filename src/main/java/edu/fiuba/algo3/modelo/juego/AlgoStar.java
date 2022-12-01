@@ -81,77 +81,128 @@ public class AlgoStar {
     }
 
     public void ataque(Atacante atacante, Entidad atacado, Jugador jugador){
-        atacado.recibirAtaque(atacante, mapa);
-        if (atacado.estaDestruido()){
-            atacado.destruir(jugador,mapa);
+        try {
+            atacado.recibirAtaque(atacante, mapa);
+            if (atacado.estaDestruido()){
+                atacado.destruir(jugador,mapa);
+            }
+
+        } catch (Exception e) {
+            System.out.println("No se pudo realizar el ataque.");
         }
 
     }
 
     public void construirGuarida(int x, int y){
-        if(jugadorActual.yaTiene(ReservaDeReproduccion.class)) {
-            Casilla casilla = mapa.obtenerCasilla(x,y);
-            Guarida g = new Guarida(casilla);
-            casilla.construir(g, jugadorActual.obtenerAlmacen());
-            jugadorActual.agregarEdificio(g);
-        }else{
-            throw new ConstruccionNoPermitidaError();
+        try {
+            jugadorActual.yaTiene(ReservaDeReproduccion.class);
+        } catch (ConstruccionNoPermitidaError e) {
+            System.out.println("Para construir una guarida necesitas una Reserva de Reproduccion. ");
         }
+
+        try {
+                Casilla casilla = mapa.obtenerCasilla(x,y);
+                Guarida g = new Guarida(casilla);
+                casilla.construir(g, jugadorActual.obtenerAlmacen());
+                jugadorActual.agregarEdificio(g);
+
+        } catch (Exception e) {
+            System.out.println("No se pudo construir la Guarida. ");
+        }
+
+
+
     }
 
     public void construirCriadero(int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x,y);
-        Criadero c = new Criadero(casilla);
-        casilla.construir(c, jugadorActual.obtenerAlmacen());
-        jugadorActual.generarPoblacion();
-        jugadorActual.agregarEdificio(c);
-        jugadorActual.agregarEdificioConArea(c);
-        c.actualizarTerreno(mapa);
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x,y);
+            Criadero c = new Criadero(casilla);
+            casilla.construir(c, jugadorActual.obtenerAlmacen());
+            jugadorActual.generarPoblacion();
+            jugadorActual.agregarEdificio(c);
+            jugadorActual.agregarEdificioConArea(c);
+            c.actualizarTerreno(mapa);
+
+        } catch (Exception e){
+            System.out.println("No se pudo construir el Criadero. ");
+        }
     }
 
     public void construirPilon(int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x,y);
-        Pilon p = new Pilon(casilla);
-        casilla.construir(p, jugadorActual.obtenerAlmacen());
-        jugadorActual.generarPoblacion();
-        jugadorActual.agregarEdificio(p);
-        jugadorActual.agregarEdificioConArea(p);
-        p.actualizarTerreno(mapa);
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x,y);
+            Pilon p = new Pilon(casilla);
+            casilla.construir(p, jugadorActual.obtenerAlmacen());
+            jugadorActual.generarPoblacion();
+            jugadorActual.agregarEdificio(p);
+            jugadorActual.agregarEdificioConArea(p);
+            p.actualizarTerreno(mapa);
+
+        } catch (Exception e){
+            System.out.println("No se pudo construir el Pilon. ");
+        }
     }
     public void construirReservaDeReproduccion(int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
-        ReservaDeReproduccion r = new ReservaDeReproduccion(casilla);
-        casilla.construir(r, jugadorActual.obtenerAlmacen());
-        jugadorActual.agregarEdificio(r);
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
+            ReservaDeReproduccion r = new ReservaDeReproduccion(casilla);
+            casilla.construir(r, jugadorActual.obtenerAlmacen());
+            jugadorActual.agregarEdificio(r);
+
+        } catch (Exception e){
+            System.out.println("No se pudo construir la Reserva de Reproduccion. ");
+        }
     }
 
     public void construirEspiral(int x, int y){
-        if(jugadorActual.yaTiene(Guarida.class)) {
+        try {
+            jugadorActual.yaTiene(Guarida.class);
+
+        } catch (ConstruccionNoPermitidaError e) {
+            System.out.println("Para construir un Espiral necesitas una Guarida. ");
+        }
+
+        try {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Espiral e = new Espiral(casilla);
             casilla.construir(e, jugadorActual.obtenerAlmacen());
             jugadorActual.agregarEdificio(e);
-        }else{
-            throw new ConstruccionNoPermitidaError();
+
+        } catch (Exception e) {
+            System.out.println("No se pudo construir el Espiral. ");
         }
     }
 
     public void construirPuertoEstelar(int x, int y) {
-        if(jugadorActual.yaTiene(Acceso.class)) {
+        try {
+            jugadorActual.yaTiene(Acceso.class);
+
+        } catch (ConstruccionNoPermitidaError e) {
+            System.out.println("Para construir un Puerto Estelar necesitas un Acceso. ");
+        }
+
+        try {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             PuertoEstelar p = new PuertoEstelar(casilla);
             casilla.construir(p, jugadorActual.obtenerAlmacen());
             jugadorActual.agregarEdificio(p);
-        }else{
-            throw new ConstruccionNoPermitidaError();
+
+        } catch (Exception e) {
+            System.out.println("No se pudo construir el Puerto Estelar. ");
         }
     }
 
     public void construirAcceso(int x, int y) {
-        Casilla casilla = mapa.obtenerCasilla(x, y);
-        Acceso a = new Acceso(casilla);
-        casilla.construir(a, jugadorActual.obtenerAlmacen());
-        jugadorActual.agregarEdificio(a);
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
+            Acceso a = new Acceso(casilla);
+            casilla.construir(a, jugadorActual.obtenerAlmacen());
+            jugadorActual.agregarEdificio(a);
+
+        } catch (Exception e){
+            System.out.println("No se pudo construir el Acceso. ");
+        }
     }
 
     private boolean chequearNombre(Jugador jugador){
@@ -159,119 +210,167 @@ public class AlgoStar {
     }
 
     public Zerling crearZerling(Jugador j, int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
 
         //crear logica
-        if(j.yaTiene(ReservaDeReproduccion.class)){
+        try {
+            j.yaTiene(ReservaDeReproduccion.class);
+        } catch (Exception e) {
+            System.out.println("Para crear un Zerling necesitas una Reserva de Reproduccion. ");
+        }
+
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
             Zerling z = new Zerling(casilla);
             j.verificarYConsumirSuministro(z);
             return z;
-        }
-        else{
-            throw new CreacionDeUnidadInvalida();
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Zerling. ");
+            return null;
         }
 
     }
 
     public Zangano crearZangano(Jugador j, int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
 
         //crear logica
-        if(j.yaTiene(Criadero.class)){
+        try {
+            j.yaTiene(Criadero.class);
+        } catch (Exception e) {
+            System.out.println("Para crear un Zangano necesitas un Criadero. ");
+        }
+
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
             Zangano z = new Zangano(casilla);
             j.verificarYConsumirSuministro(z);
             return z;
-        }
-        else{
-            throw new CreacionDeUnidadInvalida();
-        }
 
+        } catch (Exception e){
+            System.out.println("No se pudo crear el Zangano. ");
+            return null;
+        }
     }
 
     public Hidralisco crearHidralisco(Jugador j, int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
 
         //crear logica
-        if(j.yaTiene(Guarida.class)){
+        try {
+            j.yaTiene(Guarida.class);
+        } catch (Exception e) {
+            System.out.println("Para crear un Hidralisco necesitas una Guarida. ");
+        }
+
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
             Hidralisco h = new Hidralisco(casilla);
             j.verificarYConsumirSuministro(h);
             return h;
-        }
-        else{
-            throw new CreacionDeUnidadInvalida();
-        }
 
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Hidralisco. ");
+            return null;
+        }
     }
 
     public Mutalisco crearMutalisco(Jugador j, int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
 
         //crear logica
-        if(j.yaTiene(Espiral.class)){
+        try {
+            j.yaTiene(Espiral.class);
+        } catch (Exception e) {
+            System.out.println("Para crear un Mutalisco necesitas un Espiral. ");
+        }
+
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
             Mutalisco m = new Mutalisco(casilla);
             j.verificarYConsumirSuministro(m);
             casilla.cambiarEstado(new Ocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso(), m));
             return m;
-        }
-        else{
-            throw new CreacionDeUnidadInvalida();
-        }
 
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Mutalisco");
+            return null;
+        }
     }
 
     public Zealot crearZealot(Jugador j, int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
 
         //crear logica
-        if(j.yaTiene(Acceso.class)){
+        try {
+            j.yaTiene(Acceso.class);
+        } catch (Exception e){
+            System.out.println("Para crear un Mutalisco necesitas un Acceso. ");
+        }
+
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
             Zealot z = new Zealot(casilla);
             j.verificarYConsumirSuministro(z);
             return z;
-        }
-        else{
-            throw new CreacionDeUnidadInvalida();
-        }
 
+        } catch (Exception e){
+            System.out.println("No se pudo crear el Zealot. ");
+            return null;
+        }
     }
 
     public Dragon crearDragon(Jugador j, int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
 
         //crear logica
-        if(j.yaTiene(Acceso.class)){
+        try {
+            j.yaTiene(Acceso.class);
+        } catch (Exception e) {
+            System.out.println("Para crear un Dragon necesitas un Acceso. ");
+        }
+
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
             Dragon d = new Dragon(casilla);
             j.verificarYConsumirSuministro(d);
             return d;
-        }
-        else{
-            throw new CreacionDeUnidadInvalida();
+
+        } catch (Exception e){
+            System.out.println("No se pudo crear el Dragon. ");
+            return null;
         }
 
     }
 
     public Scout crearScout(Jugador j, int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
 
         //crear logica
-        if(j.yaTiene(PuertoEstelar.class)){
+        try {
+            j.yaTiene(PuertoEstelar.class);
+        } catch (Exception e) {
+            System.out.println("Para crear un Dragon necesitas un Acceso. ");
+        }
+
+        try {
+            Casilla casilla = mapa.obtenerCasilla(x, y);
             Scout s = new Scout(casilla);
             j.verificarYConsumirSuministro(s);
             return s;
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Scout. ");
+            return null;
         }
-        else{
-            throw new CreacionDeUnidadInvalida();
-        }
-
     }
 
     public AmoSupremo crearAmoSupremo(Jugador j, int x, int y){
-        Casilla casilla = mapa.obtenerCasilla(x, y);
+        try {
+            // crear logica
+            Casilla casilla = mapa.obtenerCasilla(x, y);
+            AmoSupremo amoSupremo = new AmoSupremo(casilla);
+            jugadorActual.generarPoblacion();
+            return amoSupremo;
 
-        //crear logica
+        } catch (Exception e){
+            System.out.println("No se pudo crear el Amo Supremo");
+            return null;
+        }
 
-        AmoSupremo amoSupremo = new AmoSupremo(casilla);
-        jugadorActual.generarPoblacion();
-        return amoSupremo;
     }
 
 }

@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
+//import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,14 +16,14 @@ public class ControlVistas {
     private Parent root;
 
     public void cambiarAVistaInicial(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("../../../../resources/VistaInicio.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("../../../../resources/VistaInicio.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
     public void cambiarAVistaJugador(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("../../../../resources/VistaJugador.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("../../../../resources/VistaJugador.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
