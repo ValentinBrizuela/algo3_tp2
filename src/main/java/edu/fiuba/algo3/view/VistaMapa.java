@@ -2,6 +2,8 @@ package edu.fiuba.algo3.view;
 
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.recursos.Geiser;
+import edu.fiuba.algo3.modelo.recursos.Mena;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
 import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
@@ -26,6 +28,7 @@ public class VistaMapa extends StackPane {
         this.getChildren().addAll(recursos, terrenos);
         try {
             dibujarTerreno();
+            dibujarRecurso();
         }
         catch (FileNotFoundException ff) {
             System.out.println("Exception " + ff.toString());
@@ -40,6 +43,7 @@ public class VistaMapa extends StackPane {
             for (int j = 0; j < algostar.mapa.tamanioMapa(); j++) {
                 Casilla casilla = algostar.mapa.obtenerCasilla(i, j);
                 Terreno recurso = casilla.obtenerTerreno();
+
                 if (recurso.getClass() == Tierra.class) {
                     ImageView imagen = new ImageView(tierra);
                     imagen.setX(i * 8);
@@ -54,6 +58,31 @@ public class VistaMapa extends StackPane {
                 }
                 if (recurso.getClass() == Espacio.class) {
                     ImageView imagen = new ImageView(espacio);
+                    imagen.setX(i * 8);
+                    imagen.setY(j * 8);
+                    recursos.getChildren().add(imagen);
+                }
+            }
+        }
+    }
+
+    public void dibujarRecurso() throws FileNotFoundException {
+        Image mina = new Image(new FileInputStream("assets/mina.png"));
+        Image geiser = new Image(new FileInputStream("assets/geiser.png"));
+
+        for (int i = 0; i < algostar.mapa.tamanioMapa(); i++) {
+            for (int j = 0; j < algostar.mapa.tamanioMapa(); j++) {
+                Casilla casilla = algostar.mapa.obtenerCasilla(i, j);
+                Recurso recurso = casilla.obtenerRecurso();
+
+                if (recurso.getClass() == Mena.class) {
+                    ImageView imagen = new ImageView(mina);
+                    imagen.setX(i * 8);
+                    imagen.setY(j * 8);
+                    recursos.getChildren().add(imagen);
+                }
+                if (recurso.getClass() == Geiser.class) {
+                    ImageView imagen = new ImageView(geiser);
                     imagen.setX(i * 8);
                     imagen.setY(j * 8);
                     recursos.getChildren().add(imagen);
