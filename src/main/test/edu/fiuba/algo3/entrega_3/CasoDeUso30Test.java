@@ -21,12 +21,12 @@ public class CasoDeUso30Test {
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         for (int i=0;i<50;i++){
-            algoStar.construirPilon(30,10+i);
+            algoStar.construirEdificio("Pilon", 30, 10+i);
         }
 
         assertEquals(200,jugador1.obtenerPoblacionUsable());
-        algoStar.construirAcceso(31,11);
-        algoStar.construirPuertoEstelar(29,11);
+        algoStar.construirEdificio("Acceso", 31, 11);
+        algoStar.construirEdificio("PuertoEstelar", 29, 11);
 
         for (int i=0;i<50;i++){
             algoStar.crearScout(jugador1,10,10+i);

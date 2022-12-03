@@ -23,10 +23,10 @@ public class CasoDeUso31Test {
         Jugador jugador1=new Jugador("camila","rojo",new Protoss());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
-        algoStar.construirPilon(36,10);
+        algoStar.construirEdificio("Pilon", 36, 10);
         Pilon pilon=(Pilon)mapa.obtenerCasilla(36,10).obtenerEstado().obtenerEdificio();
         assertEquals(5,jugador1.obtenerPoblacionUsable());
-        algoStar.construirAcceso(37,10);
+        algoStar.construirEdificio("Acceso", 37, 10);
         Dragon dragon=algoStar.crearDragon(jugador1,36,11);
         dragon.finalizarConstruccion();
         for (int i=0; i<30; i++){
@@ -43,12 +43,12 @@ public class CasoDeUso31Test {
         Jugador jugador1=new Jugador("camila","rojo",new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
-        algoStar.construirCriadero(36,10);
+        algoStar.construirEdificio("Criadero", 36, 10);
         Criadero criadero=(Criadero) mapa.obtenerCasilla(36,10).obtenerEstado().obtenerEdificio();
         assertEquals(5,jugador1.obtenerPoblacionUsable());
         //mapa.obtenerCasilla(37,10).cambiarTerreno(new Moho());
-        algoStar.construirReservaDeReproduccion(36,9);
-        algoStar.construirGuarida(37,10);
+        algoStar.construirEdificio("ReservaDeReproduccion", 36, 9);
+        algoStar.construirEdificio("Guarida", 37, 10);
         Hidralisco hidralisco=algoStar.crearHidralisco(jugador1,36,11);
         hidralisco.finalizarConstruccion();
         for (int i=0; i<50; i++){

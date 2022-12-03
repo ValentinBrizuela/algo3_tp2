@@ -29,7 +29,7 @@ public class CasoDeUso32Test {
         algoStar.registrarJugador(new Jugador("Lionel Messi", "Celeste", new Zerg()));
         algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", "Rojo", new Protoss()));
 
-        algoStar.construirCriadero(50,50);
+        algoStar.construirEdificio("Criadero", 50, 50);
         Criadero c = (Criadero) mapa.obtenerCasilla(50,50).obtenerEstado().obtenerEdificio();
         c.aplicarDanio(1000);
 
@@ -44,7 +44,7 @@ public class CasoDeUso32Test {
         algoStar.registrarJugador(new Jugador("Lionel Messi", "Celeste", new Zerg()));
         algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", "Rojo", new Protoss()));
 
-        algoStar.construirCriadero(50,50);
+        algoStar.construirEdificio("Criadero", 50, 50);
         Criadero c = (Criadero) mapa.obtenerCasilla(50,50).obtenerEstado().obtenerEdificio();
 
         assertFalse(algoStar.hayGanador());

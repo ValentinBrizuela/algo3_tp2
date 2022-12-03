@@ -29,18 +29,9 @@ public class Casilla {
     public void cambiarEstado(Estado estado){
         this.estado = estado;
     }
-
-    /*public void cambiarEdificio(Edificio edificio){
-        this.edificio = edificio;
-    }*/
-
     public void cambiarTerreno(Terreno terreno){
         estado.cambiarTerreno(terreno);
     }
-
-    /*public Edificio obtenerEdificio(){
-        return edificio;
-    }*/
 
     public Estado obtenerEstado(){
         return estado;

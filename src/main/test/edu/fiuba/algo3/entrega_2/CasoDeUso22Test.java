@@ -38,7 +38,7 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirCriadero(50,50);
+        algoStar.construirEdificio("Criadero", 50, 50);
         algoStar.crearZerling(j1, 25, 25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
@@ -72,7 +72,7 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirCriadero(50,50);
+        algoStar.construirEdificio("Criadero", 50, 50);
         algoStar.crearHidralisco(j1, 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
@@ -89,7 +89,7 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirCriadero(50,50);
+        algoStar.construirEdificio("Criadero", 50, 50);
         algoStar.crearMutalisco(j1, 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
@@ -106,7 +106,8 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirCriadero(50,50);
+        algoStar.construirEdificio("Criadero", 50, 50);
+
         algoStar.crearZealot(j1, 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
@@ -123,7 +124,7 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirCriadero(50,50);
+        algoStar.construirEdificio("Criadero", 50, 50);
         algoStar.crearDragon(j1, 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
@@ -140,7 +141,7 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirCriadero(50,50);
+        algoStar.construirEdificio("Criadero", 50, 50);
         algoStar.crearScout(j1, 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());

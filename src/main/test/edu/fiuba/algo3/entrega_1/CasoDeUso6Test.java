@@ -20,7 +20,7 @@ public class CasoDeUso6Test {
         algoStar.registrarJugador(jugador1);
         algoStar.registrarJugador(jugador2);
         //Casilla casilla = mapa.obtenerCasilla(25,25);
-        algoStar.construirCriadero(25,25);
+        algoStar.construirEdificio("Criadero", 25, 25);
 
         //Casilla casilla = mapa.obtenerCasilla(25,25);
 

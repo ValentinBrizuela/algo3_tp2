@@ -5,9 +5,6 @@ import edu.fiuba.algo3.modelo.edificios.Vida;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
-import edu.fiuba.algo3.modelo.estados.Estado;
-import edu.fiuba.algo3.modelo.interfaces.Atacable;
-import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.razas.Raza;
 

@@ -21,7 +21,7 @@ public class CasoDeUso29Test {
         jugador1.llenarArcas();
         //Criadero +5 de poblacion * 50 criaderos = 250 de poblacion
         for (int i=0;i<50;i++){
-            algoStar.construirCriadero(50,10+i);
+            algoStar.construirEdificio("Criadero", 50, 10+i);
         }
 
         assertEquals(200,jugador1.obtenerPoblacionUsable());
@@ -36,7 +36,7 @@ public class CasoDeUso29Test {
         jugador1.llenarArcas();
         //Pilon +5 de poblacion * 50 pilones = 250 de poblacion
         for (int i=0;i<50;i++){
-            algoStar.construirPilon(50,10+i);
+            algoStar.construirEdificio("Pilon", 50, 10+i);
         }
 
         assertEquals(200,jugador1.obtenerPoblacionUsable());
@@ -51,7 +51,7 @@ public class CasoDeUso29Test {
         jugador1.llenarArcas();
         //Pilon +5 de poblacion * 40 pilones = 200 de poblacion
         for (int i=0;i<40;i++){
-            algoStar.construirPilon(50,10+i);
+            algoStar.construirEdificio("Pilon", 50, 10+i);
         }
         algoStar.crearAmoSupremo(jugador1,30,30);
 

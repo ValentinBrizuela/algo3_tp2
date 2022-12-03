@@ -25,13 +25,12 @@ public class CasoDeUso9Test {
 
 
 
-
-        algoStar.construirPilon(50,50);
-        algoStar.construirPilon(50,51);
+        algoStar.construirEdificio("Pilon", 50, 50);
+        algoStar.construirEdificio("Pilon", 50, 51);
 
         Pilon pilon2=(Pilon)mapa.obtenerCasilla(50,51).obtenerEstado().obtenerEdificio();
         //Acceso acceso = new Acceso(casilla);
-        algoStar.construirAcceso(49,49);
+        algoStar.construirEdificio("Acceso", 49, 49);
 
         assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
 

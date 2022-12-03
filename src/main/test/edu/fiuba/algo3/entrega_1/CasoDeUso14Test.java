@@ -21,11 +21,8 @@ public class CasoDeUso14Test {
         algoStar.registrarJugador(jugador2);
         jugador1.llenarArcas();
 
-        algoStar.construirPilon(24,27);
-        algoStar.construirCriadero(24,23);
-
-
-
+        algoStar.construirEdificio("Pilon", 24, 27);
+        algoStar.construirEdificio("Criadero", 24, 23);
 
         assertEquals(mapa.obtenerCasilla(24, 24).obtenerEstado().obtenerTerreno().getClass(), Moho.class);
     }
@@ -41,9 +38,8 @@ public class CasoDeUso14Test {
         jugador1.llenarArcas();
 
 
-        algoStar.construirPilon(25,25);
-
-        algoStar.construirCriadero(25,29);
+        algoStar.construirEdificio("Pilon", 25, 25);
+        algoStar.construirEdificio("Criadero", 25, 29);
 
         assertEquals(mapa.obtenerCasilla(25, 25).obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
     }

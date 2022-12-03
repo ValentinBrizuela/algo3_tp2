@@ -26,7 +26,7 @@ public class CasoDeUso17Test {
         jugador1.llenarArcas();
         Casilla casilla = mapa.obtenerCasilla(50,50);
         casilla.cambiarTerreno(new Moho());
-        algoStar.construirGuarida(50,50);
+        algoStar.construirEdificio("Guarida", 50, 50);
 
         assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
@@ -43,8 +43,8 @@ public class CasoDeUso17Test {
         mapa.obtenerCasilla(50,50).cambiarTerreno(new Moho());
         mapa.obtenerCasilla(51,50).cambiarTerreno(new Moho());
 
-        algoStar.construirReservaDeReproduccion(50,50);
-        algoStar.construirGuarida(51,50);
+        algoStar.construirEdificio("ReservaDeReproduccion", 50, 50);
+        algoStar.construirEdificio("Guarida", 51, 50);
 
         assertSame(Guarida.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEdificio().getClass());
 
@@ -61,7 +61,7 @@ public class CasoDeUso17Test {
         jugador1.llenarArcas();
         Casilla casilla = mapa.obtenerCasilla(50,50);
         casilla.cambiarTerreno(new Moho());
-        algoStar.construirEspiral(50,50);
+        algoStar.construirEdificio("Espiral", 50, 50);
 
         assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
@@ -79,9 +79,9 @@ public class CasoDeUso17Test {
         mapa.obtenerCasilla(51,50).cambiarTerreno(new Moho());
         mapa.obtenerCasilla(51,51).cambiarTerreno(new Moho());
 
-        algoStar.construirReservaDeReproduccion(50,50);
-        algoStar.construirGuarida(51,50);
-        algoStar.construirEspiral(51,51);
+        algoStar.construirEdificio("ReservaDeReproduccion", 50, 50);
+        algoStar.construirEdificio("Guarida", 51, 50);
+        algoStar.construirEdificio("Espiral", 51, 51);
 
         assertSame(Espiral.class, mapa.obtenerCasilla(51,51).obtenerEstado().obtenerEdificio().getClass());
 
@@ -98,7 +98,7 @@ public class CasoDeUso17Test {
         jugador1.llenarArcas();
         Casilla casilla = mapa.obtenerCasilla(50,50);
         casilla.cambiarTerreno(new TierraEnergizada());
-        algoStar.construirPuertoEstelar(50,50);
+        algoStar.construirEdificio("PuertoEstelar", 50, 50);
 
         assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
@@ -115,8 +115,8 @@ public class CasoDeUso17Test {
         mapa.obtenerCasilla(50,50).cambiarTerreno(new TierraEnergizada());
         mapa.obtenerCasilla(51,50).cambiarTerreno(new TierraEnergizada());
 
-        algoStar.construirAcceso(50,50);
-        algoStar.construirPuertoEstelar(51,50);
+        algoStar.construirEdificio("Acceso", 50, 50);
+        algoStar.construirEdificio("PuertoEstelar", 51, 50);
 
         assertSame(PuertoEstelar.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEdificio().getClass());
     }
