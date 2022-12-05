@@ -17,8 +17,8 @@ public class ControladorJugadores implements EventHandler<ActionEvent> {
     AlgoStar algoStar;
     TextField nombreUsuario1;
     TextField nombreUsuario2;
-    Color color1;
-    Color color2;
+    ColorPicker color1;
+    ColorPicker color2;
 
     Stage stage;
 
@@ -26,17 +26,19 @@ public class ControladorJugadores implements EventHandler<ActionEvent> {
         this.algoStar = algoStar;
         this.nombreUsuario1 = jugador1;
         this.nombreUsuario2 = jugador2;
-        this.color1 = color1.getValue();
-        this.color2 = color2.getValue();
+        this.color1 = color1;
+        this.color2 = color2;
         this.stage = stage;
+
     }
     @Override
     public void handle(ActionEvent actionEvent) {
         try {
-            System.out.print(nombreUsuario1.getText());
-            System.out.print(nombreUsuario2.getText());
-            Jugador jugador1 = new Jugador(nombreUsuario1.getText(), color1, new Zerg());
-            Jugador jugador2 = new Jugador(nombreUsuario2.getText(), color2, new Protoss());
+            System.out.print(color1);
+            System.out.print(color2);
+            Jugador jugador1 = new Jugador(nombreUsuario1.getText(), color1.getValue(), new Zerg());
+            Jugador jugador2 = new Jugador(nombreUsuario2.getText(), color2.getValue(), new Protoss());
+
             algoStar.registrarJugadores(jugador1, jugador2);
             ((Button)actionEvent.getSource()).getScene().setRoot(new VistaMapa(algoStar, stage));
         } catch (Exception e) {
