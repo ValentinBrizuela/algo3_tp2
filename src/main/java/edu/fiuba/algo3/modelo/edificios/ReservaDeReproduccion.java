@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -14,14 +15,17 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReservaDeReproduccion extends Entidad implements Construible, AtacableTerrestre {
 
     public ReservaDeReproduccion(Casilla casilla) {
-        super(new VidaZerg(1000), 150, 0, 12, new Zerg(), casilla);
+        super(new VidaZerg(1000), new ArrayList<>(List.of(new CostoMineral(150))), 12, new Zerg(), casilla);
     }
 
     public void construir(Moho moho, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(moho, casilla.obtenerRecurso(), this));
     }
 

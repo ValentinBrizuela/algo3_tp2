@@ -1,11 +1,14 @@
 package edu.fiuba.algo3.modelo.unidades;
 
+import edu.fiuba.algo3.modelo.costos.Costo;
 import edu.fiuba.algo3.modelo.edificios.Vida;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.razas.Raza;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
+
+import java.util.ArrayList;
 
 public abstract class Unidad extends Entidad {
 
@@ -14,8 +17,8 @@ public abstract class Unidad extends Entidad {
     private int costoSuministro;
 
 
-    public Unidad(Vida vida, int costoMineral, int costoGas, int tiempoConstruccion, Raza raza, Casilla casilla, TipoDeUnidad tipo){
-        super(vida, costoMineral, costoGas, tiempoConstruccion, raza, casilla);
+    public Unidad(Vida vida, ArrayList<Costo> costos, int tiempoConstruccion, Raza raza, Casilla casilla, TipoDeUnidad tipo){
+        super(vida, costos, tiempoConstruccion, raza, casilla);
         tipoUnidad = tipo;
     }
 

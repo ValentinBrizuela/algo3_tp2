@@ -43,9 +43,9 @@ public class Poblacion {
         capacidad-=5;
     }
 
-    public void utilizarPoblacion(int cantidadARestar){
+    public void utilizarPoblacion(int suministroConsumido){
 
-        capacidadEnUso+=cantidadARestar;
+        capacidadEnUso += suministroConsumido;
     }
 
 

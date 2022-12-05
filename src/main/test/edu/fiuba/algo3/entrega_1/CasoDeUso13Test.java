@@ -14,7 +14,7 @@ public class CasoDeUso13Test {
     public void criaderoSeDestruyeYElMohoSigueEstando() {
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
-        almacen.almacenarMineral(100);
+        almacen.almacenarMineral(500);
         Casilla casilla = mapa.obtenerCasilla(25,25);
         assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), Tierra.class);
 

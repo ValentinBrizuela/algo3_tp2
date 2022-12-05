@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
+import edu.fiuba.algo3.modelo.costos.CostoGas;
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
@@ -10,12 +12,15 @@ import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Devorador extends Unidad implements Atacante, AtacableAereo {
     private int rangoAtaque;
     private int danio;
 
     public Devorador(Casilla casilla){
-        super(new VidaZerg(200), 150, 50, 4, new Zerg(), casilla, new UnidadAerea());
+        super(new VidaZerg(200), new ArrayList<>(List.of(new CostoMineral(150), new CostoGas(50))), 4, new Zerg(), casilla, new UnidadAerea());
         this.rangoAtaque = 5;
         this.danio = 15;
     }
@@ -43,6 +48,6 @@ public class Devorador extends Unidad implements Atacante, AtacableAereo {
     }
 
     public void crear(Almacen almacen){
-        almacen.cobrar(costo);
+        this.cobrar(almacen);
     }
 }

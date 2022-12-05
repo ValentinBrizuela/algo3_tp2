@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.Costo;
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -16,10 +18,13 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NexoMineral extends Entidad implements Mina, Construible, AtacableTerrestre {
 
     public NexoMineral(Casilla casilla) {
-        super(new VidaProtoss(250, 250), 50, 0, 4, new Protoss(), casilla);
+        super(new VidaProtoss(250, 250), new ArrayList<>(List.of(new CostoMineral(50))), 4, new Protoss(), casilla);
 
     }
     public void extraerMineral(Almacen almacen, Mena mena) {
@@ -29,12 +34,12 @@ public class NexoMineral extends Entidad implements Mina, Construible, AtacableT
 
     @Override
     public void construir(Tierra tierra, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(new TierraEnergizada(), new RecursoVacio(), this));
     }
 
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(tierraEnergizada, casilla.obtenerRecurso(), this));
     }
 

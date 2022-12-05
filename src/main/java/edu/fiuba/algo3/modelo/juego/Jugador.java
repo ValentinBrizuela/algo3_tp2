@@ -29,7 +29,7 @@ public class Jugador {
 
     private Poblacion poblacion;
 
-    private Map<String,Boolean> diccionario;
+    private Map<String,Boolean> diccEdificios;
 
     private int posx;
     private int posy;
@@ -47,22 +47,22 @@ public class Jugador {
         this.color=color;
         this.raza=raza;
         this.poblacion=new Poblacion();
-        this.diccionario=new HashMap<String, Boolean>();
-        diccionario.put("ReservaDeReproduccion",false);
-        diccionario.put("Guarida",false);
-        diccionario.put("Acceso",false);
-        diccionario.put("PuertoEstelar",false);
-        diccionario.put("Espiral",false);
-        diccionario.put("Criadero",false);
+        this.diccEdificios=new HashMap<String, Boolean>();
+        diccEdificios.put("ReservaDeReproduccion",false);
+        diccEdificios.put("Guarida",false);
+        diccEdificios.put("Acceso",false);
+        diccEdificios.put("PuertoEstelar",false);
+        diccEdificios.put("Espiral",false);
+        diccEdificios.put("Criadero",false);
     }
 
     public boolean yaTiene(String edificio){
 
-        return diccionario.get(edificio);
+        return diccEdificios.get(edificio);
     }
 
     public void construyo(String edificio){
-        diccionario.put(edificio,true);
+        diccEdificios.put(edificio,true);
     }
 
     public void agregarEdificio(Construible edificio){edificiosConstruidos.add(edificio);}

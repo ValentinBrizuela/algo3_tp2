@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
@@ -13,6 +14,9 @@ import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Criadero extends Entidad implements Construible, AtacableTerrestre, EdificioConArea {
     private int cantidadLarvas;
 
@@ -24,7 +28,7 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
 
     public Criadero(Casilla casilla){
 
-        super(new VidaZerg(500), 50, 0, 4, new Zerg(), casilla);
+        super(new VidaZerg(500), new ArrayList<>(List.of(new CostoMineral(200))), 4, new Zerg(), casilla);
         this.cantidadLarvas = 3;
         this.casilla = casilla;
         this.rango = 5;
@@ -69,13 +73,13 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
 
     @Override
     public void construir(Moho moho, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(new Moho(), new RecursoVacio(), this)); //Cambiar esto
     }
 
     @Override
     public void construir(Tierra tierra, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(new Moho(), new RecursoVacio(), this)); //Cambiar esto
     }
 

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
+import edu.fiuba.algo3.modelo.costos.CostoGas;
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -9,6 +11,9 @@ import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class    Hidralisco extends Unidad implements Atacante, AtacableTerrestre, ConsumidorDeSuministro {
 
     private int rangoAtaque;
@@ -17,7 +22,7 @@ public class    Hidralisco extends Unidad implements Atacante, AtacableTerrestre
     private int costoSuministro;
 
     public Hidralisco(Casilla casilla){
-        super(new VidaZerg(80), 75, 25, 4, new Zerg(), casilla,new UnidadTerrestre());
+        super(new VidaZerg(80), new ArrayList<>(List.of(new CostoMineral(75), new CostoGas(25))), 4, new Zerg(), casilla,new UnidadTerrestre());
         this.rangoAtaque = 4;
         this.danioAereo = 10;
         this.danioTerrestre = 10;

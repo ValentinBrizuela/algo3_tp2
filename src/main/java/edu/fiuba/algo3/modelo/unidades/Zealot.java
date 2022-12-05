@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.unidades;
 
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.VidaProtoss;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.errores.ZealotInvisibleError;
@@ -11,6 +12,9 @@ import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Zealot extends Unidad implements Atacante, AtacableTerrestre, ConsumidorDeSuministro {
 
     private int rangoAtaque;
@@ -20,7 +24,7 @@ public class Zealot extends Unidad implements Atacante, AtacableTerrestre, Consu
     private int cantMuertes;
 
     public Zealot(Casilla casilla){
-        super(new VidaProtoss(100, 60), 100, 0, 4, new Protoss(), casilla,new UnidadTerrestre());
+        super(new VidaProtoss(100, 60), new ArrayList<>(List.of(new CostoMineral(100))), 4, new Protoss(), casilla,new UnidadTerrestre());
         this.rangoAtaque = 1;
         this.danio = 8;
         this.costoSuministro=2;

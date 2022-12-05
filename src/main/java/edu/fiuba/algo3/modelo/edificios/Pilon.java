@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
@@ -9,11 +10,14 @@ import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.terrenos.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pilon extends Entidad implements Construible, AtacableTerrestre,EdificioConArea {
     private int rango;
 
     public Pilon(Casilla casilla) {
-        super(new VidaProtoss(300, 300), 100, 0, 5, new Protoss(), casilla);
+        super(new VidaProtoss(300, 300), new ArrayList<>(List.of(new CostoMineral(100))), 5, new Protoss(), casilla);
         this.rango = 3;
 
     }
@@ -35,13 +39,13 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre,Edi
     }
 
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(tierraEnergizada, casilla.obtenerRecurso(), this));
     }
 
     @Override
     public void construir(Tierra tierra, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(tierra, casilla.obtenerRecurso(), this));
     }
 

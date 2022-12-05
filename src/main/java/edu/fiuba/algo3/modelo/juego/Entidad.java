@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.juego;
 
-import edu.fiuba.algo3.modelo.edificios.Costo;
+import edu.fiuba.algo3.modelo.costos.Costo;
+import edu.fiuba.algo3.modelo.costos.CostoGas;
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.Vida;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
@@ -8,21 +10,32 @@ import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.razas.Raza;
 
+import java.util.ArrayList;
+
 public abstract class Entidad {
-    protected Costo costo;
+    protected ArrayList<Costo> costos;
     protected int tiempoConstruccion;
     protected Raza raza;
     protected Casilla casilla;
     protected Vida vida;
 
-    public Entidad(Vida vida, int costoMineral, int costoGas, int tiempoConstruccion, Raza raza, Casilla casilla){
+    public Entidad(Vida vida, ArrayList<Costo> costos, int tiempoConstruccion, Raza raza, Casilla casilla){
         this.vida = vida;
-        this.costo = new Costo(costoMineral, costoGas);
+        this.costos = costos;
         this.tiempoConstruccion = tiempoConstruccion;
         this.raza = raza;
         this.casilla = casilla;
     }
 
+    /*private void setearCostos(int costoMineral, int costoGas){
+        if (costoMineral != 0){
+            costos.add(new CostoMineral(costoMineral));
+        }
+
+        if (costoGas != 0){
+            costos.add(new CostoGas(costoGas));
+        }
+    }*/
     public boolean estaDestruido() {
         return vida.obtenerVida() <= 0;
     }
@@ -71,4 +84,13 @@ public abstract class Entidad {
         casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
     }
 
+    public void cobrar(Almacen almacen){
+        for (Costo costo: costos){
+            costo.meAlcanza(almacen);
+        }
+
+        for (Costo costo: costos){
+            costo.cobrar(almacen);
+        }
+    }
 }

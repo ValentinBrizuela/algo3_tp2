@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.CostoGas;
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -14,15 +16,18 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Espiral extends Entidad implements AtacableTerrestre,Construible {
 
     public Espiral(Casilla casilla) {
-        super(new VidaZerg(1300), 150, 100, 10, new Zerg(), casilla);
+        super(new VidaZerg(1300), new ArrayList<>(List.of(new CostoMineral(150), new CostoGas(100))), 10, new Zerg(), casilla);
     }
 
     @Override
     public void construir(Moho moho, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(moho, casilla.obtenerRecurso(), this));
     }
 
