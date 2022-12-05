@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,7 +24,8 @@ public class VistaMapa extends StackPane {
     private Pane recursos = new Pane();
     private Pane terrenos = new Pane();
 
-    public VistaMapa(AlgoStar algoStar) {
+    public VistaMapa(AlgoStar algoStar, Stage stage) {
+        stage.setFullScreen(true);
         this.algostar = algoStar;
         this.getChildren().addAll(recursos, terrenos);
         try {

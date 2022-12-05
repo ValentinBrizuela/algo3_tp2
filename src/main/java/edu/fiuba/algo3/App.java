@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import edu.fiuba.algo3.view.VistaInicio;
+import javafx.stage.StageStyle;
 
 /**
  * JavaFX App
@@ -18,7 +19,9 @@ public class App extends Application {
 
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
-        var scene = new Scene(new VistaInicio(algoStar));
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
+        var scene = new Scene(new VistaInicio(algoStar, stage));
         stage.getIcons().add(new Image("icon.png"));
         stage.setScene(scene);
         stage.show();

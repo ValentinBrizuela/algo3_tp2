@@ -5,11 +5,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.*;
+import javafx.stage.Stage;
 
 public class VistaInicio extends VBox {
 
 
-    public VistaInicio(AlgoStar algoStar) {
+    public VistaInicio(AlgoStar algoStar, Stage stage) {
         Label etiquetaVehiculo = new Label();
         etiquetaVehiculo.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
         etiquetaVehiculo.setText("Algo Star:");
@@ -19,7 +20,7 @@ public class VistaInicio extends VBox {
         botonJugar.setText("Jugar");
         botonJugar.relocate(225, 250);
         botonJugar.setOnAction((event) -> {
-            ((Button)event.getSource()).getScene().setRoot(new VistaJugadores(algoStar));
+            ((Button)event.getSource()).getScene().setRoot(new VistaJugadores(algoStar, stage));
         });
 
         Pane pane = new Pane(etiquetaVehiculo, botonJugar);

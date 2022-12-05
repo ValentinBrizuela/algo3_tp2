@@ -1,0 +1,23 @@
+.combo-box
+ {
+  -fx-background-image:url("people_button.jpg");
+  -fx-text-fill: red;
+  -fx-min-width: 128;
+  -fx-min-height: 48;
+
+ }
+.combo-box-popup .list-view
+ {
+   -fx-background-color: -fx-box-border, -fx-control-inner-background;
+   -fx-background-insets: 0, 1;
+   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+ }
+.combo-box-popup .list-view .list-cell
+ {
+-fx-background-color: #ececec;
+-fx-text-fill: #9a9a9a;
+-fx-font-family: Oxygen Light;
+ }
+ .combo-box-popup .list-view .list-cell:hover {
+     -fx-text-fill: red;
+ }
