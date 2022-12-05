@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
+import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +20,7 @@ public class CasoDeUso17Test {
     public void test01UnaGuaridaNoSePuedeConstruirSiNoHayYaConstruidaUnaReservaDeReproduccion(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
-        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        Jugador jugador1=new Jugador("andres", Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -35,7 +36,7 @@ public class CasoDeUso17Test {
     public void test02UnaGuaridaSePuedeConstruirSiAntesSeConstruyoUnaReservaDeReproduccion(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
-        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -54,7 +55,7 @@ public class CasoDeUso17Test {
     public void test03UnEspiralNoSePuedeConstruirSiNoHayYaConstruidaUnaGuarida(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
-        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -70,7 +71,7 @@ public class CasoDeUso17Test {
     public void test04UnEspiralSePuedeConstruirSiAntesSeConstruyoUnaGuarida(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
-        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -91,7 +92,7 @@ public class CasoDeUso17Test {
     public void test05UnPuertoEstelarNoSePuedeConstruirSiNoHayYaConstruidoUnAcceso(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
-        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -107,7 +108,7 @@ public class CasoDeUso17Test {
     public void test06UnPuertoEstelarSePuedeConstruirSiHayYaConstruidoUnAcceso(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
-        Jugador jugador1=new Jugador("andres","rojo",new Protoss());
+        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 

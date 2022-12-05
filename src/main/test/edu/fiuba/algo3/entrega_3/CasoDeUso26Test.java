@@ -10,6 +10,7 @@ import edu.fiuba.algo3.modelo.razas.Zerg;
 ;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
+import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,7 +26,7 @@ public class CasoDeUso26Test {
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        Jugador jugador1=new Jugador("camila", Color.RED,new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());
@@ -40,7 +41,7 @@ public class CasoDeUso26Test {
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        Jugador jugador1=new Jugador("camila",Color.BLUE,new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
 
@@ -58,7 +59,7 @@ public class CasoDeUso26Test {
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila","rojo",new Protoss());
+        Jugador jugador1=new Jugador("camila",Color.RED,new Protoss());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new TierraEnergizada());
@@ -73,7 +74,7 @@ public class CasoDeUso26Test {
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        Jugador jugador1=new Jugador("camila",Color.RED,new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         algoStar.construirEdificio("Pilon", 36, 10);
@@ -88,7 +89,7 @@ public class CasoDeUso26Test {
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila","rojo",new Zerg());
+        Jugador jugador1=new Jugador("camila",Color.RED,new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         algoStar.crearAmoSupremo(jugador1,36,10);
