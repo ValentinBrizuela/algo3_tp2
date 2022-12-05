@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.errores.ExtractorLlenoError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
@@ -16,12 +17,15 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Extractor extends Entidad implements RefineriaGas, Construible, AtacableTerrestre {
 
     private int cantZanganos;
 
     public Extractor(Casilla casilla){
-        super(new VidaZerg(750),100, 0, 6, new Zerg(), casilla);
+        super(new VidaZerg(750),new ArrayList<>(List.of(new CostoMineral(100))), 6, new Zerg(), casilla);
         cantZanganos = 0;
     }
 
@@ -40,7 +44,7 @@ public class Extractor extends Entidad implements RefineriaGas, Construible, Ata
     }
 
     public void construir(Moho moho, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(moho, casilla.obtenerRecurso(), this));
     }
 

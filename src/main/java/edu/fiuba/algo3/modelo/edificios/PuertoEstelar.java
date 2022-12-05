@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.CostoGas;
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -14,14 +16,17 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PuertoEstelar extends Entidad implements Construible, AtacableTerrestre {
 
     public PuertoEstelar(Casilla casilla) {
-        super(new VidaProtoss(600, 600), 150, 150, 10, new Protoss(), casilla);
+        super(new VidaProtoss(600, 600), new ArrayList<>(List.of(new CostoMineral(150), new CostoGas(150))), 10, new Protoss(), casilla);
     }
 
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(tierraEnergizada, casilla.obtenerRecurso(), this));
     }
 

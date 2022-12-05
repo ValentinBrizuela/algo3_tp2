@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.CostoGas;
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -14,11 +16,16 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Guarida extends Entidad implements Construible, AtacableTerrestre {
-    public Guarida(Casilla casilla) {super(new VidaZerg(1250), 200, 100, 12, new Zerg(), casilla);}
+    public Guarida(Casilla casilla) {
+        super(new VidaZerg(1250), new ArrayList<>(List.of(new CostoMineral(200), new CostoGas(100))), 12, new Zerg(), casilla);
+    }
 
     public void construir(Moho moho, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(moho, casilla.obtenerRecurso(), this));
     }
 

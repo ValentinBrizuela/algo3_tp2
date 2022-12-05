@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.edificios;
 
+import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -14,10 +15,13 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Acceso extends Entidad implements Construible, AtacableTerrestre {
 
     public Acceso(Casilla casilla) {
-        super(new VidaProtoss(500, 500), 150,0, 8, new Protoss(), casilla);
+        super(new VidaProtoss(500, 500), new ArrayList<>(List.of(new CostoMineral(150))), 8, new Protoss(), casilla);
     }
 
     @Override
@@ -32,7 +36,7 @@ public class Acceso extends Entidad implements Construible, AtacableTerrestre {
 
     @Override
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
-        almacen.cobrar(this.costo);
+        this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(tierraEnergizada, casilla.obtenerRecurso(), this));
     }
 
