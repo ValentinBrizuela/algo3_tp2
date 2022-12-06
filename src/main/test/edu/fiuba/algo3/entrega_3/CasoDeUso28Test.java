@@ -2,6 +2,7 @@ package edu.fiuba.algo3.entrega_3;
 
 import edu.fiuba.algo3.modelo.errores.ZealotInvisibleError;
 import edu.fiuba.algo3.modelo.estados.EstadoMock;
+import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.unidades.AmoSupremo;
@@ -20,6 +21,8 @@ public class CasoDeUso28Test {
     @Test
     public void noSePuedeAtacarZealotEstandoInvisible() {
         Mapa mapa = new Mapa(2);
+        Almacen a=new Almacen();
+        a.almacenarMineral(100000);
 
         Casilla casilla1 = mapa.obtenerCasilla(50, 50);
         Casilla casilla2 = mapa.obtenerCasilla(51, 50);
@@ -29,9 +32,9 @@ public class CasoDeUso28Test {
 
         Zealot zealot = new Zealot(casilla1);
         zealot.finalizarConstruccion();
-        Zangano z1 = new Zangano(casilla2);
-        Zangano z2 = new Zangano(casilla3);
-        Zangano z3 = new Zangano(casilla4);
+        Zangano z1 = new Zangano(casilla2,a );
+        Zangano z2 = new Zangano(casilla3, a);
+        Zangano z3 = new Zangano(casilla4, a);
         Zerling zerling = new Zerling(casilla5);
         zerling.finalizarConstruccion();
 
@@ -52,6 +55,8 @@ public class CasoDeUso28Test {
     @Test
     public void SePuedeAtacarZealotEstandoInvisibleCuandoHayAmoSupremoEnRango() {
         Mapa mapa = new Mapa(2);
+        Almacen a=new Almacen();
+        a.almacenarMineral(100000);
         Casilla casilla1 = mapa.obtenerCasilla(50, 50);
         Casilla casilla2 = mapa.obtenerCasilla(51, 50);
         Casilla casilla3 = mapa.obtenerCasilla(50, 51);
@@ -65,9 +70,9 @@ public class CasoDeUso28Test {
 
         Zealot zealot = new Zealot(casilla1);
         zealot.finalizarConstruccion();
-        Zangano z1 = new Zangano(casilla2);
-        Zangano z2 = new Zangano(casilla3);
-        Zangano z3 = new Zangano(casilla4);
+        Zangano z1 = new Zangano(casilla2, a);
+        Zangano z2 = new Zangano(casilla3, a);
+        Zangano z3 = new Zangano(casilla4, a);
         Zerling zerling = new Zerling(casilla5);
         zerling.finalizarConstruccion();
 

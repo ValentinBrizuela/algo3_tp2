@@ -16,15 +16,18 @@ public class CasoDeUso21Test {
     @Test
     public void unMutaliscoNoPuedeEvolucionarAGuardianSiNoHayRecursosSuficientes(){
         Mapa mapa= new Mapa(2);
-        Casilla casilla = mapa.obtenerCasilla(5,5);
+        Almacen a=new Almacen();
+        a.almacenarMineral(100);
+        a.almacenarGas(100);
+        Casilla casilla = mapa.obtenerCasilla(15,15);
         Mutalisco mutalisco = new Mutalisco(casilla);
-        Almacen almacen = new Almacen();
+        casilla.construir(mutalisco,a);
 
         for (int i=0; i<25; i++){
             mutalisco.avanzarTurno();
         }
 
-        assertThrows(RecursosInsuficientesError.class, () -> {mutalisco.evolucionarAGuardian(almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {mutalisco.evolucionarAGuardian(a);});
 
 
     }
@@ -34,7 +37,10 @@ public class CasoDeUso21Test {
     @Test
     public void unMutaliscoSePuedeEvolucionarAGuardianSiHayRecursosSuficientes(){
         Mapa mapa= new Mapa(2);
-        Casilla casilla = mapa.obtenerCasilla(5,5);
+        Almacen a=new Almacen();
+        a.almacenarMineral(10000);
+        a.almacenarGas(10000);
+        Casilla casilla = mapa.obtenerCasilla(15,15);
         Mutalisco mutalisco = new Mutalisco(casilla);
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(500);

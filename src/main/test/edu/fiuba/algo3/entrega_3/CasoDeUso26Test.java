@@ -31,7 +31,7 @@ public class CasoDeUso26Test {
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());
         algoStar.construirEdificio("ReservaDeReproduccion", 35, 10);
-        algoStar.crearZerling(jugador1, 5, 5);
+        algoStar.crearZerling(jugador1, 25, 25);
         assertEquals(null,mapa.obtenerCasilla(5,5).obtenerEstado().obtenerEdificio());
 
     }
@@ -79,7 +79,7 @@ public class CasoDeUso26Test {
         jugador1.llenarArcas();
         algoStar.construirEdificio("Pilon", 36, 10);
         algoStar.construirEdificio("Acceso", 35, 10);
-        algoStar.crearDragon(jugador1, 5, 5);
+        algoStar.crearDragon(jugador1, 25, 25);
         assertEquals(2,jugador1.obtenerPoblacionUsable());
 
     }

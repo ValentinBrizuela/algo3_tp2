@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
+import edu.fiuba.algo3.modelo.unidades.Unidad;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 public abstract class Estado {
     protected Terreno terreno;
@@ -12,6 +14,8 @@ public abstract class Estado {
     protected Entidad entidad;
 
     public abstract void construir(Construible edificio, Almacen almacen);
+
+    public abstract void sustituirUnidad(Unidad unidad,Almacen almacen);
 
     public abstract void avanzarTurno();
 
@@ -39,5 +43,9 @@ public abstract class Estado {
     public abstract void estaLibre();
 
     public abstract boolean tieneEntidad(Class entidad);
+
+    public void intentarExtraerMineral(Almacen almacen, Zangano zangano){
+        recurso.intentarExtraerMineral(almacen,zangano);
+    }
 
 }

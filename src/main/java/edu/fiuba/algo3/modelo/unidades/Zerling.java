@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.unidades;
 
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
+import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.interfaces.*;
@@ -12,7 +13,7 @@ import edu.fiuba.algo3.modelo.razas.Zerg;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zerling extends Unidad implements Atacante, AtacableTerrestre, ConsumidorDeSuministro {
+public class Zerling extends Unidad implements Atacante, AtacableTerrestre, ConsumidorDeSuministro, Construible {
 
     private int rangoAtaque;
     private int danio;

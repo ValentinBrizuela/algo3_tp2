@@ -80,8 +80,8 @@ public class Jugador {
     }
 
     public void llenarArcas(){
-        almacen.almacenarMineral(10000);
-        almacen.almacenarGas(10000);
+        almacen.almacenarMineral(1000000);
+        almacen.almacenarGas(1000000);
     }
 
     public boolean sosIgualA(Jugador jugador){

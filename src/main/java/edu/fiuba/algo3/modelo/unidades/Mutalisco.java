@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.unidades;
 
 import edu.fiuba.algo3.modelo.costos.CostoGas;
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
+import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
 import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -15,13 +16,14 @@ import edu.fiuba.algo3.modelo.razas.Zerg;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mutalisco extends Unidad  implements Atacante, AtacableAereo, ConsumidorDeSuministro {
+public class Mutalisco extends Unidad  implements Atacante, AtacableAereo, ConsumidorDeSuministro, Construible {
 
 
     private int rangoAtaque;
     private int danioTerrestre;
     private int danioAereo;
     private int costoSuministro;
+
 
     public Mutalisco(Casilla casilla){
         super(new VidaZerg(120), new ArrayList<>(List.of(new CostoMineral(100), new CostoGas(100))), 7, new Zerg(), casilla, new UnidadAerea());
@@ -49,8 +51,8 @@ public class Mutalisco extends Unidad  implements Atacante, AtacableAereo, Consu
 
     public Guardian evolucionarAGuardian(Almacen almacen) {
         esUsable();
-        Guardian guardian=new Guardian(casilla);
-        guardian.crear(almacen);
+        Guardian guardian=new Guardian(casilla, almacen);
+        //guardian.crear(almacen);
 
         return guardian;
 
@@ -58,8 +60,8 @@ public class Mutalisco extends Unidad  implements Atacante, AtacableAereo, Consu
 
     public Devorador evolucionarADevorador(Almacen almacen) {
         esUsable();
-        Devorador devorador = new Devorador(casilla);
-        devorador.crear(almacen);
+        Devorador devorador = new Devorador(casilla,almacen );
+        //devorador.crear(almacen);
 
         return devorador;
 

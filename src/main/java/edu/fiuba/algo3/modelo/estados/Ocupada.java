@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
+import edu.fiuba.algo3.modelo.unidades.Unidad;
 
 public class Ocupada extends Estado {
 
@@ -17,6 +18,11 @@ public class Ocupada extends Estado {
 
     public void construir(Construible edificio, Almacen almacen){
         throw new CasillaOcupadaError();
+    }
+
+    public void sustituirUnidad(Unidad unidad,Almacen almacen){
+        unidad.construir(terreno,almacen);
+        entidad=unidad;
     }
 
     public void avanzarTurno() {

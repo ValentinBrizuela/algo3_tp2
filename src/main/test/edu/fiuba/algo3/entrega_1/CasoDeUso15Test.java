@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.edificios.NexoMineral;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.unidades.Zangano;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.recursos.Mena;
@@ -107,23 +108,25 @@ public class CasoDeUso15Test {
 
     @Test
     public void test06UnZanganoDejaDeExtraerMineralesCuandoLaMinaSeAgota(){
-
+        Almacen a=new Almacen();
+        a.almacenarMineral(25);
         Mena mena=new Mena();
         //vacio la mena
         mena.extraer(2000);
-        Casilla casilla = new Casilla(0,0,new Moho(), mena);
-        Almacen almacen= new Almacen();
-        almacen.almacenarMineral(0);
-        Zangano zangano= new Zangano(casilla);
 
-        for (int i=0; i<25; i++){
-            zangano.avanzarTurno();
-        }
+        Casilla casilla = new Casilla(20,20,new Moho(), mena);
 
-        zangano.asentarseEnMena(casilla,almacen);
-        zangano.extraerMineral(almacen,mena);
+        Zangano zangano= new Zangano(casilla, a);
+        casilla.construir(zangano,a);
 
-        assertEquals(0,almacen.cantMineral());
+        //se construye
+        zangano.avanzarTurno();
+
+        //se intenta extraer
+        zangano.avanzarTurno();
+
+
+        assertEquals(0,a.cantMineral());
 
     }
 }

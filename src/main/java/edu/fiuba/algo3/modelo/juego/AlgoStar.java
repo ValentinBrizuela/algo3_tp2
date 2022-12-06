@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.*;
-import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 
 import edu.fiuba.algo3.modelo.unidades.*;
@@ -120,6 +119,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Zerling z = new Zerling(casilla);
             j.verificarYConsumirSuministro(z);
+            casilla.construir(z,jugadorActual.obtenerAlmacen());
             return z;
 
         } catch (Exception e) {
@@ -143,8 +143,9 @@ public class AlgoStar {
 
         try {
             Casilla casilla = mapa.obtenerCasilla(x, y);
-            Zangano z = new Zangano(casilla);
+            Zangano z = new Zangano(casilla,jugadorActual.obtenerAlmacen() );
             j.verificarYConsumirSuministro(z);
+            casilla.construir(z,jugadorActual.obtenerAlmacen());
             return z;
 
         } catch (Exception e){
@@ -169,6 +170,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Hidralisco h = new Hidralisco(casilla);
             j.verificarYConsumirSuministro(h);
+            casilla.construir(h,jugadorActual.obtenerAlmacen());
             return h;
 
         } catch (Exception e) {
@@ -194,7 +196,8 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Mutalisco m = new Mutalisco(casilla);
             j.verificarYConsumirSuministro(m);
-            casilla.cambiarEstado(new Ocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso(), m));
+            casilla.construir(m,jugadorActual.obtenerAlmacen());
+            //casilla.cambiarEstado(new Ocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso(), m));
             return m;
 
         } catch (Exception e) {
@@ -220,6 +223,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Zealot z = new Zealot(casilla);
             j.verificarYConsumirSuministro(z);
+            casilla.construir(z,jugadorActual.obtenerAlmacen());
             return z;
 
         } catch (Exception e){
@@ -245,6 +249,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Dragon d = new Dragon(casilla);
             j.verificarYConsumirSuministro(d);
+            casilla.construir(d,jugadorActual.obtenerAlmacen());
             return d;
 
         } catch (Exception e){
@@ -270,6 +275,7 @@ public class AlgoStar {
             Casilla casilla = mapa.obtenerCasilla(x, y);
             Scout s = new Scout(casilla);
             j.verificarYConsumirSuministro(s);
+            casilla.construir(s,jugadorActual.obtenerAlmacen());
             return s;
         } catch (Exception e) {
             System.out.println("No se pudo crear el Scout. ");

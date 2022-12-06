@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
+import edu.fiuba.algo3.modelo.unidades.Unidad;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 public class Casilla {
     private final int posX;
@@ -20,6 +22,16 @@ public class Casilla {
     public void construir(Construible edificio, Almacen almacen){
         try {
             estado.construir(edificio, almacen);
+
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+
+    public void sustituirUnidad(Unidad unidad,Almacen almacen){
+        try {
+            estado.sustituirUnidad(unidad, almacen);
 
         } catch (Exception e) {
             throw e;
@@ -71,5 +83,9 @@ public class Casilla {
 
     public void estaLibre(){
         estado.estaLibre();
+    }
+
+    public void intentarExtraerMineral(Almacen almacen, Zangano zangano){
+        estado.intentarExtraerMineral(almacen,zangano);
     }
 }

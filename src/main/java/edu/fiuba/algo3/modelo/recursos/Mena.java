@@ -3,6 +3,10 @@ package edu.fiuba.algo3.modelo.recursos;
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.NoHayMenaEnLaCasillaError;
+import edu.fiuba.algo3.modelo.juego.Almacen;
+import edu.fiuba.algo3.modelo.unidades.Unidad;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 public class Mena implements Recurso {
     private int cant;
@@ -16,6 +20,7 @@ public class Mena implements Recurso {
         }
     }
 
+
     public int extraer(int cant) {
         if (this.cant - cant >= 0) {
             this.cant -= cant;
@@ -28,5 +33,9 @@ public class Mena implements Recurso {
             return restante;
         }
         return 0;
+    }
+
+    public void intentarExtraerMineral(Almacen almacen, Zangano zangano){
+        zangano.extraerMineral(almacen,this);
     }
 }

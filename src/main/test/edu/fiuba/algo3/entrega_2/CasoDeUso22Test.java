@@ -1,11 +1,7 @@
 package edu.fiuba.algo3.entrega_2;
 
-import edu.fiuba.algo3.modelo.errores.CreacionDeUnidadInvalida;
 import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
-import edu.fiuba.algo3.modelo.juego.AlgoStar;
-import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.juego.Mapa;
+import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
@@ -24,8 +20,11 @@ public class CasoDeUso22Test {
     @Test
     public void NoPuedoUsarUnidadSiNoSeTerminoDeConstruir(){
         Mapa mapa = new Mapa(2);
-        Casilla casilla1 = mapa.obtenerCasilla(5,5);
-        Casilla casilla2 = mapa.obtenerCasilla(5,6);
+        Almacen a=new Almacen();
+        a.almacenarMineral(10000);
+        a.almacenarGas(10000);
+        Casilla casilla1 = mapa.obtenerCasilla(15,15);
+        Casilla casilla2 = mapa.obtenerCasilla(15,16);
         Zerling z = new Zerling(casilla1);
         Dragon d = new Dragon(casilla2);
 

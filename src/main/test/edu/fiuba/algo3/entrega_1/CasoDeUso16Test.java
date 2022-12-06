@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.edificios.NexoMineral;
 import edu.fiuba.algo3.modelo.errores.CasillaOcupadaError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.unidades.Zangano;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.recursos.Mena;
@@ -44,27 +45,29 @@ public class CasoDeUso16Test {
     @Test
     public void test03UnZanganoNoSePuedeAsentarEnUnaMinaSiYaHayConstruidoUnNexoMineral(){
         Almacen almacen=new Almacen();
-        almacen.almacenarMineral(500);
+        almacen.almacenarMineral(50000);
         Mena mena=new Mena();
-        Casilla casilla= new Casilla(0,0, new Tierra(),mena);
-        casilla.construir(new NexoMineral(casilla),almacen);
-        Zangano zangano=new Zangano(casilla);
-        for (int i=0; i<25; i++){
-            zangano.avanzarTurno();
-        }
-        assertThrows(CasillaOcupadaError.class, () -> {zangano.asentarseEnMena(casilla,almacen);});
+        Casilla casilla1= new Casilla(19,19, new Tierra(),mena);
+        Casilla casilla2= new Casilla(19,20, new Moho(),new RecursoVacio());
+        casilla1.construir(new NexoMineral(casilla1),almacen);
+        Zangano zangano=new Zangano(casilla2,almacen );
+        casilla2.construir(zangano,almacen);
+        zangano.avanzarTurno();
+
+
+        assertThrows(CasillaOcupadaError.class, () -> {zangano.moverA(casilla1);});
     }
     @Test
     public void test04NoSePuedeConstruirUnNexoMineralSiHayUnZanganoEnLaMina(){
         Almacen almacen=new Almacen();
-        almacen.almacenarMineral(500);
+        almacen.almacenarMineral(50000);
         Mena mena=new Mena();
-        Casilla casilla= new Casilla(0,0, new Moho(),mena);
-        Zangano zangano=new Zangano(casilla);
-        for (int i=0; i<25; i++){
-            zangano.avanzarTurno();
-        }
-        zangano.asentarseEnMena(casilla,almacen);
-        assertThrows(CasillaOcupadaError.class, () -> {casilla.construir(new NexoMineral(casilla),almacen);});
+        Casilla casilla1= new Casilla(19,19, new Moho(),mena);
+        Zangano zangano=new Zangano(casilla1,almacen );
+        casilla1.construir(zangano,almacen);
+        zangano.avanzarTurno();
+
+
+        assertThrows(CasillaOcupadaError.class, () -> {casilla1.construir(new NexoMineral(casilla1),almacen);});
     }
 }

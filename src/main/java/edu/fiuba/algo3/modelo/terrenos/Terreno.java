@@ -8,6 +8,7 @@ public interface Terreno {
 
     public void construir(Construible edificio, Almacen almacen);
 
+
     
     public  void puedoMover(Unidad unidad);
 

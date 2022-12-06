@@ -19,15 +19,18 @@ public class CasoDeUso27Test {
     @Test
     public void unMutaliscoNoPuedeEvolucionarADevoradorSiNoHayRecursosSuficientes(){
         Mapa mapa= new Mapa(2);
+        Almacen a=new Almacen();
+        a.almacenarMineral(100);
+        a.almacenarGas(100);
         Casilla casilla = mapa.obtenerCasilla(5,5);
         Mutalisco mutalisco = new Mutalisco(casilla);
-        Almacen almacen = new Almacen();
+        casilla.construir(mutalisco,a);
 
         for (int i=0; i<25; i++){
             mutalisco.avanzarTurno();
         }
 
-        assertThrows(RecursosInsuficientesError.class, () -> {mutalisco.evolucionarADevorador(almacen);});
+        assertThrows(RecursosInsuficientesError.class, () -> {mutalisco.evolucionarADevorador(a);});
 
 
     }
@@ -35,26 +38,30 @@ public class CasoDeUso27Test {
     @Test
     public void unMutaliscoSePuedeEvolucionarADevoradorSiHayRecursosSuficientes(){
         Mapa mapa= new Mapa(2);
-        Casilla casilla = mapa.obtenerCasilla(5,5);
+        Almacen a=new Almacen();
+        a.almacenarMineral(500);
+        a.almacenarGas(500);
+        Casilla casilla = mapa.obtenerCasilla(25,25);
         Mutalisco mutalisco = new Mutalisco(casilla);
-        Almacen almacen = new Almacen();
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
+
 
         for (int i=0; i<25; i++){
             mutalisco.avanzarTurno();
         }
 
-        assertSame(Devorador.class , mutalisco.evolucionarADevorador(almacen).getClass());
+        assertSame(Devorador.class , mutalisco.evolucionarADevorador(a).getClass());
     }
 
     @Test
     public void unDevoradorSePuedeMoverPorUnAreaEspacial(){
         Mapa mapa = new Mapa(2);
+        Almacen a=new Almacen();
+        a.almacenarMineral(500);
+        a.almacenarGas(500);
         Casilla casillaDestino = mapa.obtenerCasilla(5,5);
         casillaDestino.cambiarTerreno(new Espacio());
         Casilla casillaOrigen = mapa.obtenerCasilla(3,3);
-        Devorador d = new Devorador(casillaOrigen);
+        Devorador d = new Devorador(casillaOrigen, a);
 
         for (int i=0; i<25; i++){
             d.avanzarTurno();
@@ -67,9 +74,12 @@ public class CasoDeUso27Test {
     @Test
     public void unDevoradorNoPuedeAtacarAUnidadesTerrestres(){
         Mapa mapa = new Mapa(2);
+        Almacen a=new Almacen();
+        a.almacenarMineral(500);
+        a.almacenarGas(500);
         Casilla casilla1 = mapa.obtenerCasilla(5,5);
         Casilla casilla2 = mapa.obtenerCasilla(6,6);
-        Devorador d = new Devorador(casilla1);
+        Devorador d = new Devorador(casilla1, a);
         Zealot z = new Zealot(casilla2);
 
         for (int i=0; i<25; i++){

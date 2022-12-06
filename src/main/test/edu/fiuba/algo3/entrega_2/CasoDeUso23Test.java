@@ -13,8 +13,11 @@ public class CasoDeUso23Test {
     @Test
     public void noPuedoAtacarUnaUnidadSiNoEstaEnElRangoDeAtaque(){
         Mapa mapa = new Mapa(2);
-        Casilla casilla1 = mapa.obtenerCasilla(5,5);
-        Casilla casilla2 = mapa.obtenerCasilla(15,15);
+        Almacen a=new Almacen();
+        a.almacenarMineral(10000);
+        a.almacenarGas(10000);
+        Casilla casilla1 = mapa.obtenerCasilla(15,15);
+        Casilla casilla2 = mapa.obtenerCasilla(25,25);
         Zerling z = new Zerling(casilla1);
         Dragon d = new Dragon(casilla2);
 
@@ -28,10 +31,13 @@ public class CasoDeUso23Test {
     @Test
     public void noPuedoAtacarUnEdificioSiNoEstaEnElRangoDeAtaque(){
         Mapa mapa = new Mapa(2);
-        Zerling z = new Zerling(mapa.obtenerCasilla(1,1));
+        Almacen a=new Almacen();
+        a.almacenarMineral(10000);
+        a.almacenarGas(10000);
+        Zerling z = new Zerling(mapa.obtenerCasilla(21,21));
         z.finalizarConstruccion();
 
-        Casilla casillaEdificio = mapa.obtenerCasilla(5,5);
+        Casilla casillaEdificio = mapa.obtenerCasilla(25,25);
 
         Acceso acceso = new Acceso(casillaEdificio);
         acceso.finalizarConstruccion();

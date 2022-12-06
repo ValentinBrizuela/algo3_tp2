@@ -11,6 +11,7 @@ public class Moho implements Terreno {
         edificio.construir(this, almacen);
     }
 
+
     @Override
     public void puedoMover(Unidad unidad) {
         unidad.obtenerTipoMovimiento().puedoMoverA(this);

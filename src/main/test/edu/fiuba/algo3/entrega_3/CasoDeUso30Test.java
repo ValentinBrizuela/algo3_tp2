@@ -29,13 +29,13 @@ public class CasoDeUso30Test {
         algoStar.construirEdificio("Acceso", 31, 11);
         algoStar.construirEdificio("PuertoEstelar", 29, 11);
 
-        for (int i=0;i<50;i++){
+        for (int i=20;i<70;i++){
             algoStar.crearScout(jugador1,10,10+i);
         }
         assertEquals(200,jugador1.obtenerPoblacionEnUso());
 
-        algoStar.crearScout(jugador1, 40, 5);
+        algoStar.crearScout(jugador1, 40, 15);
 
-        assertEquals(null,mapa.obtenerCasilla(40,5).obtenerEstado().obtenerEdificio());
+        assertEquals(null,mapa.obtenerCasilla(40,15).obtenerEstado().obtenerEdificio());
     }
 }

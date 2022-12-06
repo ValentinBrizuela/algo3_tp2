@@ -3,6 +3,10 @@ package edu.fiuba.algo3.modelo.recursos;
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.NoHayMenaEnLaCasillaError;
+import edu.fiuba.algo3.modelo.juego.Almacen;
+import edu.fiuba.algo3.modelo.unidades.Unidad;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 
 public class Geiser implements Recurso {
@@ -30,5 +34,9 @@ public class Geiser implements Recurso {
             return restante;
         }
         return 0;
+    }
+
+    public void intentarExtraerMineral(Almacen almacen, Zangano zangano){
+        throw new NoHayMenaEnLaCasillaError();
     }
 }

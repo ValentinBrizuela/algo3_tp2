@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
+import edu.fiuba.algo3.modelo.unidades.Unidad;
 
 public class Desocupada extends Estado {
 
@@ -18,6 +19,11 @@ public class Desocupada extends Estado {
         recurso.construir(edificio);
         terreno.construir(edificio, almacen);
     }
+
+
+    public void sustituirUnidad(Unidad unidad,Almacen almacen){
+    }
+
 
     public void avanzarTurno() {
     }

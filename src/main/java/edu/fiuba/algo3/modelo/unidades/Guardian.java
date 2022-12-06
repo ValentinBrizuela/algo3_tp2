@@ -21,10 +21,11 @@ public class Guardian extends Unidad  implements Atacante, AtacableAereo {
     private int rangoAtaque;
     private int danio;
 
-    public Guardian(Casilla casilla) {
+    public Guardian(Casilla casilla, Almacen almacen) {
         super(new VidaZerg(100), new ArrayList<>(List.of(new CostoMineral(50), new CostoGas(100))), 4, new Zerg(), casilla,  new UnidadAerea());
         this.rangoAtaque = 10;
         this.danio = 25;
+        casilla.sustituirUnidad(this,almacen);
     }
 
     public void atacarA(AtacableTerrestre atacableTerrestre) {
@@ -41,9 +42,9 @@ public class Guardian extends Unidad  implements Atacante, AtacableAereo {
         atacante.atacarA(this);
     }
 
-    public void crear(Almacen almacen){
+    /*public void crear(Almacen almacen){
         this.cobrar(almacen);
-    }
+    }*/
 
     @Override
     public void avanzarTurno() {
