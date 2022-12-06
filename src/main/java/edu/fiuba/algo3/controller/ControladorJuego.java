@@ -49,7 +49,7 @@ public class ControladorJuego {
         algoStar.atacaraPosicion(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
     }
 
-    public void construir() {
-        algoStar.construirEdificio("Criadero", casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY());
+    public void construir(String construccion) {
+        algoStar.construirEdificio(construccion, casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY());
     }
 }

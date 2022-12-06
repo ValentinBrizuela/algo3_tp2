@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -14,7 +15,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+
 public class VistaJuego extends HBox {
+
+    private AlgoStar algoStar;
 
     private Label nombre;
 
@@ -22,8 +27,12 @@ public class VistaJuego extends HBox {
 
     private Label cantGas;
 
+    private VistaMapa vistaMapa;
 
-    public VistaJuego (Pane vistaMapa, AlgoStar algoStar, Stage stage) {
+    public VistaJuego (VistaMapa vistaMapa, AlgoStar algoStar, Stage stage) {
+
+        this.vistaMapa = vistaMapa;
+        this.algoStar = algoStar;
 
         ControladorJuego controlador = new ControladorJuego(algoStar);
         this.setOnMouseClicked((mouseEvent -> {
@@ -48,7 +57,11 @@ public class VistaJuego extends HBox {
         botonAvanzarTurno.setPadding(new Insets(10));
         botonAvanzarTurno.setOnAction((e) -> {
             controlador.avanzarTurno();
-            nombre.setText(controlador.obtenerJugador());
+            try {
+                actualizar();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
         });
         botonAvanzarTurno.setPadding(new Insets(10));
 
@@ -75,24 +88,32 @@ public class VistaJuego extends HBox {
         });
         botonMover.setPadding(new Insets(10));
 
+        TextField construccion = new TextField();
+        construccion.setPromptText("Nombre de la construccion");
+
         Button botonConstruir = new Button("Construir");
         botonConstruir.setPadding(new Insets(10));
         botonConstruir.setOnAction((e) -> {
             try {
-                controlador.construir();
-
-                this.cantMineral.setText(controlador.obtenerMineral());
-                this.cantGas.setText(controlador.obtenerGas());
+                controlador.construir(construccion.getText());
+                actualizar();
             } catch (Exception ignored) {
 
             }
         });
         botonConstruir.setPadding(new Insets(10));
 
-        VBox acciones = new VBox(turno, nombre, cajaMineral, cajaGas, botonAtacar, botonMover, botonConstruir, botonAvanzarTurno);
+        VBox acciones = new VBox(turno, nombre, cajaMineral, cajaGas, botonAtacar, botonMover, construccion, botonConstruir, botonAvanzarTurno);
 
         this.getChildren().addAll(vistaMapa, acciones);
         stage.setFullScreen(true);
+    }
+
+    public void actualizar() throws FileNotFoundException {
+        nombre.setText(algoStar.obtenerJugadorActual().obtenerNombre());
+        this.cantMineral.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantMineral()));
+        this.cantGas.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantGas()));
+        this.vistaMapa.actualizar();
     }
 
 }

@@ -21,14 +21,9 @@ public class VistaInicio extends VBox {
 
 
     public VistaInicio(AlgoStar algoStar, Stage stage) throws FileNotFoundException {
-        Label etiquetaTitulo = new Label();
-        etiquetaTitulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-        etiquetaTitulo.setText("Algo Star:");
-        etiquetaTitulo.relocate(200, 100);
-        etiquetaTitulo.setTextFill(Color.WHITE);
 
-        ImageView etiquetaVehiculo = new ImageView(new Image(getClass().getResourceAsStream("/AlgoStarLogo.png")));
-        etiquetaVehiculo.relocate(25, 100);
+        ImageView etiquetaTitulo = new ImageView(new Image(getClass().getResourceAsStream("/AlgoStarLogo.png")));
+        etiquetaTitulo.relocate(25, 100);
 
         Button botonJugar = new Button();
         botonJugar.setText("Jugar");
@@ -51,7 +46,7 @@ public class VistaInicio extends VBox {
         });
         btn.relocate(465,5);
 
-        Pane pane = new Pane(fondo, etiquetaTitulo, etiquetaVehiculo, botonJugar, btn);
+        Pane pane = new Pane(fondo, etiquetaTitulo, botonJugar, btn);
         pane.setStyle("-fx-background-image: url(menu.gif);-fx-background-repeat: stretch;-fx-background-size: 500 500;-fx-background-position: center center; -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);");
         pane.setPrefSize(500, 500);
 
