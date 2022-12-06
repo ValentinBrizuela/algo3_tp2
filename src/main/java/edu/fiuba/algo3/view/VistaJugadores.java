@@ -2,6 +2,8 @@ package edu.fiuba.algo3.view;
 
 import edu.fiuba.algo3.controller.ControladorJugadores;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
@@ -10,10 +12,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +26,16 @@ import java.util.List;
 public class VistaJugadores extends VBox {
     private static String fontType = "Tahoma";
     public VistaJugadores(AlgoStar algostar, Stage stage) {
+        ObservableList<String> data = FXCollections.observableArrayList(
+                "red", "blue", "gold", "green", "violet", "orange");
+        Callback<ListView<String>, ListCell<String>> factory = new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> list) {
+                return new ColorRectCell();
+            }
+        };
+
+
         Label etiquetaZerg = new Label();
         etiquetaZerg.setFont(Font.font(fontType, FontWeight.BOLD, 18));
         etiquetaZerg.setText("Jugador Zerg:");
@@ -31,10 +46,13 @@ public class VistaJugadores extends VBox {
         nombreUsuario1.relocate(85, 120);
         nombreUsuario1.setPrefSize(300, 8);
 
-        ColorPicker color1 = new ColorPicker();
+        ComboBox color1 = new ComboBox<String>();
         color1.getStyleClass().add("button");
+        color1.setItems(data);
         color1.relocate(385, 120);
         color1.setPrefSize(30, 25);
+        color1.setCellFactory(factory);
+        color1.setButtonCell(factory.call(null));
 
         Label etiquetaProtoss = new Label();
         etiquetaProtoss.setFont(Font.font(fontType, FontWeight.BOLD, 18));
@@ -46,8 +64,17 @@ public class VistaJugadores extends VBox {
         nombreUsuario2.relocate(85, 280);
         nombreUsuario2.setPrefSize(300, 8);
 
-        ColorPicker color2 = new ColorPicker();
-        color2.getStyleClass().add("button");
+        ComboBox<String> color2 = new ComboBox<String>();
+        color2.setPrefSize(30, 25);
+        color2.setItems(data);
+
+
+
+        color2.setCellFactory(factory);
+        color2.setButtonCell(factory.call(null));
+
+        //ColorPicker color2 = new ColorPicker();
+        //color2.getStyleClass().add("button");
         color2.relocate(385, 280);
         color2.setPrefSize(30, 25);
 
@@ -57,11 +84,31 @@ public class VistaJugadores extends VBox {
         botonJugar.relocate(200, 400);
         botonJugar.setOnAction(new ControladorJugadores(algostar, nombreUsuario1, nombreUsuario2, color1, color2, stage));
 
-        Pane pane = new Pane(new Label(), new Label(), nombreUsuario1, nombreUsuario2, etiquetaZerg, etiquetaProtoss, new Label(), new Label(), color1, color2, botonJugar);
+        Button btn = new Button();
+        btn.setText("X");
+        btn.setPrefSize(30, 20);
+        btn.setOnAction((ActionEvent event) -> {
+            Platform.exit();
+        });
+        btn.relocate(465,5);
+
+        Pane pane = new Pane(new Label(), new Label(), nombreUsuario1, nombreUsuario2, etiquetaZerg, etiquetaProtoss, new Label(), new Label(), color1, color2, botonJugar, btn);
         pane.setStyle("-fx-background-color: rgb(213, 237, 223)");
         pane.setPrefSize(500, 500);
 
 
         this.getChildren().addAll(pane);
+    }
+    static class ColorRectCell extends ListCell<String>{
+        @Override
+        public void updateItem(String item, boolean empty){
+
+            super.updateItem(item, empty);
+            Rectangle rect = new Rectangle(20,10);
+            if(item != null){
+                rect.setFill(Color.web(item));
+                setGraphic(rect);
+            }
+        }
     }
 }

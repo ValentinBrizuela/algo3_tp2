@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.view;
 
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -23,7 +25,17 @@ public class VistaInicio extends VBox {
             ((Button)event.getSource()).getScene().setRoot(new VistaJugadores(algoStar, stage));
         });
 
-        Pane pane = new Pane(etiquetaVehiculo, botonJugar);
+        Button btn = new Button();
+        btn.setText("X");
+        btn.setPrefSize(30, 20);
+        btn.setOnAction((ActionEvent event) -> {
+            Platform.exit();
+        });
+        btn.relocate(465,5);
+
+
+
+        Pane pane = new Pane(etiquetaVehiculo, botonJugar, btn);
         pane.setStyle("-fx-background-color: rgb(213, 237, 223)");
         pane.setPrefSize(500, 500);
 
