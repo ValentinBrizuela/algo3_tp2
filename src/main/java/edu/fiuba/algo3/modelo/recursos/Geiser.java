@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.errores.NoHayMenaEnLaCasillaError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
-import edu.fiuba.algo3.modelo.unidades.Unidad;
 import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 
@@ -16,8 +15,8 @@ public class Geiser implements Recurso {
         this.cant = 5000;
     }
 
-    public void construir(Construible edificio) {
-        if (!(edificio instanceof RefineriaGas)) { // Resolver el instanceof
+    public void construir(Construible entidad) {
+        if (!(entidad instanceof RefineriaGas)) { // Resolver el instanceof
             throw new ConstruccionNoPermitidaError();
         }
     }

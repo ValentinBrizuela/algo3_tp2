@@ -19,9 +19,9 @@ public class Casilla {
         this.estado = new Desocupada(terreno, recurso);
     }
 
-    public void construir(Construible edificio, Almacen almacen){
+    public void construir(Construible entidad, Almacen almacen){
         try {
-            estado.construir(edificio, almacen);
+            estado.construir(entidad, almacen);
 
         } catch (Exception e) {
             throw e;

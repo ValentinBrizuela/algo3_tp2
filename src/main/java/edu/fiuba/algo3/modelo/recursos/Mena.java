@@ -3,9 +3,7 @@ package edu.fiuba.algo3.modelo.recursos;
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
-import edu.fiuba.algo3.modelo.errores.NoHayMenaEnLaCasillaError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
-import edu.fiuba.algo3.modelo.unidades.Unidad;
 import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 public class Mena implements Recurso {
@@ -14,8 +12,8 @@ public class Mena implements Recurso {
         cant = 2000;
     }
 
-    public void construir(Construible edificio) {
-        if (!(edificio instanceof Mina)) {
+    public void construir(Construible entidad) {
+        if (!(entidad instanceof Mina)) {
             throw new ConstruccionNoPermitidaError();
         }
     }

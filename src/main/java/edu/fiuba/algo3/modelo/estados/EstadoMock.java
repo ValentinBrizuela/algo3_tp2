@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.unidades.Unidad;
 
 public class EstadoMock extends Estado{
     @Override
-    public void construir(Construible edificio, Almacen almacen) {
+    public void construir(Construible entidad, Almacen almacen) {
 
     }
 

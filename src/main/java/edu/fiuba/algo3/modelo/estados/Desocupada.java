@@ -15,9 +15,9 @@ public class Desocupada extends Estado {
             this.entidad = null;
     }
 
-    public void construir(Construible edificio, Almacen almacen){
-        recurso.construir(edificio);
-        terreno.construir(edificio, almacen);
+    public void construir(Construible entidad, Almacen almacen){
+        recurso.construir(entidad);
+        terreno.construir(entidad, almacen);
     }
 
 

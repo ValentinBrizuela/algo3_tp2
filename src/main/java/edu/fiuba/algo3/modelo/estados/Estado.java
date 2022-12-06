@@ -13,7 +13,7 @@ public abstract class Estado {
     protected Recurso recurso;
     protected Entidad entidad;
 
-    public abstract void construir(Construible edificio, Almacen almacen);
+    public abstract void construir(Construible entidad, Almacen almacen);
 
     public abstract void sustituirUnidad(Unidad unidad,Almacen almacen);
 

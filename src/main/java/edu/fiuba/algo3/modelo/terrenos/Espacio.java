@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.unidades.Unidad;
 
 public class Espacio implements Terreno{
 
-    public void construir(Construible edificio, Almacen almacen) {
+    public void construir(Construible entidad, Almacen almacen) {
         throw new ConstruccionNoPermitidaError();
     }
 

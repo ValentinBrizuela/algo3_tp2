@@ -6,8 +6,8 @@ import edu.fiuba.algo3.modelo.unidades.Unidad;
 
 public class TierraEnergizada implements Terreno {
 
-    public void construir(Construible edificio, Almacen almacen) {
-        edificio.construir(this, almacen);
+    public void construir(Construible entidad, Almacen almacen) {
+        entidad.construir(this, almacen);
     }
 
     @Override

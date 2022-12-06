@@ -16,7 +16,7 @@ public class Ocupada extends Estado {
         this.terreno = terreno;
     }
 
-    public void construir(Construible edificio, Almacen almacen){
+    public void construir(Construible entidad, Almacen almacen){
         throw new CasillaOcupadaError();
     }
 
