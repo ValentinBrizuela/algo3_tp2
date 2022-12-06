@@ -288,6 +288,7 @@ public class AlgoStar {
             // crear logica
             Casilla casilla = mapa.obtenerCasilla(x, y);
             AmoSupremo amoSupremo = new AmoSupremo(casilla);
+            casilla.construir(amoSupremo,jugadorActual.obtenerAlmacen());
             jugadorActual.generarPoblacion();
             return amoSupremo;
 
