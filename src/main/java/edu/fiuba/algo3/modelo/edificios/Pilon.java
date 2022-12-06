@@ -31,7 +31,7 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre,Edi
     public void generar(Terreno terreno, Mapa mapa) {
         for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
             for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
-                if (!(mapa.obtenerCasilla(i, j).obtenerEstado().obtenerTerreno().getClass() == Moho.class)) {
+                if ( mapa.estaDentroDelMapa(i, j) && !(mapa.obtenerCasilla(i, j).obtenerEstado().obtenerTerreno().getClass() == Moho.class)) { //Cambiar esto
                     mapa.obtenerCasilla(i, j).cambiarTerreno(terreno);
                 }
             }

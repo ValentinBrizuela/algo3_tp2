@@ -122,7 +122,7 @@ public class Mapa {
             return false;
         }
 
-        if (posX >= tamMapa || posY >= tamMapa){
+        if (posX >= tamanioMapa() || posY >= tamanioMapa()){
             return false;
         }
 
