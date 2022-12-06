@@ -16,8 +16,6 @@ import javafx.stage.Stage;
 
 public class VistaJuego extends HBox {
 
-    private AlgoStar algoStar;
-
     private Label nombre;
 
     private Label cantMineral;
@@ -27,7 +25,6 @@ public class VistaJuego extends HBox {
 
     public VistaJuego (Pane vistaMapa, AlgoStar algoStar, Stage stage) {
 
-        this.algoStar = algoStar;
         ControladorJuego controlador = new ControladorJuego(algoStar);
         this.setOnMouseClicked((mouseEvent -> {
             controlador.clickEnMapa(mouseEvent);
@@ -49,15 +46,15 @@ public class VistaJuego extends HBox {
 
         Button botonAvanzarTurno = new Button("Avanzar Turno");
         botonAvanzarTurno.setPadding(new Insets(10));
-        botonAvanzarTurno.setOnAction((e)->{
+        botonAvanzarTurno.setOnAction((e) -> {
             controlador.avanzarTurno();
-            actualizar();
+            nombre.setText(controlador.obtenerJugador());
         });
         botonAvanzarTurno.setPadding(new Insets(10));
 
         Button botonAtacar = new Button("Atacar");
         botonAtacar.setPadding(new Insets(10));
-        botonAtacar.setOnAction((e)->{
+        botonAtacar.setOnAction((e) -> {
             try {
                 controlador.atacar();
 
@@ -69,7 +66,7 @@ public class VistaJuego extends HBox {
 
         Button botonMover = new Button("Mover");
         botonMover.setPadding(new Insets(10));
-        botonMover.setOnAction((e)->{
+        botonMover.setOnAction((e) -> {
             try {
                 controlador.mover();
             } catch (Exception ignored) {
@@ -80,7 +77,7 @@ public class VistaJuego extends HBox {
 
         Button botonConstruir = new Button("Construir");
         botonConstruir.setPadding(new Insets(10));
-        botonConstruir.setOnAction((e)->{
+        botonConstruir.setOnAction((e) -> {
             try {
                 controlador.construir();
 
@@ -96,10 +93,6 @@ public class VistaJuego extends HBox {
 
         this.getChildren().addAll(vistaMapa, acciones);
         stage.setFullScreen(true);
-    }
-
-    public void actualizar() {
-        nombre.setText(algoStar.obtenerJugadorActual().obtenerNombre());
     }
 
 }
