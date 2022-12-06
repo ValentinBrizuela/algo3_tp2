@@ -50,7 +50,7 @@ public class Dragon extends Unidad implements Atacante, AtacableTerrestre, Consu
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
-        /*regenerar*/
+        vida.regenerar();
     }
 
     public boolean tenesEspacioConEstaCapacidad(int capacidadUsable) {

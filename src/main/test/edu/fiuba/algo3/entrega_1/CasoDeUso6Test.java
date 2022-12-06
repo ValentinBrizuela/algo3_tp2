@@ -34,6 +34,8 @@ public class CasoDeUso6Test {
         assertEquals(Tierra.class, mapa.obtenerCasilla(31, 31).obtenerEstado().obtenerTerreno().getClass());
 
         algoStar.avanzarTurno();
+        algoStar.avanzarTurno();
+        algoStar.avanzarTurno();
         assertEquals(Moho.class, mapa.obtenerCasilla(30, 30).obtenerEstado().obtenerTerreno().getClass());
         assertEquals(Moho.class, mapa.obtenerCasilla(31, 31).obtenerEstado().obtenerTerreno().getClass());
     }

@@ -26,12 +26,12 @@ public class Mapa {
         casillas = new Casilla[tamMapa][tamMapa];
 
         inicializarMapa();
-        /*for ( int i = 0; i < 3; i++) {
+        for ( int i = 0; i < 2; i++) {
             int num1 = (int)(Math.random()*((tamMapa-30)-30+1)+30);
             int num2 = (int)(Math.random()*((tamMapa-30)-30+1)+30);
             crearEspacio(num1, num2);
-        }*/
-        crearEspacio(70, 80);
+        }
+        /*crearEspacio(70, 80);*/
         crearBasesEsquinas();
         crearBasesRandomYEspejadas();
     }
@@ -55,7 +55,19 @@ public class Mapa {
     private void inicializarMapa(){
         for (int i=0; i<tamMapa; i++){
             for (int j=0; j<tamMapa; j++){
-                casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio());
+
+                if ((Math.floor(Math.random()*300)) < 1){
+
+                    /*if ((Math.floor(Math.random()*10)) % 2 == 0){
+                        casillas[i][j] = new Casilla(i, j, new Tierra(), new Geiser());
+                    }else{
+                        casillas[i][j] = new Casilla(i, j, new Tierra(), new Mena());
+                    }*/
+                    casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio());
+
+                } else {
+                    casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio());
+                }
             }
         }
 
@@ -64,7 +76,7 @@ public class Mapa {
         for (int i=(posX - 10); i< (posX + 10); i++){
             for (int j=(posY - 10); j < (posY + 10); j++){
 
-                if ((Math.floor(Math.random()*10)) % 5 == 0 && estaDentroDelMapa(i, j)){
+                if ((Math.floor(Math.random()*10)) % 10 == 0 && estaDentroDelMapa(i, j)){
                     if ((Math.floor(Math.random()*10)) % 2 == 0){
                         casillas[i][j] = new Casilla(i, j, new Tierra(), new Geiser());
                     }else{
@@ -76,8 +88,8 @@ public class Mapa {
     }
 
     private void crearEspacio(int posX, int posY) {
-        for (int i=(posX - 10); i< (posX + 10); i++){
-            for (int j=(posY - 10); j < (posY + 10); j++){
+        for (int i=(posX - 5); i< (posX + 5); i++){
+            for (int j=(posY - 5); j < (posY + 5); j++){
                 casillas[i][j] = new Casilla(i, j, new Espacio(), new RecursoVacio());
             }
         }
@@ -105,7 +117,7 @@ public class Mapa {
         }
     }
 
-    private boolean estaDentroDelMapa(int posX, int posY){
+    public boolean estaDentroDelMapa(int posX, int posY){
         if (posX < 0 || posY < 0){
             return false;
         }

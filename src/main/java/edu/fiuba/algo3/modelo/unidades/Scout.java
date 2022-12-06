@@ -48,7 +48,7 @@ public class Scout extends Unidad  implements Atacante, AtacableAereo, Consumido
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
-        /*regenerar*/
+        vida.regenerar();
     }
 
 

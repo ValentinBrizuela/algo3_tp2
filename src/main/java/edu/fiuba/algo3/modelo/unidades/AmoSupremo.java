@@ -20,6 +20,7 @@ public class AmoSupremo extends Unidad implements AtacableAereo {
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
+        vida.regenerar();
     }
 
     @Override

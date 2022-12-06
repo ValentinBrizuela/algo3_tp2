@@ -48,7 +48,7 @@ public class Guardian extends Unidad  implements Atacante, AtacableAereo {
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
-        /*regenerar*/
+        vida.regenerar();
     }
 
 }

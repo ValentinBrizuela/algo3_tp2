@@ -48,7 +48,7 @@ public class Zerling extends Unidad implements Atacante, AtacableTerrestre, Cons
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
-        /*regenerar*/
+        vida.regenerar();
     }
     public boolean tenesEspacioConEstaCapacidad(int capacidadUsable) {
         return costoSuministro<=capacidadUsable;

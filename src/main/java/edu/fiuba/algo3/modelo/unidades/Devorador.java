@@ -45,6 +45,7 @@ public class Devorador extends Unidad implements Atacante, AtacableAereo {
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
+        vida.regenerar();
     }
 
     public void crear(Almacen almacen){

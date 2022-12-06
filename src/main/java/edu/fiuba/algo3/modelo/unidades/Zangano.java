@@ -43,7 +43,7 @@ public class Zangano extends Unidad implements Mina, AtacableTerrestre, Consumid
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
-        /*regenerar*/
+        vida.regenerar();
     }
 
     @Override

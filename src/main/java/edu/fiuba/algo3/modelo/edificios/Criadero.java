@@ -54,16 +54,26 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
     public void generarMoho(Mapa mapa) {
         for (int i = casilla.obtenerPosX() - rango; i <= casilla.obtenerPosX() + rango; i++) {
             for (int j = casilla.obtenerPosY() - rango; j <= casilla.obtenerPosY() + rango; j++) {
-                if (mapa.obtenerCasilla(i, j).obtenerEstado().getClass() == Desocupada.class) {
-                    mapa.obtenerCasilla(i, j).cambiarTerreno(new Moho());
+
+                if (mapa.estaDentroDelMapa(i, j)){
+
+                    if (mapa.obtenerCasilla(i, j).obtenerEstado().getClass() == Desocupada.class) {
+                        mapa.obtenerCasilla(i, j).cambiarTerreno(new Moho());
+                    }
+
                 }
             }
         }
     }
 
     private void incrementarRango() {
-        if (contador%2 == 0) {
-            rango += 1;
+        try {
+            esUsable();
+            if (contador%2 == 0) {
+                rango += 1;
+            }
+        } catch (Exception e){
+
         }
     }
 

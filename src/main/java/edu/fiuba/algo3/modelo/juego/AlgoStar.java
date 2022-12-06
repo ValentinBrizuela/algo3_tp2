@@ -54,26 +54,12 @@ public class AlgoStar {
         jugadorActual = jugador1;
     }
 
-    /*public Jugador jugarPartida(){
-        if (jugadores.size() != 2){ throw new JugadoresInsuficientesError();}
-
-        Turno turnero = new Turno(this, jugadores[0]);
-
-
-        while (!hayGanador()){
-
-            turno +=1;
-            esperar respuesta usuario
-            jugadorActual.
-
-
-        }
-
-
-    }*/
     public void avanzarTurno(){
         mapa.avanzarTurno();
-        jugadorActual.actualizarAreas(mapa);
+        for (Jugador jugador: jugadores){
+            jugador.actualizarAreas(mapa);
+        }
+
         turno += 1;
         jugadorActual = jugadores.get(turno%2);
     }

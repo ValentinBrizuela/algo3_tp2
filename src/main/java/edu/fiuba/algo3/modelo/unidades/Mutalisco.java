@@ -68,7 +68,7 @@ public class Mutalisco extends Unidad  implements Atacante, AtacableAereo, Consu
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
-        /*regenerar*/
+        vida.regenerar();
     }
 
     public boolean tenesEspacioConEstaCapacidad(int capacidadUsable) {

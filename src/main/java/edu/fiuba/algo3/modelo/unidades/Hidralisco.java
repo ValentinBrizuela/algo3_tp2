@@ -49,7 +49,7 @@ public class    Hidralisco extends Unidad implements Atacante, AtacableTerrestre
     @Override
     public void avanzarTurno() {
         tiempoConstruccion -= 1;
-        /*regenerar*/
+        vida.regenerar();
     }
 
 
