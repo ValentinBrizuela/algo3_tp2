@@ -3,24 +3,30 @@ package edu.fiuba.algo3.view;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class VistaInicio extends VBox {
 
 
-    public VistaInicio(AlgoStar algoStar, Stage stage) {
-        Label etiquetaVehiculo = new Label();
-        etiquetaVehiculo.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-        etiquetaVehiculo.setText("Algo Star:");
-        etiquetaVehiculo.relocate(200, 100);
+    public VistaInicio(AlgoStar algoStar, Stage stage){
+
+        ImageView etiquetaVehiculo = new ImageView(new Image(getClass().getResourceAsStream("/AlgoStarLogo.png")));
+        etiquetaVehiculo.relocate(25, 100);
 
         Button botonJugar = new Button();
         botonJugar.setText("Jugar");
         botonJugar.relocate(225, 250);
+        botonJugar.setPrefSize(70,50);
         botonJugar.setOnAction((event) -> {
             ((Button)event.getSource()).getScene().setRoot(new VistaJugadores(algoStar, stage));
         });
@@ -36,7 +42,7 @@ public class VistaInicio extends VBox {
 
 
         Pane pane = new Pane(etiquetaVehiculo, botonJugar, btn);
-        pane.setStyle("-fx-background-color: rgb(213, 237, 223)");
+        pane.setStyle("-fx-background-image: url(menu.gif);-fx-background-repeat: stretch;-fx-background-size: 500 500;-fx-background-position: center center; -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);");
         pane.setPrefSize(500, 500);
 
         this.getChildren().addAll(pane);
