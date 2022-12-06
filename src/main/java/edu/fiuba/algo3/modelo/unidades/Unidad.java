@@ -39,5 +39,9 @@ public abstract class Unidad extends Entidad {
         return tipoUnidad;
     }
 
+    @Override
+    public boolean esAtacante() {
+        return true;
+    }
 
 }

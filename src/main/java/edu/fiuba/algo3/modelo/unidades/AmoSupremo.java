@@ -26,4 +26,9 @@ public class AmoSupremo extends Unidad implements AtacableAereo {
     public void recibirAtaque(Atacante atacante, Mapa mapa) {
         atacante.atacarA(this);
     }
+
+    @Override
+    public boolean esAtacante() {
+        return false;
+    }
 }

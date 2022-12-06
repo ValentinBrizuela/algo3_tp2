@@ -13,7 +13,7 @@ public class Geiser implements Recurso {
     }
 
     public void construir(Construible edificio) {
-        if (!(edificio instanceof RefineriaGas)) {
+        if (!(edificio instanceof RefineriaGas)) { // Resolver el instanceof
             throw new ConstruccionNoPermitidaError();
         }
     }

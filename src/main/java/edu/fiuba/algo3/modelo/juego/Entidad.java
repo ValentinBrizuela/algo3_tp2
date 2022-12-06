@@ -93,4 +93,8 @@ public abstract class Entidad {
             costo.cobrar(almacen);
         }
     }
+    public boolean esAtacante() {
+        return false;
+    }
+
 }

@@ -85,7 +85,7 @@ public class Jugador {
     }
 
     public boolean sosIgualA(Jugador jugador){
-        return (nombre.equals(jugador.nombre) || jugador.color.equals(color) || raza.getClass()==jugador.obtenerRaza().getClass());
+        return (nombre.equals(jugador.nombre) || color.equals(jugador.obtenerColor()) || raza.getClass()==jugador.obtenerRaza().getClass());
     }
 
     public void verificarYConsumirSuministro(ConsumidorDeSuministro unidad){
@@ -145,8 +145,5 @@ public class Jugador {
         }
         return true;
     }
-
-
-
 
 }

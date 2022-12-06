@@ -57,4 +57,10 @@ public class Zangano extends Unidad implements Mina, AtacableTerrestre, Consumid
     public void comunicarDescuentoDePoblacion(Poblacion poblacion){
         poblacion.utilizarPoblacion(costoSuministro);
     }
+
+    @Override
+    public boolean esAtacante() {
+        return false;
+    }
+
 }

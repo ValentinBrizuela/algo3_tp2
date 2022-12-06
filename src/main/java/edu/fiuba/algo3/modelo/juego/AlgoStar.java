@@ -18,6 +18,7 @@ public class AlgoStar {
     public Mapa mapa;
     private int turno;
     private Jugador jugadorActual;
+
     public AlgoStar(Mapa mapa){
         this.jugadores=new ArrayList<Jugador>();
         this.mapa=mapa;
@@ -97,6 +98,15 @@ public class AlgoStar {
             System.out.println("No se pudo realizar el ataque.");
         }
 
+    }
+
+    public void atacaraPosicion(int x1, int y1, int x2, int y2) {
+        Entidad atacante = mapa.obtenerCasilla(x1, y1).obtenerEstado().obtenerEdificio();
+        if (!atacante.esAtacante()) {
+            throw new AtaqueInvalidoError();
+        }
+        Entidad atacable = mapa.obtenerCasilla(x2, y2).obtenerEstado().obtenerEdificio();
+        ataque((Atacante) atacante, atacable, jugadores.get((turno + 1) % 2));
     }
 
     public void construirEdificio(String edificio, int x, int y){
@@ -294,6 +304,10 @@ public class AlgoStar {
             return null;
         }
 
+    }
+
+    public Jugador obtenerJugadorActual() {
+        return jugadorActual;
     }
 
 }

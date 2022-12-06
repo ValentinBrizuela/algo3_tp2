@@ -39,7 +39,7 @@ public class ControladorJugadores implements EventHandler<ActionEvent> {
             Jugador jugador2 = new Jugador(nombreUsuario2.getText(), Color.web(color2.getValue().toString()), new Protoss());
 
             algoStar.registrarJugadores(jugador1, jugador2);
-            ((Button)actionEvent.getSource()).getScene().setRoot(new VistaMapa(algoStar, stage));
+            ((Button)actionEvent.getSource()).getScene().setRoot(new VistaJuego(new VistaMapa(algoStar, stage), algoStar, stage));
         } catch (Exception e) {
             System.out.print(e);
         }

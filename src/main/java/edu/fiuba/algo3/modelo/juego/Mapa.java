@@ -64,7 +64,7 @@ public class Mapa {
         for (int i=(posX - 10); i< (posX + 10); i++){
             for (int j=(posY - 10); j < (posY + 10); j++){
 
-                if ((Math.floor(Math.random()*10)) % 2 == 0 && estaDentroDelMapa(i, j)){
+                if ((Math.floor(Math.random()*10)) % 5 == 0 && estaDentroDelMapa(i, j)){
                     if ((Math.floor(Math.random()*10)) % 2 == 0){
                         casillas[i][j] = new Casilla(i, j, new Tierra(), new Geiser());
                     }else{
@@ -84,8 +84,8 @@ public class Mapa {
     }
 
     private void crearBasesEsquinas(){
-        int posicionBase1 = (int) (nroBases*50*0.05);
-        int posicionBase2 = (int) (nroBases*50*0.95);
+        int posicionBase1 = (int) (nroBases*(tamMapa/nroBases)*0.05);
+        int posicionBase2 = (int) (nroBases*(tamMapa/nroBases)*0.95);
 
         this.crearBase(posicionBase1, posicionBase1);
         this.crearBase(posicionBase2, posicionBase2);
@@ -120,7 +120,7 @@ public class Mapa {
     public boolean hayAmoSupremo(int x, int y,int radio) {
         for (int i = x - radio; i <= x + radio ; i++) {
             for (int j = y -radio; j <= y + radio; j++) {
-                if (this.obtenerCasilla(i, j).obtenerEstado().tieneEntidad(AmoSupremo.class)) {
+                if (this.obtenerCasilla(i, j).obtenerEstado().tieneEntidad(AmoSupremo.class)) { // Cambiar el .class
                     return true;
                 }
             }

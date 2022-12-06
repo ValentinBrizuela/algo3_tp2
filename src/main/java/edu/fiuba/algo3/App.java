@@ -9,18 +9,22 @@ import javafx.stage.Stage;
 import edu.fiuba.algo3.view.VistaInicio;
 import javafx.stage.StageStyle;
 
+import javax.security.auth.login.FailedLoginException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 /**
  * JavaFX App
  */
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws FileNotFoundException {
 
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
-        stage.setResizable(false);
-        stage.initStyle(StageStyle.UNDECORATED);
+        //stage.setResizable(false);
+        //stage.initStyle(StageStyle.UNDECORATED);
         var scene = new Scene(new VistaInicio(algoStar, stage));
         stage.getIcons().add(new Image("icon.png"));
         stage.setScene(scene);
