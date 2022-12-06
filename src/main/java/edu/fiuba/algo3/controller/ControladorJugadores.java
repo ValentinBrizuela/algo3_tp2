@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.controller;
-import edu.fiuba.algo3.modelo.errores.NombreDeJugadorInvalidoError;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -8,7 +7,6 @@ import edu.fiuba.algo3.view.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;

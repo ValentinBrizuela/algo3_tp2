@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.view;
 
+import edu.fiuba.algo3.controller.ControladorJuego;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
@@ -22,42 +24,33 @@ public class VistaJuego extends HBox {
 
     private Label cantGas;
 
-    private Casilla casillaActiva;
-    private Casilla casillaObjetivo;
 
     public VistaJuego (Pane vistaMapa, AlgoStar algoStar, Stage stage) {
 
         this.algoStar = algoStar;
-
+        ControladorJuego controlador = new ControladorJuego(algoStar);
         this.setOnMouseClicked((mouseEvent -> {
-            if ((int) (mouseEvent.getX()/8) < algoStar.mapa.tamanioMapa() && (int) (mouseEvent.getY()/8) < algoStar.mapa.tamanioMapa()) {
-                if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                    this.casillaActiva = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
-                }
-                if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-                    this.casillaObjetivo = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
-                }
-            }
+            controlador.clickEnMapa(mouseEvent);
         }));
 
         Label turno = new Label("Turno de:");
 
-        this.nombre = new Label(algoStar.obtenerJugadorActual().obtenerNombre());
+        this.nombre = new Label(controlador.obtenerJugador());
         nombre.setPadding(new Insets(10));
 
         Label cantMineral = new Label("Mineral");
-        this.cantMineral = new Label(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantMineral()));
+        this.cantMineral = new Label(controlador.obtenerMineral());
         VBox cajaMineral = new VBox(cantMineral, this.cantMineral);
 
         Label cantGas = new Label("Gas");
-        this.cantGas = new Label(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantGas()));
+        this.cantGas = new Label(controlador.obtenerGas());
         VBox cajaGas = new VBox(cantGas, this.cantGas);
 
 
         Button botonAvanzarTurno = new Button("Avanzar Turno");
         botonAvanzarTurno.setPadding(new Insets(10));
         botonAvanzarTurno.setOnAction((e)->{
-            algoStar.avanzarTurno();
+            controlador.avanzarTurno();
             actualizar();
         });
         botonAvanzarTurno.setPadding(new Insets(10));
@@ -66,7 +59,8 @@ public class VistaJuego extends HBox {
         botonAtacar.setPadding(new Insets(10));
         botonAtacar.setOnAction((e)->{
             try {
-                algoStar.atacaraPosicion(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
+                controlador.atacar();
+
             } catch (Exception ignored) {
 
             }
@@ -77,7 +71,7 @@ public class VistaJuego extends HBox {
         botonMover.setPadding(new Insets(10));
         botonMover.setOnAction((e)->{
             try {
-                algoStar.atacaraPosicion(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
+                controlador.mover();
             } catch (Exception ignored) {
 
             }
@@ -88,9 +82,10 @@ public class VistaJuego extends HBox {
         botonConstruir.setPadding(new Insets(10));
         botonConstruir.setOnAction((e)->{
             try {
-                algoStar.construirEdificio("Criadero", casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY());
-                this.cantMineral.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantMineral()));
-                this.cantGas.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantGas()));
+                controlador.construir();
+
+                this.cantMineral.setText(controlador.obtenerMineral());
+                this.cantGas.setText(controlador.obtenerGas());
             } catch (Exception ignored) {
 
             }
