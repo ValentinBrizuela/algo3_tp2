@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.entrega_3;
 
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
+import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -9,6 +10,7 @@ import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class CasoDeUso29Test {
 
@@ -46,6 +48,7 @@ public class CasoDeUso29Test {
     public void test03UnAmoSupremoNoGeneraPoblacionSiYaSeAlcanzoLaCapacidadMaxima(){
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
+        Casilla mockCasilla = mock(Casilla.class);
 
         Jugador jugador1=new Jugador("camila",Color.RED,new Protoss());
         algoStar.registrarJugador(jugador1);

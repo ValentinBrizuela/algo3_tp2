@@ -47,7 +47,7 @@ public class CasoDeUso26Test {
 
         mapa.obtenerCasilla(36,10).cambiarTerreno(new Moho());
         algoStar.construirEdificio("Criadero", 36, 10);
-        mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());
+        /*mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());*/
         algoStar.construirEdificio("ReservaDeReproduccion", 35, 10);
         algoStar.crearZerling(jugador1, 5, 5);
         assertEquals(4,jugador1.obtenerPoblacionUsable());

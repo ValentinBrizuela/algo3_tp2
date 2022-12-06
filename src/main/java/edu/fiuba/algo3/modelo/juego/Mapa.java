@@ -26,11 +26,11 @@ public class Mapa {
         casillas = new Casilla[tamMapa][tamMapa];
 
         inicializarMapa();
-        for ( int i = 0; i < 2; i++) {
+        /*for ( int i = 0; i < 2; i++) {
             int num1 = (int)(Math.random()*((tamMapa-30)-30+1)+30);
             int num2 = (int)(Math.random()*((tamMapa-30)-30+1)+30);
             crearEspacio(num1, num2);
-        }
+        }*/
         /*crearEspacio(70, 80);*/
         crearBasesEsquinas();
         crearBasesRandomYEspejadas();

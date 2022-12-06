@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 public class CasoDeUso17Test {
 
@@ -36,6 +37,7 @@ public class CasoDeUso17Test {
     public void test02UnaGuaridaSePuedeConstruirSiAntesSeConstruyoUnaReservaDeReproduccion(){
         Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
+        Casilla mockCasilla = mock(Casilla.class);
         Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);

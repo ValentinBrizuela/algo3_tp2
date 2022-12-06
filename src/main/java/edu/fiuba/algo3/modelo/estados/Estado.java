@@ -24,6 +24,7 @@ public abstract class Estado {
     }
 
     public void cambiarTerreno(Terreno terreno){
+        this.terreno.puedoCambiar();
         this.terreno = terreno;
     }
 

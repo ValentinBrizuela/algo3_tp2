@@ -14,4 +14,11 @@ public class Tierra implements Terreno {
     public void puedoMover(Unidad unidad) {
         unidad.obtenerTipoMovimiento().puedoMoverA(this);
     }
+
+    @Override
+    public void puedoCambiar() {
+
+    }
+
+
 }

@@ -9,7 +9,9 @@ public interface Terreno {
     public void construir(Construible edificio, Almacen almacen);
 
     
-    public abstract void puedoMover(Unidad unidad);
+    public  void puedoMover(Unidad unidad);
+
+    public void puedoCambiar();
 
     //movVolador tiene moverA(Espacio) NADA y moverA(Terreno) EXC
 
