@@ -2,15 +2,19 @@ package edu.fiuba.algo3.controller;
 
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.view.VistaMapa;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 public class ControladorJuego {
     private AlgoStar algoStar;
+
+    private VistaMapa vistaMapa;
     private Casilla casillaActiva;
     private Casilla casillaObjetivo;
-    public ControladorJuego(AlgoStar algoStar) {
+    public ControladorJuego(AlgoStar algoStar, VistaMapa vista) {
         this.algoStar = algoStar;
+        this.vistaMapa = vista;
     }
 
     public void clickEnMapa(MouseEvent mouseEvent) {
@@ -18,9 +22,11 @@ public class ControladorJuego {
         if ((int) (mouseEvent.getX()/8) < this.algoStar.mapa.tamanioMapa() && (int) (mouseEvent.getY()/8) < algoStar.mapa.tamanioMapa()) {
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                 this.casillaActiva = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
+                this.vistaMapa.dibujarBordeCasillaPrimaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
             }
             if (mouseEvent.getButton() == MouseButton.SECONDARY) {
                 this.casillaObjetivo = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
+                this.vistaMapa.dibujarBordeCasillaSecundaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
             }
         }
     }

@@ -34,27 +34,24 @@ public class VistaJuego extends HBox {
         this.vistaMapa = vistaMapa;
         this.algoStar = algoStar;
 
-        ControladorJuego controlador = new ControladorJuego(algoStar);
+        ControladorJuego controlador = new ControladorJuego(algoStar, vistaMapa);
         this.setOnMouseClicked((mouseEvent -> {
             controlador.clickEnMapa(mouseEvent);
         }));
 
-        Label turno = new Label("Turno de:");
-
+        Label turno = new Label("Turno de: ");
         this.nombre = new Label(controlador.obtenerJugador());
-        nombre.setPadding(new Insets(10));
+        HBox cajaNombre = new HBox(turno, this.nombre);
 
-        Label cantMineral = new Label("Mineral");
+        Label cantMineral = new Label("Mineral: ");
         this.cantMineral = new Label(controlador.obtenerMineral());
-        VBox cajaMineral = new VBox(cantMineral, this.cantMineral);
+        HBox cajaMineral = new HBox(cantMineral, this.cantMineral);
 
-        Label cantGas = new Label("Gas");
+        Label cantGas = new Label("Gas: ");
         this.cantGas = new Label(controlador.obtenerGas());
-        VBox cajaGas = new VBox(cantGas, this.cantGas);
-
+        HBox cajaGas = new HBox(cantGas, this.cantGas);
 
         Button botonAvanzarTurno = new Button("Avanzar Turno");
-        botonAvanzarTurno.setPadding(new Insets(10));
         botonAvanzarTurno.setOnAction((e) -> {
             controlador.avanzarTurno();
             try {
@@ -63,10 +60,8 @@ public class VistaJuego extends HBox {
                 throw new RuntimeException(ex);
             }
         });
-        botonAvanzarTurno.setPadding(new Insets(10));
 
         Button botonAtacar = new Button("Atacar");
-        botonAtacar.setPadding(new Insets(10));
         botonAtacar.setOnAction((e) -> {
             try {
                 controlador.atacar();
@@ -75,10 +70,8 @@ public class VistaJuego extends HBox {
 
             }
         });
-        botonAtacar.setPadding(new Insets(10));
 
         Button botonMover = new Button("Mover");
-        botonMover.setPadding(new Insets(10));
         botonMover.setOnAction((e) -> {
             try {
                 controlador.mover();
@@ -86,13 +79,11 @@ public class VistaJuego extends HBox {
 
             }
         });
-        botonMover.setPadding(new Insets(10));
 
         TextField construccion = new TextField();
         construccion.setPromptText("Nombre de la construccion");
 
         Button botonConstruir = new Button("Construir");
-        botonConstruir.setPadding(new Insets(10));
         botonConstruir.setOnAction((e) -> {
             try {
                 controlador.construir(construccion.getText());
@@ -101,9 +92,10 @@ public class VistaJuego extends HBox {
 
             }
         });
-        botonConstruir.setPadding(new Insets(10));
 
-        VBox acciones = new VBox(turno, nombre, cajaMineral, cajaGas, botonAtacar, botonMover, construccion, botonConstruir, botonAvanzarTurno);
+        VBox acciones = new VBox(cajaNombre, cajaMineral, cajaGas, botonAtacar, botonMover, construccion, botonConstruir, botonAvanzarTurno);
+        acciones.setPadding(new Insets(10));
+        acciones.setSpacing(10);
 
         this.getChildren().addAll(vistaMapa, acciones);
         stage.setFullScreen(true);

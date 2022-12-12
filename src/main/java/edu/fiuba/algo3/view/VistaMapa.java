@@ -16,6 +16,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -29,10 +31,14 @@ public class VistaMapa extends StackPane {
     private Pane terrenos = new Pane();
     private Pane entidades = new Pane();
 
+    private Pane casillaPrimaria = new Pane();
+
+    private Pane casillaSecundaria = new Pane();
+
     public VistaMapa(AlgoStar algoStar, Stage stage) {
 
             this.algostar = algoStar;
-            this.getChildren().addAll(terrenos, recursos, entidades);
+            this.getChildren().addAll(terrenos, recursos, entidades, casillaPrimaria, casillaSecundaria);
             try {
                 dibujarTerreno();
                 dibujarRecurso();
@@ -124,6 +130,36 @@ public class VistaMapa extends StackPane {
                 } catch(Exception ignored) {
                 }
             }
+        }
+    }
+
+    public void dibujarBordeCasillaPrimaria(int x, int y) {
+        if ( x < algostar.mapa.tamanioMapa() && y < algostar.mapa.tamanioMapa()) {
+            casillaPrimaria.getChildren().clear();
+            Line linea1 = new Line(x*8, y*8, x*8, y*8+8);
+            linea1.setStyle("-fx-stroke: red;");
+            Line linea2 = new Line(x*8+8, y*8,x*8+8 , y*8+8);
+            linea2.setStyle("-fx-stroke: red;");
+            Line linea3 = new Line(x*8,y*8, x*8+8, y*8);
+            linea3.setStyle("-fx-stroke: red;");
+            Line linea4 = new Line(x*8, y*8+8, x*8+8, y*8+8);
+            linea4.setStyle("-fx-stroke: red;");
+            casillaPrimaria.getChildren().addAll(linea1, linea2, linea3, linea4);
+        }
+    }
+
+    public void dibujarBordeCasillaSecundaria(int x, int y) {
+        if ( x < algostar.mapa.tamanioMapa() && y < algostar.mapa.tamanioMapa()) {
+            casillaSecundaria.getChildren().clear();
+            Line linea1 = new Line(x*8, y*8, x*8, y*8+8);
+            linea1.setStyle("-fx-stroke: blue;");
+            Line linea2 = new Line(x*8+8, y*8,x*8+8 , y*8+8);
+            linea2.setStyle("-fx-stroke: blue;");
+            Line linea3 = new Line(x*8,y*8, x*8+8, y*8);
+            linea3.setStyle("-fx-stroke: blue;");
+            Line linea4 = new Line(x*8, y*8+8, x*8+8, y*8+8);
+            linea4.setStyle("-fx-stroke: blue;");
+            casillaSecundaria.getChildren().addAll(linea1, linea2, linea3, linea4);
         }
     }
 
