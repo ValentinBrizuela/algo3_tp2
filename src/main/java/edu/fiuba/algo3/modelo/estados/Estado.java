@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.estados;
 
 import edu.fiuba.algo3.modelo.edificios.Construible;
+import edu.fiuba.algo3.modelo.edificios.Mina;
+import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
@@ -44,8 +46,12 @@ public abstract class Estado {
 
     public abstract boolean tieneEntidad(Class entidad);
 
-    public void intentarExtraerMineral(Almacen almacen, Zangano zangano){
-        recurso.intentarExtraerMineral(almacen,zangano);
+    public void intentarExtraerMineral(Almacen almacen, Mina mina){
+        recurso.intentarExtraerMineral(almacen,mina);
+    }
+
+    public void intentarExtraerGas(Almacen almacen, RefineriaGas refineria) {
+        recurso.intentarExtraerGas(almacen, refineria);
     }
 
 }

@@ -19,8 +19,10 @@ import java.util.List;
 
 public class Asimilador extends Entidad implements RefineriaGas, Construible, AtacableTerrestre {
 
-    public Asimilador(Casilla casilla) {
+    private Almacen almacen;
+    public Asimilador(Casilla casilla, Almacen almacen) {
         super(new VidaProtoss(450, 450),new ArrayList<>(List.of(new CostoMineral(100))), 6, new Protoss(), casilla);
+        this.almacen = almacen;
     }
 
     public void extraerGas(Almacen almacen, Geiser geiser){
@@ -56,8 +58,13 @@ public class Asimilador extends Entidad implements RefineriaGas, Construible, At
 
     @Override
     public void avanzarTurno() {
+        try{
+            esUsable();
+            casilla.intentarExtraerGas(almacen, this);
+        } catch (Exception e){
+        }
+
         tiempoConstruccion -= 1;
-        /* extraerGas() */
         vida.regenerar();
     }
 

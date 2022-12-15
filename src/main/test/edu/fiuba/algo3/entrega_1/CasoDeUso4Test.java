@@ -18,9 +18,9 @@ public class CasoDeUso4Test {
         Geiser geiser = new Geiser();
        Almacen a = new Almacen();
        Casilla casilla = new Casilla(0,0,new Moho(), geiser);
-       Extractor e = new Extractor(casilla);
+       Extractor e = new Extractor(casilla, a);
        e.finalizarConstruccion();
-       e.extraerGas(a, geiser);
+       e.avanzarTurno();
 
         assertEquals(0, a.cantGas());
     }
@@ -30,15 +30,15 @@ public class CasoDeUso4Test {
         Geiser geiser = new Geiser();
         Almacen a = new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser);
-        Extractor e = new Extractor(casilla);
+        Extractor e = new Extractor(casilla, a);
         e.finalizarConstruccion();
 
         e.meterZangano();
-        e.extraerGas(a, geiser);
+        e.avanzarTurno();
 
         assertEquals(10, a.cantGas());
 
-        e.extraerGas(a, geiser);
+        e.avanzarTurno();
 
         assertEquals(20, a.cantGas());
     }
@@ -48,16 +48,16 @@ public class CasoDeUso4Test {
         Geiser geiser = new Geiser();
         Almacen a = new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser);
-        Extractor e = new Extractor(casilla);
+        Extractor e = new Extractor(casilla, a);
         e.finalizarConstruccion();
 
         e.meterZangano();
         e.meterZangano();
-        e.extraerGas(a, geiser);
+        e.avanzarTurno();
 
         assertEquals(20, a.cantGas());
 
-        e.extraerGas(a, geiser);
+        e.avanzarTurno();
 
         assertEquals(40, a.cantGas());
     }
@@ -67,17 +67,17 @@ public class CasoDeUso4Test {
         Geiser geiser = new Geiser();
         Almacen a = new Almacen();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser);
-        Extractor e = new Extractor(casilla);
+        Extractor e = new Extractor(casilla, a);
         e.finalizarConstruccion();
 
         e.meterZangano();
         e.meterZangano();
         e.meterZangano();
-        e.extraerGas(a, geiser);
+        e.avanzarTurno();
 
         assertEquals(30, a.cantGas());
 
-        e.extraerGas(a, geiser);
+        e.avanzarTurno();
 
         assertEquals(60, a.cantGas());
     }
@@ -86,7 +86,7 @@ public class CasoDeUso4Test {
     public void extractorTieneCapacidadMaximaDe3Zanganos() {
         Geiser geiser = new Geiser();
         Casilla casilla = new Casilla(0,0,new Moho(), geiser);
-        Extractor e = new Extractor(casilla);
+        Extractor e = new Extractor(casilla, new Almacen());
         e.finalizarConstruccion();
 
         e.meterZangano();
@@ -101,10 +101,10 @@ public class CasoDeUso4Test {
         Geiser geiser = new Geiser();
         Casilla casilla = new Casilla(0,0,new TierraEnergizada(),geiser);
         Almacen almacen = new Almacen();
-        Asimilador a = new Asimilador(casilla);
+        Asimilador a = new Asimilador(casilla, almacen);
         a.finalizarConstruccion();
 
-        a.extraerGas(almacen, geiser);
+        a.avanzarTurno();
 
         assertEquals(20, almacen.cantGas());
     }

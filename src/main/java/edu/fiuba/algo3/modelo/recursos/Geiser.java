@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.recursos;
 
 import edu.fiuba.algo3.modelo.edificios.Construible;
+import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.errores.NoHayMenaEnLaCasillaError;
@@ -35,7 +36,12 @@ public class Geiser implements Recurso {
         return 0;
     }
 
-    public void intentarExtraerMineral(Almacen almacen, Zangano zangano){
+    public void intentarExtraerMineral(Almacen almacen, Mina mina){
         throw new NoHayMenaEnLaCasillaError();
+    }
+
+    @Override
+    public void intentarExtraerGas(Almacen almacen, RefineriaGas refineria) {
+        refineria.extraerGas(almacen, this);
     }
 }

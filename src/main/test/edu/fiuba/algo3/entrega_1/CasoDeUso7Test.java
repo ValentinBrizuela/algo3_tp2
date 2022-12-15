@@ -35,10 +35,10 @@ public class CasoDeUso7Test {
         Almacen a = new Almacen();
         Mena men = new Mena();
         Casilla casilla = new Casilla(0,0,new TierraEnergizada(),men);
-        NexoMineral nexo = new NexoMineral(casilla);
+        NexoMineral nexo = new NexoMineral(casilla, a);
         nexo.finalizarConstruccion();
 
-        nexo.extraerMineral(a, men);
+        nexo.avanzarTurno();
 
         assertEquals(20, a.cantMineral());
     }

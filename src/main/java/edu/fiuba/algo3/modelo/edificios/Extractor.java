@@ -20,10 +20,12 @@ import java.util.List;
 public class Extractor extends Entidad implements RefineriaGas, Construible, AtacableTerrestre {
 
     private int cantZanganos;
+    private Almacen almacen;
 
-    public Extractor(Casilla casilla){
+    public Extractor(Casilla casilla, Almacen almacen){
         super(new VidaZerg(750),new ArrayList<>(List.of(new CostoMineral(100))), 6, new Zerg(), casilla);
         cantZanganos = 0;
+        this.almacen = almacen;
     }
 
     @Override
@@ -66,8 +68,13 @@ public class Extractor extends Entidad implements RefineriaGas, Construible, Ata
 
     @Override
     public void avanzarTurno() {
+        try{
+            esUsable();
+            casilla.intentarExtraerGas(almacen, this);
+        } catch (Exception e){
+        }
+
         tiempoConstruccion -= 1;
-        /* extraerGas() */
         vida.regenerar();
     }
 

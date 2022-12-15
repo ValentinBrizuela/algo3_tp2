@@ -21,11 +21,11 @@ public class CasoDeUso16Test {
         Casilla casilla = new Casilla(0,0, new Moho(),new Geiser());
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
-        Extractor extractor = new Extractor(casilla);
+        Extractor extractor = new Extractor(casilla, almacen);
 
         casilla.construir(extractor, almacen);
 
-        Extractor extractor2 = new Extractor(casilla);
+        Extractor extractor2 = new Extractor(casilla, almacen);
         assertThrows(CasillaOcupadaError.class, () -> {casilla.construir(extractor2, almacen);});
     }
 
@@ -34,11 +34,11 @@ public class CasoDeUso16Test {
         Casilla casilla = new Casilla(0,0, new Moho(),new Geiser());
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
-        Extractor extractor = new Extractor(casilla);
+        Extractor extractor = new Extractor(casilla, almacen);
 
         casilla.construir(extractor, almacen);
 
-        Extractor extractor2 = new Extractor(casilla);
+        Extractor extractor2 = new Extractor(casilla, almacen);
         assertThrows(CasillaOcupadaError.class, () -> {casilla.construir(extractor2, almacen);});
     }
 
@@ -49,7 +49,7 @@ public class CasoDeUso16Test {
         Mena mena=new Mena();
         Casilla casilla1= new Casilla(19,19, new Tierra(),mena);
         Casilla casilla2= new Casilla(19,20, new Moho(),new RecursoVacio());
-        casilla1.construir(new NexoMineral(casilla1),almacen);
+        casilla1.construir(new NexoMineral(casilla1, almacen),almacen);
         Zangano zangano=new Zangano(casilla2,almacen );
         casilla2.construir(zangano,almacen);
         zangano.avanzarTurno();
@@ -68,6 +68,6 @@ public class CasoDeUso16Test {
         zangano.avanzarTurno();
 
 
-        assertThrows(CasillaOcupadaError.class, () -> {casilla1.construir(new NexoMineral(casilla1),almacen);});
+        assertThrows(CasillaOcupadaError.class, () -> {casilla1.construir(new NexoMineral(casilla1, almacen),almacen);});
     }
 }

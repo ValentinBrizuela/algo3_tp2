@@ -19,7 +19,7 @@ public class CasoDeUso3Test {
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
         Casilla casilla = new Casilla(25,25, new TierraEnergizada(),new Geiser());
-        Asimilador asimilador = new Asimilador(casilla);
+        Asimilador asimilador = new Asimilador(casilla, almacen);
 
         casilla.construir(asimilador, almacen);
 
@@ -31,7 +31,7 @@ public class CasoDeUso3Test {
         Casilla casilla = new Casilla(25,25, new Moho(),new Geiser());
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
-        Extractor extractor = new Extractor(casilla);
+        Extractor extractor = new Extractor(casilla, almacen);
 
         casilla.construir(extractor, almacen);
 

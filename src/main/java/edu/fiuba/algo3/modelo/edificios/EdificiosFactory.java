@@ -152,7 +152,7 @@ public class EdificiosFactory {
 
     public void construirExtractor(Casilla casilla, Jugador jugadorActual){
         try{
-            Extractor e = new Extractor(casilla);
+            Extractor e = new Extractor(casilla, jugadorActual.obtenerAlmacen());
             casilla.construir(e, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Extractor");
             jugadorActual.agregarEdificio(e);
@@ -185,7 +185,7 @@ public class EdificiosFactory {
 
     public void construirNexoMineral(Casilla casilla, Jugador jugadorActual){
         try {
-            NexoMineral n = new NexoMineral(casilla);
+            NexoMineral n = new NexoMineral(casilla, jugadorActual.obtenerAlmacen());
             casilla.construir(n, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("NexoMineral");
             jugadorActual.agregarEdificio(n);
@@ -197,7 +197,7 @@ public class EdificiosFactory {
 
     public void construirAsimilador(Casilla casilla, Jugador jugadorActual){
         try {
-            Asimilador a = new Asimilador(casilla);
+            Asimilador a = new Asimilador(casilla, jugadorActual.obtenerAlmacen());
             casilla.construir(a, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Asimilador");
             jugadorActual.agregarEdificio(a);

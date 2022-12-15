@@ -85,7 +85,11 @@ public class Casilla {
         estado.estaLibre();
     }
 
-    public void intentarExtraerMineral(Almacen almacen, Zangano zangano){
-        estado.intentarExtraerMineral(almacen,zangano);
+    public void intentarExtraerMineral(Almacen almacen, Mina mina){
+        estado.intentarExtraerMineral(almacen,mina);
+    }
+
+    public void intentarExtraerGas(Almacen almacen, RefineriaGas refineria){
+        estado.intentarExtraerGas(almacen, refineria);
     }
 }

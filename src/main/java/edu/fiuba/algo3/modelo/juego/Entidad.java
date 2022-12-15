@@ -25,15 +25,6 @@ public abstract class Entidad {
         this.casilla = casilla;
     }
 
-    /*private void setearCostos(int costoMineral, int costoGas){
-        if (costoMineral != 0){
-            costos.add(new CostoMineral(costoMineral));
-        }
-
-        if (costoGas != 0){
-            costos.add(new CostoGas(costoGas));
-        }
-    }*/
     public boolean estaDestruido() {
         return vida.obtenerVida() <= 0;
     }
@@ -72,9 +63,6 @@ public abstract class Entidad {
 
     public void aplicarDanio(int danio) {
         vida.recibirAtaque(danio);
-       /* if (estaDestruido()){
-            casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
-        }*/
     }
 
 

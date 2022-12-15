@@ -18,8 +18,8 @@ public class CasoDeUso5Test {
     @Test
     public void construyoEdificioZergEnTierraYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Tierra(), new Geiser());
-        Extractor extractor = new Extractor(casilla);
         Almacen almacen = new Almacen();
+        Extractor extractor = new Extractor(casilla, almacen);
         almacen.almacenarMineral(1000);
 
         assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(extractor, almacen);});
@@ -39,8 +39,8 @@ public class CasoDeUso5Test {
     @Test
     public void construyoEdificioProtossEnMohoYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Moho(), new Geiser());
-        Asimilador asimilador = new Asimilador(casilla);
         Almacen almacen = new Almacen();
+        Asimilador asimilador = new Asimilador(casilla, almacen);
         almacen.almacenarMineral(1000);
 
         assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(asimilador, almacen);});
@@ -50,8 +50,8 @@ public class CasoDeUso5Test {
     @Test
     public void construyoEdificioProtossEnTierraNoEnergizadaYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Tierra(), new Geiser());
-        Asimilador asimilador = new Asimilador(casilla);
         Almacen almacen = new Almacen();
+        Asimilador asimilador = new Asimilador(casilla, almacen);
         almacen.almacenarMineral(1000);
         //Casilla sin energia por defecto.
         // Funciona por ser tierra pero deberia funcionar por no tener energia.

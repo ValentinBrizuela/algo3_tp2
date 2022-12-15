@@ -20,9 +20,11 @@ import java.util.List;
 
 public class NexoMineral extends Entidad implements Mina, Construible, AtacableTerrestre {
 
-    public NexoMineral(Casilla casilla) {
-        super(new VidaProtoss(250, 250), new ArrayList<>(List.of(new CostoMineral(50))), 4, new Protoss(), casilla);
+    private Almacen almacen;
 
+    public NexoMineral(Casilla casilla, Almacen almacen) {
+        super(new VidaProtoss(250, 250), new ArrayList<>(List.of(new CostoMineral(50))), 4, new Protoss(), casilla);
+        this.almacen = almacen;
     }
     public void extraerMineral(Almacen almacen, Mena mena) {
         esUsable();
@@ -55,8 +57,13 @@ public class NexoMineral extends Entidad implements Mina, Construible, AtacableT
 
     @Override
     public void avanzarTurno() {
+        try{
+            esUsable();
+            casilla.intentarExtraerMineral(almacen, this);
+        } catch (Exception e){
+        }
+
         tiempoConstruccion -= 1;
-        /* extraerMineral()*/
         vida.regenerar();
     }
 

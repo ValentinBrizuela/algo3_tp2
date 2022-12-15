@@ -27,7 +27,7 @@ public class CasoDeUso8Test {
     public void test02NoPuedoConstruirUnExtractorSiNoTengoLosRecursosNecesarios(){
         Almacen almacen = new Almacen();
         Casilla casilla = new Casilla(0,0, new Moho(), new Geiser());
-        Extractor extractor = new Extractor(casilla);
+        Extractor extractor = new Extractor(casilla, almacen);
 
         assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(extractor, almacen);});
     }
@@ -59,7 +59,7 @@ public class CasoDeUso8Test {
     public void test06NoPuedoConstruirUnNexoMineralSiNoTengoLosRecursosNecesarios(){
         Almacen almacen = new Almacen();
         Casilla casilla = new Casilla(0,0, new TierraEnergizada(), new Mena());
-        NexoMineral nexo = new NexoMineral(casilla);
+        NexoMineral nexo = new NexoMineral(casilla, almacen);
 
         assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(nexo, almacen);});
     }
@@ -76,7 +76,7 @@ public class CasoDeUso8Test {
     public void test08NoPuedoConstruirUnAsimilidaorSiNoTengoLosRecursosNecesarios(){
         Almacen almacen = new Almacen();
         Casilla casilla = new Casilla(0,0, new TierraEnergizada(), new Geiser());
-        Asimilador asimilador = new Asimilador(casilla);
+        Asimilador asimilador = new Asimilador(casilla, almacen);
 
         assertThrows(RecursosInsuficientesError.class, () -> {casilla.construir(asimilador, almacen);});
     }
