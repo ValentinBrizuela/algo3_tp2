@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.IMapa;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Zerg;
@@ -43,7 +44,7 @@ public class    Hidralisco extends Unidad implements Atacante, AtacableTerrestre
         atacableAereo.aplicarDanio(danioTerrestre);
     }
 
-    public void recibirAtaque(Atacante atacante, Mapa mapa) {
+    public void recibirAtaque(Atacante atacante, IMapa mapa) {
         atacante.atacarA(this);
     }
 

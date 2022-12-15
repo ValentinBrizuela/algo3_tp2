@@ -25,7 +25,7 @@ public class VidaProtoss extends Vida{
     @Override
     public void regenerar() {
         if (escudoMaximo - escudo > 0) {
-            escudo += escudoMaximo * 0.1;
+            escudo += escudoMaximo * 0.01;
             if (escudo > escudoMaximo) {
                 escudo = escudoMaximo;
             }

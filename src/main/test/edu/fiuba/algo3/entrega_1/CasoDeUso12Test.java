@@ -22,22 +22,22 @@ public class CasoDeUso12Test {
 
         pilon.avanzarTurno();
 
-        assertEquals(30, pilon.escudo());
+        assertEquals(3, pilon.escudo());
         assertEquals(200, pilon.vida());
 
         pilon.avanzarTurno();
 
-        assertEquals(60, pilon.escudo());
+        assertEquals(6, pilon.escudo());
         assertEquals(200, pilon.vida());
 
         pilon.avanzarTurno();
 
-        assertEquals(90, pilon.escudo());
+        assertEquals(9, pilon.escudo());
         assertEquals(200, pilon.vida());
 
         pilon.avanzarTurno();
 
-        assertEquals(120, pilon.escudo());
+        assertEquals(12, pilon.escudo());
         assertEquals(200, pilon.vida());
 
     }

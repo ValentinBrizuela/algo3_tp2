@@ -42,7 +42,7 @@ public class Jugador {
         this.edificiosConstruidos= new ArrayList<Construible>();
         this.edificiosConAreas= new ArrayList<EdificioConArea>();
         this.almacen= new Almacen();
-        this.almacen.almacenarMineral(200);
+        this.almacen.almacenarMineral(250);
         this.nombre=nombre;
         this.color=color;
         this.raza=raza;
@@ -69,7 +69,7 @@ public class Jugador {
 
     public void agregarEdificioConArea(EdificioConArea edificio){edificiosConAreas.add(edificio);}
 
-    public void actualizarAreas(Mapa mapa){
+    public void actualizarAreas(IMapa mapa){
         for (EdificioConArea edificio: edificiosConAreas){
             edificio.actualizarTerreno(mapa);
         }

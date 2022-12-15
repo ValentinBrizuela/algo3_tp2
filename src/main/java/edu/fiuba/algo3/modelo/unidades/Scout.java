@@ -5,10 +5,7 @@ import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.VidaProtoss;
 import edu.fiuba.algo3.modelo.interfaces.*;
-import edu.fiuba.algo3.modelo.juego.Almacen;
-import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.juego.Mapa;
-import edu.fiuba.algo3.modelo.juego.Poblacion;
+import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
@@ -47,7 +44,7 @@ public class Scout extends Unidad  implements Atacante, AtacableAereo, Consumido
         atacableAereo.aplicarDanio(danioAereo);
     }
 
-    public void recibirAtaque(Atacante atacante, Mapa mapa) {
+    public void recibirAtaque(Atacante atacante, IMapa mapa) {
         atacante.atacarA(this);
     }
 

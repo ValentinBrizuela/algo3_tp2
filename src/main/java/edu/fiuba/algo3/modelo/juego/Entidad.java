@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.costos.Costo;
-import edu.fiuba.algo3.modelo.costos.CostoGas;
-import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.Vida;
 import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
@@ -48,7 +46,7 @@ public abstract class Entidad {
 
     public abstract void avanzarTurno();
 
-    public abstract void recibirAtaque(Atacante atacante, Mapa mapa);
+    public abstract void recibirAtaque(Atacante atacante, IMapa mapa);
 
     public void esUsable() {
         if (tiempoConstruccion > 0){
@@ -80,7 +78,7 @@ public abstract class Entidad {
     }
 
 
-    public  void destruir(Jugador jugador,Mapa mapa){
+    public  void destruir(Jugador jugador,IMapa mapa){
         casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
     }
 

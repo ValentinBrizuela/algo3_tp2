@@ -26,6 +26,4 @@ public class UnidadAerea implements TipoDeUnidad {
 
     }
 
-    public void puedoMoverA(Terreno terreno){
-    }
 }

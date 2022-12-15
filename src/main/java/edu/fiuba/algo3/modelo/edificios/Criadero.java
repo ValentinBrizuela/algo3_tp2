@@ -51,7 +51,7 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
         incrementarRango();
     }
 
-    public void generarMoho(Mapa mapa) {
+    public void generarMoho(IMapa mapa) {
         for (int i = casilla.obtenerPosX() - rango; i <= casilla.obtenerPosX() + rango; i++) {
             for (int j = casilla.obtenerPosY() - rango; j <= casilla.obtenerPosY() + rango; j++) {
 
@@ -104,16 +104,16 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
         throw new ConstruccionNoPermitidaError();
     }
 
-    public void recibirAtaque(Atacante atacante, Mapa mapa) {
+    public void recibirAtaque(Atacante atacante, IMapa mapa) {
         atacante.atacarA(this);
     }
 
-    public void actualizarTerreno(Mapa mapa){
+    public void actualizarTerreno(IMapa mapa){
         generarMoho(mapa);
     }
 
     @Override
-    public  void destruir(Jugador jugador,Mapa mapa){
+    public  void destruir(Jugador jugador,IMapa mapa){
            casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
         jugador.degenerarPoblacion();
     }

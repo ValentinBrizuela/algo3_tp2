@@ -20,19 +20,16 @@ public class CasoDeUso11Test {
 
         pilon.avanzarTurno();
 
-        assertEquals(230, pilon.escudo());
+        assertEquals(203, pilon.escudo());
 
         pilon.avanzarTurno();
 
-        assertEquals(260, pilon.escudo());
+        assertEquals(206, pilon.escudo());
 
-        pilon.avanzarTurno();
-
-        assertEquals(290, pilon.escudo());
-
-        pilon.avanzarTurno();
+        for (int i=0; i<32; i++){
+            pilon.avanzarTurno();
+        }
 
         assertEquals(300, pilon.escudo());
-
     }
 }

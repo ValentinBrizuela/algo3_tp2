@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.unidades.AmoSupremo;
 
-public class Mapa {
+public class Mapa implements IMapa{
 
     private int nroBases;
 

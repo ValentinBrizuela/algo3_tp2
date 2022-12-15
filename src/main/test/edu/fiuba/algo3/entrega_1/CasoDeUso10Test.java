@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CasoDeUso10Test {
     @Test
-    public void construccionZergRecuperaVidaPorTurnoHastaElMaximo() { /*Supuesto: Recupera 10% por turno*/
+    public void construccionZergRecuperaVidaPorTurnoHastaElMaximo() { /*Supuesto: Recupera 1% de su vida max por turno*/
         Casilla casilla = new Casilla(25,25, new Moho(), new RecursoVacio());
         Criadero criadero = new Criadero(casilla);
         criadero.aplicarDanio(100);
@@ -17,14 +17,21 @@ public class CasoDeUso10Test {
 
         criadero.avanzarTurno();
 
-        assertEquals(450, criadero.vida());
+        assertEquals(405, criadero.vida());
 
         criadero.avanzarTurno();
+
+        assertEquals(410, criadero.vida());
+
+        for (int i=0; i<18; i++){
+            criadero.avanzarTurno();
+        }
 
         assertEquals(500, criadero.vida());
 
         criadero.avanzarTurno();
 
         assertEquals(500, criadero.vida());
+
     }
 }

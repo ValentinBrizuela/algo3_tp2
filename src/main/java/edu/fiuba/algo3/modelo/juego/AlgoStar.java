@@ -14,11 +14,11 @@ public class AlgoStar {
     private ArrayList<Jugador> jugadores;
     private EdificiosFactory edificiosFactory;
 
-    public Mapa mapa;
+    public IMapa mapa;
     private int turno;
     private Jugador jugadorActual;
 
-    public AlgoStar(Mapa mapa){
+    public AlgoStar(IMapa mapa){
         this.jugadores=new ArrayList<Jugador>();
         this.mapa=mapa;
         this.turno = 0;

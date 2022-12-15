@@ -56,10 +56,6 @@ public abstract class Unidad extends Entidad {
         casillaDestino.cambiarEstado(new Ocupada(terreno, casillaDestino.obtenerRecurso(), this));
     }
 
-    public void avanzarCasilla(){
-
-    }
-
     public TipoDeUnidad obtenerTipoMovimiento(){
         return tipoUnidad;
     }

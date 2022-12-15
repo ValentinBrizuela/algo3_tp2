@@ -14,7 +14,7 @@ public class VidaZerg extends Vida{
     @Override
     public void regenerar() {
         if (vidaMaxima-vida > 0) {
-            vida += vidaMaxima*0.1;
+            vida += vidaMaxima*0.01;
             if (vida > vidaMaxima) {
                 vida = vidaMaxima;
             }

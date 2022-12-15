@@ -2,12 +2,13 @@ package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.IMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 
 public class EdificiosFactory {
 
-    public void crearEdificio(String edificio, Casilla casilla, Jugador jugadorActual, Mapa mapa){
+    public void crearEdificio(String edificio, Casilla casilla, Jugador jugadorActual, IMapa mapa){
         switch (edificio) {
             case "Criadero":
                 construirCriadero(casilla, jugadorActual, mapa);
@@ -51,7 +52,7 @@ public class EdificiosFactory {
         }
     }
 
-    public void construirCriadero(Casilla casilla, Jugador jugadorActual, Mapa mapa){
+    public void construirCriadero(Casilla casilla, Jugador jugadorActual, IMapa mapa){
         try {
             Criadero c = new Criadero(casilla);
             casilla.construir(c, jugadorActual.obtenerAlmacen());
@@ -66,7 +67,7 @@ public class EdificiosFactory {
         }
     }
 
-    public void construirPilon(Casilla casilla, Jugador jugadorActual, Mapa mapa){
+    public void construirPilon(Casilla casilla, Jugador jugadorActual, IMapa mapa){
         try {
             Pilon p = new Pilon(casilla);
             casilla.construir(p, jugadorActual.obtenerAlmacen());
