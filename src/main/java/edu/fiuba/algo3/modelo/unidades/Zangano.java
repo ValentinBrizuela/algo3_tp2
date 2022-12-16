@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
+import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.*;
@@ -37,6 +38,7 @@ public class Zangano extends Unidad implements Mina, AtacableTerrestre, Consumid
             casilla.intentarExtraerMineral(almacen,this);
         }catch (Exception e){
         }
+
         tiempoConstruccion -= 1;
         vida.regenerar();
     }
@@ -56,6 +58,10 @@ public class Zangano extends Unidad implements Mina, AtacableTerrestre, Consumid
     @Override
     public boolean esAtacante() {
         return false;
+    }
+
+    public void meterseEnExtractor(){
+        casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
     }
 
 }

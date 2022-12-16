@@ -13,6 +13,7 @@ import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +35,19 @@ public class Extractor extends Entidad implements RefineriaGas, Construible, Ata
         almacen.almacenarGas(geiser.extraerGas(cantZanganos*10));
     }
 
-    public void meterZangano() {
-        esUsable();
-        if (cantZanganos == 3) {
-            throw new ExtractorLlenoError();
+    public void meterZangano(Zangano zangano) {
+        try{
+            zangano.esUsable();
+            esUsable();
+            if (cantZanganos == 3) {
+                throw new ExtractorLlenoError();
+            }
+        } catch (Exception e){
+            System.out.println("No se pudo meter el Zangano.");
+            throw e;
         }
+
+        zangano.meterseEnExtractor();
         cantZanganos += 1;
     }
 

@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.edificios.NexoMineral;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
+import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.unidades.Zangano;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.recursos.Mena;
@@ -65,7 +66,10 @@ public class CasoDeUso15Test {
         Casilla casilla = new Casilla(0,0,new Moho(), geiser);
         Extractor extractor=new Extractor(casilla, almacen);
         extractor.finalizarConstruccion();
-        extractor.meterZangano();
+        Casilla casillaZangano = new Casilla(0,1, new Tierra(), new RecursoVacio());
+        Zangano z = new Zangano(casillaZangano, almacen);
+        z.finalizarConstruccion();
+        extractor.meterZangano(z);
 
         extractor.avanzarTurno();
 
@@ -81,7 +85,10 @@ public class CasoDeUso15Test {
         Casilla casilla = new Casilla(0,0,new Moho(), geiser);
         Extractor extractor=new Extractor(casilla, almacen);
         extractor.finalizarConstruccion();
-        extractor.meterZangano();
+        Casilla casillaZangano = new Casilla(0,1, new Tierra(), new RecursoVacio());
+        Zangano z = new Zangano(casillaZangano, almacen);
+        z.finalizarConstruccion();
+        extractor.meterZangano(z);
 
         extractor.avanzarTurno();
 
@@ -97,9 +104,21 @@ public class CasoDeUso15Test {
         Casilla casilla = new Casilla(0,0,new Moho(), geiser);
         Extractor extractor=new Extractor(casilla, almacen);
         extractor.finalizarConstruccion();
-        extractor.meterZangano();
-        extractor.meterZangano();
-        extractor.meterZangano();
+        Casilla casillaZangano1 = new Casilla(0,1, new Tierra(), new RecursoVacio());
+        Casilla casillaZangano2 = new Casilla(1,1, new Tierra(), new RecursoVacio());
+        Casilla casillaZangano3 = new Casilla(2,1, new Tierra(), new RecursoVacio());
+
+        Zangano z1 = new Zangano(casillaZangano1, almacen);
+        Zangano z2 = new Zangano(casillaZangano2, almacen);
+        Zangano z3 = new Zangano(casillaZangano3, almacen);
+
+        z1.finalizarConstruccion();
+        z2.finalizarConstruccion();
+        z3.finalizarConstruccion();
+
+        extractor.meterZangano(z1);
+        extractor.meterZangano(z2);
+        extractor.meterZangano(z3);
 
         extractor.avanzarTurno();
         assertEquals(20,almacen.cantGas());
