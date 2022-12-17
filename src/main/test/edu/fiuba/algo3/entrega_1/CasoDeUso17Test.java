@@ -18,109 +18,102 @@ public class CasoDeUso17Test {
 
     @Test
     public void test01UnaGuaridaNoSePuedeConstruirSiNoHayYaConstruidaUnaReservaDeReproduccion(){
-        Mapa mapa = new Mapa(2);
-        Almacen almacen = new Almacen();
+        FakeMapa mapa = new FakeMapa(2);
         Jugador jugador1=new Jugador("andres", Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        Casilla casilla = mapa.obtenerCasilla(50,50);
+        Casilla casilla = mapa.obtenerCasilla(5,5);
         casilla.cambiarTerreno(new Moho());
-        algoStar.construirEdificio("Guarida", 50, 50);
+        algoStar.construirEdificio("Guarida", 5, 5);
 
         assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
 
     @Test
     public void test02UnaGuaridaSePuedeConstruirSiAntesSeConstruyoUnaReservaDeReproduccion(){
-        Mapa mapa = new Mapa(2);
-        Almacen almacen = new Almacen();
-        Casilla mockCasilla = mock(Casilla.class);
+        FakeMapa mapa = new FakeMapa(2);
         Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(50,50).cambiarTerreno(new Moho());
-        mapa.obtenerCasilla(51,50).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(5,5).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(5,6).cambiarTerreno(new Moho());
 
-        algoStar.construirEdificio("ReservaDeReproduccion", 50, 50);
-        algoStar.construirEdificio("Guarida", 51, 50);
+        algoStar.construirEdificio("ReservaDeReproduccion", 5, 5);
+        algoStar.construirEdificio("Guarida", 5, 6);
 
-        assertSame(Guarida.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEntidad().getClass());
+        assertSame(Guarida.class, mapa.obtenerEntidad(5, 6).getClass());
 
     }
 
     @Test
     public void test03UnEspiralNoSePuedeConstruirSiNoHayYaConstruidaUnaGuarida(){
-        Mapa mapa = new Mapa(2);
-        Almacen almacen = new Almacen();
+        FakeMapa mapa = new FakeMapa(2);
         Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        Casilla casilla = mapa.obtenerCasilla(50,50);
+        Casilla casilla = mapa.obtenerCasilla(5,5);
         casilla.cambiarTerreno(new Moho());
-        algoStar.construirEdificio("Espiral", 50, 50);
+        algoStar.construirEdificio("Espiral", 5, 5);
 
         assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
 
     @Test
     public void test04UnEspiralSePuedeConstruirSiAntesSeConstruyoUnaGuarida(){
-        Mapa mapa = new Mapa(2);
-        Almacen almacen = new Almacen();
+        FakeMapa mapa = new FakeMapa(2);
         Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(50,50).cambiarTerreno(new Moho());
-        mapa.obtenerCasilla(51,50).cambiarTerreno(new Moho());
-        mapa.obtenerCasilla(51,51).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(5,5).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(5,6).cambiarTerreno(new Moho());
+        mapa.obtenerCasilla(5,7).cambiarTerreno(new Moho());
 
-        algoStar.construirEdificio("ReservaDeReproduccion", 50, 50);
-        algoStar.construirEdificio("Guarida", 51, 50);
-        algoStar.construirEdificio("Espiral", 51, 51);
+        algoStar.construirEdificio("ReservaDeReproduccion", 5, 5);
+        algoStar.construirEdificio("Guarida", 5, 6);
+        algoStar.construirEdificio("Espiral", 5, 7);
 
-        assertSame(Espiral.class, mapa.obtenerCasilla(51,51).obtenerEstado().obtenerEntidad().getClass());
+        assertSame(Espiral.class, mapa.obtenerEntidad(5, 7).getClass());
 
     }
 
     @Test
     public void test05UnPuertoEstelarNoSePuedeConstruirSiNoHayYaConstruidoUnAcceso(){
-        Mapa mapa = new Mapa(2);
-        Almacen almacen = new Almacen();
+        FakeMapa mapa = new FakeMapa(2);
         Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        Casilla casilla = mapa.obtenerCasilla(50,50);
+        Casilla casilla = mapa.obtenerCasilla(5,5);
         casilla.cambiarTerreno(new TierraEnergizada());
-        algoStar.construirEdificio("PuertoEstelar", 50, 50);
+        algoStar.construirEdificio("PuertoEstelar", 5, 5);
 
         assertEquals(Desocupada.class, casilla.obtenerEstado().getClass());
     }
 
     @Test
     public void test06UnPuertoEstelarSePuedeConstruirSiHayYaConstruidoUnAcceso(){
-        Mapa mapa = new Mapa(2);
-        Almacen almacen = new Almacen();
+        FakeMapa mapa = new FakeMapa(2);
         Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
         jugador1.llenarArcas();
-        mapa.obtenerCasilla(50,50).cambiarTerreno(new TierraEnergizada());
-        mapa.obtenerCasilla(51,50).cambiarTerreno(new TierraEnergizada());
+        mapa.obtenerCasilla(5,5).cambiarTerreno(new TierraEnergizada());
+        mapa.obtenerCasilla(5,6).cambiarTerreno(new TierraEnergizada());
 
-        algoStar.construirEdificio("Acceso", 50, 50);
-        algoStar.construirEdificio("PuertoEstelar", 51, 50);
+        algoStar.construirEdificio("Acceso", 5, 5);
+        algoStar.construirEdificio("PuertoEstelar", 5, 6);
 
-        assertSame(PuertoEstelar.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEntidad().getClass());
+        assertSame(PuertoEstelar.class, mapa.obtenerEntidad(5, 6).getClass());
     }
 
 }

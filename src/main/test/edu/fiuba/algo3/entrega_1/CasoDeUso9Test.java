@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CasoDeUso9Test {
     @Test
     public void EdificioProtossSigueEnergizadoSiLeDestruyenElPilonQueLoEnergizaPeroTieneOtroEnRango(){
-        Mapa mapa = new Mapa(2);
+        FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar=new AlgoStar(mapa);
         Jugador jugador1=new Jugador("camila", Color.RED,new Zerg());
         Jugador jugador2=new Jugador("tomasa",Color.BLUE,new Protoss());
@@ -22,24 +22,22 @@ public class CasoDeUso9Test {
         algoStar.registrarJugador(jugador2);
         jugador1.llenarArcas();
 
-        Casilla casilla = mapa.obtenerCasilla(49, 49);
 
 
 
-        algoStar.construirEdificio("Pilon", 50, 50);
-        algoStar.construirEdificio("Pilon", 50, 51);
+        algoStar.construirEdificio("Pilon", 6, 6);
+        algoStar.construirEdificio("Pilon", 6, 7);
 
-        Pilon pilon2=(Pilon)mapa.obtenerCasilla(50,51).obtenerEstado().obtenerEntidad();
-        //Acceso acceso = new Acceso(casilla);
-        algoStar.construirEdificio("Acceso", 49, 49);
+        Pilon pilon2 = (Pilon) mapa.obtenerEntidad(6, 7);
 
-        assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
+        algoStar.construirEdificio("Acceso", 7, 7);
+
+        assertEquals(mapa.obtenerCasilla(7, 7).obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
 
         pilon2.aplicarDanio(2000);
 
         algoStar.avanzarTurno();
 
-        assertEquals(casilla.obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
-        /*assertTrue(acceso.estaEnergizado());*/
+        assertEquals(mapa.obtenerCasilla(7, 7).obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
     }
 }
