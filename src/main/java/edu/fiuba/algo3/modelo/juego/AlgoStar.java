@@ -73,11 +73,11 @@ public class AlgoStar {
         return false;
     }
 
-    public void ataque(Atacante atacante, Entidad atacado, Jugador jugador){
+    public void ataque(Atacante atacante, Entidad atacado, Jugador jugadorAtacado){
         try {
             atacado.recibirAtaque(atacante, mapa);
             if (atacado.estaDestruido()){
-                atacado.destruir(jugador,mapa);
+                atacado.destruir(jugadorAtacado,mapa);
             }
 
         } catch (Exception e) {
@@ -303,6 +303,8 @@ public class AlgoStar {
     public Jugador obtenerJugadorActual() {
         return jugadorActual;
     }
+
+    public Jugador obtenerJugadorRival() { return jugadores.get(turno%2 + 1);}
 
 }
 

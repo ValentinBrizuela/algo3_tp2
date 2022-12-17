@@ -1,6 +1,8 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.unidades.Hidralisco;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
 import javafx.scene.paint.Color;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -35,27 +37,59 @@ public class GamePlayTest {
         algostar.crearZangano(algostar.obtenerJugadorActual(), 3, 4);
         algostar.crearZangano(algostar.obtenerJugadorActual(), 4, 4);
 
-        for (int i=0; i<10; i++){
-            algostar.avanzarTurno();
-        }
+        avanzarTurnos(10, algostar);
 
         algostar.construirEdificio("ReservaDeReproduccion", 2, 1);
 
-        for (int i=0; i<4; i++){
-            algostar.avanzarTurno();
-        }
+        avanzarTurnos(4, algostar);
 
-        algostar.construirEdificio("Extractor", 2, 2);
-        Hidralisco h = algostar.crearHidralisco(algostar.obtenerJugadorActual(), 4,3);
+        algostar.construirEdificio("Extractor", 3, 3);
 
-        algostar.avanzarTurno();
-        algostar.avanzarTurno();
+        avanzarTurnos(6, algostar);
 
-        for (int i=0; i<85; i++) {
-            algostar.ataque(h, fakeMapa.obtenerCasilla(4, 4).obtenerEstado().obtenerEntidad(), algostar.obtenerJugadorActual());
+        Zangano z1 = algostar.crearZangano(algostar.obtenerJugadorActual(), 5, 5);
+        Zangano z2 = algostar.crearZangano(algostar.obtenerJugadorActual(), 5, 6);
+        Zangano z3 =algostar.crearZangano(algostar.obtenerJugadorActual(), 5, 7);
+
+        avanzarTurnos(2, algostar);
+
+        Extractor extractor = (Extractor) fakeMapa.obtenerEntidad(3, 3);
+        extractor.meterZangano(z1);
+        extractor.meterZangano(z2);
+        extractor.meterZangano(z3);
+
+        avanzarTurnos(6, algostar);
+
+        algostar.construirEdificio("Guarida", 2, 2);
+
+        avanzarTurnos(4, algostar);
+
+
+        Hidralisco h = algostar.crearHidralisco(algostar.obtenerJugadorActual(), 4,3); // Me falta suministro
+
+        avanzarTurnos(6, algostar);
+
+        algostar.construirEdificio("Criadero", 1, 2);
+
+        avanzarTurnos(4, algostar);
+
+        Hidralisco h2 = algostar.crearHidralisco(algostar.obtenerJugadorActual(), 4,3);
+
+        avanzarTurnos(4, algostar);
+
+        h2.moverA(fakeMapa.obtenerCasilla(17, 18));
+
+        for (int i=0; i<60; i++) {
+            algostar.ataque(h2, fakeMapa.obtenerEntidad(19, 18), algostar.obtenerJugadorRival());
         }
 
         assertTrue(algostar.hayGanador());
+    }
+
+    private void avanzarTurnos(int nro, AlgoStar algoStar){
+        for (int i=0; i<nro; i++){
+            algoStar.avanzarTurno();
+        }
     }
 
 }
