@@ -52,7 +52,7 @@ public class GamePlayTest {
         algostar.avanzarTurno();
 
         for (int i=0; i<85; i++) {
-            algostar.ataque(h, fakeMapa.obtenerCasilla(4, 4).obtenerEstado().obtenerEdificio(), algostar.obtenerJugadorActual());
+            algostar.ataque(h, fakeMapa.obtenerCasilla(4, 4).obtenerEstado().obtenerEntidad(), algostar.obtenerJugadorActual());
         }
 
         assertTrue(algostar.hayGanador());

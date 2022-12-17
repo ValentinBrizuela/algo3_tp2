@@ -53,6 +53,10 @@ public class Casilla {
         return estado.obtenerTerreno();
     }
 
+    public Entidad obtenerEntidad(){
+        return estado.obtenerEntidad();
+    }
+
     public void avanzarTurno() {
         estado.avanzarTurno();
     }

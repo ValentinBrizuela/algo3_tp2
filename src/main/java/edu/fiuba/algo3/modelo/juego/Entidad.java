@@ -83,4 +83,6 @@ public abstract class Entidad {
         return false;
     }
 
+    public boolean esDetector() { return false; }
+
 }

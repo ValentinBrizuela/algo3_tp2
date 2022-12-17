@@ -16,10 +16,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -112,7 +110,7 @@ public class VistaMapa extends StackPane {
             for (int j = 0; j < algostar.mapa.tamanioMapa(); j++) {
                 Casilla casilla = algostar.mapa.obtenerCasilla(i, j);
                 try {
-                    Entidad entidad = casilla.obtenerEstado().obtenerEdificio();
+                    Entidad entidad = casilla.obtenerEstado().obtenerEntidad();
                     if (entidad.getClass() == Pilon.class) {
                         ImageView imagen = new ImageView(pilon);
                         imagen.resize(10,10);

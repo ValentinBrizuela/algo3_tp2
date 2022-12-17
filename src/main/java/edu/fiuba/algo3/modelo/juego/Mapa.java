@@ -129,15 +129,25 @@ public class Mapa implements IMapa{
         return true;
     }
 
-    public boolean hayAmoSupremo(int x, int y,int radio) {
+    public boolean hayDetector(int x, int y, int radio) {
         for (int i = x - radio; i <= x + radio ; i++) {
             for (int j = y -radio; j <= y + radio; j++) {
-                if (this.obtenerCasilla(i, j).obtenerEstado().tieneEntidad(AmoSupremo.class)) { // Cambiar el .class
-                    return true;
+
+                Entidad entidad = this.obtenerEntidad(i, j);
+                try {
+                    if (entidad.esDetector()) {
+                            return true;
+                        }
+                } catch (Exception e){
                 }
             }
         }
         return false;
+    }
+
+    @Override
+    public Entidad obtenerEntidad(int x, int y) {
+        return casillas[x][y].obtenerEntidad();
     }
 
 }

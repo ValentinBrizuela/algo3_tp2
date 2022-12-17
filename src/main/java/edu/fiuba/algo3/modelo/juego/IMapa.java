@@ -10,5 +10,7 @@ public interface IMapa {
 
     public boolean estaDentroDelMapa(int posX, int posY);
 
-    public boolean hayAmoSupremo(int x, int y,int radio);
+    public boolean hayDetector(int x, int y, int radio);
+
+    public Entidad obtenerEntidad(int x, int y);
 }

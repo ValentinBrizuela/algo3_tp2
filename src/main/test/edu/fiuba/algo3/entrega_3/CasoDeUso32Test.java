@@ -31,7 +31,7 @@ public class CasoDeUso32Test {
         algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", Color.RED, new Protoss()));
 
         algoStar.construirEdificio("Criadero", 50, 50);
-        Criadero c = (Criadero) mockMapa.obtenerCasilla(50,50).obtenerEstado().obtenerEdificio();
+        Criadero c = (Criadero) mockMapa.obtenerCasilla(50,50).obtenerEstado().obtenerEntidad();
         c.aplicarDanio(1000);
 
         assertTrue(algoStar.hayGanador());
@@ -47,7 +47,7 @@ public class CasoDeUso32Test {
         algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", Color.RED, new Protoss()));
 
         algoStar.construirEdificio("Criadero", 50, 50);
-        Criadero c = (Criadero) mockMapa.obtenerCasilla(50,50).obtenerEstado().obtenerEdificio();
+        Criadero c = (Criadero) mockMapa.obtenerCasilla(50,50).obtenerEstado().obtenerEntidad();
 
         assertFalse(algoStar.hayGanador());
     }

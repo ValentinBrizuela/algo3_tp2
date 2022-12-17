@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
 import edu.fiuba.algo3.modelo.unidades.Unidad;
-import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 public abstract class Estado {
     protected Terreno terreno;
@@ -34,17 +33,11 @@ public abstract class Estado {
         this.terreno = terreno;
     }
 
-    public Entidad obtenerEdificio(){
+    public Entidad obtenerEntidad(){
         return entidad;
     }
 
-    public void cambiarEdificio(Entidad edificio){
-        this.entidad = edificio;
-    }
-
     public abstract void estaLibre();
-
-    public abstract boolean tieneEntidad(Class entidad);
 
     public void intentarExtraerMineral(Almacen almacen, Mina mina){
         recurso.intentarExtraerMineral(almacen,mina);

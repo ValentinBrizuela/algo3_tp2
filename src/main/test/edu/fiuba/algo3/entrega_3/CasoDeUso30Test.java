@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.entrega_3;
 
-import edu.fiuba.algo3.modelo.errores.PoblacionInsuficienteError;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
@@ -36,6 +35,6 @@ public class CasoDeUso30Test {
 
         algoStar.crearScout(jugador1, 40, 15);
 
-        assertEquals(null,mapa.obtenerCasilla(40,15).obtenerEstado().obtenerEdificio());
+        assertEquals(null,mapa.obtenerCasilla(40,15).obtenerEstado().obtenerEntidad());
     }
 }

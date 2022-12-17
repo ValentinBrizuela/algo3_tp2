@@ -34,4 +34,9 @@ public class AmoSupremo extends Unidad implements AtacableAereo, Construible {
     public boolean esAtacante() {
         return false;
     }
+
+    @Override
+    public boolean esDetector() {
+        return true;
+    }
 }

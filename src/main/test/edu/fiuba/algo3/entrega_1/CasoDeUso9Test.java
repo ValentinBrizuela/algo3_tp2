@@ -29,7 +29,7 @@ public class CasoDeUso9Test {
         algoStar.construirEdificio("Pilon", 50, 50);
         algoStar.construirEdificio("Pilon", 50, 51);
 
-        Pilon pilon2=(Pilon)mapa.obtenerCasilla(50,51).obtenerEstado().obtenerEdificio();
+        Pilon pilon2=(Pilon)mapa.obtenerCasilla(50,51).obtenerEstado().obtenerEntidad();
         //Acceso acceso = new Acceso(casilla);
         algoStar.construirEdificio("Acceso", 49, 49);
 

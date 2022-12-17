@@ -26,7 +26,7 @@ public class ZerlingTest {
         Zerling z=new Zerling(casilla);
         casilla.construir(z,almacen);
 
-        assertEquals(z, casilla.obtenerEstado().obtenerEdificio());
+        assertEquals(z, casilla.obtenerEstado().obtenerEntidad());
     }
     @Test
     public void test02SePuedeCrearUnZerlingEnUnTerrenoDeTierraEnergizada(){
@@ -36,7 +36,7 @@ public class ZerlingTest {
         Zerling z=new Zerling(casilla);
         casilla.construir(z,almacen);
 
-        assertEquals(z, casilla.obtenerEstado().obtenerEdificio());
+        assertEquals(z, casilla.obtenerEstado().obtenerEntidad());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ZerlingTest {
         Zerling z=new Zerling(casilla);
         casilla.construir(z,almacen);
 
-        assertEquals(z, casilla.obtenerEstado().obtenerEdificio());
+        assertEquals(z, casilla.obtenerEstado().obtenerEntidad());
     }
 
     @Test

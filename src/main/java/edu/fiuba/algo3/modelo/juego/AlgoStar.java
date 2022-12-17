@@ -30,14 +30,15 @@ public class AlgoStar {
        if(this.chequearNombre(jugador)){
            throw new NombreDeJugadorInvalidoError();
        }
-        if(jugadores.isEmpty()) {
+
+       if(jugadores.isEmpty()) {
             jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.1)), (int) (mapa.tamanioMapa()*(0.1)));
             jugadorActual = jugador;
-        }else{
-            if(jugador.sosIgualA(jugadores.get(0))){
+       }else{
+           if(jugador.sosIgualA(jugadores.get(0))){
                 throw new JugadorInvalidoError();
-            }
-            jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
+           }
+           jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
         }
         jugadores.add(jugador);
     }
@@ -86,11 +87,11 @@ public class AlgoStar {
     }
 
     public void atacaraPosicion(int x1, int y1, int x2, int y2) {
-        Entidad atacante = mapa.obtenerCasilla(x1, y1).obtenerEstado().obtenerEdificio();
+        Entidad atacante = mapa.obtenerEntidad(x1, y1);
         if (!atacante.esAtacante()) {
             throw new AtaqueInvalidoError();
         }
-        Entidad atacable = mapa.obtenerCasilla(x2, y2).obtenerEstado().obtenerEdificio();
+        Entidad atacable = mapa.obtenerEntidad(x2, y2);
         ataque((Atacante) atacante, atacable, jugadores.get((turno + 1) % 2));
     }
 

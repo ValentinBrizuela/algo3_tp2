@@ -3,7 +3,6 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Espiral;
 import edu.fiuba.algo3.modelo.edificios.Guarida;
 import edu.fiuba.algo3.modelo.edificios.PuertoEstelar;
-import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -49,7 +48,7 @@ public class CasoDeUso17Test {
         algoStar.construirEdificio("ReservaDeReproduccion", 50, 50);
         algoStar.construirEdificio("Guarida", 51, 50);
 
-        assertSame(Guarida.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEdificio().getClass());
+        assertSame(Guarida.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEntidad().getClass());
 
     }
 
@@ -86,7 +85,7 @@ public class CasoDeUso17Test {
         algoStar.construirEdificio("Guarida", 51, 50);
         algoStar.construirEdificio("Espiral", 51, 51);
 
-        assertSame(Espiral.class, mapa.obtenerCasilla(51,51).obtenerEstado().obtenerEdificio().getClass());
+        assertSame(Espiral.class, mapa.obtenerCasilla(51,51).obtenerEstado().obtenerEntidad().getClass());
 
     }
 
@@ -121,7 +120,7 @@ public class CasoDeUso17Test {
         algoStar.construirEdificio("Acceso", 50, 50);
         algoStar.construirEdificio("PuertoEstelar", 51, 50);
 
-        assertSame(PuertoEstelar.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEdificio().getClass());
+        assertSame(PuertoEstelar.class, mapa.obtenerCasilla(51,50).obtenerEstado().obtenerEntidad().getClass());
     }
 
 }

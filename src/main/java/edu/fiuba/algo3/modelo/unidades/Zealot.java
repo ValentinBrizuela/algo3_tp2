@@ -10,7 +10,6 @@ import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.IMapa;
-import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 
@@ -47,7 +46,7 @@ public class Zealot extends Unidad implements Atacante, AtacableTerrestre, Consu
     }
 
     public void recibirAtaque(Atacante atacante, IMapa mapa) {
-        if (cantMuertes < 3 || mapa.hayAmoSupremo(casilla.obtenerPosX(), casilla.obtenerPosY(), 4)) {
+        if (cantMuertes < 3 || mapa.hayDetector(casilla.obtenerPosX(), casilla.obtenerPosY(), 4)) {
             atacante.atacarA(this);
         }
         else {

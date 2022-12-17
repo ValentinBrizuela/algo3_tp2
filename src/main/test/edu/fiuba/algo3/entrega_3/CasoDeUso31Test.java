@@ -25,7 +25,7 @@ public class CasoDeUso31Test {
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         algoStar.construirEdificio("Pilon", 36, 10);
-        Pilon pilon=(Pilon)mapa.obtenerCasilla(36,10).obtenerEstado().obtenerEdificio();
+        Pilon pilon=(Pilon)mapa.obtenerCasilla(36,10).obtenerEstado().obtenerEntidad();
         assertEquals(5,jugador1.obtenerPoblacionUsable());
         algoStar.construirEdificio("Acceso", 37, 10);
         Dragon dragon=algoStar.crearDragon(jugador1,36,11);
@@ -45,7 +45,7 @@ public class CasoDeUso31Test {
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         algoStar.construirEdificio("Criadero", 36, 10);
-        Criadero criadero=(Criadero) mapa.obtenerCasilla(36,10).obtenerEstado().obtenerEdificio();
+        Criadero criadero=(Criadero) mapa.obtenerCasilla(36,10).obtenerEstado().obtenerEntidad();
         assertEquals(5,jugador1.obtenerPoblacionUsable());
         //mapa.obtenerCasilla(37,10).cambiarTerreno(new Moho());
         algoStar.construirEdificio("ReservaDeReproduccion", 36, 9);
