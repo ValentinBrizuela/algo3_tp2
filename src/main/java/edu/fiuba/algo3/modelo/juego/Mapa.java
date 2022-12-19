@@ -26,11 +26,11 @@ public class Mapa implements IMapa{
         casillas = new Casilla[tamMapa][tamMapa];
 
         inicializarMapa();
-        /*for ( int i = 0; i < 2; i++) {
+        for ( int i = 0; i < 2; i++) {
             int num1 = (int)(Math.random()*((tamMapa-30)-30+1)+30);
             int num2 = (int)(Math.random()*((tamMapa-30)-30+1)+30);
             crearEspacio(num1, num2);
-        }*/
+        }
         /*crearEspacio(70, 80);*/
         crearBasesEsquinas();
         crearBasesRandomYEspejadas();
@@ -58,12 +58,12 @@ public class Mapa implements IMapa{
 
                 if ((Math.floor(Math.random()*300)) < 1){
 
-                    /*if ((Math.floor(Math.random()*10)) % 2 == 0){
+                    if ((Math.floor(Math.random()*10)) % 2 == 0){
                         casillas[i][j] = new Casilla(i, j, new Tierra(), new Geiser());
                     }else{
                         casillas[i][j] = new Casilla(i, j, new Tierra(), new Mena());
-                    }*/
-                    casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio());
+                    }
+                    /*casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio());*/
 
                 } else {
                     casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio());

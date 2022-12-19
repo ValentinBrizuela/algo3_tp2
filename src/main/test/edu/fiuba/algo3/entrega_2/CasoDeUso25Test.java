@@ -3,6 +3,7 @@ package edu.fiuba.algo3.entrega_2;
 import edu.fiuba.algo3.modelo.errores.JugadorInvalidoError;
 import edu.fiuba.algo3.modelo.errores.NombreDeJugadorInvalidoError;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
+import edu.fiuba.algo3.modelo.juego.FakeMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -16,7 +17,7 @@ public class CasoDeUso25Test {
 
     @Test
     public void NoSePuedenIniciarDosJugadoresConNombresIguales(){
-        Mapa mapa=new Mapa(2);
+        FakeMapa mapa=new FakeMapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila", Color.RED,new Protoss());
@@ -28,7 +29,7 @@ public class CasoDeUso25Test {
 
     @Test
     public void NoSePuedenIniciarDosJugadoresConColoresIguales(){
-        Mapa mapa=new Mapa(2);
+        FakeMapa mapa=new FakeMapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("agustin",Color.RED,new Protoss());
@@ -40,7 +41,7 @@ public class CasoDeUso25Test {
 
     @Test
     public void NoSePuedenIniciarDosJugadoresConRazasIguales(){
-        Mapa mapa=new Mapa(2);
+        FakeMapa mapa=new FakeMapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("agustin",Color.BLUE,new Zerg());
@@ -52,7 +53,7 @@ public class CasoDeUso25Test {
 
     @Test
     public void NoSePuedeRegistrarUnJugadorConUnNombreQueTengaMenosDe6Caracteres(){
-        Mapa mapa=new Mapa(2);
+        FakeMapa mapa=new FakeMapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
 

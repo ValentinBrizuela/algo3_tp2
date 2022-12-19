@@ -7,36 +7,47 @@ import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 
 public class CasoDeUso29Test {
 
     @Test
     public void test01UnCriaderoNoGeneraPoblacionSiYaSeAlcanzoLaCapacidadMaxima(){
-        Mapa mapa = new Mapa(2);
+        FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila", Color.RED,new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         //Criadero +5 de poblacion * 50 criaderos = 250 de poblacion
-        for (int i=0;i<50;i++){
-            algoStar.construirEdificio("Criadero", 50, 10+i);
+        for (int i=0;i<20;i++){
+            algoStar.construirEdificio("Criadero", 5, i);
+        }
+        for (int i=0;i<20;i++){
+            algoStar.construirEdificio("Criadero", 6, i);
+        }
+        for (int i=0;i<10;i++){
+            algoStar.construirEdificio("Criadero", 7, i);
         }
 
         assertEquals(200,jugador1.obtenerPoblacionUsable());
     }
     @Test
     public void test02UnPilonNoGeneraPoblacionSiYaSeAlcanzoLaCapacidadMaxima(){
-        Mapa mapa = new Mapa(2);
+        FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila",Color.RED,new Protoss());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         //Pilon +5 de poblacion * 50 pilones = 250 de poblacion
-        for (int i=0;i<50;i++){
-            algoStar.construirEdificio("Pilon", 50, 10+i);
+        for (int i=0;i<20;i++){
+            algoStar.construirEdificio("Pilon", 5, i);
+        }
+        for (int i=0;i<20;i++){
+            algoStar.construirEdificio("Pilon", 6, i);
+        }
+        for (int i=0;i<10;i++){
+            algoStar.construirEdificio("Pilon", 7, i);
         }
 
         assertEquals(200,jugador1.obtenerPoblacionUsable());
