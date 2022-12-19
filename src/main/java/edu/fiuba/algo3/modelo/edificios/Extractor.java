@@ -81,11 +81,10 @@ public class Extractor extends Entidad implements RefineriaGas, Construible, Ata
             esUsable();
             casilla.intentarExtraerGas(almacen, this);
         } catch (Exception e){
+
+        } finally {
+            tiempoConstruccion -= 1;
+            vida.regenerar();
         }
-
-        tiempoConstruccion -= 1;
-        vida.regenerar();
     }
-
-
 }

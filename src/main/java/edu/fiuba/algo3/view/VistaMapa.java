@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.view;
 
-import edu.fiuba.algo3.modelo.edificios.Criadero;
-import edu.fiuba.algo3.modelo.edificios.Pilon;
+import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Entidad;
@@ -12,6 +11,7 @@ import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
+import edu.fiuba.algo3.modelo.unidades.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -46,6 +46,14 @@ public class VistaMapa extends StackPane {
             }
         }
 
+
+        public void dibujarElemento(int i, int j, Image elemento, Pane pane) {
+            ImageView imagen = new ImageView(elemento);
+            imagen.setX(i * 8);
+            imagen.setY(j * 8);
+            pane.getChildren().add(imagen);
+        }
+
         public void dibujarTerreno() throws FileNotFoundException {
             Image tierra = new Image(new FileInputStream("assets/tierra.png"));
             Image moho = new Image(new FileInputStream("assets/moho.png"));
@@ -56,22 +64,13 @@ public class VistaMapa extends StackPane {
                     Terreno recurso = casilla.obtenerTerreno();
 
                     if (recurso.getClass() == Tierra.class) {
-                        ImageView imagen = new ImageView(tierra);
-                        imagen.setX(i * 8);
-                        imagen.setY(j * 8);
-                        terrenos.getChildren().add(imagen);
+                        dibujarElemento(i, j, tierra, terrenos);
                     }
                     if (recurso.getClass() == Moho.class) {
-                        ImageView imagen = new ImageView(moho);
-                        imagen.setX(i * 8);
-                        imagen.setY(j * 8);
-                        terrenos.getChildren().add(imagen);
+                        dibujarElemento(i, j, moho, terrenos);
                     }
                     if (recurso.getClass() == Espacio.class) {
-                        ImageView imagen = new ImageView(espacio);
-                        imagen.setX(i * 8);
-                        imagen.setY(j * 8);
-                        terrenos.getChildren().add(imagen);
+                        dibujarElemento(i, j, espacio, terrenos);
                     }
                 }
             }
@@ -87,24 +86,37 @@ public class VistaMapa extends StackPane {
                     Recurso recurso = casilla.obtenerRecurso();
 
                     if (recurso.getClass() == Mena.class) {
-                        ImageView imagen = new ImageView(mina);
-                        imagen.setX(i * 8);
-                        imagen.setY(j * 8);
-                        recursos.getChildren().add(imagen);
+                        dibujarElemento(i, j, mina, recursos);
                     }
                     if (recurso.getClass() == Geiser.class) {
-                        ImageView imagen = new ImageView(geiser);
-                        imagen.setX(i * 8);
-                        imagen.setY(j * 8);
-                        recursos.getChildren().add(imagen);
+                        dibujarElemento(i, j, geiser, recursos);
                     }
                 }
             }
         }
 
     public void dibujarEntidades() throws FileNotFoundException {
+        entidades.getChildren().clear();
         Image pilon = new Image(new FileInputStream("assets/pilon.png"), 15, 15, false, false);
         Image criadero = new Image(new FileInputStream("assets/criadero.png"), 20, 20, false, false);
+        Image acceso = new Image(new FileInputStream("assets/acceso.png"), 20, 20, false, false);
+        Image asimilador = new Image(new FileInputStream("assets/asimilador.png"), 20, 20, false, false);
+        Image espiral = new Image(new FileInputStream("assets/espiral.png"), 20, 20, false, false);
+        Image extractor = new Image(new FileInputStream("assets/extractor.png"), 20, 20, false, false);
+        Image guarida = new Image(new FileInputStream("assets/guarida.png"), 20, 20, false, false);
+        Image nexoMineral = new Image(new FileInputStream("assets/nexo mineral.png"), 20, 20, false, false);
+        Image puertoEstelar = new Image(new FileInputStream("assets/puerto estelar.png"), 20, 20, false, false);
+        Image reservaDeReprduccion = new Image(new FileInputStream("assets/reserva de reproduccion.png"), 20, 20, false, false);
+
+
+        Image zangano = new Image(new FileInputStream("assets/zangano.png"), 20, 20, false, false);
+        Image zerling = new Image(new FileInputStream("assets/zerling.png"), 20, 20, false, false);
+        Image hidralisco = new Image(new FileInputStream("assets/hidralisco.png"), 20, 20, false, false);
+        Image mutalisco = new Image(new FileInputStream("assets/mutalisco.png"), 20, 20, false, false);
+        Image guardian = new Image(new FileInputStream("assets/guardian.png"), 20, 20, false, false);
+        Image devorador = new Image(new FileInputStream("assets/devorador.png"), 20, 20, false, false);
+        Image amoSupremo = new Image(new FileInputStream("assets/amoSupremo.png"), 20, 20, false, false);
+
 
         for (int i = 0; i < algostar.mapa.tamanioMapa(); i++) {
             for (int j = 0; j < algostar.mapa.tamanioMapa(); j++) {
@@ -112,18 +124,55 @@ public class VistaMapa extends StackPane {
                 try {
                     Entidad entidad = casilla.obtenerEstado().obtenerEntidad();
                     if (entidad.getClass() == Pilon.class) {
-                        ImageView imagen = new ImageView(pilon);
-                        imagen.resize(10,10);
-                        imagen.setX(i * 8);
-                        imagen.setY(j * 8);
-                        entidades.getChildren().add(imagen);
+                        dibujarElemento(i, j, pilon, entidades);
                     }
                     if (entidad.getClass() == Criadero.class) {
-                        ImageView imagen = new ImageView(criadero);
-                        imagen.resize(10,10);
-                        imagen.setX(i * 8);
-                        imagen.setY(j * 8);
-                        entidades.getChildren().add(imagen);
+                        dibujarElemento(i, j, criadero, entidades);
+                    }
+                    if (entidad.getClass() == Zangano.class) {
+                        dibujarElemento(i, j, zangano, entidades);
+                    }
+                    if (entidad.getClass() == Zerling.class) {
+                        dibujarElemento(i, j, zerling, entidades);
+                    }
+                    if (entidad.getClass() == Hidralisco.class) {
+                        dibujarElemento(i, j, hidralisco, entidades);
+                    }
+                    if (entidad.getClass() == Mutalisco.class) {
+                        dibujarElemento(i, j, mutalisco, entidades);
+                    }
+                    if (entidad.getClass() == Guardian.class) {
+                        dibujarElemento(i, j, guardian, entidades);
+                    }
+                    if (entidad.getClass() == Devorador.class) {
+                        dibujarElemento(i, j, devorador, entidades);
+                    }
+                    if (entidad.getClass() == AmoSupremo.class) {
+                        dibujarElemento(i, j, amoSupremo, entidades);
+                    }
+                    if (entidad.getClass() == Acceso.class) {
+                        dibujarElemento(i, j, acceso, entidades);
+                    }
+                    if (entidad.getClass() == Asimilador.class) {
+                        dibujarElemento(i, j, asimilador, entidades);
+                    }
+                    if (entidad.getClass() == Espiral.class) {
+                        dibujarElemento(i, j, espiral, entidades);
+                    }
+                    if (entidad.getClass() == Extractor.class) {
+                        dibujarElemento(i, j, extractor, entidades);
+                    }
+                    if (entidad.getClass() == Guarida.class) {
+                        dibujarElemento(i, j, guarida, entidades);
+                    }
+                    if (entidad.getClass() == NexoMineral.class) {
+                        dibujarElemento(i, j, nexoMineral, entidades);
+                    }
+                    if (entidad.getClass() == PuertoEstelar.class) {
+                        dibujarElemento(i, j, puertoEstelar, entidades);
+                    }
+                    if (entidad.getClass() == ReservaDeReproduccion.class) {
+                        dibujarElemento(i, j, reservaDeReprduccion, entidades);
                     }
                 } catch(Exception ignored) {
                 }

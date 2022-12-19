@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controller;
 
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.view.VistaJuego;
 import edu.fiuba.algo3.view.VistaMapa;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -10,11 +11,13 @@ public class ControladorJuego {
     private AlgoStar algoStar;
 
     private VistaMapa vistaMapa;
+    private VistaJuego vistaJuego;
     private Casilla casillaActiva;
     private Casilla casillaObjetivo;
-    public ControladorJuego(AlgoStar algoStar, VistaMapa vista) {
+    public ControladorJuego(AlgoStar algoStar, VistaMapa vistaMapa, VistaJuego vistaJuego) {
         this.algoStar = algoStar;
-        this.vistaMapa = vista;
+        this.vistaMapa = vistaMapa;
+        this.vistaJuego = vistaJuego;
     }
 
     public void clickEnMapa(MouseEvent mouseEvent) {
@@ -23,6 +26,11 @@ public class ControladorJuego {
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                 this.casillaActiva = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
                 this.vistaMapa.dibujarBordeCasillaPrimaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
+                /*try {
+                    vistaJuego.
+                } catch (Exception ignored) {
+
+                }*/
             }
             if (mouseEvent.getButton() == MouseButton.SECONDARY) {
                 this.casillaObjetivo = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
@@ -52,7 +60,7 @@ public class ControladorJuego {
     }
 
     public void mover() {
-        algoStar.atacaraPosicion(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
+        algoStar.mover(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
     }
 
     public void construir(String construccion) {

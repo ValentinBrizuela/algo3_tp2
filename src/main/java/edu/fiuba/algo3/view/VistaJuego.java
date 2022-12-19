@@ -34,7 +34,7 @@ public class VistaJuego extends HBox {
         this.vistaMapa = vistaMapa;
         this.algoStar = algoStar;
 
-        ControladorJuego controlador = new ControladorJuego(algoStar, vistaMapa);
+        ControladorJuego controlador = new ControladorJuego(algoStar, vistaMapa, this);
         this.setOnMouseClicked((mouseEvent -> {
             controlador.clickEnMapa(mouseEvent);
         }));
@@ -65,7 +65,7 @@ public class VistaJuego extends HBox {
         botonAtacar.setOnAction((e) -> {
             try {
                 controlador.atacar();
-
+                actualizar();
             } catch (Exception ignored) {
 
             }
@@ -75,6 +75,7 @@ public class VistaJuego extends HBox {
         botonMover.setOnAction((e) -> {
             try {
                 controlador.mover();
+                actualizar();
             } catch (Exception ignored) {
 
             }

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.edificios;
 import edu.fiuba.algo3.modelo.costos.Costo;
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
@@ -34,7 +35,7 @@ public class NexoMineral extends Entidad implements Mina, Construible, AtacableT
     @Override
     public void construir(Tierra tierra, Almacen almacen) {
         this.cobrar(almacen);
-        casilla.cambiarEstado(new Ocupada(new TierraEnergizada(), new RecursoVacio(), this));
+        casilla.cambiarEstado(new Ocupada(new TierraEnergizada(), casilla.obtenerRecurso(), this));
     }
 
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
@@ -59,12 +60,14 @@ public class NexoMineral extends Entidad implements Mina, Construible, AtacableT
     public void avanzarTurno() {
         try{
             esUsable();
-            casilla.intentarExtraerMineral(almacen, this);
-        } catch (Exception e){
-        }
+            casilla.intentarExtraerMineral(almacen,this);
+        } catch (Exception e) {
 
-        tiempoConstruccion -= 1;
-        vida.regenerar();
+        }
+        finally {
+            tiempoConstruccion -= 1;
+            vida.regenerar();
+        }
     }
 
 }

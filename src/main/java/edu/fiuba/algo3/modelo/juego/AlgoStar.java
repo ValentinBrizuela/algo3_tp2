@@ -30,15 +30,14 @@ public class AlgoStar {
        if(this.chequearNombre(jugador)){
            throw new NombreDeJugadorInvalidoError();
        }
-
-       if(jugadores.isEmpty()) {
+        if(jugadores.isEmpty()) {
             jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.1)), (int) (mapa.tamanioMapa()*(0.1)));
             jugadorActual = jugador;
-       }else{
-           if(jugador.sosIgualA(jugadores.get(0))){
+        }else{
+            if(jugador.sosIgualA(jugadores.get(0))){
                 throw new JugadorInvalidoError();
-           }
-           jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
+            }
+            jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
         }
         jugadores.add(jugador);
     }
@@ -93,6 +92,18 @@ public class AlgoStar {
         }
         Entidad atacable = mapa.obtenerEntidad(x2, y2);
         ataque((Atacante) atacante, atacable, jugadores.get((turno + 1) % 2));
+    }
+
+    public void mover(int x1, int y1, int x2, int y2) {
+        try {
+            Entidad entidad = mapa.obtenerEntidad(x1, y1);
+            ((Unidad) entidad).moverA(mapa.obtenerCasilla(x2, y2));
+        } catch (MovimientoInvalidoError e) {
+            System.out.println("No se pudo realizar el movimiento.");
+        } catch (Exception e) {
+            System.out.println("aaaaaa.");
+        }
+
     }
 
     public void construirEdificio(String edificio, int x, int y){

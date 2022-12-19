@@ -37,10 +37,11 @@ public class Zangano extends Unidad implements Mina, AtacableTerrestre, Consumid
             esUsable();
             casilla.intentarExtraerMineral(almacen,this);
         }catch (Exception e){
-        }
 
-        tiempoConstruccion -= 1;
-        vida.regenerar();
+        } finally {
+            tiempoConstruccion -= 1;
+            vida.regenerar();
+        }
     }
 
     @Override

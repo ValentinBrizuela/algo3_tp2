@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.CreacionDeUnidadInvalida;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.IMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
+import edu.fiuba.algo3.modelo.unidades.*;
 
 public class EdificiosFactory {
 
@@ -48,6 +50,37 @@ public class EdificiosFactory {
 
             case "Asimilador":
                 construirAsimilador(casilla, jugadorActual);
+                break;
+
+            case "Zerling":
+                crearZerling(casilla, jugadorActual);
+                break;
+            case "Zangano":
+                crearZangano(casilla, jugadorActual);
+                break;
+
+            case "Hidralisco":
+                crearHidralisco(casilla, jugadorActual);
+                break;
+
+            case "Mutalisco":
+                crearMutalisco(casilla, jugadorActual);
+                break;
+
+            case "Zealot":
+                crearZealot(casilla, jugadorActual);
+                break;
+
+            case "Dragon":
+                crearDragon(casilla, jugadorActual);
+                break;
+
+            case "Scout":
+                crearScout(casilla, jugadorActual);
+                break;
+
+            case "Amo supremo":
+                crearAmoSupremo(casilla, jugadorActual);
                 break;
         }
     }
@@ -204,6 +237,165 @@ public class EdificiosFactory {
 
         } catch (Exception e) {
             System.out.println("No se pudo construir el Asimilador. ");
+        }
+    }
+
+    public void crearZerling(Casilla casilla, Jugador jugadorActual){
+
+        //crear logica
+        try {
+            if (!jugadorActual.yaTiene("ReservaDeReproduccion")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
+            System.out.println("Para crear un Zerling necesitas una Reserva de Reproduccion. ");
+        }
+
+        try {
+            Zerling z = new Zerling(casilla);
+            jugadorActual.verificarYConsumirSuministro(z);
+            casilla.construir(z,jugadorActual.obtenerAlmacen());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Zerling. ");
+        }
+    }
+
+    public void crearZangano(Casilla casilla, Jugador jugadorActual){
+
+        //crear logica
+        try {
+            if (!jugadorActual.yaTiene("Criadero")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
+            System.out.println("Para crear un Zangano necesitas un Criadero. ");
+        }
+
+        try {
+            Zangano z = new Zangano(casilla, jugadorActual.obtenerAlmacen());
+            jugadorActual.verificarYConsumirSuministro(z);
+            casilla.construir(z,jugadorActual.obtenerAlmacen());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Zagano. ");
+        }
+    }
+
+    public void crearHidralisco(Casilla casilla, Jugador jugadorActual){
+
+        //crear logica
+        try {
+            if (!jugadorActual.yaTiene("Guarida")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
+            System.out.println("Para crear un Hidralisco necesitas una Guarida. ");
+        }
+
+        try {
+            Hidralisco h = new Hidralisco(casilla);
+            jugadorActual.verificarYConsumirSuministro(h);
+            casilla.construir(h,jugadorActual.obtenerAlmacen());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Hidralisco. ");
+        }
+    }
+
+    public void crearMutalisco(Casilla casilla, Jugador jugadorActual){
+
+        //crear logica
+        try {
+            if (!jugadorActual.yaTiene("Espiral")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
+            System.out.println("Para crear un Mutalisco necesitas un Espiral. ");
+        }
+
+        try {
+            Mutalisco m = new Mutalisco(casilla);
+            jugadorActual.verificarYConsumirSuministro(m);
+            casilla.construir(m,jugadorActual.obtenerAlmacen());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Mutalisco. ");
+        }
+    }
+
+    public void crearZealot(Casilla casilla, Jugador jugadorActual){
+
+        //crear logica
+        try {
+            if (!jugadorActual.yaTiene("Acceso")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
+            System.out.println("Para crear un Zealot necesitas un Acceso. ");
+        }
+
+        try {
+            Zealot z = new Zealot(casilla);
+            jugadorActual.verificarYConsumirSuministro(z);
+            casilla.construir(z,jugadorActual.obtenerAlmacen());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Zealot. ");
+        }
+    }
+
+    public void crearDragon(Casilla casilla, Jugador jugadorActual){
+
+        //crear logica
+        try {
+            if (!jugadorActual.yaTiene("Acceso")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
+            System.out.println("Para crear un Dragon necesitas un Acceso. ");
+        }
+
+        try {
+            Dragon d = new Dragon(casilla);
+            jugadorActual.verificarYConsumirSuministro(d);
+            casilla.construir(d,jugadorActual.obtenerAlmacen());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Dragon. ");
+        }
+    }
+
+    public void crearScout(Casilla casilla, Jugador jugadorActual){
+
+        //crear logica
+        try {
+            if (!jugadorActual.yaTiene("Puerto Estelar")){
+                throw new CreacionDeUnidadInvalida();
+            }
+        } catch (CreacionDeUnidadInvalida e) {
+            System.out.println("Para crear un Scout necesitas un Puerto Estelar. ");
+        }
+
+        try {
+            Scout s = new Scout(casilla);
+            jugadorActual.verificarYConsumirSuministro(s);
+            casilla.construir(s,jugadorActual.obtenerAlmacen());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el Scout. ");
+        }
+    }
+
+    public void crearAmoSupremo(Casilla casilla, Jugador jugadorActual){
+
+        try {
+            AmoSupremo a = new AmoSupremo(casilla);
+            jugadorActual.generarPoblacion();
+            casilla.construir(a, jugadorActual.obtenerAlmacen());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo crear el AmoSupremo. ");
         }
     }
 }
