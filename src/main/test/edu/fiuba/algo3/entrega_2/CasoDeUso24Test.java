@@ -19,9 +19,8 @@ public class CasoDeUso24Test {
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("Manuel", new AlgoColores("rojo"),new Protoss());
-        algoStar.registrarJugador(jugador1);
         Jugador jugador2=new Jugador("camila",new AlgoColores("azul"),new Zerg());
-        algoStar.registrarJugador(jugador2);
+        algoStar.registrarJugadores(jugador1, jugador2);
 
         assertEquals(jugador1.posX(), 2);
         assertEquals(jugador1.posY(), 2);

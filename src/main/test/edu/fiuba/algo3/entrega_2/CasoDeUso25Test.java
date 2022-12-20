@@ -21,9 +21,9 @@ public class CasoDeUso25Test {
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Protoss());
-        algoStar.registrarJugador(jugador1);
         Jugador jugador2=new Jugador("camila",new AlgoColores("azul"),new Zerg());
-        assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugador(jugador2);});
+
+        assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugadores(jugador1, jugador2);});
 
     }
 
@@ -33,9 +33,9 @@ public class CasoDeUso25Test {
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("agustin",new AlgoColores("rojo"),new Protoss());
-        algoStar.registrarJugador(jugador1);
         Jugador jugador2=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
-        assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugador(jugador2);});
+
+        assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugadores(jugador1, jugador2);});
 
     }
 
@@ -45,9 +45,9 @@ public class CasoDeUso25Test {
         AlgoStar algoStar= new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("agustin",new AlgoColores("azul"),new Zerg());
-        algoStar.registrarJugador(jugador1);
         Jugador jugador2=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
-        assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugador(jugador2);});
+
+        assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugadores(jugador1, jugador2);});
 
     }
 

@@ -21,8 +21,9 @@ public class CasoDeUso31Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Protoss());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador1 = new Jugador("camila", new AlgoColores("rojo"),new Protoss());
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Zerg());
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
 
         algoStar.construirEntidad("Pilon", 5, 0);
@@ -47,7 +48,8 @@ public class CasoDeUso31Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Protoss());
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         algoStar.construirEntidad("Criadero", 5, 0);
 

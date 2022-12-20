@@ -36,8 +36,7 @@ public class CasoDeUso22Test {
         Jugador j1 = new Jugador("mariano guglieri", new AlgoColores("rojo"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("azul"),new Protoss());
 
-        algoStar.registrarJugador(j1);
-        algoStar.registrarJugador(j2);
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
         algoStar.construirEntidad("Zerling", 6, 6);
@@ -53,8 +52,7 @@ public class CasoDeUso22Test {
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
-        algoStar.registrarJugador(j1);
-        algoStar.registrarJugador(j2);
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("AmoSupremo", 5, 5);
         algoStar.construirEntidad("Zangano", 6,6);
@@ -70,8 +68,7 @@ public class CasoDeUso22Test {
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
-        algoStar.registrarJugador(j1);
-        algoStar.registrarJugador(j2);
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
         algoStar.construirEntidad("Hidralisco", 6, 6);
@@ -87,8 +84,7 @@ public class CasoDeUso22Test {
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
-        algoStar.registrarJugador(j1);
-        algoStar.registrarJugador(j2);
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
         algoStar.construirEntidad("Mutalisco", 6,6);
@@ -104,8 +100,7 @@ public class CasoDeUso22Test {
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
-        algoStar.registrarJugador(j1);
-        algoStar.registrarJugador(j2);
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
 
@@ -122,8 +117,7 @@ public class CasoDeUso22Test {
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
-        algoStar.registrarJugador(j1);
-        algoStar.registrarJugador(j2);
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
         algoStar.construirEntidad("Dragon", 6,6);
@@ -139,8 +133,7 @@ public class CasoDeUso22Test {
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
-        algoStar.registrarJugador(j1);
-        algoStar.registrarJugador(j2);
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
         algoStar.construirEntidad("Scout", 6,6);

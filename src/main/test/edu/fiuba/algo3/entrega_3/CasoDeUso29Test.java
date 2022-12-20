@@ -15,7 +15,8 @@ public class CasoDeUso29Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Zerg());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Protoss());
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         //Criadero +5 de poblacion * 50 criaderos = 250 de poblacion
         for (int i=0;i<20;i++){
@@ -36,7 +37,8 @@ public class CasoDeUso29Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Protoss());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Zerg());
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         //Pilon +5 de poblacion * 50 pilones = 250 de poblacion
         for (int i=0;i<20;i++){
@@ -57,7 +59,8 @@ public class CasoDeUso29Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Protoss());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Zerg());
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         //Pilon +5 de poblacion * 40 pilones = 200 de poblacion
         for (int i=0;i<20;i++){

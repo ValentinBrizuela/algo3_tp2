@@ -15,8 +15,7 @@ public class CasoDeUso6Test {
         AlgoStar algoStar=new AlgoStar(mapa);
         Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Zerg());
         Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Protoss());
-        algoStar.registrarJugador(jugador1);
-        algoStar.registrarJugador(jugador2);
+        algoStar.registrarJugadores(jugador1, jugador2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
 

@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.juego.FakeMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
+import edu.fiuba.algo3.modelo.razas.Zerg;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +19,9 @@ public class CasoDeUso30Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Protoss());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Zerg());
+
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
 
         for (int i=0;i<20;i++){

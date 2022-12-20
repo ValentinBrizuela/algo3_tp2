@@ -22,8 +22,10 @@ public class CasoDeUso32Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        algoStar.registrarJugador(new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg()));
-        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss()));
+        Jugador j1 = new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg());
+        Jugador j2 = new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss());
+
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
         Criadero c = (Criadero) mapa.obtenerEntidad(5, 5);
@@ -37,8 +39,10 @@ public class CasoDeUso32Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        algoStar.registrarJugador(new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg()));
-        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss()));
+        Jugador j1 = new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg());
+        Jugador j2 = new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss());
+
+        algoStar.registrarJugadores(j1, j2);
 
         algoStar.construirEntidad("Criadero", 5, 5);
         Criadero c = (Criadero) mapa.obtenerEntidad(5,5);
