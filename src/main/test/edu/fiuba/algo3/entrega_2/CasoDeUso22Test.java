@@ -1,30 +1,28 @@
 package edu.fiuba.algo3.entrega_2;
 
+import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
-import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
-import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
-import edu.fiuba.algo3.modelo.unidades.Zangano;
 import edu.fiuba.algo3.modelo.unidades.Zerling;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CasoDeUso22Test {
     @Test
     public void NoPuedoUsarUnidadSiNoSeTerminoDeConstruir(){
-        Mapa mapa = new Mapa(2);
+        FakeMapa mapa = new FakeMapa(2);
         Almacen a=new Almacen();
         a.almacenarMineral(10000);
         a.almacenarGas(10000);
-        Casilla casilla1 = mapa.obtenerCasilla(15,15);
-        Casilla casilla2 = mapa.obtenerCasilla(15,16);
+
+        Casilla casilla1 = mapa.obtenerCasilla(5,5);
+        Casilla casilla2 = mapa.obtenerCasilla(5,6);
         Zerling z = new Zerling(casilla1);
         Dragon d = new Dragon(casilla2);
 
@@ -33,127 +31,117 @@ public class CasoDeUso22Test {
 
     @Test
     public void NoPuedoConstruirUnZerlingSinReservaDeReproduccion(){
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
-        when(mockMapa.obtenerCasilla(25,25)).thenReturn(new Casilla(25, 25, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador j1 = new Jugador("mariano guglieri", new AlgoColores("rojo"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("azul"),new Protoss());
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEntidad("Criadero", 50, 50);
-        algoStar.construirEntidad("Zerling", 25, 25);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Zerling", 6, 6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
     public void NoPuedoConstruirUnZanganoSinCriadero(){
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
-        when(mockMapa.obtenerCasilla(25,25)).thenReturn(new Casilla(25, 25, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEntidad("AmoSupremo", 50,50);
-        algoStar.construirEntidad("Zangano", 25,25);
+        algoStar.construirEntidad("Criadero", 5,6);
+        Criadero c = (Criadero) mapa.obtenerEntidad(5,6);
+        c.finalizarConstruccion();
 
-        assertEquals(5, j1.obtenerPoblacionUsable());
+        algoStar.construirEntidad("AmoSupremo", 5, 5);
+        algoStar.construirEntidad("Zangano", 6,6);
+
+        assertEquals(9, j1.obtenerPoblacionUsable());
     }
 
     @Test
     public void NoPuedoConstruirUnHidraliscoSinGuarida(){
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
-        when(mockMapa.obtenerCasilla(25,25)).thenReturn(new Casilla(25, 25, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEntidad("Criadero", 50, 50);
-        algoStar.construirEntidad("Hidralisco", 25,25);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Hidralisco", 6, 6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
     public void NoPuedoConstruirUnMutaliscoSinEspiral(){
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
-        when(mockMapa.obtenerCasilla(25,25)).thenReturn(new Casilla(25, 25, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEntidad("Criadero", 50, 50);
-        algoStar.construirEntidad("Mutalisco", 25,25);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Mutalisco", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
     public void NoPuedoConstruirUnZealotSinAcceso(){
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
-        when(mockMapa.obtenerCasilla(25,25)).thenReturn(new Casilla(25, 25, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEntidad("Criadero", 50, 50);
+        algoStar.construirEntidad("Criadero", 5, 5);
 
-        algoStar.construirEntidad("Zealot", 25,25);
+        algoStar.construirEntidad("Zealot", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
     public void NoPuedoConstruirUnDragonSinAcceso(){
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
-        when(mockMapa.obtenerCasilla(25,25)).thenReturn(new Casilla(25, 25, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEntidad("Criadero", 50, 50);
-        algoStar.construirEntidad("Dragon", 25,25);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Dragon", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
 
     @Test
     public void NoPuedoConstruirUnScoutSinPuertoEstelar(){
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
-        when(mockMapa.obtenerCasilla(25,25)).thenReturn(new Casilla(25, 25, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEntidad("Criadero", 50, 50);
-        algoStar.construirEntidad("Scout", 25,25);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Scout", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }

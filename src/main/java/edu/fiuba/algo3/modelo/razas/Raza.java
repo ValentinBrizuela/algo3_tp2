@@ -5,6 +5,8 @@ public interface Raza {
 
     public void recibirAtaque(Protoss protoss);
 
+    public void puedoRecibirAtaque(Raza raza);
+
     public void seleccionarEntidad(Zerg zerg);
 
     public void seleccionarEntidad(Protoss protoss);

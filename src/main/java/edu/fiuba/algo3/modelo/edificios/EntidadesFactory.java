@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.edificios;
 
-import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
-import edu.fiuba.algo3.modelo.errores.CreacionDeUnidadInvalida;
-import edu.fiuba.algo3.modelo.errores.PoblacionInsuficienteError;
+import edu.fiuba.algo3.modelo.errores.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.IMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
@@ -97,8 +95,8 @@ public class EntidadesFactory {
             jugadorActual.agregarEdificioConArea(c);
             c.actualizarTerreno(mapa);
 
-        } catch (Exception e){
-            System.out.println("No se pudo construir el Criadero. ");
+        } catch (SeleccionInvalidaError e){
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
@@ -113,8 +111,9 @@ public class EntidadesFactory {
             jugadorActual.agregarEdificioConArea(p);
             p.actualizarTerreno(mapa);
 
-        } catch (Exception e){
-            System.out.println("No se pudo construir el Pilon. ");
+        } catch (SeleccionInvalidaError e){
+            System.out.println("Este edificio no te pertenece. ");
+
         }
     }
 
@@ -126,8 +125,8 @@ public class EntidadesFactory {
             jugadorActual.construyo("ReservaDeReproduccion");
             jugadorActual.agregarEdificio(r);
 
-        } catch (Exception e){
-            System.out.println("No se pudo construir la Reserva de Reproduccion. ");
+        } catch (SeleccionInvalidaError e){
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
@@ -149,8 +148,8 @@ public class EntidadesFactory {
             jugadorActual.construyo("Espiral");
             jugadorActual.agregarEdificio(e);
 
-        } catch (Exception e) {
-            System.out.println("No se pudo construir el Espiral. ");
+        } catch (SeleccionInvalidaError e) {
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
@@ -172,8 +171,8 @@ public class EntidadesFactory {
             jugadorActual.construyo("PuertoEstelar");
             jugadorActual.agregarEdificio(p);
 
-        } catch (Exception e) {
-            System.out.println("No se pudo construir el Puerto Estelar. ");
+        } catch (SeleccionInvalidaError e) {
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
@@ -185,8 +184,8 @@ public class EntidadesFactory {
             jugadorActual.construyo("Acceso");
             jugadorActual.agregarEdificio(a);
 
-        } catch (Exception e){
-            System.out.println("No se pudo construir el Acceso. ");
+        } catch (SeleccionInvalidaError e){
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
@@ -198,8 +197,8 @@ public class EntidadesFactory {
             jugadorActual.construyo("Extractor");
             jugadorActual.agregarEdificio(e);
 
-        } catch (Exception e){
-            System.out.println("No se pudo construir el Extractor. ");
+        } catch (SeleccionInvalidaError e){
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
@@ -220,8 +219,8 @@ public class EntidadesFactory {
             jugadorActual.construyo("Guarida");
             jugadorActual.agregarEdificio(g);
 
-        } catch (Exception e) {
-            System.out.println("No se pudo construir la Guarida. ");
+        } catch (SeleccionInvalidaError e) {
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
@@ -233,8 +232,8 @@ public class EntidadesFactory {
             jugadorActual.construyo("NexoMineral");
             jugadorActual.agregarEdificio(n);
 
-        } catch (Exception e){
-            System.out.println("No se pudo construir el Nexo Mineral. ");
+        } catch (SeleccionInvalidaError e){
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
@@ -246,14 +245,13 @@ public class EntidadesFactory {
             jugadorActual.construyo("Asimilador");
             jugadorActual.agregarEdificio(a);
 
-        } catch (Exception e) {
-            System.out.println("No se pudo construir el Asimilador. ");
+        } catch (SeleccionInvalidaError e) {
+            System.out.println("Este edificio no te pertenece. ");
         }
     }
 
     public void crearZerling(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
             if (!jugadorActual.yaTiene("ReservaDeReproduccion")){
                 throw new CreacionDeUnidadInvalida();
@@ -266,21 +264,26 @@ public class EntidadesFactory {
         try {
             Zerling z = new Zerling(casilla);
             jugadorActual.puedeSeleccionar(z.obtenerRaza());
+            jugadorActual.verificarLarvas();
             jugadorActual.verificarYConsumirSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
 
         } catch (ConstruccionNoPermitidaError e){
             return;
-        }
-        catch (PoblacionInsuficienteError e) {
+
+        } catch (PoblacionInsuficienteError e) {
             System.out.println("Población insuficiente para crear un Zerling (1 Pob).");
-            return;
+
+        } catch (SeleccionInvalidaError s){
+            System.out.println("Esta unidad no te pertenece.");
+
+        } catch (LarvasInsuficientesError l){
+            System.out.println("No tenes suficientes larvas en tus criaderos. Al avanzar turnos se regeneran.");
         }
     }
 
     public void crearZangano(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
             if (!jugadorActual.yaTiene("Criadero")){
                 throw new CreacionDeUnidadInvalida();
@@ -293,15 +296,21 @@ public class EntidadesFactory {
         try {
             Zangano z = new Zangano(casilla, jugadorActual.obtenerAlmacen());
             jugadorActual.puedeSeleccionar(z.obtenerRaza());
+            jugadorActual.verificarLarvas();
             jugadorActual.verificarYConsumirSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
 
         } catch (ConstruccionNoPermitidaError e){
             return;
-        }
-        catch (PoblacionInsuficienteError e) {
+
+        } catch (PoblacionInsuficienteError e) {
             System.out.println("Población insuficiente para crear un Zangano (1 Pob).");
-            return;
+
+        } catch (SeleccionInvalidaError s) {
+            System.out.println("Esta unidad no te pertenece.");
+
+        } catch (LarvasInsuficientesError l){
+            System.out.println("No tenes suficientes larvas en tus criaderos. Al avanzar turnos se regeneran.");
         }
     }
 
@@ -321,15 +330,21 @@ public class EntidadesFactory {
         try {
             Hidralisco h = new Hidralisco(casilla);
             jugadorActual.puedeSeleccionar(h.obtenerRaza());
+            jugadorActual.verificarLarvas();
             jugadorActual.verificarYConsumirSuministro(h);
             casilla.construir(h,jugadorActual.obtenerAlmacen());
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
-        }
-        catch (PoblacionInsuficienteError e) {
+
+        } catch (PoblacionInsuficienteError e) {
             System.out.println("Población insuficiente para crear un Hidralisco (2 Pob). ");
-            return ;
+
+        } catch (SeleccionInvalidaError s) {
+            System.out.println("Esta unidad no te pertenece.");
+
+        } catch (LarvasInsuficientesError l){
+            System.out.println("No tenes suficientes larvas en tus criaderos. Al avanzar turnos se regeneran.");
         }
     }
 
@@ -347,15 +362,21 @@ public class EntidadesFactory {
         try {
             Mutalisco m = new Mutalisco(casilla);
             jugadorActual.puedeSeleccionar(m.obtenerRaza());
+            jugadorActual.verificarLarvas();
             jugadorActual.verificarYConsumirSuministro(m);
             casilla.construir(m,jugadorActual.obtenerAlmacen());
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
-        }
-        catch (PoblacionInsuficienteError e) {
+
+        } catch (PoblacionInsuficienteError e) {
             System.out.println("Población insuficiente para crear un Mutalisco (4 Pob).");
-            return ;
+
+        } catch (SeleccionInvalidaError s) {
+            System.out.println("Esta unidad no te pertenece.");
+
+        } catch (LarvasInsuficientesError l){
+            System.out.println("No tenes suficientes larvas en tus criaderos. Al avanzar turnos se regeneran.");
         }
     }
 
@@ -378,10 +399,12 @@ public class EntidadesFactory {
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
-        }
-        catch (PoblacionInsuficienteError e) {
+
+        } catch (PoblacionInsuficienteError e) {
             System.out.println("Población insuficiente para crear un Zealot (2 Pob).");
-            return ;
+
+        } catch (SeleccionInvalidaError s) {
+            System.out.println("Esta unidad no te pertenece.");
         }
     }
 
@@ -404,10 +427,12 @@ public class EntidadesFactory {
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
-        }
-        catch (PoblacionInsuficienteError e) {
+
+        } catch (PoblacionInsuficienteError e) {
             System.out.println("Población insuficiente para crear un Dragon (3 Pob).");
-            return ;
+
+        }  catch (SeleccionInvalidaError s) {
+            System.out.println("Esta unidad no te pertenece.");
         }
     }
 
@@ -430,10 +455,12 @@ public class EntidadesFactory {
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
-        }
-        catch (PoblacionInsuficienteError e) {
+
+        } catch (PoblacionInsuficienteError e) {
             System.out.println("Población insuficiente para crear un Scout (4 Pob).");
-            return ;
+
+        } catch (SeleccionInvalidaError s) {
+            System.out.println("Esta unidad no te pertenece.");
         }
     }
 
@@ -442,12 +469,18 @@ public class EntidadesFactory {
         try {
             AmoSupremo a = new AmoSupremo(casilla);
             jugadorActual.puedeSeleccionar(a.obtenerRaza());
-            jugadorActual.generarPoblacion();
+            jugadorActual.verificarLarvas();
             casilla.construir(a, jugadorActual.obtenerAlmacen());
+            jugadorActual.generarPoblacion();
 
-        } catch (Exception e) {
-            //System.out.println("No se pudo crear el AmoSupremo. ");
-            return;
+        } catch (ConstruccionNoPermitidaError e){
+            return ;
+
+        } catch (SeleccionInvalidaError s) {
+            System.out.println("Esta unidad no te pertenece.");
+
+        } catch (LarvasInsuficientesError l){
+            System.out.println("No tenes suficientes larvas en tus criaderos. Al avanzar turnos se regeneran.");
         }
     }
 }

@@ -86,7 +86,7 @@ public abstract class Entidad {
     public boolean esDetector() { return false; }
 
     public void puedoAtacar(Raza raza){
-        raza.puedoSeleccionar(this.raza);
+        raza.puedoRecibirAtaque(this.raza);
     }
 
     public Raza obtenerRaza(){

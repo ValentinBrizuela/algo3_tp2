@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.razas;
 
+import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
 import edu.fiuba.algo3.modelo.errores.SeleccionInvalidaError;
 
@@ -15,7 +16,12 @@ public class Protoss implements Raza {
 
     @Override
     public void recibirAtaque(Protoss protoss) {
-        throw new AtaquePorAireInvalidoError();
+        throw new AtaqueInvalidoError();
+    }
+
+    @Override
+    public void puedoRecibirAtaque(Raza raza) {
+        raza.recibirAtaque(this);
     }
 
     @Override

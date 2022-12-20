@@ -36,9 +36,13 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
         this.contador = 0;
 
     }
-    public void engendrarZangano(){
+    public boolean engendrarUnidad(){
         esUsable();
-        cantidadLarvas -= 1;
+        if (cantidadLarvas > 0){
+            cantidadLarvas -= 1;
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -115,8 +119,9 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
 
     @Override
     public  void destruir(Jugador jugador,IMapa mapa){
-           casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
+        casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(),casilla.obtenerRecurso()));
         jugador.degenerarPoblacion();
+        cantidadLarvas = 0;
     }
 
 

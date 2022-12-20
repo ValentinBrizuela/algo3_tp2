@@ -65,27 +65,34 @@ public class AlgoStar {
         } catch (AtaquePorTierraInvalidoError e) {
             System.out.println("La unidad seleccionada no realiza ataques por tierra.");
         } catch (Exception e) {
-            System.out.println("Otro error.");
+            System.out.println("No se pudo atacar.");
         }
     }
 
     public void atacaraPosicion(int x1, int y1, int x2, int y2) {
         Jugador jugadorActual = obtenerJugadorActual();
         Entidad atacante = mapa.obtenerEntidad(x1, y1);
-
-        jugadorActual.puedeSeleccionar(atacante.raza);
+        Entidad atacable = mapa.obtenerEntidad(x2, y2);
 
         try {
             if (!atacante.esAtacante()) {
                 throw new UnidadNoPuedeAtacarError();
             }
-        } catch (Exception e){
+
+            jugadorActual.puedeSeleccionar(atacante.raza);
+
+            atacante.puedoAtacar(atacable.raza);
+
+        } catch (UnidadNoPuedeAtacarError u){
             System.out.println("La unidad seleccionada no puede atacar");
             return;
-        }
 
-        Entidad atacable = mapa.obtenerEntidad(x2, y2);
-        atacante.puedoAtacar(atacable.raza);
+        } catch (SeleccionInvalidaError s){
+            System.out.println("Esta unidad no te pertenece");
+
+        } catch (AtaqueInvalidoError a){
+            System.out.println("No podes atacar a una unidad de tu misma raza");
+        }
 
         ataque((Atacante) atacante, atacable, jugadores.get((turno + 1) % 2));
     }

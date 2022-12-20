@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.razas;
 
+import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
 import edu.fiuba.algo3.modelo.errores.SeleccionInvalidaError;
 
@@ -11,11 +12,16 @@ public class Zerg implements Raza {
 
     @Override
     public void recibirAtaque(Zerg zerg) {
-        throw new AtaquePorAireInvalidoError();
+        throw new AtaqueInvalidoError();
     }
 
     @Override
     public void recibirAtaque(Protoss protoss) {
+    }
+
+    @Override
+    public void puedoRecibirAtaque(Raza raza) {
+        raza.recibirAtaque(this);
     }
 
     @Override

@@ -48,5 +48,4 @@ public class Poblacion {
         capacidadEnUso += suministroConsumido;
     }
 
-
 }

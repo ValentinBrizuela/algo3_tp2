@@ -18,7 +18,7 @@ public class CasoDeUso1Test {
         c.avanzarTurno();
         c.avanzarTurno();
         c.avanzarTurno();
-        c.engendrarZangano();
+        c.engendrarUnidad();
 
         assertEquals(2, c.cantidadLarvas());
 
@@ -36,8 +36,8 @@ public class CasoDeUso1Test {
         c.avanzarTurno();
         c.avanzarTurno();
 
-        c.engendrarZangano();
-        c.engendrarZangano();
+        c.engendrarUnidad();
+        c.engendrarUnidad();
 
         assertEquals(1, c.cantidadLarvas());
 

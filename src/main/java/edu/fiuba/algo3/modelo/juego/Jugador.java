@@ -3,11 +3,12 @@ package edu.fiuba.algo3.modelo.juego;
 
 
 import edu.fiuba.algo3.modelo.edificios.Construible;
+import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.edificios.EdificioConArea;
+import edu.fiuba.algo3.modelo.errores.LarvasInsuficientesError;
 import edu.fiuba.algo3.modelo.errores.NombreDeJugadorInvalidoError;
 import edu.fiuba.algo3.modelo.razas.Raza;
 
-import edu.fiuba.algo3.modelo.terrenos.Terreno;
 import edu.fiuba.algo3.modelo.unidades.ConsumidorDeSuministro;
 
 import java.util.ArrayList;
@@ -150,4 +151,13 @@ public class Jugador {
         raza.puedoSeleccionar(this.raza);
     }
 
+    public void verificarLarvas(){
+        for (EdificioConArea e: edificiosConAreas){
+            Criadero c = (Criadero) e;
+            if ( c.engendrarUnidad()){
+                return;
+            }
+        }
+        throw new LarvasInsuficientesError();
+    }
 }

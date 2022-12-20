@@ -18,7 +18,7 @@ public class CasoDeUso2Test {
         c.avanzarTurno();
         c.avanzarTurno();
 
-        assertThrows(EnConstruccionError.class, c::engendrarZangano);
+        assertThrows(EnConstruccionError.class, c::engendrarUnidad);
 
     }
 
