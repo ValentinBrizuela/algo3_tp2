@@ -2,8 +2,10 @@ package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.costos.Costo;
 import edu.fiuba.algo3.modelo.edificios.Vida;
+import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
 import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
 import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
+import edu.fiuba.algo3.modelo.errores.FueraDeRangoError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.razas.Raza;
@@ -31,7 +33,7 @@ public abstract class Entidad {
 
     public void estasEnRango(Casilla casilla, int rango){
         if (!(this.casilla.estasEnRango(casilla.obtenerPosX(), casilla.obtenerPosY(), rango))){
-            throw new AtaquePorAireInvalidoError();
+            throw new FueraDeRangoError();
         }
     }
 

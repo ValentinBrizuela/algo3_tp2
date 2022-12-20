@@ -64,8 +64,10 @@ public class AlgoStar {
             System.out.println("La unidad seleccionada no realiza ataques por aire.");
         } catch (AtaquePorTierraInvalidoError e) {
             System.out.println("La unidad seleccionada no realiza ataques por tierra.");
-        } catch (Exception e) {
-            System.out.println("No se pudo atacar.");
+        } catch (FueraDeRangoError e) {
+            System.out.println("La unidad no tiene el rango suficiente.");
+        } catch (EnConstruccionError e){
+            System.out.println("La unidad esta en construccion.");
         }
     }
 

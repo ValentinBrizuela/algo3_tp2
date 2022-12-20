@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.test_unitarios;
 
+import edu.fiuba.algo3.modelo.juego.FakeMapa;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MapaTest {
     @Test
     public void lasPosicionesBordeEstanDentroDelMapa(){
-        Mapa mapa = new Mapa(2);
+        FakeMapa mapa = new FakeMapa(2);
         int tamMapa = mapa.tamanioMapa();
 
         assertTrue(mapa.estaDentroDelMapa(0,0));
