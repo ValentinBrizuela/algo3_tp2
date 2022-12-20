@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.entrega_1;
 
+import edu.fiuba.algo3.modelo.juego.AlgoColores;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.FakeMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
@@ -8,7 +9,6 @@ import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,8 +17,8 @@ public class CasoDeUso14Test {
     public void unPilonNoPuedeEnergizarUnAreaCubiertaPorMoho() {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar=new AlgoStar(mapa);
-        Jugador jugador1=new Jugador("camila", Color.RED,new Zerg());
-        Jugador jugador2=new Jugador("tomasa",Color.BLUE,new Protoss());
+        Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Zerg());
+        Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Protoss());
         algoStar.registrarJugador(jugador1);
         algoStar.registrarJugador(jugador2);
         jugador1.llenarArcas();
@@ -33,8 +33,8 @@ public class CasoDeUso14Test {
     public void mohoNoSePuedeExpandirPorUnaCasillaOcupada() {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar=new AlgoStar(mapa);
-        Jugador jugador1=new Jugador("camila",Color.RED,new Zerg());
-        Jugador jugador2=new Jugador("tomasa",Color.BLUE,new Protoss());
+        Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
+        Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Protoss());
         algoStar.registrarJugador(jugador1);
         algoStar.registrarJugador(jugador2);
         jugador1.llenarArcas();

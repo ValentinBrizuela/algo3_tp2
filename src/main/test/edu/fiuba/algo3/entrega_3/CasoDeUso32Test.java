@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 
@@ -23,8 +22,8 @@ public class CasoDeUso32Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        algoStar.registrarJugador(new Jugador("Lionel Messi", Color.BLUE, new Zerg()));
-        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", Color.RED, new Protoss()));
+        algoStar.registrarJugador(new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg()));
+        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss()));
 
         algoStar.construirEdificio("Criadero", 5, 5);
         Criadero c = (Criadero) mapa.obtenerEntidad(5, 5);
@@ -38,8 +37,8 @@ public class CasoDeUso32Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        algoStar.registrarJugador(new Jugador("Lionel Messi", Color.BLUE, new Zerg()));
-        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", Color.RED, new Protoss()));
+        algoStar.registrarJugador(new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg()));
+        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss()));
 
         algoStar.construirEdificio("Criadero", 5, 5);
         Criadero c = (Criadero) mapa.obtenerEntidad(5,5);

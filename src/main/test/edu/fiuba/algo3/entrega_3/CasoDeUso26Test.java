@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.entrega_3;
 
+import edu.fiuba.algo3.modelo.juego.AlgoColores;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.FakeMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
@@ -9,7 +10,6 @@ import edu.fiuba.algo3.modelo.razas.Zerg;
 ;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,7 +25,7 @@ public class CasoDeUso26Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila", Color.RED,new Zerg());
+        Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
 
@@ -41,7 +41,7 @@ public class CasoDeUso26Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila",Color.BLUE,new Zerg());
+        Jugador jugador1=new Jugador("camila",new AlgoColores("azul"),new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
 
@@ -57,7 +57,7 @@ public class CasoDeUso26Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Protoss());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
 
@@ -73,7 +73,7 @@ public class CasoDeUso26Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila",Color.RED,new Zerg());
+        Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
 
@@ -89,7 +89,7 @@ public class CasoDeUso26Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila",Color.RED,new Zerg());
+        Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
 

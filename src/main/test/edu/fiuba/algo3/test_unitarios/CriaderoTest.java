@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,8 +15,8 @@ public class CriaderoTest {
     public void puedoCrearUnCriaderoEnUnBordeDelMapaYAlExpandirseFuncionaCorrectamente(){
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
-        Jugador jugador1 = new Jugador("Jugador1", Color.BLUE, new Zerg());
-        Jugador jugador2 = new Jugador("Jugador2", Color.RED, new Protoss());
+        Jugador jugador1 = new Jugador("Jugador1", new AlgoColores("azul"), new Zerg());
+        Jugador jugador2 = new Jugador("Jugador2", new AlgoColores("rojo"), new Protoss());
         algoStar.registrarJugador(jugador1);
         algoStar.registrarJugador(jugador2);
 
@@ -38,8 +37,8 @@ public class CriaderoTest {
     public void mientrasSeEstaConstruyendoElCriaderoNoAumentaSuRango(){
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
-        Jugador jugador1 = new Jugador("Jugador1", Color.BLUE, new Zerg());
-        Jugador jugador2 = new Jugador("Jugador2", Color.RED, new Protoss());
+        Jugador jugador1 = new Jugador("Jugador1", new AlgoColores("azul"), new Zerg());
+        Jugador jugador2 = new Jugador("Jugador2", new AlgoColores("rojo"), new Protoss());
         algoStar.registrarJugador(jugador1);
         algoStar.registrarJugador(jugador2);
 

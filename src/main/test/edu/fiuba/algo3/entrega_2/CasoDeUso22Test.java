@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
 import edu.fiuba.algo3.modelo.unidades.Zerling;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,8 +36,8 @@ public class CasoDeUso22Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador j1 = new Jugador("mariano guglieri", Color.RED,new Zerg());
-        Jugador j2 = new Jugador("guglieri mariano",Color.BLUE,new Protoss());
+        Jugador j1 = new Jugador("mariano guglieri", new AlgoColores("rojo"),new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("azul"),new Protoss());
 
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
@@ -54,8 +53,8 @@ public class CasoDeUso22Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador j1 = new Jugador("mariano guglieri",Color.BLUE,new Zerg());
-        Jugador j2 = new Jugador("guglieri mariano",Color.RED,new Protoss());
+        Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
@@ -71,8 +70,8 @@ public class CasoDeUso22Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador j1 = new Jugador("mariano guglieri",Color.BLUE,new Zerg());
-        Jugador j2 = new Jugador("guglieri mariano",Color.RED,new Protoss());
+        Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
@@ -88,8 +87,8 @@ public class CasoDeUso22Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador j1 = new Jugador("mariano guglieri",Color.BLUE,new Zerg());
-        Jugador j2 = new Jugador("guglieri mariano",Color.RED,new Protoss());
+        Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
@@ -105,8 +104,8 @@ public class CasoDeUso22Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador j1 = new Jugador("mariano guglieri",Color.BLUE,new Zerg());
-        Jugador j2 = new Jugador("guglieri mariano",Color.RED,new Protoss());
+        Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
@@ -123,8 +122,8 @@ public class CasoDeUso22Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador j1 = new Jugador("mariano guglieri",Color.BLUE,new Zerg());
-        Jugador j2 = new Jugador("guglieri mariano",Color.RED,new Protoss());
+        Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
@@ -140,8 +139,8 @@ public class CasoDeUso22Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador j1 = new Jugador("mariano guglieri",Color.BLUE,new Zerg());
-        Jugador j2 = new Jugador("guglieri mariano",Color.RED,new Protoss());
+        Jugador j1 = new Jugador("mariano guglieri",new AlgoColores("azul"),new Zerg());
+        Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
