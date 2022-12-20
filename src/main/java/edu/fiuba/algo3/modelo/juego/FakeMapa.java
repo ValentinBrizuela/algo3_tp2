@@ -55,7 +55,7 @@ public class FakeMapa implements IMapa{
     private void crearBasesEsquinas(){
         casillas[3][3] = new Casilla(3, 3, new Tierra(), new Geiser());
         casillas[3][4] = new Casilla(3, 4, new Tierra(), new Mena());
-        casillas[4][4] = new Casilla(3, 4, new Tierra(), new Mena());
+        casillas[4][4] = new Casilla(4, 4, new Tierra(), new Mena());
 
 
         casillas[17][17] = new Casilla(17, 17, new Tierra(), new Geiser());
