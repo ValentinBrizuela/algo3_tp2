@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaRecursoError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaTerrenoError;
 import edu.fiuba.algo3.modelo.errores.NoHayMenaEnLaCasillaError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.unidades.Zangano;
@@ -17,8 +19,8 @@ public class Geiser implements Recurso {
     }
 
     public void construir(Construible entidad) {
-        if (!(entidad instanceof RefineriaGas)) { // Resolver el instanceof
-            throw new ConstruccionNoPermitidaError();
+        if (!(entidad.puedeExtraerDeGeiser())) { // Resolver el instanceof
+            throw new ConstruccionNoPermitidaRecursoError();
         }
     }
 

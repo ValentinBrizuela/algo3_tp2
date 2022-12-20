@@ -30,8 +30,8 @@ public class CasoDeUso26Test {
         algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());
-        algoStar.construirEdificio("ReservaDeReproduccion", 35, 10);
-        algoStar.crearZerling(jugador1, 25, 25);
+        algoStar.construirEntidad("ReservaDeReproduccion", 35, 10);
+        algoStar.construirEntidad("Zerling", 25, 25);
         assertEquals(null,mapa.obtenerCasilla(5,5).obtenerEstado().obtenerEntidad());
 
     }
@@ -48,10 +48,10 @@ public class CasoDeUso26Test {
         jugador1.llenarArcas();
 
         mapa.obtenerCasilla(36,10).cambiarTerreno(new Moho());
-        algoStar.construirEdificio("Criadero", 36, 10);
+        algoStar.construirEntidad("Criadero", 36, 10);
         /*mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());*/
-        algoStar.construirEdificio("ReservaDeReproduccion", 35, 10);
-        algoStar.crearZerling(jugador1, 5, 5);
+        algoStar.construirEntidad("ReservaDeReproduccion", 35, 10);
+        algoStar.construirEntidad("Zerling", 5, 5);
         assertEquals(4,jugador1.obtenerPoblacionUsable());
 
     }
@@ -67,8 +67,8 @@ public class CasoDeUso26Test {
         algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new TierraEnergizada());
-        algoStar.construirEdificio("Acceso", 35, 10);
-        algoStar.crearDragon(jugador1, 5, 5);
+        algoStar.construirEntidad("Acceso", 35, 10);
+        algoStar.construirEntidad("Dragon", 5, 5);
         assertEquals(null,mapa.obtenerCasilla(5,5).obtenerEstado().obtenerEntidad());
 
     }
@@ -83,9 +83,9 @@ public class CasoDeUso26Test {
 
         algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
-        algoStar.construirEdificio("Pilon", 36, 10);
-        algoStar.construirEdificio("Acceso", 35, 10);
-        algoStar.crearDragon(jugador1, 25, 25);
+        algoStar.construirEntidad("Pilon", 36, 10);
+        algoStar.construirEntidad("Acceso", 35, 10);
+        algoStar.construirEntidad("Dragon", 25, 25);
         assertEquals(2,jugador1.obtenerPoblacionUsable());
 
     }
@@ -100,10 +100,10 @@ public class CasoDeUso26Test {
 
         algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
-        algoStar.crearAmoSupremo(jugador1,36,10);
+        algoStar.construirEntidad("AmoSupremo",36,10);
         mapa.obtenerCasilla(50,10).cambiarTerreno(new Moho());
-        algoStar.construirEdificio("ReservaDeReproduccion", 50, 10);
-        algoStar.crearZerling(jugador1, 5, 5);
+        algoStar.construirEntidad("ReservaDeReproduccion", 50, 10);
+        algoStar.construirEntidad("Zerling", 5, 5);
         assertEquals(4,jugador1.obtenerPoblacionUsable());
 
     }

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaTerrenoError;
 import edu.fiuba.algo3.modelo.errores.ExtractorLlenoError;
 import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -58,17 +59,17 @@ public class Extractor extends Entidad implements RefineriaGas, Construible, Ata
 
     @Override
     public void construir(Tierra tierra, Almacen almacen) {
-        throw new ConstruccionNoPermitidaError();
+        throw new ConstruccionNoPermitidaTerrenoError();
     }
 
     @Override
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
-        throw new ConstruccionNoPermitidaError();
+        throw new ConstruccionNoPermitidaTerrenoError();
     }
 
     @Override
     public void construir(Espacio espacio, Almacen almacen) {
-        throw new ConstruccionNoPermitidaError();
+        throw new ConstruccionNoPermitidaTerrenoError();
     }
 
     public void recibirAtaque(Atacante atacante, IMapa mapa) {
@@ -87,4 +88,7 @@ public class Extractor extends Entidad implements RefineriaGas, Construible, Ata
             vida.regenerar();
         }
     }
+
+    @Override
+    public boolean puedeExtraerDeGeiser() {return true; }
 }

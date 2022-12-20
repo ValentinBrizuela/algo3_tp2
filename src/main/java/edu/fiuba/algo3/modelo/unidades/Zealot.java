@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.unidades;
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.VidaProtoss;
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
+import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
 import edu.fiuba.algo3.modelo.errores.ZealotInvisibleError;
 import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
@@ -42,7 +42,7 @@ public class Zealot extends Unidad implements Atacante, AtacableTerrestre, Consu
     }
 
     public void atacarA(AtacableAereo atacableAereo) {
-        throw new AtaqueInvalidoError();
+        throw new AtaquePorAireInvalidoError();
     }
 
     public void recibirAtaque(Atacante atacante, IMapa mapa) {

@@ -19,4 +19,8 @@ public interface Construible {
 
     public boolean estaDestruido();
 
+    public boolean puedeExtraerDeMina();
+
+    public boolean puedeExtraerDeGeiser();
+
 }

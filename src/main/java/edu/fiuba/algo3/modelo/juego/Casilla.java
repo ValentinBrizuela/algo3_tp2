@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.edificios.*;
+import edu.fiuba.algo3.modelo.errores.CasillaOcupadaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaRecursoError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaTerrenoError;
 import edu.fiuba.algo3.modelo.estados.Desocupada;
 import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
@@ -22,9 +26,17 @@ public class Casilla {
         try {
             estado.construir(entidad, almacen);
 
-        } catch (Exception e) {
-            throw e;
+        } catch (CasillaOcupadaError e) {
+            System.out.println("Construcción invalida por casilla ocupada.");
+            throw new ConstruccionNoPermitidaError();
+        } catch (ConstruccionNoPermitidaRecursoError e) {
+            System.out.println("No se puede construir sobre un recurso.");
+            throw new ConstruccionNoPermitidaError();
+        } catch (ConstruccionNoPermitidaTerrenoError e) {
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            throw new ConstruccionNoPermitidaError();
         }
+
     }
 
 

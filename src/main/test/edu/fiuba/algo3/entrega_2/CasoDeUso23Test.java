@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.edificios.Acceso;
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
+import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
 import edu.fiuba.algo3.modelo.unidades.Zerling;
@@ -25,7 +25,7 @@ public class CasoDeUso23Test {
             z.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {z.atacarA(d);});
+        assertThrows(AtaquePorAireInvalidoError.class, () -> {z.atacarA(d);});
     }
 
     @Test
@@ -42,6 +42,6 @@ public class CasoDeUso23Test {
         Acceso acceso = new Acceso(casillaEdificio);
         acceso.finalizarConstruccion();
 
-        assertThrows(AtaqueInvalidoError.class, () -> {acceso.recibirAtaque(z, mapa);});
+        assertThrows(AtaquePorAireInvalidoError.class, () -> {acceso.recibirAtaque(z, mapa);});
     }
 }

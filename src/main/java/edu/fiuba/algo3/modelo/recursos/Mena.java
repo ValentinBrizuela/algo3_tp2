@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.Mina;
 import edu.fiuba.algo3.modelo.edificios.RefineriaGas;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaRecursoError;
 import edu.fiuba.algo3.modelo.errores.NoHayGasEnLaCasillaError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.unidades.Zangano;
@@ -15,8 +16,8 @@ public class Mena implements Recurso {
     }
 
     public void construir(Construible entidad) {
-        if (!(entidad instanceof Mina)) {
-            throw new ConstruccionNoPermitidaError();
+        if (!(entidad.puedeExtraerDeMina())) {
+            throw new ConstruccionNoPermitidaRecursoError();
         }
     }
 

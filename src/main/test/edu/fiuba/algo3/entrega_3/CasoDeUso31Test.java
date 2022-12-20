@@ -25,11 +25,12 @@ public class CasoDeUso31Test {
         Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Zerg());
         algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
-        algoStar.construirEdificio("Pilon", 36, 10);
+        algoStar.construirEntidad("Pilon", 36, 10);
         Pilon pilon=(Pilon)mapa.obtenerCasilla(36,10).obtenerEstado().obtenerEntidad();
         assertEquals(5,jugador1.obtenerPoblacionUsable());
-        algoStar.construirEdificio("Acceso", 37, 10);
-        Dragon dragon=algoStar.crearDragon(jugador1,36,11);
+        algoStar.construirEntidad("Acceso", 37, 10);
+        algoStar.construirEntidad("Dragon",36,11);
+        Dragon dragon= (Dragon) mapa.obtenerEntidad(36,11);
         dragon.finalizarConstruccion();
         for (int i=0; i<30; i++){
             algoStar.ataque(dragon,pilon,jugador1);
@@ -46,13 +47,14 @@ public class CasoDeUso31Test {
         Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Protoss());
         algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
-        algoStar.construirEdificio("Criadero", 36, 10);
+        algoStar.construirEntidad("Criadero", 36, 10);
         Criadero criadero=(Criadero) mapa.obtenerCasilla(36,10).obtenerEstado().obtenerEntidad();
         assertEquals(5,jugador1.obtenerPoblacionUsable());
         //mapa.obtenerCasilla(37,10).cambiarTerreno(new Moho());
-        algoStar.construirEdificio("ReservaDeReproduccion", 36, 9);
-        algoStar.construirEdificio("Guarida", 37, 10);
-        Hidralisco hidralisco=algoStar.crearHidralisco(jugador1,36,11);
+        algoStar.construirEntidad("ReservaDeReproduccion", 36, 9);
+        algoStar.construirEntidad("Guarida", 37, 10);
+        algoStar.construirEntidad("Hidralisco",36,11);
+        Hidralisco hidralisco = (Hidralisco) mapa.obtenerEntidad(36,11);
         hidralisco.finalizarConstruccion();
         for (int i=0; i<50; i++){
             algoStar.ataque(hidralisco,criadero,jugador1);

@@ -3,11 +3,10 @@ package edu.fiuba.algo3.modelo.unidades;
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
+import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
 import edu.fiuba.algo3.modelo.interfaces.*;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.IMapa;
-import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.juego.Poblacion;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
@@ -40,7 +39,7 @@ public class Zerling extends Unidad implements Atacante, AtacableTerrestre, Cons
 
     @Override
     public void atacarA(AtacableAereo atacableAereo) {
-        throw new AtaqueInvalidoError();
+        throw new AtaquePorAireInvalidoError();
     }
 
     public void recibirAtaque(Atacante atacante, IMapa mapa) {

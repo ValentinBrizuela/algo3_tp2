@@ -60,10 +60,13 @@ public class AlgoStar {
                 atacado.destruir(jugadorAtacado,mapa);
             }
 
+        } catch (AtaquePorAireInvalidoError e) {
+            System.out.println("La unidad seleccionada no realiza ataques por aire.");
+        } catch (AtaquePorTierraInvalidoError e) {
+            System.out.println("La unidad seleccionada no realiza ataques por tierra.");
         } catch (Exception e) {
-            System.out.println("No se pudo realizar el ataque.");
+            System.out.println("Otro error.");
         }
-
     }
 
     public void atacaraPosicion(int x1, int y1, int x2, int y2) {
@@ -73,7 +76,7 @@ public class AlgoStar {
         jugadorActual.puedeSeleccionar(atacante.raza);
 
         if (!atacante.esAtacante()) {
-            throw new AtaqueInvalidoError();
+            throw new AtaquePorAireInvalidoError();   //Cambiar esto
         }
 
         Entidad atacable = mapa.obtenerEntidad(x2, y2);
@@ -87,10 +90,15 @@ public class AlgoStar {
             Entidad entidad = mapa.obtenerEntidad(x1, y1);
             jugadorActual.puedeSeleccionar(entidad.raza);
             ((Unidad) entidad).moverA(mapa.obtenerCasilla(x2, y2));
-        } catch (MovimientoInvalidoError e) {
-            System.out.println("No se pudo realizar el movimiento.");
+        } catch (MovimientoAEspacioError e) {
+            System.out.println("La unidad seleccionado no se puede mover a una zona aerea.");
+
+        } catch (CasillaOcupadaError e) {
+            System.out.println("La casilla destino seleccionada debe estar desocupada.");
+
         } catch (Exception e) {
             System.out.println("aaaaaa.");
+
         }
 
     }

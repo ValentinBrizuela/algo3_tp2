@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
-import edu.fiuba.algo3.modelo.errores.MovimientoInvalidoError;
+import edu.fiuba.algo3.modelo.errores.MovimientoAEspacioError;
 
 public class UnidadTerrestre implements TipoDeUnidad {
 
@@ -13,7 +13,7 @@ public class UnidadTerrestre implements TipoDeUnidad {
     }
 
     public void puedoMoverA(Espacio espacio) {
-        throw new MovimientoInvalidoError();
+        throw new MovimientoAEspacioError();
     }
 
     public void puedoMoverA(Moho moho) {

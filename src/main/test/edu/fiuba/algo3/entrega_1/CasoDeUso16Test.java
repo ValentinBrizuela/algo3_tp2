@@ -3,6 +3,7 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.edificios.NexoMineral;
 import edu.fiuba.algo3.modelo.errores.CasillaOcupadaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
@@ -26,7 +27,7 @@ public class CasoDeUso16Test {
         casilla.construir(extractor, almacen);
 
         Extractor extractor2 = new Extractor(casilla, almacen);
-        assertThrows(CasillaOcupadaError.class, () -> {casilla.construir(extractor2, almacen);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(extractor2, almacen);});
     }
 
     @Test
@@ -39,7 +40,7 @@ public class CasoDeUso16Test {
         casilla.construir(extractor, almacen);
 
         Extractor extractor2 = new Extractor(casilla, almacen);
-        assertThrows(CasillaOcupadaError.class, () -> {casilla.construir(extractor2, almacen);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(extractor2, almacen);});
     }
 
     @Test
@@ -68,6 +69,6 @@ public class CasoDeUso16Test {
         zangano.avanzarTurno();
 
 
-        assertThrows(CasillaOcupadaError.class, () -> {casilla1.construir(new NexoMineral(casilla1, almacen),almacen);});
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla1.construir(new NexoMineral(casilla1, almacen),almacen);});
     }
 }

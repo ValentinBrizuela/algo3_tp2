@@ -17,7 +17,7 @@ public class CasoDeUso6Test {
         Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Protoss());
         algoStar.registrarJugadores(jugador1, jugador2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
+        algoStar.construirEntidad("Criadero", 5, 5);
 
         algoStar.avanzarTurno();
         assertEquals(Moho.class, mapa.obtenerCasilla(10, 10).obtenerEstado().obtenerTerreno().getClass());

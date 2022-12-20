@@ -3,14 +3,13 @@ package edu.fiuba.algo3.modelo.unidades;
 import edu.fiuba.algo3.modelo.costos.CostoGas;
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
+import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
 import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.IMapa;
-import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class Guardian extends Unidad  implements Atacante, AtacableAereo {
     }
 
     public void atacarA(AtacableAereo atacableAereo) {
-        throw new AtaqueInvalidoError();
+        throw new AtaquePorAireInvalidoError();
     }
 
     public void recibirAtaque(Atacante atacante, IMapa mapa) {

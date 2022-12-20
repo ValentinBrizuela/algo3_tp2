@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.entrega_3;
 
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
+import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
+import edu.fiuba.algo3.modelo.errores.AtaquePorTierraInvalidoError;
 import edu.fiuba.algo3.modelo.errores.CasillaOcupadaError;
 import edu.fiuba.algo3.modelo.errores.RecursosInsuficientesError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.FakeMapa;
-import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.unidades.Devorador;
 import edu.fiuba.algo3.modelo.unidades.Mutalisco;
@@ -87,6 +87,6 @@ public class CasoDeUso27Test {
             d.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {z.recibirAtaque(d, mapa);});
+        assertThrows(AtaquePorTierraInvalidoError.class, () -> {z.recibirAtaque(d, mapa);});
     }
 }

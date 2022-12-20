@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.entrega_2;
 
-import edu.fiuba.algo3.modelo.errores.AtaqueInvalidoError;
+import edu.fiuba.algo3.modelo.errores.AtaquePorAireInvalidoError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
@@ -29,7 +29,7 @@ public class CasoDeUso19Test {
             z.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(z, mapa);});
+        assertThrows(AtaquePorAireInvalidoError.class, () -> {s.recibirAtaque(z, mapa);});
     }
 
     @Test
@@ -47,7 +47,7 @@ public class CasoDeUso19Test {
             g.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(g, mapa);});
+        assertThrows(AtaquePorAireInvalidoError.class, () -> {s.recibirAtaque(g, mapa);});
     }
 
     @Test
@@ -65,7 +65,7 @@ public class CasoDeUso19Test {
             z.avanzarTurno();
         }
 
-        assertThrows(AtaqueInvalidoError.class, () -> {s.recibirAtaque(z, mapa);});
+        assertThrows(AtaquePorAireInvalidoError.class, () -> {s.recibirAtaque(z, mapa);});
     }
 
 }

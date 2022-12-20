@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
 import edu.fiuba.algo3.modelo.unidades.Zerling;
 import org.junit.jupiter.api.Test;
 
@@ -42,8 +43,8 @@ public class CasoDeUso22Test {
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEdificio("Criadero", 50, 50);
-        algoStar.crearZerling(j1, 25, 25);
+        algoStar.construirEntidad("Criadero", 50, 50);
+        algoStar.construirEntidad("Zerling", 25, 25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -60,8 +61,8 @@ public class CasoDeUso22Test {
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.crearAmoSupremo(j1, 50,50);
-        algoStar.crearZangano(j1, 25,25);
+        algoStar.construirEntidad("AmoSupremo", 50,50);
+        algoStar.construirEntidad("Zangano", 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -78,8 +79,8 @@ public class CasoDeUso22Test {
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEdificio("Criadero", 50, 50);
-        algoStar.crearHidralisco(j1, 25,25);
+        algoStar.construirEntidad("Criadero", 50, 50);
+        algoStar.construirEntidad("Hidralisco", 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -96,8 +97,8 @@ public class CasoDeUso22Test {
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEdificio("Criadero", 50, 50);
-        algoStar.crearMutalisco(j1, 25,25);
+        algoStar.construirEntidad("Criadero", 50, 50);
+        algoStar.construirEntidad("Mutalisco", 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -114,9 +115,9 @@ public class CasoDeUso22Test {
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEdificio("Criadero", 50, 50);
+        algoStar.construirEntidad("Criadero", 50, 50);
 
-        algoStar.crearZealot(j1, 25,25);
+        algoStar.construirEntidad("Zealot", 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -133,8 +134,8 @@ public class CasoDeUso22Test {
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEdificio("Criadero", 50, 50);
-        algoStar.crearDragon(j1, 25,25);
+        algoStar.construirEntidad("Criadero", 50, 50);
+        algoStar.construirEntidad("Dragon", 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -151,8 +152,8 @@ public class CasoDeUso22Test {
 
         algoStar.registrarJugadores(j1, j2);
 
-        algoStar.construirEdificio("Criadero", 50, 50);
-        algoStar.crearScout(j1, 25,25);
+        algoStar.construirEntidad("Criadero", 50, 50);
+        algoStar.construirEntidad("Scout", 25,25);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }

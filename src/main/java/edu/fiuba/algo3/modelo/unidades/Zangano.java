@@ -65,4 +65,7 @@ public class Zangano extends Unidad implements Mina, AtacableTerrestre, Consumid
         casilla.cambiarEstado(new Desocupada(casilla.obtenerTerreno(), casilla.obtenerRecurso()));
     }
 
+    @Override
+    public boolean puedeExtraerDeMina() {return true; }
+
 }

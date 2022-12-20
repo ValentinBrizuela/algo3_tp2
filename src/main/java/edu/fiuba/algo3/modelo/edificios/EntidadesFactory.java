@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
 import edu.fiuba.algo3.modelo.errores.CreacionDeUnidadInvalida;
+import edu.fiuba.algo3.modelo.errores.PoblacionInsuficienteError;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.IMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
@@ -259,6 +260,7 @@ public class EntidadesFactory {
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Zerling necesitas una Reserva de Reproduccion. ");
+            return;
         }
 
         try {
@@ -267,8 +269,12 @@ public class EntidadesFactory {
             jugadorActual.verificarYConsumirSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
 
-        } catch (Exception e) {
-            System.out.println("No se pudo crear el Zerling. ");
+        } catch (ConstruccionNoPermitidaError e){
+            return;
+        }
+        catch (PoblacionInsuficienteError e) {
+            System.out.println("Población insuficiente para crear un Zerling (1 Pob).");
+            return;
         }
     }
 
@@ -281,6 +287,7 @@ public class EntidadesFactory {
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Zangano necesitas un Criadero. ");
+            return;
         }
 
         try {
@@ -289,8 +296,12 @@ public class EntidadesFactory {
             jugadorActual.verificarYConsumirSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
 
-        } catch (Exception e) {
-            System.out.println("No se pudo crear el Zagano. ");
+        } catch (ConstruccionNoPermitidaError e){
+            return;
+        }
+        catch (PoblacionInsuficienteError e) {
+            System.out.println("Población insuficiente para crear un Zangano (1 Pob).");
+            return;
         }
     }
 
@@ -313,8 +324,12 @@ public class EntidadesFactory {
             jugadorActual.verificarYConsumirSuministro(h);
             casilla.construir(h,jugadorActual.obtenerAlmacen());
 
-        } catch (Exception e) {
-            System.out.println("No se pudo crear el Hidralisco. ");
+        } catch (ConstruccionNoPermitidaError e){
+            return ;
+        }
+        catch (PoblacionInsuficienteError e) {
+            System.out.println("Población insuficiente para crear un Hidralisco (2 Pob). ");
+            return ;
         }
     }
 
@@ -335,8 +350,12 @@ public class EntidadesFactory {
             jugadorActual.verificarYConsumirSuministro(m);
             casilla.construir(m,jugadorActual.obtenerAlmacen());
 
-        } catch (Exception e) {
-            System.out.println("No se pudo crear el Mutalisco. ");
+        } catch (ConstruccionNoPermitidaError e){
+            return ;
+        }
+        catch (PoblacionInsuficienteError e) {
+            System.out.println("Población insuficiente para crear un Mutalisco (4 Pob).");
+            return ;
         }
     }
 
@@ -357,8 +376,12 @@ public class EntidadesFactory {
             jugadorActual.verificarYConsumirSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
 
-        } catch (Exception e) {
-            System.out.println("No se pudo crear el Zealot. ");
+        } catch (ConstruccionNoPermitidaError e){
+            return ;
+        }
+        catch (PoblacionInsuficienteError e) {
+            System.out.println("Población insuficiente para crear un Zealot (2 Pob).");
+            return ;
         }
     }
 
@@ -379,8 +402,12 @@ public class EntidadesFactory {
             jugadorActual.verificarYConsumirSuministro(d);
             casilla.construir(d,jugadorActual.obtenerAlmacen());
 
-        } catch (Exception e) {
-            System.out.println("No se pudo crear el Dragon. ");
+        } catch (ConstruccionNoPermitidaError e){
+            return ;
+        }
+        catch (PoblacionInsuficienteError e) {
+            System.out.println("Población insuficiente para crear un Dragon (3 Pob).");
+            return ;
         }
     }
 
@@ -401,8 +428,12 @@ public class EntidadesFactory {
             jugadorActual.verificarYConsumirSuministro(s);
             casilla.construir(s,jugadorActual.obtenerAlmacen());
 
-        } catch (Exception e) {
-            System.out.println("No se pudo crear el Scout. ");
+        } catch (ConstruccionNoPermitidaError e){
+            return ;
+        }
+        catch (PoblacionInsuficienteError e) {
+            System.out.println("Población insuficiente para crear un Scout (4 Pob).");
+            return ;
         }
     }
 
@@ -415,7 +446,8 @@ public class EntidadesFactory {
             casilla.construir(a, jugadorActual.obtenerAlmacen());
 
         } catch (Exception e) {
-            System.out.println("No se pudo crear el AmoSupremo. ");
+            //System.out.println("No se pudo crear el AmoSupremo. ");
+            return;
         }
     }
 }

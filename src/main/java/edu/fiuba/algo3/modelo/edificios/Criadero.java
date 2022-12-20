@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.edificios;
 
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaTerrenoError;
 import edu.fiuba.algo3.modelo.terrenos.Espacio;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
@@ -96,12 +97,12 @@ public class Criadero extends Entidad implements Construible, AtacableTerrestre,
 
     @Override
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
-        throw new ConstruccionNoPermitidaError();
+        throw new ConstruccionNoPermitidaTerrenoError();
     }
 
     @Override
     public void construir(Espacio espacio, Almacen almacen) {
-        throw new ConstruccionNoPermitidaError();
+        throw new ConstruccionNoPermitidaTerrenoError();
     }
 
     public void recibirAtaque(Atacante atacante, IMapa mapa) {

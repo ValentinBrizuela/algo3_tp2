@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.errores.CasillaOcupadaError;
-import edu.fiuba.algo3.modelo.errores.MovimientoInvalidoError;
+import edu.fiuba.algo3.modelo.errores.MovimientoAEspacioError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.juego.Mapa;
@@ -28,7 +28,7 @@ public class CasoDeUso20Test {
             z.avanzarTurno();
         }
 
-        assertThrows(MovimientoInvalidoError.class, () -> {z.moverA(casillaDestino);});
+        assertThrows(MovimientoAEspacioError.class, () -> {z.moverA(casillaDestino);});
     }
 
     @Test
