@@ -85,4 +85,12 @@ public abstract class Entidad {
 
     public boolean esDetector() { return false; }
 
+    public void puedoAtacar(Raza raza){
+        raza.puedoSeleccionar(this.raza);
+    }
+
+    public Raza obtenerRaza(){
+        return this.raza;
+    }
+
 }

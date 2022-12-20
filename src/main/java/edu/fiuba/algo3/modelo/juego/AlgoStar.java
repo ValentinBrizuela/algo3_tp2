@@ -75,13 +75,17 @@ public class AlgoStar {
         if (!atacante.esAtacante()) {
             throw new AtaqueInvalidoError();
         }
+
         Entidad atacable = mapa.obtenerEntidad(x2, y2);
+        atacante.puedoAtacar(atacable.raza);
+
         ataque((Atacante) atacante, atacable, jugadores.get((turno + 1) % 2));
     }
 
     public void mover(int x1, int y1, int x2, int y2) {
         try {
             Entidad entidad = mapa.obtenerEntidad(x1, y1);
+            jugadorActual.puedeSeleccionar(entidad.raza);
             ((Unidad) entidad).moverA(mapa.obtenerCasilla(x2, y2));
         } catch (MovimientoInvalidoError e) {
             System.out.println("No se pudo realizar el movimiento.");

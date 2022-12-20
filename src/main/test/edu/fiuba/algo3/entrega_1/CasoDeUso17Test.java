@@ -11,6 +11,8 @@ import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
 import org.junit.jupiter.api.Test;
 
+import javax.sound.sampled.Port;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
@@ -35,8 +37,8 @@ public class CasoDeUso17Test {
     @Test
     public void test02UnaGuaridaSePuedeConstruirSiAntesSeConstruyoUnaReservaDeReproduccion(){
         FakeMapa mapa = new FakeMapa(2);
-        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Protoss());
-        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Zerg());
+        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Zerg());
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Protoss());
 
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugadores(jugador1, jugador2);
@@ -72,8 +74,8 @@ public class CasoDeUso17Test {
     @Test
     public void test04UnEspiralSePuedeConstruirSiAntesSeConstruyoUnaGuarida(){
         FakeMapa mapa = new FakeMapa(2);
-        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Protoss());
-        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Zerg());
+        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Zerg());
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Protoss());
 
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugadores(jugador1, jugador2);
