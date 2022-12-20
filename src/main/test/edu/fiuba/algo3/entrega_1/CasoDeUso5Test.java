@@ -26,6 +26,16 @@ public class CasoDeUso5Test {
         //Falta testear los otros edificios.
     }
 
+   /* @Test
+    public void construyoEdificioZergEnGeiserYNoSePuede() {
+        Casilla casilla = new Casilla(0,0, new Moho(),new Geiser(), new Desocupada());
+        Criadero criadero = new Criadero();
+        Almacen almacen = new Almacen();
+        almacen.almacenarMineral(1000);
+
+        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero, almacen);});
+    }*/
+
     @Test
     public void construyoEdificioProtossEnMohoYNoSePuede() {
         Casilla casilla = new Casilla(0,0, new Moho(), new Geiser());

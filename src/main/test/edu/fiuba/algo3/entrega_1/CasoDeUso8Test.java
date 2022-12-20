@@ -65,6 +65,7 @@ public class CasoDeUso8Test {
     }
     @Test
     public void test07NoPuedoConstruirUnPilonSiNoTengoLosRecursosNecesarios(){
+        Mapa mapa = new Mapa(2);
         Almacen almacen = new Almacen();
         Casilla casilla = new Casilla(25,25, new TierraEnergizada(), new RecursoVacio());
         Pilon pilon = new Pilon(casilla);

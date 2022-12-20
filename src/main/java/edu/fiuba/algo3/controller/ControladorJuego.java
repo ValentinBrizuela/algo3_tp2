@@ -64,6 +64,6 @@ public class ControladorJuego {
     }
 
     public void construir(String construccion) {
-        algoStar.construirEntidad(construccion, casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY());
+        algoStar.construirEdificio(construccion, casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY());
     }
 }

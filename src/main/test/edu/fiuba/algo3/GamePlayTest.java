@@ -26,33 +26,30 @@ public class GamePlayTest {
 
         algostar.registrarJugadores(jugador1, jugador2);
 
-        algostar.construirEntidad("Criadero", 1, 1);
+        algostar.construirEdificio("Criadero", 1, 1);
 
         algostar.avanzarTurno();
 
-        algostar.construirEntidad("Pilon", 19, 18);
+        algostar.construirEdificio("Pilon", 19, 18);
 
         algostar.avanzarTurno();
 
-        algostar.construirEntidad("Zangano", 3, 4);
-        algostar.construirEntidad("Zangano", 4, 4);
+        algostar.crearZangano(algostar.obtenerJugadorActual(), 3, 4);
+        algostar.crearZangano(algostar.obtenerJugadorActual(), 4, 4);
 
         avanzarTurnos(10, algostar);
 
-        algostar.construirEntidad("ReservaDeReproduccion", 2, 1);
+        algostar.construirEdificio("ReservaDeReproduccion", 2, 1);
 
         avanzarTurnos(4, algostar);
 
-        algostar.construirEntidad("Extractor", 3, 3);
+        algostar.construirEdificio("Extractor", 3, 3);
 
         avanzarTurnos(6, algostar);
 
-        algostar.construirEntidad("Zangano", 5, 5);
-        algostar.construirEntidad("Zangano", 5, 6);
-        algostar.construirEntidad("Zangano", 5, 7);
-        Zangano z1 = (Zangano) fakeMapa.obtenerEntidad(5,5);
-        Zangano z2 = (Zangano) fakeMapa.obtenerEntidad(5,6);
-        Zangano z3 = (Zangano) fakeMapa.obtenerEntidad(5,7);
+        Zangano z1 = algostar.crearZangano(algostar.obtenerJugadorActual(), 5, 5);
+        Zangano z2 = algostar.crearZangano(algostar.obtenerJugadorActual(), 5, 6);
+        Zangano z3 =algostar.crearZangano(algostar.obtenerJugadorActual(), 5, 7);
 
         avanzarTurnos(2, algostar);
 
@@ -63,28 +60,27 @@ public class GamePlayTest {
 
         avanzarTurnos(6, algostar);
 
-        algostar.construirEntidad("Guarida", 2, 2);
+        algostar.construirEdificio("Guarida", 2, 2);
 
         avanzarTurnos(4, algostar);
 
-        algostar.construirEntidad("Hidralisco", 4, 3);
-        // Me falta suministro
+
+        Hidralisco h = algostar.crearHidralisco(algostar.obtenerJugadorActual(), 4,3); // Me falta suministro
 
         avanzarTurnos(6, algostar);
 
-        algostar.construirEntidad("Criadero", 1, 2);
+        algostar.construirEdificio("Criadero", 1, 2);
 
         avanzarTurnos(4, algostar);
 
-        algostar.construirEntidad("Hidralisco", 4, 3);
-        Hidralisco h = (Hidralisco) fakeMapa.obtenerEntidad(4, 3);
+        Hidralisco h2 = algostar.crearHidralisco(algostar.obtenerJugadorActual(), 4,3);
 
         avanzarTurnos(4, algostar);
 
-        h.moverA(fakeMapa.obtenerCasilla(17, 18));
+        h2.moverA(fakeMapa.obtenerCasilla(17, 18));
 
         for (int i=0; i<60; i++) {
-            algostar.ataque(h, fakeMapa.obtenerEntidad(19, 18), algostar.obtenerJugadorRival());
+            algostar.ataque(h2, fakeMapa.obtenerEntidad(19, 18), algostar.obtenerJugadorRival());
         }
 
         assertTrue(algostar.hayGanador());
