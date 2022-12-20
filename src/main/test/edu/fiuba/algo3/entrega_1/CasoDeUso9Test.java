@@ -15,8 +15,8 @@ public class CasoDeUso9Test {
     public void EdificioProtossSigueEnergizadoSiLeDestruyenElPilonQueLoEnergizaPeroTieneOtroEnRango(){
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar=new AlgoStar(mapa);
-        Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Zerg());
-        Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Protoss());
+        Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Protoss());
+        Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Zerg());
         algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
 

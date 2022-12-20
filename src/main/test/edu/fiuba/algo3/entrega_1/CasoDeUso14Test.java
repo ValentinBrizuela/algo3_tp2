@@ -31,13 +31,14 @@ public class CasoDeUso14Test {
     public void mohoNoSePuedeExpandirPorUnaCasillaOcupada() {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar=new AlgoStar(mapa);
-        Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
-        Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Protoss());
+        Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Protoss());
+        Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Zerg());
         algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
 
         algoStar.construirEntidad("Pilon", 5, 5);
-        algoStar.construirEntidad("Criadero", 6, 6);
+        algoStar.avanzarTurno();
+        algoStar.construirEntidad("Criadero", 9, 9);
 
         assertEquals(mapa.obtenerCasilla(5, 5).obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
     }

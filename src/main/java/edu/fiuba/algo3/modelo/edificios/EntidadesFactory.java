@@ -88,6 +88,7 @@ public class EntidadesFactory {
     public void construirCriadero(Casilla casilla, Jugador jugadorActual, IMapa mapa){
         try {
             Criadero c = new Criadero(casilla);
+            jugadorActual.puedeSeleccionar(c.obtenerRaza());
             casilla.construir(c, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Criadero");
             jugadorActual.generarPoblacion();
@@ -103,6 +104,7 @@ public class EntidadesFactory {
     public void construirPilon(Casilla casilla, Jugador jugadorActual, IMapa mapa){
         try {
             Pilon p = new Pilon(casilla);
+            jugadorActual.puedeSeleccionar(p.obtenerRaza());
             casilla.construir(p, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Pilon");
             jugadorActual.generarPoblacion();
@@ -118,6 +120,7 @@ public class EntidadesFactory {
     public void construirReservaDeReproduccion(Casilla casilla, Jugador jugadorActual){
         try {
             ReservaDeReproduccion r = new ReservaDeReproduccion(casilla);
+            jugadorActual.puedeSeleccionar(r.obtenerRaza());
             casilla.construir(r, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("ReservaDeReproduccion");
             jugadorActual.agregarEdificio(r);
@@ -140,6 +143,7 @@ public class EntidadesFactory {
 
         try {
             Espiral e = new Espiral(casilla);
+            jugadorActual.puedeSeleccionar(e.obtenerRaza());
             casilla.construir(e, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Espiral");
             jugadorActual.agregarEdificio(e);
@@ -162,6 +166,7 @@ public class EntidadesFactory {
 
         try {
             PuertoEstelar p = new PuertoEstelar(casilla);
+            jugadorActual.puedeSeleccionar(p.obtenerRaza());
             casilla.construir(p, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("PuertoEstelar");
             jugadorActual.agregarEdificio(p);
@@ -174,6 +179,7 @@ public class EntidadesFactory {
     public void construirAcceso(Casilla casilla, Jugador jugadorActual) {
         try {
             Acceso a = new Acceso(casilla);
+            jugadorActual.puedeSeleccionar(a.obtenerRaza());
             casilla.construir(a, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Acceso");
             jugadorActual.agregarEdificio(a);
@@ -186,6 +192,7 @@ public class EntidadesFactory {
     public void construirExtractor(Casilla casilla, Jugador jugadorActual){
         try{
             Extractor e = new Extractor(casilla, jugadorActual.obtenerAlmacen());
+            jugadorActual.puedeSeleccionar(e.obtenerRaza());
             casilla.construir(e, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Extractor");
             jugadorActual.agregarEdificio(e);
@@ -207,6 +214,7 @@ public class EntidadesFactory {
 
         try {
             Guarida g = new Guarida(casilla);
+            jugadorActual.puedeSeleccionar(g.obtenerRaza());
             casilla.construir(g, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Guarida");
             jugadorActual.agregarEdificio(g);
@@ -219,6 +227,7 @@ public class EntidadesFactory {
     public void construirNexoMineral(Casilla casilla, Jugador jugadorActual){
         try {
             NexoMineral n = new NexoMineral(casilla, jugadorActual.obtenerAlmacen());
+            jugadorActual.puedeSeleccionar(n.obtenerRaza());
             casilla.construir(n, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("NexoMineral");
             jugadorActual.agregarEdificio(n);
@@ -231,6 +240,7 @@ public class EntidadesFactory {
     public void construirAsimilador(Casilla casilla, Jugador jugadorActual){
         try {
             Asimilador a = new Asimilador(casilla, jugadorActual.obtenerAlmacen());
+            jugadorActual.puedeSeleccionar(a.obtenerRaza());
             casilla.construir(a, jugadorActual.obtenerAlmacen());
             jugadorActual.construyo("Asimilador");
             jugadorActual.agregarEdificio(a);
@@ -253,6 +263,7 @@ public class EntidadesFactory {
 
         try {
             Zerling z = new Zerling(casilla);
+            jugadorActual.puedeSeleccionar(z.obtenerRaza());
             jugadorActual.verificarYConsumirSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
 
@@ -274,6 +285,7 @@ public class EntidadesFactory {
 
         try {
             Zangano z = new Zangano(casilla, jugadorActual.obtenerAlmacen());
+            jugadorActual.puedeSeleccionar(z.obtenerRaza());
             jugadorActual.verificarYConsumirSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
 
@@ -296,6 +308,7 @@ public class EntidadesFactory {
 
         try {
             Hidralisco h = new Hidralisco(casilla);
+            jugadorActual.puedeSeleccionar(h.obtenerRaza());
             jugadorActual.verificarYConsumirSuministro(h);
             casilla.construir(h,jugadorActual.obtenerAlmacen());
 
@@ -317,6 +330,7 @@ public class EntidadesFactory {
 
         try {
             Mutalisco m = new Mutalisco(casilla);
+            jugadorActual.puedeSeleccionar(m.obtenerRaza());
             jugadorActual.verificarYConsumirSuministro(m);
             casilla.construir(m,jugadorActual.obtenerAlmacen());
 
@@ -338,6 +352,7 @@ public class EntidadesFactory {
 
         try {
             Zealot z = new Zealot(casilla);
+            jugadorActual.puedeSeleccionar(z.obtenerRaza());
             jugadorActual.verificarYConsumirSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
 
@@ -359,6 +374,7 @@ public class EntidadesFactory {
 
         try {
             Dragon d = new Dragon(casilla);
+            jugadorActual.puedeSeleccionar(d.obtenerRaza());
             jugadorActual.verificarYConsumirSuministro(d);
             casilla.construir(d,jugadorActual.obtenerAlmacen());
 
@@ -380,6 +396,7 @@ public class EntidadesFactory {
 
         try {
             Scout s = new Scout(casilla);
+            jugadorActual.puedeSeleccionar(s.obtenerRaza());
             jugadorActual.verificarYConsumirSuministro(s);
             casilla.construir(s,jugadorActual.obtenerAlmacen());
 
@@ -392,6 +409,7 @@ public class EntidadesFactory {
 
         try {
             AmoSupremo a = new AmoSupremo(casilla);
+            jugadorActual.puedeSeleccionar(a.obtenerRaza());
             jugadorActual.generarPoblacion();
             casilla.construir(a, jugadorActual.obtenerAlmacen());
 
