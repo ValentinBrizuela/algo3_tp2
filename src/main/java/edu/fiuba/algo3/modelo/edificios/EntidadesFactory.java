@@ -265,8 +265,9 @@ public class EntidadesFactory {
             Zerling z = new Zerling(casilla);
             jugadorActual.puedeSeleccionar(z.obtenerRaza());
             jugadorActual.verificarLarvas();
-            jugadorActual.verificarYConsumirSuministro(z);
+            jugadorActual.verificarSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
+            jugadorActual.consumirSuministro(z);
 
         } catch (ConstruccionNoPermitidaError e){
             return;
@@ -297,8 +298,9 @@ public class EntidadesFactory {
             Zangano z = new Zangano(casilla, jugadorActual.obtenerAlmacen());
             jugadorActual.puedeSeleccionar(z.obtenerRaza());
             jugadorActual.verificarLarvas();
-            jugadorActual.verificarYConsumirSuministro(z);
+            jugadorActual.verificarSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
+            jugadorActual.consumirSuministro(z);
 
         } catch (ConstruccionNoPermitidaError e){
             return;
@@ -331,8 +333,9 @@ public class EntidadesFactory {
             Hidralisco h = new Hidralisco(casilla);
             jugadorActual.puedeSeleccionar(h.obtenerRaza());
             jugadorActual.verificarLarvas();
-            jugadorActual.verificarYConsumirSuministro(h);
+            jugadorActual.verificarSuministro(h);
             casilla.construir(h,jugadorActual.obtenerAlmacen());
+            jugadorActual.consumirSuministro(h);
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
@@ -363,8 +366,9 @@ public class EntidadesFactory {
             Mutalisco m = new Mutalisco(casilla);
             jugadorActual.puedeSeleccionar(m.obtenerRaza());
             jugadorActual.verificarLarvas();
-            jugadorActual.verificarYConsumirSuministro(m);
+            jugadorActual.verificarSuministro(m);
             casilla.construir(m,jugadorActual.obtenerAlmacen());
+            jugadorActual.consumirSuministro(m);
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
@@ -394,8 +398,9 @@ public class EntidadesFactory {
         try {
             Zealot z = new Zealot(casilla);
             jugadorActual.puedeSeleccionar(z.obtenerRaza());
-            jugadorActual.verificarYConsumirSuministro(z);
+            jugadorActual.verificarSuministro(z);
             casilla.construir(z,jugadorActual.obtenerAlmacen());
+            jugadorActual.consumirSuministro(z);
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
@@ -422,8 +427,9 @@ public class EntidadesFactory {
         try {
             Dragon d = new Dragon(casilla);
             jugadorActual.puedeSeleccionar(d.obtenerRaza());
-            jugadorActual.verificarYConsumirSuministro(d);
+            jugadorActual.verificarSuministro(d);
             casilla.construir(d,jugadorActual.obtenerAlmacen());
+            jugadorActual.consumirSuministro(d);
 
         } catch (ConstruccionNoPermitidaError e){
             return ;
@@ -450,8 +456,9 @@ public class EntidadesFactory {
         try {
             Scout s = new Scout(casilla);
             jugadorActual.puedeSeleccionar(s.obtenerRaza());
-            jugadorActual.verificarYConsumirSuministro(s);
+            jugadorActual.verificarSuministro(s);
             casilla.construir(s,jugadorActual.obtenerAlmacen());
+            jugadorActual.consumirSuministro(s);
 
         } catch (ConstruccionNoPermitidaError e){
             return ;

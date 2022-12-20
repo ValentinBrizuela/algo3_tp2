@@ -15,12 +15,15 @@ public class Poblacion {
         capacidadMaxima=200;
     }
 
-    public void verificarYDescontarCapacidad(ConsumidorDeSuministro unidad){
+    public void verificarCapacidad(ConsumidorDeSuministro unidad){
         if(!unidad.tenesEspacioConEstaCapacidad(this.cantidadUsable())){
             throw new PoblacionInsuficienteError();
-        }else{
-            unidad.comunicarDescuentoDePoblacion(this);
         }
+    }
+
+
+    public void consumirCapacidad(ConsumidorDeSuministro unidad){
+        unidad.comunicarDescuentoDePoblacion(this);
     }
 
     public int cantidadUsable(){

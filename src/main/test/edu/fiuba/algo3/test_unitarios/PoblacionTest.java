@@ -18,7 +18,7 @@ public class PoblacionTest {
         Hidralisco hidraliscoMock = mock(Hidralisco.class);
         when(hidraliscoMock.tenesEspacioConEstaCapacidad(0)).thenReturn(false);
 
-        assertThrows(PoblacionInsuficienteError.class, () -> {poblacion.verificarYDescontarCapacidad(hidraliscoMock);});
+        assertThrows(PoblacionInsuficienteError.class, () -> {poblacion.verificarCapacidad(hidraliscoMock);});
     }
 
     @Test
@@ -27,7 +27,8 @@ public class PoblacionTest {
         Hidralisco hidraliscoMock = mock(Hidralisco.class);
         when(hidraliscoMock.tenesEspacioConEstaCapacidad(0)).thenReturn(true);
 
-        poblacion.verificarYDescontarCapacidad(hidraliscoMock);
+        poblacion.verificarCapacidad(hidraliscoMock);
+        poblacion.consumirCapacidad(hidraliscoMock);
 
         verify(hidraliscoMock).comunicarDescuentoDePoblacion(poblacion);
     }

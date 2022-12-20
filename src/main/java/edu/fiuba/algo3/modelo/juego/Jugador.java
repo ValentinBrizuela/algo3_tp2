@@ -89,8 +89,13 @@ public class Jugador {
         return (nombre.equals(jugador.nombre) || color.esIgualA(jugador.obtenerColor()) || raza.getClass()==jugador.obtenerRaza().getClass());
     }
 
-    public void verificarYConsumirSuministro(ConsumidorDeSuministro unidad){
-        poblacion.verificarYDescontarCapacidad(unidad);
+
+    public void consumirSuministro(ConsumidorDeSuministro unidad){
+        poblacion.consumirCapacidad(unidad);
+    }
+
+    public void verificarSuministro(ConsumidorDeSuministro unidad){
+        poblacion.verificarCapacidad(unidad);
     }
 
 
