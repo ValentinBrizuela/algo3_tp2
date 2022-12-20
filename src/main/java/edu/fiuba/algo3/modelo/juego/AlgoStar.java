@@ -67,7 +67,11 @@ public class AlgoStar {
     }
 
     public void atacaraPosicion(int x1, int y1, int x2, int y2) {
+        Jugador jugadorActual = obtenerJugadorActual();
         Entidad atacante = mapa.obtenerEntidad(x1, y1);
+
+        jugadorActual.puedeSeleccionar(atacante.raza);
+
         if (!atacante.esAtacante()) {
             throw new AtaqueInvalidoError();
         }

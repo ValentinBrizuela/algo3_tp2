@@ -146,4 +146,8 @@ public class Jugador {
         return true;
     }
 
+    public void puedeSeleccionar(Raza raza){
+        raza.puedoSeleccionar(this.raza);
+    }
+
 }
