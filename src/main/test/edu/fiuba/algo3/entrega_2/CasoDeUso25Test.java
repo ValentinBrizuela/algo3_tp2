@@ -2,13 +2,13 @@ package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.errores.JugadorInvalidoError;
 import edu.fiuba.algo3.modelo.errores.NombreDeJugadorInvalidoError;
+import edu.fiuba.algo3.modelo.juego.AlgoColores;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.FakeMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,9 +20,9 @@ public class CasoDeUso25Test {
         FakeMapa mapa=new FakeMapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila", Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Protoss());
         algoStar.registrarJugador(jugador1);
-        Jugador jugador2=new Jugador("camila",Color.BLUE,new Zerg());
+        Jugador jugador2=new Jugador("camila",new AlgoColores("azul"),new Zerg());
         assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugador(jugador2);});
 
     }
@@ -32,9 +32,9 @@ public class CasoDeUso25Test {
         FakeMapa mapa=new FakeMapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("agustin",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("agustin",new AlgoColores("rojo"),new Protoss());
         algoStar.registrarJugador(jugador1);
-        Jugador jugador2=new Jugador("camila",Color.RED,new Zerg());
+        Jugador jugador2=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
         assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugador(jugador2);});
 
     }
@@ -44,9 +44,9 @@ public class CasoDeUso25Test {
         FakeMapa mapa=new FakeMapa(2);
         AlgoStar algoStar= new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("agustin",Color.BLUE,new Zerg());
+        Jugador jugador1=new Jugador("agustin",new AlgoColores("azul"),new Zerg());
         algoStar.registrarJugador(jugador1);
-        Jugador jugador2=new Jugador("camila",Color.RED,new Zerg());
+        Jugador jugador2=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
         assertThrows(JugadorInvalidoError.class, () -> {algoStar.registrarJugador(jugador2);});
 
     }
@@ -57,7 +57,7 @@ public class CasoDeUso25Test {
         AlgoStar algoStar= new AlgoStar(mapa);
 
 
-        assertThrows(NombreDeJugadorInvalidoError.class, () -> {new Jugador("ola",Color.RED,new Zerg());});
+        assertThrows(NombreDeJugadorInvalidoError.class, () -> {new Jugador("ola",new AlgoColores("rojo"),new Zerg());});
 
     }
 }

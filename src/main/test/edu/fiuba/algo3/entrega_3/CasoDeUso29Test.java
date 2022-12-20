@@ -3,7 +3,6 @@ package edu.fiuba.algo3.entrega_3;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +14,7 @@ public class CasoDeUso29Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila", Color.RED,new Zerg());
+        Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         //Criadero +5 de poblacion * 50 criaderos = 250 de poblacion
@@ -36,7 +35,7 @@ public class CasoDeUso29Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Protoss());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         //Pilon +5 de poblacion * 50 pilones = 250 de poblacion
@@ -57,7 +56,7 @@ public class CasoDeUso29Test {
         FakeMapa mapa = new FakeMapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
 
-        Jugador jugador1=new Jugador("camila",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Protoss());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
         //Pilon +5 de poblacion * 40 pilones = 200 de poblacion
