@@ -75,8 +75,13 @@ public class AlgoStar {
 
         jugadorActual.puedeSeleccionar(atacante.raza);
 
-        if (!atacante.esAtacante()) {
-            throw new AtaquePorAireInvalidoError();   //Cambiar esto
+        try {
+            if (!atacante.esAtacante()) {
+                throw new UnidadNoPuedeAtacarError();
+            }
+        } catch (Exception e){
+            System.out.println("La unidad seleccionada no puede atacar");
+            return;
         }
 
         Entidad atacable = mapa.obtenerEntidad(x2, y2);
