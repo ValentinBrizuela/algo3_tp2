@@ -58,7 +58,6 @@ public class Mapa implements IMapa{
                     }else{
                         casillas[i][j] = new Casilla(i, j, new Tierra(), new Mena());
                     }
-                    /*casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio());*/
 
                 } else {
                     casillas[i][j] = new Casilla(i, j, new Tierra(), new RecursoVacio());

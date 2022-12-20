@@ -25,7 +25,9 @@ public class CasoDeUso26Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Zerg());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Protoss());
+
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new Moho());
         algoStar.construirEdificio("ReservaDeReproduccion", 35, 10);
@@ -40,7 +42,9 @@ public class CasoDeUso26Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila",new AlgoColores("azul"),new Zerg());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("rojo"), new Protoss());
+
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
 
         mapa.obtenerCasilla(36,10).cambiarTerreno(new Moho());
@@ -58,7 +62,9 @@ public class CasoDeUso26Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Protoss());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Zerg());
+
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         mapa.obtenerCasilla(35,10).cambiarTerreno(new TierraEnergizada());
         algoStar.construirEdificio("Acceso", 35, 10);
@@ -73,7 +79,9 @@ public class CasoDeUso26Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Protoss());
+
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         algoStar.construirEdificio("Pilon", 36, 10);
         algoStar.construirEdificio("Acceso", 35, 10);
@@ -88,7 +96,9 @@ public class CasoDeUso26Test {
         AlgoStar algoStar = new AlgoStar(mapa);
 
         Jugador jugador1=new Jugador("camila",new AlgoColores("rojo"),new Zerg());
-        algoStar.registrarJugador(jugador1);
+        Jugador jugador2 = new Jugador("pepito", new AlgoColores("azul"), new Protoss());
+
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
         algoStar.crearAmoSupremo(jugador1,36,10);
         mapa.obtenerCasilla(50,10).cambiarTerreno(new Moho());

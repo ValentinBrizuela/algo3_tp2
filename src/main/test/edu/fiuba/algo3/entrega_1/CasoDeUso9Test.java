@@ -17,19 +17,15 @@ public class CasoDeUso9Test {
         AlgoStar algoStar=new AlgoStar(mapa);
         Jugador jugador1=new Jugador("camila", new AlgoColores("rojo"),new Zerg());
         Jugador jugador2=new Jugador("tomasa",new AlgoColores("azul"),new Protoss());
-        algoStar.registrarJugador(jugador1);
-        algoStar.registrarJugador(jugador2);
+        algoStar.registrarJugadores(jugador1, jugador2);
         jugador1.llenarArcas();
 
-
-
-
-        algoStar.construirEdificio("Pilon", 6, 6);
-        algoStar.construirEdificio("Pilon", 6, 7);
+        algoStar.construirEntidad("Pilon", 6, 6);
+        algoStar.construirEntidad("Pilon", 6, 7);
 
         Pilon pilon2 = (Pilon) mapa.obtenerEntidad(6, 7);
 
-        algoStar.construirEdificio("Acceso", 7, 7);
+        algoStar.construirEntidad("Acceso", 7, 7);
 
         assertEquals(mapa.obtenerCasilla(7, 7).obtenerEstado().obtenerTerreno().getClass(), TierraEnergizada.class);
 

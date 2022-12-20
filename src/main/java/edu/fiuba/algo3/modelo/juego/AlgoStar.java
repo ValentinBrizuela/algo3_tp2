@@ -3,10 +3,7 @@ package edu.fiuba.algo3.modelo.juego;
 import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.*;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
-
 import edu.fiuba.algo3.modelo.unidades.*;
-
-
 import java.util.ArrayList;
 
 public class AlgoStar {
@@ -24,22 +21,6 @@ public class AlgoStar {
         this.turno = 0;
         this.jugadorActual = null;
         this.entidadesFactory = new EntidadesFactory();
-    }
-
-    public void registrarJugador(Jugador jugador){
-       if(this.chequearNombre(jugador)){
-           throw new NombreDeJugadorInvalidoError();
-       }
-        if(jugadores.isEmpty()) {
-            jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.1)), (int) (mapa.tamanioMapa()*(0.1)));
-            jugadorActual = jugador;
-        }else{
-            if(jugador.sosIgualA(jugadores.get(0))){
-                throw new JugadorInvalidoError();
-            }
-            jugador.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
-        }
-        jugadores.add(jugador);
     }
 
     public void registrarJugadores(Jugador jugador1, Jugador jugador2){
@@ -109,10 +90,6 @@ public class AlgoStar {
     public void construirEntidad(String entidad, int x, int y){
         Casilla casilla = mapa.obtenerCasilla(x, y);
         entidadesFactory.construirEntidad(entidad, casilla, jugadorActual, mapa);
-    }
-
-    private boolean chequearNombre(Jugador jugador){
-        return jugador.obtenerNombre().length()<6;
     }
 
     public Jugador obtenerJugadorActual() {

@@ -17,8 +17,7 @@ public class CriaderoTest {
         AlgoStar algoStar = new AlgoStar(mapa);
         Jugador jugador1 = new Jugador("Jugador1", new AlgoColores("azul"), new Zerg());
         Jugador jugador2 = new Jugador("Jugador2", new AlgoColores("rojo"), new Protoss());
-        algoStar.registrarJugador(jugador1);
-        algoStar.registrarJugador(jugador2);
+        algoStar.registrarJugadores(jugador1, jugador2);
 
         algoStar.construirEdificio("Criadero", 0, 50);
 
@@ -39,8 +38,7 @@ public class CriaderoTest {
         AlgoStar algoStar = new AlgoStar(mapa);
         Jugador jugador1 = new Jugador("Jugador1", new AlgoColores("azul"), new Zerg());
         Jugador jugador2 = new Jugador("Jugador2", new AlgoColores("rojo"), new Protoss());
-        algoStar.registrarJugador(jugador1);
-        algoStar.registrarJugador(jugador2);
+        algoStar.registrarJugadores(jugador1, jugador2);
 
         algoStar.construirEdificio("Criadero", 50, 50);
         Terreno terrenoEsperado = mapa.obtenerCasilla(56,50).obtenerTerreno();
