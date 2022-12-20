@@ -29,10 +29,17 @@ public class VistaJuego extends HBox {
 
     private VistaMapa vistaMapa;
 
+    public InfoEntidad infoEntidad1;
+    public InfoEntidad infoEntidad2;
+
     public VistaJuego (VistaMapa vistaMapa, AlgoStar algoStar, Stage stage) {
 
         this.vistaMapa = vistaMapa;
         this.algoStar = algoStar;
+        this.infoEntidad1 = new InfoEntidad();
+        this.infoEntidad1.tipo("Seleccionada:");
+        this.infoEntidad2 = new InfoEntidad();
+        this.infoEntidad2.tipo("Objetivo:");
 
         ControladorJuego controlador = new ControladorJuego(algoStar, vistaMapa, this);
         this.setOnMouseClicked((mouseEvent -> {
@@ -94,9 +101,10 @@ public class VistaJuego extends HBox {
             }
         });
 
-        VBox acciones = new VBox(cajaNombre, cajaMineral, cajaGas, botonAtacar, botonMover, construccion, botonConstruir, botonAvanzarTurno);
+        VBox acciones = new VBox(cajaNombre, cajaMineral, cajaGas, botonAtacar, botonMover, construccion, botonConstruir, botonAvanzarTurno, this.infoEntidad1, this.infoEntidad2);
         acciones.setPadding(new Insets(10));
         acciones.setSpacing(10);
+
 
         this.getChildren().addAll(vistaMapa, acciones);
         stage.setFullScreen(true);

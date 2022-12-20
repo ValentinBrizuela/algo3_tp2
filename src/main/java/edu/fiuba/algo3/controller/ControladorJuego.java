@@ -26,15 +26,12 @@ public class ControladorJuego {
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                 this.casillaActiva = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
                 this.vistaMapa.dibujarBordeCasillaPrimaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
-                /*try {
-                    vistaJuego.
-                } catch (Exception ignored) {
-
-                }*/
+                this.vistaJuego.infoEntidad1.actualizar(this.casillaActiva);
             }
             if (mouseEvent.getButton() == MouseButton.SECONDARY) {
                 this.casillaObjetivo = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
                 this.vistaMapa.dibujarBordeCasillaSecundaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
+                this.vistaJuego.infoEntidad2.actualizar(this.casillaObjetivo);
             }
         }
     }

@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.estados.Estado;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
 import edu.fiuba.algo3.modelo.terrenos.Terreno;
 import edu.fiuba.algo3.modelo.unidades.Unidad;
-import edu.fiuba.algo3.modelo.unidades.Zangano;
 
 public class Casilla {
     private final int posX;

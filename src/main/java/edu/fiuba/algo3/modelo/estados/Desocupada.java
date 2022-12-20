@@ -28,6 +28,7 @@ public class Desocupada extends Estado {
     public void avanzarTurno() {
     }
 
-    public void estaLibre(){}
+    public void estaLibre(){
+    }
 
 }
