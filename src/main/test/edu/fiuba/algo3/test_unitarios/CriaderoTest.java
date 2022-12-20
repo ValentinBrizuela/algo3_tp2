@@ -21,7 +21,7 @@ public class CriaderoTest {
         algoStar.registrarJugador(jugador1);
         algoStar.registrarJugador(jugador2);
 
-        algoStar.construirEdificio("Criadero", 0, 5);
+        algoStar.construirEntidad("Criadero", 0, 5);
 
         for (int i=1; i<5; i++){
             assertEquals(Moho.class, mapa.obtenerCasilla(i, 5).obtenerTerreno().getClass());
@@ -43,7 +43,7 @@ public class CriaderoTest {
         algoStar.registrarJugador(jugador1);
         algoStar.registrarJugador(jugador2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
+        algoStar.construirEntidad("Criadero", 5, 5);
         Terreno terrenoEsperado = mapa.obtenerCasilla(11,5).obtenerTerreno();
         algoStar.avanzarTurno();
         algoStar.avanzarTurno();

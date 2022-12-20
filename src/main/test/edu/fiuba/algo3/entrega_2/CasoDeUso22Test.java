@@ -4,8 +4,6 @@ import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
-import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
-import edu.fiuba.algo3.modelo.terrenos.Tierra;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
 import edu.fiuba.algo3.modelo.unidades.Zerling;
 import javafx.scene.paint.Color;
@@ -14,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CasoDeUso22Test {
     @Test
@@ -43,8 +40,8 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
-        algoStar.crearZerling(j1, 6, 6);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Zerling", 6, 6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -60,8 +57,8 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.crearAmoSupremo(j1, 5,5);
-        algoStar.crearZangano(j1, 6,6);
+        algoStar.construirEntidad("AmoSupremo", 5, 5);
+        algoStar.construirEntidad("Zangano", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -77,8 +74,8 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
-        algoStar.crearHidralisco(j1, 6,6);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Hidralisco", 6, 6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -94,8 +91,8 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
-        algoStar.crearMutalisco(j1, 6,6);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Mutalisco", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -111,9 +108,9 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
+        algoStar.construirEntidad("Criadero", 5, 5);
 
-        algoStar.crearZealot(j1, 6,6);
+        algoStar.construirEntidad("Zealot", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -129,8 +126,8 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
-        algoStar.crearDragon(j1,6,6);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Dragon", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }
@@ -146,8 +143,8 @@ public class CasoDeUso22Test {
         algoStar.registrarJugador(j1);
         algoStar.registrarJugador(j2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
-        algoStar.crearScout(j1, 6,6);
+        algoStar.construirEntidad("Criadero", 5, 5);
+        algoStar.construirEntidad("Scout", 6,6);
 
         assertEquals(5, j1.obtenerPoblacionUsable());
     }

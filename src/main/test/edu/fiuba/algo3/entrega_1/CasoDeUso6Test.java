@@ -3,7 +3,6 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.FakeMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
@@ -22,7 +21,7 @@ public class CasoDeUso6Test {
         algoStar.registrarJugador(jugador1);
         algoStar.registrarJugador(jugador2);
 
-        algoStar.construirEdificio("Criadero", 5, 5);
+        algoStar.construirEntidad("Criadero", 5, 5);
 
         algoStar.avanzarTurno();
         assertEquals(Moho.class, mapa.obtenerCasilla(10, 10).obtenerEstado().obtenerTerreno().getClass());

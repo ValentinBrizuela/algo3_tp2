@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.edificios.Pilon;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.FakeMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.juego.Mapa;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.unidades.Dragon;
@@ -26,12 +25,13 @@ public class CasoDeUso31Test {
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
 
-        algoStar.construirEdificio("Pilon", 5, 0);
+        algoStar.construirEntidad("Pilon", 5, 0);
         Pilon pilon=(Pilon)mapa.obtenerEntidad(5, 0);
         assertEquals(5,jugador1.obtenerPoblacionUsable());
 
-        algoStar.construirEdificio("Acceso", 5, 2);
-        Dragon dragon=algoStar.crearDragon(jugador1,5,3);
+        algoStar.construirEntidad("Acceso", 5, 2);
+        algoStar.construirEntidad("Dragon", 5, 3);
+        Dragon dragon = (Dragon) mapa.obtenerEntidad(5, 3);
         dragon.finalizarConstruccion();
 
         for (int i=0; i<30; i++){
@@ -49,14 +49,15 @@ public class CasoDeUso31Test {
         Jugador jugador1=new Jugador("camila",Color.RED,new Zerg());
         algoStar.registrarJugador(jugador1);
         jugador1.llenarArcas();
-        algoStar.construirEdificio("Criadero", 5, 0);
+        algoStar.construirEntidad("Criadero", 5, 0);
 
         Criadero criadero=(Criadero) mapa.obtenerEntidad(5, 0);
         assertEquals(5,jugador1.obtenerPoblacionUsable());
 
-        algoStar.construirEdificio("ReservaDeReproduccion", 5, 2);
-        algoStar.construirEdificio("Guarida", 5, 3);
-        Hidralisco hidralisco=algoStar.crearHidralisco(jugador1,6,1);
+        algoStar.construirEntidad("ReservaDeReproduccion", 5, 2);
+        algoStar.construirEntidad("Guarida", 5, 3);
+        algoStar.construirEntidad("Hidralisco", 6, 1);
+        Hidralisco hidralisco = (Hidralisco) mapa.obtenerEntidad(6, 1);
         hidralisco.finalizarConstruccion();
 
         for (int i=0; i<50; i++){

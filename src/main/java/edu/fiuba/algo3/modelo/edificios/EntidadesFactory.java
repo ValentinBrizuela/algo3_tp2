@@ -7,10 +7,10 @@ import edu.fiuba.algo3.modelo.juego.IMapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.unidades.*;
 
-public class EdificiosFactory {
+public class EntidadesFactory {
 
-    public void crearEdificio(String edificio, Casilla casilla, Jugador jugadorActual, IMapa mapa){
-        switch (edificio) {
+    public void construirEntidad(String entidad, Casilla casilla, Jugador jugadorActual, IMapa mapa){
+        switch (entidad) {
             case "Criadero":
                 construirCriadero(casilla, jugadorActual, mapa);
                 break;
@@ -54,6 +54,7 @@ public class EdificiosFactory {
             case "Zerling":
                 crearZerling(casilla, jugadorActual);
                 break;
+
             case "Zangano":
                 crearZangano(casilla, jugadorActual);
                 break;
@@ -78,7 +79,7 @@ public class EdificiosFactory {
                 crearScout(casilla, jugadorActual);
                 break;
 
-            case "Amo supremo":
+            case "AmoSupremo":
                 crearAmoSupremo(casilla, jugadorActual);
                 break;
         }
@@ -241,13 +242,13 @@ public class EdificiosFactory {
 
     public void crearZerling(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
             if (!jugadorActual.yaTiene("ReservaDeReproduccion")){
                 throw new CreacionDeUnidadInvalida();
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Zerling necesitas una Reserva de Reproduccion. ");
+            return;
         }
 
         try {
@@ -262,13 +263,13 @@ public class EdificiosFactory {
 
     public void crearZangano(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
             if (!jugadorActual.yaTiene("Criadero")){
                 throw new CreacionDeUnidadInvalida();
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Zangano necesitas un Criadero. ");
+            return;
         }
 
         try {
@@ -283,13 +284,14 @@ public class EdificiosFactory {
 
     public void crearHidralisco(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
             if (!jugadorActual.yaTiene("Guarida")){
                 throw new CreacionDeUnidadInvalida();
+
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Hidralisco necesitas una Guarida. ");
+            return;
         }
 
         try {
@@ -304,13 +306,13 @@ public class EdificiosFactory {
 
     public void crearMutalisco(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
             if (!jugadorActual.yaTiene("Espiral")){
                 throw new CreacionDeUnidadInvalida();
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Mutalisco necesitas un Espiral. ");
+            return;
         }
 
         try {
@@ -325,13 +327,13 @@ public class EdificiosFactory {
 
     public void crearZealot(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
             if (!jugadorActual.yaTiene("Acceso")){
                 throw new CreacionDeUnidadInvalida();
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Zealot necesitas un Acceso. ");
+            return;
         }
 
         try {
@@ -346,13 +348,13 @@ public class EdificiosFactory {
 
     public void crearDragon(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
             if (!jugadorActual.yaTiene("Acceso")){
                 throw new CreacionDeUnidadInvalida();
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Dragon necesitas un Acceso. ");
+            return;
         }
 
         try {
@@ -367,13 +369,13 @@ public class EdificiosFactory {
 
     public void crearScout(Casilla casilla, Jugador jugadorActual){
 
-        //crear logica
         try {
-            if (!jugadorActual.yaTiene("Puerto Estelar")){
+            if (!jugadorActual.yaTiene("PuertoEstelar")){
                 throw new CreacionDeUnidadInvalida();
             }
         } catch (CreacionDeUnidadInvalida e) {
             System.out.println("Para crear un Scout necesitas un Puerto Estelar. ");
+            return;
         }
 
         try {
