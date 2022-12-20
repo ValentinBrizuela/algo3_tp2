@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CasoDeUso12Test {
     @Test
     public void construccionProtossRegeneraEscudoPeroNoVida() {
-        Mapa mapa = new Mapa(2);
         Casilla casilla = new Casilla(25,25,new TierraEnergizada(), new RecursoVacio());
         Pilon pilon = new Pilon(casilla);
         pilon.aplicarDanio(400);

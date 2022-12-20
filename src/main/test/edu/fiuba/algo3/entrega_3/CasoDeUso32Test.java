@@ -4,14 +4,12 @@ import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
-import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
-import edu.fiuba.algo3.modelo.terrenos.Tierra;
+import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
 
 
 public class CasoDeUso32Test {
@@ -19,15 +17,14 @@ public class CasoDeUso32Test {
     @Test
     public void laPartidaSeTerminaCuandoAUnJugadorLeDestruyenTodosSusEdificios(){
 
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
-        algoStar.registrarJugador(new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg()));
-        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss()));
+        algoStar.registrarJugador(new Jugador("Lionel Messi", Color.BLUE, new Zerg()));
+        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", Color.RED, new Protoss()));
 
-        algoStar.construirEdificio("Criadero", 50, 50);
-        Criadero c = (Criadero) mockMapa.obtenerCasilla(50,50).obtenerEstado().obtenerEntidad();
+        algoStar.construirEntidad("Criadero", 5, 5);
+        Criadero c = (Criadero) mapa.obtenerEntidad(5, 5);
         c.aplicarDanio(1000);
 
         assertTrue(algoStar.hayGanador());
@@ -35,15 +32,14 @@ public class CasoDeUso32Test {
 
     @Test
     public void laPartidaNoSeTerminaCuandoAmbosJugadoresTienenAlgunEdificio(){
-        Mapa mockMapa = mock(Mapa.class);
-        AlgoStar algoStar = new AlgoStar(mockMapa);
-        when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
+        FakeMapa mapa = new FakeMapa(2);
+        AlgoStar algoStar = new AlgoStar(mapa);
 
-        algoStar.registrarJugador(new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg()));
-        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss()));
+        algoStar.registrarJugador(new Jugador("Lionel Messi", Color.BLUE, new Zerg()));
+        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", Color.RED, new Protoss()));
 
-        algoStar.construirEdificio("Criadero", 50, 50);
-        Criadero c = (Criadero) mockMapa.obtenerCasilla(50,50).obtenerEstado().obtenerEntidad();
+        algoStar.construirEntidad("Criadero", 5, 5);
+        Criadero c = (Criadero) mapa.obtenerEntidad(5,5);
 
         assertFalse(algoStar.hayGanador());
     }
