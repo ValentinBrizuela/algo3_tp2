@@ -27,7 +27,7 @@ public class VistaJugadores extends VBox {
     private static String fontType = "Tahoma";
     public VistaJugadores(AlgoStar algostar, Stage stage) {
         ObservableList<String> data = FXCollections.observableArrayList(
-                "red", "blue", "gold", "green", "violet", "orange");
+                "rojo", "azul", "amarillo", "verde", "rosa", "naranja");
         Callback<ListView<String>, ListCell<String>> factory = new Callback<ListView<String>, ListCell<String>>() {
             @Override
             public ListCell<String> call(ListView<String> list) {

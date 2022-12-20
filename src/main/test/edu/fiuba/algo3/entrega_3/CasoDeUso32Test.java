@@ -1,15 +1,11 @@
 package edu.fiuba.algo3.entrega_3;
 
 import edu.fiuba.algo3.modelo.edificios.Criadero;
-import edu.fiuba.algo3.modelo.juego.AlgoStar;
-import edu.fiuba.algo3.modelo.juego.Casilla;
-import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.juego.Mapa;
+import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.razas.Zerg;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
 import edu.fiuba.algo3.modelo.terrenos.Tierra;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 
@@ -27,8 +23,8 @@ public class CasoDeUso32Test {
         AlgoStar algoStar = new AlgoStar(mockMapa);
         when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
 
-        algoStar.registrarJugador(new Jugador("Lionel Messi", Color.BLUE, new Zerg()));
-        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", Color.RED, new Protoss()));
+        algoStar.registrarJugador(new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg()));
+        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss()));
 
         algoStar.construirEdificio("Criadero", 50, 50);
         Criadero c = (Criadero) mockMapa.obtenerCasilla(50,50).obtenerEstado().obtenerEntidad();
@@ -43,8 +39,8 @@ public class CasoDeUso32Test {
         AlgoStar algoStar = new AlgoStar(mockMapa);
         when(mockMapa.obtenerCasilla(50,50)).thenReturn(new Casilla(50, 50, new Tierra(), new RecursoVacio()));
 
-        algoStar.registrarJugador(new Jugador("Lionel Messi", Color.BLUE, new Zerg()));
-        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", Color.RED, new Protoss()));
+        algoStar.registrarJugador(new Jugador("Lionel Messi", new AlgoColores("azul"), new Zerg()));
+        algoStar.registrarJugador(new Jugador("Cristiano Ronaldo", new AlgoColores("rojo"), new Protoss()));
 
         algoStar.construirEdificio("Criadero", 50, 50);
         Criadero c = (Criadero) mockMapa.obtenerCasilla(50,50).obtenerEstado().obtenerEntidad();

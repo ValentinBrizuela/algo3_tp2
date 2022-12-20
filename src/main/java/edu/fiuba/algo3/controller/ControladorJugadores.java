@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.controller;
+import edu.fiuba.algo3.modelo.juego.AlgoColores;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.razas.Protoss;
@@ -33,8 +34,8 @@ public class ControladorJugadores implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         try {
-            Jugador jugador1 = new Jugador(nombreUsuario1.getText(), Color.web(color1.getValue().toString()), new Zerg());
-            Jugador jugador2 = new Jugador(nombreUsuario2.getText(), Color.web(color2.getValue().toString()), new Protoss());
+            Jugador jugador1 = new Jugador(nombreUsuario1.getText(), new AlgoColores(color1.getValue().toString()), new Zerg());
+            Jugador jugador2 = new Jugador(nombreUsuario2.getText(), new AlgoColores(color2.getValue().toString()), new Protoss());
 
             algoStar.registrarJugadores(jugador1, jugador2);
             ((Button)actionEvent.getSource()).getScene().setRoot(new VistaJuego(new VistaMapa(algoStar, stage), algoStar, stage));

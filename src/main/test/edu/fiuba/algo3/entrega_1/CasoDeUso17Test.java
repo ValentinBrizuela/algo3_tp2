@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.terrenos.Moho;
 import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +18,7 @@ public class CasoDeUso17Test {
     @Test
     public void test01UnaGuaridaNoSePuedeConstruirSiNoHayYaConstruidaUnaReservaDeReproduccion(){
         FakeMapa mapa = new FakeMapa(2);
-        Jugador jugador1=new Jugador("andres", Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("andres", new AlgoColores("rojo"),new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -34,7 +33,7 @@ public class CasoDeUso17Test {
     @Test
     public void test02UnaGuaridaSePuedeConstruirSiAntesSeConstruyoUnaReservaDeReproduccion(){
         FakeMapa mapa = new FakeMapa(2);
-        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -52,7 +51,7 @@ public class CasoDeUso17Test {
     @Test
     public void test03UnEspiralNoSePuedeConstruirSiNoHayYaConstruidaUnaGuarida(){
         FakeMapa mapa = new FakeMapa(2);
-        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -67,7 +66,7 @@ public class CasoDeUso17Test {
     @Test
     public void test04UnEspiralSePuedeConstruirSiAntesSeConstruyoUnaGuarida(){
         FakeMapa mapa = new FakeMapa(2);
-        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -87,7 +86,7 @@ public class CasoDeUso17Test {
     @Test
     public void test05UnPuertoEstelarNoSePuedeConstruirSiNoHayYaConstruidoUnAcceso(){
         FakeMapa mapa = new FakeMapa(2);
-        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 
@@ -102,7 +101,7 @@ public class CasoDeUso17Test {
     @Test
     public void test06UnPuertoEstelarSePuedeConstruirSiHayYaConstruidoUnAcceso(){
         FakeMapa mapa = new FakeMapa(2);
-        Jugador jugador1=new Jugador("andres",Color.RED,new Protoss());
+        Jugador jugador1=new Jugador("andres",new AlgoColores("rojo"),new Protoss());
         AlgoStar algoStar =new AlgoStar(mapa);
         algoStar.registrarJugador(jugador1);
 

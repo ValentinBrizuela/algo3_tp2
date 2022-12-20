@@ -21,8 +21,8 @@ public class GamePlayTest {
 
         AlgoStar algostar = new AlgoStar(fakeMapa);
 
-        Jugador jugador1 = new Jugador("Valentin", Color.RED, new Zerg());
-        Jugador jugador2 = new Jugador("Manuel", Color.WHITE, new Protoss());
+        Jugador jugador1 = new Jugador("Valentin", new AlgoColores("rojo"), new Zerg());
+        Jugador jugador2 = new Jugador("Manuel", new AlgoColores("azul"), new Protoss());
 
         algostar.registrarJugadores(jugador1, jugador2);
 
