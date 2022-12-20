@@ -5,4 +5,10 @@ public interface Raza {
 
     public void recibirAtaque(Protoss protoss);
 
+    public void seleccionarEntidad(Zerg zerg);
+
+    public void seleccionarEntidad(Protoss protoss);
+
+    public void puedoSeleccionar(Raza raza);
+
 }
