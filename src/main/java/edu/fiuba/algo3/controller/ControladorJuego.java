@@ -1,9 +1,15 @@
 package edu.fiuba.algo3.controller;
 
+import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.unidades.Mutalisco;
+import edu.fiuba.algo3.modelo.unidades.Zangano;
+import edu.fiuba.algo3.view.VistaFinal;
 import edu.fiuba.algo3.view.VistaJuego;
 import edu.fiuba.algo3.view.VistaMapa;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
@@ -26,18 +32,25 @@ public class ControladorJuego {
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                 this.casillaActiva = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
                 this.vistaMapa.dibujarBordeCasillaPrimaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
-                this.vistaJuego.infoEntidad1.actualizar(this.casillaActiva);
+                this.vistaJuego.infoEntidad1.cambiarCasilla(this.casillaActiva);
+                this.vistaJuego.accionesEntidad.cambiarCasilla(this.casillaActiva);
             }
             if (mouseEvent.getButton() == MouseButton.SECONDARY) {
                 this.casillaObjetivo = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
                 this.vistaMapa.dibujarBordeCasillaSecundaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
-                this.vistaJuego.infoEntidad2.actualizar(this.casillaObjetivo);
+                this.vistaJuego.infoEntidad2.cambiarCasilla(this.casillaObjetivo);
             }
         }
     }
 
-    public void avanzarTurno() {
-        algoStar.avanzarTurno();
+    public void avanzarTurno(Button boton) {
+        if (algoStar.hayGanador()) {
+            System.out.print("Se termino");
+            boton.getScene().setRoot(new VistaFinal(algoStar.obtenerJugadorActual()));
+        }
+        else {
+            algoStar.avanzarTurno();
+        }
     }
 
     public String obtenerJugador() {
@@ -62,5 +75,28 @@ public class ControladorJuego {
 
     public void construir(String construccion) {
         algoStar.construirEntidad(construccion, casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY());
+    }
+
+    public void evolucionarGuardian() {
+        try {
+            ((Mutalisco)casillaActiva.obtenerEntidad()).evolucionarAGuardian(algoStar.obtenerJugadorActual().obtenerAlmacen());
+        } catch (Exception e) {
+
+        }
+    }
+    public void evolucionarDevorador() {
+        try {
+            ((Mutalisco)casillaActiva.obtenerEntidad()).evolucionarADevorador(algoStar.obtenerJugadorActual().obtenerAlmacen());
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void meterZangano() {
+        try {
+            ((Extractor)casillaActiva.obtenerEntidad()).meterZangano((Zangano)casillaObjetivo.obtenerEntidad());
+        } catch (Exception e) {
+
+        }
     }
 }

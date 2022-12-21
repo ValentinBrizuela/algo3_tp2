@@ -7,10 +7,7 @@ import edu.fiuba.algo3.modelo.juego.Entidad;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 import edu.fiuba.algo3.modelo.recursos.Recurso;
-import edu.fiuba.algo3.modelo.terrenos.Espacio;
-import edu.fiuba.algo3.modelo.terrenos.Moho;
-import edu.fiuba.algo3.modelo.terrenos.Terreno;
-import edu.fiuba.algo3.modelo.terrenos.Tierra;
+import edu.fiuba.algo3.modelo.terrenos.*;
 import edu.fiuba.algo3.modelo.unidades.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -56,6 +53,7 @@ public class VistaMapa extends StackPane {
 
         public void dibujarTerreno() throws FileNotFoundException {
             Image tierra = new Image(new FileInputStream("assets/tierra.png"));
+            Image tierraEnergizada = new Image(new FileInputStream("assets/tierra energizada.png"), 10, 10, false, false);
             Image moho = new Image(new FileInputStream("assets/moho.png"));
             Image espacio = new Image(new FileInputStream("assets/espacio.png"));
             for (int i = 0; i < algostar.mapa.tamanioMapa(); i++) {
@@ -71,6 +69,9 @@ public class VistaMapa extends StackPane {
                     }
                     if (recurso.getClass() == Espacio.class) {
                         dibujarElemento(i, j, espacio, terrenos);
+                    }
+                    if (recurso.getClass() == TierraEnergizada.class) {
+                        dibujarElemento(i, j, tierraEnergizada, terrenos);
                     }
                 }
             }
@@ -116,6 +117,9 @@ public class VistaMapa extends StackPane {
         Image guardian = new Image(new FileInputStream("assets/guardian.png"), 20, 20, false, false);
         Image devorador = new Image(new FileInputStream("assets/devorador.png"), 20, 20, false, false);
         Image amoSupremo = new Image(new FileInputStream("assets/amoSupremo.png"), 20, 20, false, false);
+        Image dragon = new Image(new FileInputStream("assets/dragon.png"), 20, 20, false, false);
+        Image zealot = new Image(new FileInputStream("assets/zealot.png"), 20, 20, false, false);
+        Image scout = new Image(new FileInputStream("assets/scout.png"), 20, 20, false, false);
 
 
         for (int i = 0; i < algostar.mapa.tamanioMapa(); i++) {
@@ -124,55 +128,64 @@ public class VistaMapa extends StackPane {
                 try {
                     Entidad entidad = casilla.obtenerEstado().obtenerEntidad();
                     if (entidad.getClass() == Pilon.class) {
-                        dibujarElemento(i, j, pilon, entidades);
+                        dibujarElemento(i-1, j-1, pilon, entidades);
                     }
                     if (entidad.getClass() == Criadero.class) {
-                        dibujarElemento(i, j, criadero, entidades);
+                        dibujarElemento(i-1, j-1, criadero, entidades);
                     }
                     if (entidad.getClass() == Zangano.class) {
-                        dibujarElemento(i, j, zangano, entidades);
+                        dibujarElemento(i-1, j-1, zangano, entidades);
                     }
                     if (entidad.getClass() == Zerling.class) {
-                        dibujarElemento(i, j, zerling, entidades);
+                        dibujarElemento(i-1, j-1, zerling, entidades);
                     }
                     if (entidad.getClass() == Hidralisco.class) {
-                        dibujarElemento(i, j, hidralisco, entidades);
+                        dibujarElemento(i-1, j-1, hidralisco, entidades);
                     }
                     if (entidad.getClass() == Mutalisco.class) {
-                        dibujarElemento(i, j, mutalisco, entidades);
+                        dibujarElemento(i-1, j-1, mutalisco, entidades);
                     }
                     if (entidad.getClass() == Guardian.class) {
-                        dibujarElemento(i, j, guardian, entidades);
+                        dibujarElemento(i-1, j-1, guardian, entidades);
                     }
                     if (entidad.getClass() == Devorador.class) {
-                        dibujarElemento(i, j, devorador, entidades);
+                        dibujarElemento(i-1, j-1, devorador, entidades);
                     }
                     if (entidad.getClass() == AmoSupremo.class) {
-                        dibujarElemento(i, j, amoSupremo, entidades);
+                        dibujarElemento(i-1, j-1, amoSupremo, entidades);
                     }
                     if (entidad.getClass() == Acceso.class) {
-                        dibujarElemento(i, j, acceso, entidades);
+                        dibujarElemento(i-1, j-1, acceso, entidades);
                     }
                     if (entidad.getClass() == Asimilador.class) {
-                        dibujarElemento(i, j, asimilador, entidades);
+                        dibujarElemento(i-1, j-1, asimilador, entidades);
                     }
                     if (entidad.getClass() == Espiral.class) {
-                        dibujarElemento(i, j, espiral, entidades);
+                        dibujarElemento(i-1, j-1, espiral, entidades);
                     }
                     if (entidad.getClass() == Extractor.class) {
-                        dibujarElemento(i, j, extractor, entidades);
+                        dibujarElemento(i-1, j-1, extractor, entidades);
                     }
                     if (entidad.getClass() == Guarida.class) {
-                        dibujarElemento(i, j, guarida, entidades);
+                        dibujarElemento(i-1, j-1, guarida, entidades);
                     }
                     if (entidad.getClass() == NexoMineral.class) {
-                        dibujarElemento(i, j, nexoMineral, entidades);
+                        dibujarElemento(i-1, j-1, nexoMineral, entidades);
                     }
                     if (entidad.getClass() == PuertoEstelar.class) {
-                        dibujarElemento(i, j, puertoEstelar, entidades);
+                        dibujarElemento(i-1, j-1, puertoEstelar, entidades);
                     }
                     if (entidad.getClass() == ReservaDeReproduccion.class) {
-                        dibujarElemento(i, j, reservaDeReprduccion, entidades);
+                        dibujarElemento(i-1, j-1, reservaDeReprduccion, entidades);
+                    }
+                    if (entidad.getClass() == Dragon.class) {
+                        dibujarElemento(i-1, j-1, dragon, entidades);
+                    }
+                    if (entidad.getClass() == Zealot.class) {
+                        dibujarElemento(i-1, j-1, zealot, entidades);
+                    }
+                    if (entidad.getClass() == Scout.class) {
+                        dibujarElemento(i-1, j-1, scout, entidades);
                     }
                 } catch(Exception ignored) {
                 }

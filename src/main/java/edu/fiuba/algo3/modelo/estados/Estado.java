@@ -37,6 +37,8 @@ public abstract class Estado {
         return entidad;
     }
 
+    public abstract void cambiarEntidad(Entidad entidad);
+
     public abstract void estaLibre();
 
     public void intentarExtraerMineral(Almacen almacen, Mina mina){

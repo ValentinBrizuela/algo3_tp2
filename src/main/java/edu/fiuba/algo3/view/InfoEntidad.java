@@ -6,34 +6,52 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.lang.invoke.CallSite;
+
 public class InfoEntidad  extends VBox {
+
+    private Casilla casilla;
 
     private Label tipo;
     private Label nombre;
+    private Label raza;
     private Label vida;
     private Label turno;
 
     public InfoEntidad() {
+        this.casilla = null;
         this.tipo = new Label();
+        this.raza = new Label();
         this.nombre = new Label();
         this.vida = new Label();
         this.turno = new Label();
     }
 
-    public void actualizar(Casilla casilla) {
-        Entidad entidad = casilla.obtenerEstado().obtenerEntidad();
-        if ( entidad != null) {
-            if (this.getChildren().isEmpty()) {
-                this.getChildren().addAll(this.tipo, this.nombre, this.vida, this.turno);
+    public void cambiarCasilla(Casilla casilla) {
+        this.casilla = casilla;
+        actualizar();
+    }
+
+    public void actualizar() {
+        try {
+            Entidad entidad = casilla.obtenerEstado().obtenerEntidad();
+            if ( entidad != null) {
+                if (this.getChildren().isEmpty()) {
+                    this.getChildren().addAll(this.tipo, this.nombre, this.raza, this.vida, this.turno);
+                }
+                this.nombre.setText("Nombre: " + entidad.getClass().getSimpleName());
+
+                this.raza.setText("Raza: " + entidad.obtenerRaza().getClass().getSimpleName());
+
+                this.vida.setText("Vida: " + entidad.vida() + " Escudo: " + entidad.escudo());
+
+                this.turno.setText("Esta construido: " + entidad.tiempoDeConstruccion());
             }
-            this.nombre.setText("Nombre: " + entidad.getClass().getSimpleName());
+            else {
+                this.getChildren().clear();
+            }
+        } catch (Exception e) {
 
-            this.vida.setText("Vida: " + entidad.vida() + " Escudo: " + entidad.escudo());
-
-            this.turno.setText("Esta construido: " + entidad.tiempoDeConstruccion());
-        }
-        else {
-            this.getChildren().clear();
         }
     }
 

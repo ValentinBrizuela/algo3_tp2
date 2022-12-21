@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.costos.CostoGas;
 import edu.fiuba.algo3.modelo.costos.CostoMineral;
 import edu.fiuba.algo3.modelo.edificios.Construible;
 import edu.fiuba.algo3.modelo.edificios.VidaZerg;
+import edu.fiuba.algo3.modelo.estados.Ocupada;
 import edu.fiuba.algo3.modelo.interfaces.AtacableAereo;
 import edu.fiuba.algo3.modelo.interfaces.AtacableTerrestre;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
@@ -46,22 +47,18 @@ public class Mutalisco extends Unidad  implements Atacante, AtacableAereo, Consu
         atacante.atacarA(this);
     }
 
-    public Guardian evolucionarAGuardian(Almacen almacen) {
+    public void evolucionarAGuardian(Almacen almacen) {
         esUsable();
         Guardian guardian=new Guardian(casilla, almacen);
+        casilla.obtenerEstado().cambiarEntidad(guardian);
         //guardian.crear(almacen);
-
-        return guardian;
-
     }
 
-    public Devorador evolucionarADevorador(Almacen almacen) {
+    public void evolucionarADevorador(Almacen almacen) {
         esUsable();
         Devorador devorador = new Devorador(casilla,almacen );
+        casilla.obtenerEstado().cambiarEntidad(devorador);
         //devorador.crear(almacen);
-
-        return devorador;
-
     }
 
     @Override

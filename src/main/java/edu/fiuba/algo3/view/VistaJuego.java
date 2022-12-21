@@ -23,6 +23,10 @@ public class VistaJuego extends HBox {
 
     private Label nombre;
 
+    private Label raza;
+
+    private Label poblacion;
+
     private Label cantMineral;
 
     private Label cantGas;
@@ -31,6 +35,8 @@ public class VistaJuego extends HBox {
 
     public InfoEntidad infoEntidad1;
     public InfoEntidad infoEntidad2;
+
+    public AccionesEntidades accionesEntidad;
 
     public VistaJuego (VistaMapa vistaMapa, AlgoStar algoStar, Stage stage) {
 
@@ -42,6 +48,8 @@ public class VistaJuego extends HBox {
         this.infoEntidad2.tipo("Objetivo:");
 
         ControladorJuego controlador = new ControladorJuego(algoStar, vistaMapa, this);
+        this.accionesEntidad = new AccionesEntidades(controlador, this);
+
         this.setOnMouseClicked((mouseEvent -> {
             controlador.clickEnMapa(mouseEvent);
         }));
@@ -49,6 +57,10 @@ public class VistaJuego extends HBox {
         Label turno = new Label("Turno de: ");
         this.nombre = new Label(controlador.obtenerJugador());
         HBox cajaNombre = new HBox(turno, this.nombre);
+
+        this.raza = new Label("Raza: " + algoStar.obtenerJugadorActual().obtenerRaza().getClass().getSimpleName());
+
+        this.poblacion = new Label("Poblacion disponible: " + algoStar.obtenerJugadorActual().obtenerPoblacionUsable());
 
         Label cantMineral = new Label("Mineral: ");
         this.cantMineral = new Label(controlador.obtenerMineral());
@@ -59,8 +71,16 @@ public class VistaJuego extends HBox {
         HBox cajaGas = new HBox(cantGas, this.cantGas);
 
         Button botonAvanzarTurno = new Button("Avanzar Turno");
-        botonAvanzarTurno.setOnAction((e) -> {
+       /* botonAvanzarTurno.setOnAction((e) -> {
             controlador.avanzarTurno();
+            try {
+                actualizar();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+        });*/
+        botonAvanzarTurno.setOnAction((e) -> {
+            controlador.avanzarTurno(botonAvanzarTurno);
             try {
                 actualizar();
             } catch (FileNotFoundException ex) {
@@ -68,11 +88,12 @@ public class VistaJuego extends HBox {
             }
         });
 
-        Button botonAtacar = new Button("Atacar");
+       /* Button botonAtacar = new Button("Atacar");
         botonAtacar.setOnAction((e) -> {
             try {
                 controlador.atacar();
                 actualizar();
+
             } catch (Exception ignored) {
 
             }
@@ -86,7 +107,7 @@ public class VistaJuego extends HBox {
             } catch (Exception ignored) {
 
             }
-        });
+        });*/
 
         TextField construccion = new TextField();
         construccion.setPromptText("Nombre de la construccion");
@@ -101,7 +122,7 @@ public class VistaJuego extends HBox {
             }
         });
 
-        VBox acciones = new VBox(cajaNombre, cajaMineral, cajaGas, botonAtacar, botonMover, construccion, botonConstruir, botonAvanzarTurno, this.infoEntidad1, this.infoEntidad2);
+        VBox acciones = new VBox(cajaNombre, raza, poblacion, cajaMineral, cajaGas, construccion, botonConstruir, botonAvanzarTurno, this.infoEntidad1, this.infoEntidad2, this.accionesEntidad);
         acciones.setPadding(new Insets(10));
         acciones.setSpacing(10);
 
@@ -111,10 +132,15 @@ public class VistaJuego extends HBox {
     }
 
     public void actualizar() throws FileNotFoundException {
-        nombre.setText(algoStar.obtenerJugadorActual().obtenerNombre());
+        this.nombre.setText(algoStar.obtenerJugadorActual().obtenerNombre());
+        this.raza.setText("Raza: " + algoStar.obtenerJugadorActual().obtenerRaza().getClass().getSimpleName());
+        this.poblacion.setText("Poblacion disponible: " + algoStar.obtenerJugadorActual().obtenerPoblacionUsable());
         this.cantMineral.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantMineral()));
         this.cantGas.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantGas()));
         this.vistaMapa.actualizar();
+        this.infoEntidad1.actualizar();
+        this.infoEntidad2.actualizar();
+        accionesEntidad.actualizar();
     }
 
 }

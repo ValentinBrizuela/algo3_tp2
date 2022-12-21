@@ -44,13 +44,14 @@ public class CasoDeUso27Test {
         a.almacenarGas(500);
         Casilla casilla = mapa.obtenerCasilla(5,5);
         Mutalisco mutalisco = new Mutalisco(casilla);
-
+        casilla.construir(mutalisco, a);
 
         for (int i=0; i<25; i++){
             mutalisco.avanzarTurno();
         }
+        mutalisco.evolucionarADevorador(a);
 
-        assertSame(Devorador.class , mutalisco.evolucionarADevorador(a).getClass());
+        assertSame(Devorador.class , casilla.obtenerEntidad().getClass());
     }
 
     @Test

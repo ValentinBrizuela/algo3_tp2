@@ -29,6 +29,11 @@ public class Ocupada extends Estado {
         entidad.avanzarTurno();
     }
 
+    @Override
+    public void cambiarEntidad(Entidad entidad) {
+        this.entidad = entidad;
+    }
+
     public void estaLibre(){
         throw new CasillaOcupadaError();
     }

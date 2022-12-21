@@ -44,14 +44,13 @@ public class CasoDeUso21Test {
         Casilla casilla = mapa.obtenerCasilla(5,5);
 
         Mutalisco mutalisco = new Mutalisco(casilla);
-        Almacen almacen = new Almacen();
-        almacen.almacenarMineral(500);
-        almacen.almacenarGas(500);
+        casilla.construir(mutalisco, a);
 
         for (int i=0; i<25; i++){
             mutalisco.avanzarTurno();
         }
+        mutalisco.evolucionarAGuardian(a);
 
-        assertSame(Guardian.class , mutalisco.evolucionarAGuardian(almacen).getClass());
+        assertSame(Guardian.class , casilla.obtenerEntidad().getClass());
     }
 }

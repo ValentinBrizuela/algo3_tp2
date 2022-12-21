@@ -96,6 +96,8 @@ public class AlgoStar {
             System.out.println("No podes atacar a una unidad de tu misma raza");
         }
 
+
+
         ataque((Atacante) atacante, atacable, jugadores.get((turno + 1) % 2));
     }
 

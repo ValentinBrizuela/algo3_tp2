@@ -29,6 +29,11 @@ public class Desocupada extends Estado {
     public void avanzarTurno() {
     }
 
+    @Override
+    public void cambiarEntidad(Entidad entidad) {
+        throw new RuntimeException();
+    }
+
     public void estaLibre(){
     }
 
