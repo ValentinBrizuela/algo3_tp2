@@ -147,7 +147,6 @@ public class Mapa implements IMapa{
         return false;
     }
 
-    @Override
     public Entidad obtenerEntidad(int x, int y) {
         return casillas[x][y].obtenerEntidad();
     }

@@ -20,9 +20,6 @@ import java.util.List;
 
 public class Criadero extends Entidad implements Construible, AtacableTerrestre, EdificioConArea {
     private int cantidadLarvas;
-
-    Casilla casilla;
-
     private int rango;
     private int contador;
 

@@ -84,7 +84,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirCriadero(Casilla casilla, Jugador jugadorActual, IMapa mapa){
+    private void construirCriadero(Casilla casilla, Jugador jugadorActual, IMapa mapa){
         try {
             Criadero c = new Criadero(casilla);
             jugadorActual.puedeSeleccionar(c.obtenerRaza());
@@ -100,7 +100,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirPilon(Casilla casilla, Jugador jugadorActual, IMapa mapa){
+    private void construirPilon(Casilla casilla, Jugador jugadorActual, IMapa mapa){
         try {
             Pilon p = new Pilon(casilla);
             jugadorActual.puedeSeleccionar(p.obtenerRaza());
@@ -117,7 +117,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirReservaDeReproduccion(Casilla casilla, Jugador jugadorActual){
+    private void construirReservaDeReproduccion(Casilla casilla, Jugador jugadorActual){
         try {
             ReservaDeReproduccion r = new ReservaDeReproduccion(casilla);
             jugadorActual.puedeSeleccionar(r.obtenerRaza());
@@ -130,7 +130,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirEspiral(Casilla casilla, Jugador jugadorActual){
+    private void construirEspiral(Casilla casilla, Jugador jugadorActual){
         try {
             if (!jugadorActual.yaTiene("Guarida")){
                 throw new ConstruccionNoPermitidaError();
@@ -153,7 +153,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirPuertoEstelar(Casilla casilla, Jugador jugadorActual) {
+    private void construirPuertoEstelar(Casilla casilla, Jugador jugadorActual) {
         try {
             if (!jugadorActual.yaTiene("Acceso")){
                 throw new ConstruccionNoPermitidaError();
@@ -176,7 +176,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirAcceso(Casilla casilla, Jugador jugadorActual) {
+    private void construirAcceso(Casilla casilla, Jugador jugadorActual) {
         try {
             Acceso a = new Acceso(casilla);
             jugadorActual.puedeSeleccionar(a.obtenerRaza());
@@ -189,7 +189,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirExtractor(Casilla casilla, Jugador jugadorActual){
+    private void construirExtractor(Casilla casilla, Jugador jugadorActual){
         try{
             Extractor e = new Extractor(casilla, jugadorActual.obtenerAlmacen());
             jugadorActual.puedeSeleccionar(e.obtenerRaza());
@@ -202,7 +202,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirGuarida(Casilla casilla, Jugador jugadorActual){
+    private void construirGuarida(Casilla casilla, Jugador jugadorActual){
         try {
             if (!jugadorActual.yaTiene("ReservaDeReproduccion")){
                 throw new ConstruccionNoPermitidaError();
@@ -224,7 +224,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirNexoMineral(Casilla casilla, Jugador jugadorActual){
+    private void construirNexoMineral(Casilla casilla, Jugador jugadorActual){
         try {
             NexoMineral n = new NexoMineral(casilla, jugadorActual.obtenerAlmacen());
             jugadorActual.puedeSeleccionar(n.obtenerRaza());
@@ -237,7 +237,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void construirAsimilador(Casilla casilla, Jugador jugadorActual){
+    private void construirAsimilador(Casilla casilla, Jugador jugadorActual){
         try {
             Asimilador a = new Asimilador(casilla, jugadorActual.obtenerAlmacen());
             jugadorActual.puedeSeleccionar(a.obtenerRaza());
@@ -250,7 +250,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void crearZerling(Casilla casilla, Jugador jugadorActual){
+    private void crearZerling(Casilla casilla, Jugador jugadorActual){
 
         try {
             if (!jugadorActual.yaTiene("ReservaDeReproduccion")){
@@ -283,7 +283,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void crearZangano(Casilla casilla, Jugador jugadorActual){
+    private void crearZangano(Casilla casilla, Jugador jugadorActual){
 
         try {
             if (!jugadorActual.yaTiene("Criadero")){
@@ -316,7 +316,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void crearHidralisco(Casilla casilla, Jugador jugadorActual){
+    private void crearHidralisco(Casilla casilla, Jugador jugadorActual){
 
         //crear logica
         try {
@@ -351,7 +351,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void crearMutalisco(Casilla casilla, Jugador jugadorActual){
+    private void crearMutalisco(Casilla casilla, Jugador jugadorActual){
 
         try {
             if (!jugadorActual.yaTiene("Espiral")){
@@ -384,7 +384,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void crearZealot(Casilla casilla, Jugador jugadorActual){
+    private void crearZealot(Casilla casilla, Jugador jugadorActual){
 
         try {
             if (!jugadorActual.yaTiene("Acceso")){
@@ -413,7 +413,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void crearDragon(Casilla casilla, Jugador jugadorActual){
+    private void crearDragon(Casilla casilla, Jugador jugadorActual){
 
         try {
             if (!jugadorActual.yaTiene("Acceso")){
@@ -442,7 +442,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void crearScout(Casilla casilla, Jugador jugadorActual){
+    private void crearScout(Casilla casilla, Jugador jugadorActual){
 
         try {
             if (!jugadorActual.yaTiene("PuertoEstelar")){
@@ -471,7 +471,7 @@ public class EntidadesFactory {
         }
     }
 
-    public void crearAmoSupremo(Casilla casilla, Jugador jugadorActual){
+    private void crearAmoSupremo(Casilla casilla, Jugador jugadorActual){
 
         try {
             AmoSupremo a = new AmoSupremo(casilla);

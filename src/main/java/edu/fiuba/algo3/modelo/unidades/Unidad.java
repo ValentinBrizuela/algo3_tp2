@@ -17,8 +17,10 @@ public abstract class Unidad extends Entidad {
 
     private TipoDeUnidad tipoUnidad;
 
-    private int costoSuministro;
-
+    public Unidad(Vida vida, ArrayList<Costo> costos, int tiempoConstruccion, Raza raza, Casilla casilla, TipoDeUnidad tipo){
+        super(vida, costos, tiempoConstruccion, raza, casilla);
+        tipoUnidad = tipo;
+    }
     public void construir(Terreno terreno, Almacen almacen){
         this.cobrar(almacen);
         casilla.cambiarEstado(new Ocupada(terreno, casilla.obtenerRecurso(), this));
@@ -41,10 +43,6 @@ public abstract class Unidad extends Entidad {
 
     public void construir(Espacio espacio, Almacen almacen){throw new ConstruccionNoPermitidaError();}
 
-    public Unidad(Vida vida, ArrayList<Costo> costos, int tiempoConstruccion, Raza raza, Casilla casilla, TipoDeUnidad tipo){
-        super(vida, costos, tiempoConstruccion, raza, casilla);
-        tipoUnidad = tipo;
-    }
 
     public void moverA(Casilla casillaDestino){
         esUsable();

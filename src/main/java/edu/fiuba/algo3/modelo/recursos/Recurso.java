@@ -14,7 +14,4 @@ public interface Recurso {
 
     public void intentarExtraerGas(Almacen almacen, RefineriaGas refineria);
 
-
-    /*public int extraer(int cant);*/
-
 }
