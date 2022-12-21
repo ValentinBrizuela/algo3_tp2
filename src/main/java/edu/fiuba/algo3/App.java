@@ -21,11 +21,11 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws FileNotFoundException {
 
-        Mapa mapa = new Mapa(2);
-        AlgoStar algoStar = new AlgoStar(mapa);
-        //stage.setResizable(false);
+        stage.setResizable(false);
+        stage.setHeight(842);
+        stage.setWidth(1200);
         //stage.initStyle(StageStyle.UNDECORATED);
-        var scene = new Scene(new VistaInicio(algoStar, stage));
+        var scene = new Scene(new VistaInicio());
         stage.getIcons().add(new Image("icon.png"));
         stage.setScene(scene);
         stage.show();

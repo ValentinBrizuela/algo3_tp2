@@ -9,9 +9,12 @@ import edu.fiuba.algo3.view.VistaFinal;
 import edu.fiuba.algo3.view.VistaJuego;
 import edu.fiuba.algo3.view.VistaMapa;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+
+import java.security.Signature;
 
 public class ControladorJuego {
     private AlgoStar algoStar;
@@ -27,7 +30,6 @@ public class ControladorJuego {
     }
 
     public void clickEnMapa(MouseEvent mouseEvent) {
-
         if ((int) (mouseEvent.getX()/8) < this.algoStar.mapa.tamanioMapa() && (int) (mouseEvent.getY()/8) < algoStar.mapa.tamanioMapa()) {
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                 this.casillaActiva = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
@@ -44,8 +46,8 @@ public class ControladorJuego {
     }
 
     public void avanzarTurno(Button boton) {
+       // boton.getScene().setRoot(new VistaFinal(algoStar.obtenerJugadorActual()));
         if (algoStar.hayGanador()) {
-            System.out.print("Se termino");
             boton.getScene().setRoot(new VistaFinal(algoStar.obtenerJugadorActual()));
         }
         else {
@@ -66,11 +68,27 @@ public class ControladorJuego {
     }
 
     public void atacar() {
-        algoStar.atacaraPosicion(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
+        String s = algoStar.atacaraPosicion(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
+        if ( s != null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText(s);
+
+            alert.showAndWait();
+        }
     }
 
     public void mover() {
-        algoStar.mover(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
+        String s = algoStar.mover(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
+        if ( s != null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText(s);
+
+            alert.showAndWait();
+        }
     }
 
     public void construir(String construccion) {

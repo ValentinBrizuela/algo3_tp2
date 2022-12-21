@@ -38,7 +38,7 @@ public class VistaJuego extends HBox {
 
     public AccionesEntidades accionesEntidad;
 
-    public VistaJuego (VistaMapa vistaMapa, AlgoStar algoStar, Stage stage) {
+    public VistaJuego (VistaMapa vistaMapa, AlgoStar algoStar) {
 
         this.vistaMapa = vistaMapa;
         this.algoStar = algoStar;
@@ -128,7 +128,6 @@ public class VistaJuego extends HBox {
 
 
         this.getChildren().addAll(vistaMapa, acciones);
-        stage.setFullScreen(true);
     }
 
     public void actualizar() throws FileNotFoundException {

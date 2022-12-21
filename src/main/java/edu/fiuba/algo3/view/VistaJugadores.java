@@ -25,7 +25,7 @@ import java.util.List;
 
 public class VistaJugadores extends VBox {
     private static String fontType = "Tahoma";
-    public VistaJugadores(AlgoStar algostar, Stage stage) {
+    public VistaJugadores(AlgoStar algostar) {
         ObservableList<String> data = FXCollections.observableArrayList(
                 "red", "blue", "yellow", "green", "pink", "orange");
         Callback<ListView<String>, ListCell<String>> factory = new Callback<ListView<String>, ListCell<String>>() {
@@ -39,17 +39,17 @@ public class VistaJugadores extends VBox {
         Label etiquetaZerg = new Label();
         etiquetaZerg.setFont(Font.font(fontType, FontWeight.BOLD, 18));
         etiquetaZerg.setText("Jugador Zerg:");
-        etiquetaZerg.relocate(50, 80);
+        etiquetaZerg.relocate(450, 80);
 
         TextField nombreUsuario1 = new TextField();
         nombreUsuario1.setPromptText("Nombre Jugador Zerg");
-        nombreUsuario1.relocate(85, 120);
+        nombreUsuario1.relocate(485, 120);
         nombreUsuario1.setPrefSize(300, 8);
 
         ComboBox color1 = new ComboBox<String>();
         color1.getStyleClass().add("button");
         color1.setItems(data);
-        color1.relocate(385, 120);
+        color1.relocate(785, 120);
         color1.setPrefSize(30, 25);
         color1.setCellFactory(factory);
         color1.setButtonCell(factory.call(null));
@@ -57,11 +57,11 @@ public class VistaJugadores extends VBox {
         Label etiquetaProtoss = new Label();
         etiquetaProtoss.setFont(Font.font(fontType, FontWeight.BOLD, 18));
         etiquetaProtoss.setText("Jugador Protoss:");
-        etiquetaProtoss.relocate(50, 240);
+        etiquetaProtoss.relocate(450, 240);
 
         TextField nombreUsuario2 = new TextField();
         nombreUsuario2.setPromptText("Nombre Jugador Protoss");
-        nombreUsuario2.relocate(85, 280);
+        nombreUsuario2.relocate(485, 280);
         nombreUsuario2.setPrefSize(300, 8);
 
         ComboBox<String> color2 = new ComboBox<String>();
@@ -75,14 +75,14 @@ public class VistaJugadores extends VBox {
 
         //ColorPicker color2 = new ColorPicker();
         //color2.getStyleClass().add("button");
-        color2.relocate(385, 280);
+        color2.relocate(785, 280);
         color2.setPrefSize(30, 25);
 
         Button botonJugar = new Button();
         botonJugar.setText("Comenzar");
         botonJugar.setPrefSize(100, 40);
-        botonJugar.relocate(200, 400);
-        botonJugar.setOnAction(new ControladorJugadores(algostar, nombreUsuario1, nombreUsuario2, color1, color2, stage));
+        botonJugar.relocate(550, 400);
+        botonJugar.setOnAction(new ControladorJugadores(algostar, nombreUsuario1, nombreUsuario2, color1, color2));
 
         Button btn = new Button();
         btn.setText("X");
@@ -90,13 +90,11 @@ public class VistaJugadores extends VBox {
         btn.setOnAction((ActionEvent event) -> {
             Platform.exit();
         });
-        btn.relocate(465,5);
+        btn.relocate(1145,5);
 
         Pane pane = new Pane(new Label(), new Label(), nombreUsuario1, nombreUsuario2, etiquetaZerg, etiquetaProtoss, new Label(), new Label(), color1, color2, botonJugar, btn);
-        pane.setStyle("-fx-background-color: rgb(213, 237, 223)");
-        pane.setPrefSize(500, 500);
 
-
+        this.setStyle("-fx-background-color: rgb(213, 237, 223)");
         this.getChildren().addAll(pane);
     }
     static class ColorRectCell extends ListCell<String>{

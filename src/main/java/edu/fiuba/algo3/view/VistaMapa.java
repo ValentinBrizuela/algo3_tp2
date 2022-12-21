@@ -52,7 +52,7 @@ public class VistaMapa extends StackPane {
         }
 
         public void dibujarTerreno() throws FileNotFoundException {
-            Image tierra = new Image(new FileInputStream("assets/tierra.png"));
+            Image tierra = new Image(new FileInputStream("assets/tierra.png"), 10, 10, false, false);
             Image tierraEnergizada = new Image(new FileInputStream("assets/tierra energizada.png"), 10, 10, false, false);
             Image moho = new Image(new FileInputStream("assets/moho.png"));
             Image espacio = new Image(new FileInputStream("assets/espacio.png"));

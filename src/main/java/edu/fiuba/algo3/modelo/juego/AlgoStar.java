@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.edificios.*;
 import edu.fiuba.algo3.modelo.errores.*;
 import edu.fiuba.algo3.modelo.interfaces.Atacante;
 import edu.fiuba.algo3.modelo.unidades.*;
+
 import java.util.ArrayList;
 
 public class AlgoStar {
@@ -53,7 +54,7 @@ public class AlgoStar {
         return false;
     }
 
-    public void ataque(Atacante atacante, Entidad atacado, Jugador jugadorAtacado){
+    public String ataque(Atacante atacante, Entidad atacado, Jugador jugadorAtacado){
         try {
             atacado.recibirAtaque(atacante, mapa);
             if (atacado.estaDestruido()){
@@ -62,16 +63,21 @@ public class AlgoStar {
 
         } catch (AtaquePorAireInvalidoError e) {
             System.out.println("La unidad seleccionada no realiza ataques por aire.");
+            return "La unidad seleccionada no realiza ataques por aire.";
         } catch (AtaquePorTierraInvalidoError e) {
             System.out.println("La unidad seleccionada no realiza ataques por tierra.");
+            return "La unidad seleccionada no realiza ataques por tierra.";
         } catch (FueraDeRangoError e) {
             System.out.println("La unidad no tiene el rango suficiente.");
+            return "La unidad no tiene el rango suficiente.";
         } catch (EnConstruccionError e){
             System.out.println("La unidad esta en construccion.");
+            return "La unidad esta en construccion.";
         }
+        return null;
     }
 
-    public void atacaraPosicion(int x1, int y1, int x2, int y2) {
+    public String atacaraPosicion(int x1, int y1, int x2, int y2) {
         Jugador jugadorActual = obtenerJugadorActual();
         Entidad atacante = mapa.obtenerEntidad(x1, y1);
         Entidad atacable = mapa.obtenerEntidad(x2, y2);
@@ -87,36 +93,40 @@ public class AlgoStar {
 
         } catch (UnidadNoPuedeAtacarError u){
             System.out.println("La unidad seleccionada no puede atacar");
-            return;
+            return "La unidad seleccionada no puede atacar";
 
         } catch (SeleccionInvalidaError s){
             System.out.println("Esta unidad no te pertenece");
+            return "Esta unidad no te pertenece";
 
         } catch (AtaqueInvalidoError a){
             System.out.println("No podes atacar a una unidad de tu misma raza");
+            return "No podes atacar a una unidad de tu misma raza";
         }
 
 
 
-        ataque((Atacante) atacante, atacable, jugadores.get((turno + 1) % 2));
+        return ataque((Atacante) atacante, atacable, jugadores.get((turno + 1) % 2));
     }
 
-    public void mover(int x1, int y1, int x2, int y2) {
+    public String mover(int x1, int y1, int x2, int y2) {
         try {
             Entidad entidad = mapa.obtenerEntidad(x1, y1);
             jugadorActual.puedeSeleccionar(entidad.raza);
             ((Unidad) entidad).moverA(mapa.obtenerCasilla(x2, y2));
         } catch (MovimientoAEspacioError e) {
             System.out.println("La unidad seleccionado no se puede mover a una zona aerea.");
+            return "La unidad seleccionado no se puede mover a una zona aerea.";
 
         } catch (CasillaOcupadaError e) {
             System.out.println("La casilla destino seleccionada debe estar desocupada.");
+            return "La casilla destino seleccionada debe estar desocupada.";
 
-        } catch (Exception e) {
-            System.out.println("aaaaaa.");
-
+        } catch (EnConstruccionError e) {
+            System.out.println("La unidad esta en construccion.");
+            return "La unidad esta en construccion.";
         }
-
+        return null;
     }
 
     public void construirEntidad(String entidad, int x, int y){

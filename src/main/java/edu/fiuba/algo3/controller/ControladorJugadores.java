@@ -22,13 +22,12 @@ public class ControladorJugadores implements EventHandler<ActionEvent> {
 
     Stage stage;
 
-    public ControladorJugadores(AlgoStar algoStar, TextField jugador1, TextField jugador2, ComboBox color1, ComboBox color2, Stage stage) {
+    public ControladorJugadores(AlgoStar algoStar, TextField jugador1, TextField jugador2, ComboBox color1, ComboBox color2) {
         this.algoStar = algoStar;
         this.nombreUsuario1 = jugador1;
         this.nombreUsuario2 = jugador2;
         this.color1 = color1;
         this.color2 = color2;
-        this.stage = stage;
 
     }
     @Override
@@ -38,7 +37,7 @@ public class ControladorJugadores implements EventHandler<ActionEvent> {
             Jugador jugador2 = new Jugador(nombreUsuario2.getText(), new AlgoColores(color2.getValue().toString()), new Protoss());
 
             algoStar.registrarJugadores(jugador1, jugador2);
-            ((Button)actionEvent.getSource()).getScene().setRoot(new VistaJuego(new VistaMapa(algoStar, stage), algoStar, stage));
+            ((Button)actionEvent.getSource()).getScene().setRoot(new VistaJuego(new VistaMapa(algoStar, stage), algoStar));
         } catch (Exception e) {
             System.out.print(e);
         }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.view;
 
+import edu.fiuba.algo3.controller.ControladorInicio;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,18 +21,17 @@ import java.io.FileNotFoundException;
 public class VistaInicio extends VBox {
 
 
-    public VistaInicio(AlgoStar algoStar, Stage stage) throws FileNotFoundException {
+    public VistaInicio() throws FileNotFoundException {
+
 
         ImageView etiquetaTitulo = new ImageView(new Image(getClass().getResourceAsStream("/AlgoStarLogo.png")));
-        etiquetaTitulo.relocate(25, 100);
+        etiquetaTitulo.relocate(350, 150);
 
         Button botonJugar = new Button();
         botonJugar.setText("Jugar");
-        botonJugar.relocate(225, 250);
+        botonJugar.relocate(530, 400);
         botonJugar.setPrefSize(70,50);
-        botonJugar.setOnAction((event) -> {
-            ((Button)event.getSource()).getScene().setRoot(new VistaJugadores(algoStar, stage));
-        });
+        botonJugar.setOnAction(new ControladorInicio());
 
         Image menu = new Image(new FileInputStream("assets/menu.png"));
         ImageView fondo = new ImageView(menu);
@@ -44,11 +44,10 @@ public class VistaInicio extends VBox {
         btn.setOnAction((ActionEvent event) -> {
             Platform.exit();
         });
-        btn.relocate(465,5);
+        btn.relocate(1145,5);
 
         Pane pane = new Pane(fondo, etiquetaTitulo, botonJugar, btn);
         pane.setStyle("-fx-background-image: url(menu.gif);-fx-background-repeat: stretch;-fx-background-size: 500 500;-fx-background-position: center center; -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);");
-        pane.setPrefSize(500, 500);
 
         this.getChildren().addAll(pane);
     }
