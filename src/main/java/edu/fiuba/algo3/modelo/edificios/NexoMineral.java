@@ -12,10 +12,7 @@ import edu.fiuba.algo3.modelo.juego.*;
 import edu.fiuba.algo3.modelo.razas.Protoss;
 import edu.fiuba.algo3.modelo.recursos.Mena;
 import edu.fiuba.algo3.modelo.recursos.RecursoVacio;
-import edu.fiuba.algo3.modelo.terrenos.Espacio;
-import edu.fiuba.algo3.modelo.terrenos.Moho;
-import edu.fiuba.algo3.modelo.terrenos.Tierra;
-import edu.fiuba.algo3.modelo.terrenos.TierraEnergizada;
+import edu.fiuba.algo3.modelo.terrenos.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +26,10 @@ public class NexoMineral extends Entidad implements Mina, Construible, AtacableT
         this.almacen = almacen;
     }
     public void extraerMineral(Almacen almacen, Mena mena) {
-        esUsable();
-        almacen.almacenarMineral(mena.extraer(20));
+        if (estaOperativo()) {
+            esUsable();
+            almacen.almacenarMineral(mena.extraer(20));
+        }
     }
 
     @Override
@@ -73,5 +72,9 @@ public class NexoMineral extends Entidad implements Mina, Construible, AtacableT
 
     @Override
     public boolean puedeExtraerDeMina() {return true; }
+
+    private boolean estaOperativo() {
+        return casilla.obtenerTerreno().esTierraEnergizada();
+    }
 
 }

@@ -21,5 +21,10 @@ public class Tierra implements Terreno {
 
     }
 
+    @Override
+    public boolean esTierraEnergizada() {
+        return false;
+    }
+
 
 }

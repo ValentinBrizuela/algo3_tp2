@@ -27,9 +27,11 @@ public class Asimilador extends Entidad implements RefineriaGas, Construible, At
     }
 
     public void extraerGas(Almacen almacen, Geiser geiser){
-        esUsable();
-        geiser.extraerGas(20);
-        almacen.almacenarGas(20);
+        if (estaOperativo()) {
+            esUsable();
+            geiser.extraerGas(20);
+            almacen.almacenarGas(20);
+        }
     }
 
     @Override
@@ -71,5 +73,9 @@ public class Asimilador extends Entidad implements RefineriaGas, Construible, At
 
     @Override
     public boolean puedeExtraerDeGeiser() {return true; }
+
+    private boolean estaOperativo() {
+        return casilla.obtenerTerreno().esTierraEnergizada();
+    }
 
 }

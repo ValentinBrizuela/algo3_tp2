@@ -23,5 +23,10 @@ public class Espacio implements Terreno{
         throw new GeneracionInvalidaError();
     }
 
+    @Override
+    public boolean esTierraEnergizada() {
+        return false;
+    }
+
 
 }

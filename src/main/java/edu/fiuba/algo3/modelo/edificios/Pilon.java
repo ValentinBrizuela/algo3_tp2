@@ -30,15 +30,15 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre,Edi
     }
 
     public void generar(Terreno terreno, IMapa mapa) {
-        for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
-            for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
+            for (int i = casilla.obtenerPosX()-rango; i <= casilla.obtenerPosX()+rango; i++) {
+                for (int j = casilla.obtenerPosY()-rango; j <= casilla.obtenerPosY()+rango; j++) {
 
-                try {
-                    mapa.obtenerCasilla(i, j).cambiarTerreno(terreno);
-                } catch (Exception e){}
+                    try {
+                        mapa.obtenerCasilla(i, j).cambiarTerreno(terreno);
+                    } catch (Exception e){}
 
+                }
             }
-        }
     }
 
     public void construir(TierraEnergizada tierraEnergizada, Almacen almacen) {
@@ -68,7 +68,9 @@ public class Pilon extends Entidad implements Construible, AtacableTerrestre,Edi
     }
 
     public void actualizarTerreno(IMapa mapa){
-        generar(new TierraEnergizada(),mapa);
+        if (!estaDestruido()) {
+            generar(new TierraEnergizada(),mapa);
+        }
     }
     @Override
     public  void destruir(Jugador jugador,IMapa mapa){

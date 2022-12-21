@@ -14,6 +14,8 @@ public interface Terreno {
 
     public void puedoCambiar();
 
+    public boolean esTierraEnergizada();
+
     //movVolador tiene moverA(Espacio) NADA y moverA(Terreno) EXC
 
     //movTerrestre tiene moverA(Espacio) TIRA EXC y moverA(Terreno) NADA

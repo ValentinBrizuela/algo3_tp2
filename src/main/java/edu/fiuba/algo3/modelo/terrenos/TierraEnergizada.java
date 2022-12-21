@@ -19,4 +19,9 @@ public class TierraEnergizada implements Terreno {
     public void puedoCambiar() {
 
     }
+
+    @Override
+    public boolean esTierraEnergizada() {
+        return true;
+    }
 }
