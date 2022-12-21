@@ -13,7 +13,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.security.Signature;
 
 public class ControladorJuego {
@@ -46,7 +51,7 @@ public class ControladorJuego {
     }
 
     public void avanzarTurno(Button boton) {
-       // boton.getScene().setRoot(new VistaFinal(algoStar.obtenerJugadorActual()));
+        //boton.getScene().setRoot(new VistaFinal(algoStar.obtenerJugadorActual()));
         if (algoStar.hayGanador()) {
             boton.getScene().setRoot(new VistaFinal(algoStar.obtenerJugadorActual()));
         }
@@ -67,7 +72,11 @@ public class ControladorJuego {
         return Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantGas());
     }
 
-    public void atacar() {
+    public void atacar() throws FileNotFoundException {
+
+        Media media = new Media(new File("assets/espada.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
         String s = algoStar.atacaraPosicion(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
         if ( s != null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
