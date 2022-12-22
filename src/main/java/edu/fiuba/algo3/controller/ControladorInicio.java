@@ -17,6 +17,7 @@ public class ControladorInicio implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         Media media = new Media(new File("assets/botonJugarSonido.mp3").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(0.7);
         mediaPlayer.play();
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);

@@ -3,6 +3,8 @@ package edu.fiuba.algo3.view;
 import edu.fiuba.algo3.controller.ControladorJuego;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
 import edu.fiuba.algo3.modelo.juego.Casilla;
+import edu.fiuba.algo3.modelo.juego.Jugador;
+import edu.fiuba.algo3.modelo.razas.Protoss;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
@@ -35,8 +37,8 @@ public class VistaJuego extends HBox {
 
     public InfoEntidad infoEntidad1;
     public InfoEntidad infoEntidad2;
-
     public AccionesEntidades accionesEntidad;
+    public nombreEntidades nombreEntidades;
 
     public VistaJuego (VistaMapa vistaMapa, AlgoStar algoStar) {
 
@@ -46,9 +48,11 @@ public class VistaJuego extends HBox {
         this.infoEntidad1.tipo("Seleccionada:");
         this.infoEntidad2 = new InfoEntidad();
         this.infoEntidad2.tipo("Objetivo:");
+        this.nombreEntidades = new nombreEntidades(algoStar);
 
         ControladorJuego controlador = new ControladorJuego(algoStar, vistaMapa, this);
         this.accionesEntidad = new AccionesEntidades(controlador, this);
+        this.accionesEntidad.setSpacing(10);
 
         this.setOnMouseClicked((mouseEvent -> {
             controlador.clickEnMapa(mouseEvent);
@@ -122,12 +126,26 @@ public class VistaJuego extends HBox {
             }
         });
 
-        VBox acciones = new VBox(cajaNombre, raza, poblacion, cajaMineral, cajaGas, construccion, botonConstruir, botonAvanzarTurno, this.infoEntidad1, this.infoEntidad2, this.accionesEntidad);
+        HBox cajaInfo = new HBox(this.infoEntidad1, this.infoEntidad2);
+        cajaInfo.setSpacing(15);
+
+        VBox acciones = new VBox(cajaNombre, raza, poblacion, cajaMineral, cajaGas, construccion, botonConstruir, botonAvanzarTurno , this.nombreEntidades , cajaInfo, this.accionesEntidad);
         acciones.setPadding(new Insets(10));
         acciones.setSpacing(10);
-
-
+        
         this.getChildren().addAll(vistaMapa, acciones);
+    }
+
+    public VBox nombreEntidades (AlgoStar algoStar) {
+        VBox caja = new VBox();
+        Label nombres = new Label();
+        if (algoStar.obtenerJugadorActual().obtenerRaza().getClass() == Protoss.class) {
+            nombres.setText("Edificios:\nPilon\nAsimilador\nNexoMineral\nAcceso\nPuertoEstelar\nUnidades:\nZealot\nDragon\nScout");
+        } else {
+            nombres.setText("Edificios:\nCriadero\nReservaDeReproduccion\nExtractor\nGuarida\nEspiral\nUnidades:\nAmoSupremo\nZangano\nZerling\nHidralisco\nMutalisco\nGuaridan\nDevorador");
+        }
+        caja.getChildren().addAll(nombres);
+        return caja;
     }
 
     public void actualizar() throws FileNotFoundException {
@@ -140,6 +158,7 @@ public class VistaJuego extends HBox {
         this.infoEntidad1.actualizar();
         this.infoEntidad2.actualizar();
         accionesEntidad.actualizar();
+        this.nombreEntidades.actualizar();
     }
 
 }
