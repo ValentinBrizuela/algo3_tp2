@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1.entrega_2;
+package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.errores.EnConstruccionError;
@@ -54,6 +54,7 @@ public class CasoDeUso22Test {
         Jugador j2 = new Jugador("guglieri mariano",new AlgoColores("rojo"),new Protoss());
 
         algoStar.registrarJugadores(j1, j2);
+        j1.llenarArcas();
 
         algoStar.construirEntidad("Criadero", 5,6);
         Criadero c = (Criadero) mapa.obtenerEntidad(5,6);

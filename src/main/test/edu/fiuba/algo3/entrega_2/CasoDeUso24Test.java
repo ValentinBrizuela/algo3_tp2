@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.entrega_1.entrega_2;
+package edu.fiuba.algo3.entrega_2;
 
 import edu.fiuba.algo3.modelo.juego.AlgoColores;
 import edu.fiuba.algo3.modelo.juego.AlgoStar;
