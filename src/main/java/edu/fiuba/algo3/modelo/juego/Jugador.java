@@ -42,8 +42,8 @@ public class Jugador {
         this.edificiosConstruidos= new ArrayList<Construible>();
         this.edificiosConAreas= new ArrayList<EdificioConArea>();
         this.almacen= new Almacen();
-        this.almacen.almacenarMineral(10000); //cambiar esto
-        this.almacen.almacenarGas(10000);//cambiar esto
+        this.almacen.almacenarMineral(250);
+        this.almacen.almacenarGas(0);
         this.nombre=nombre;
         this.color=color;
         this.raza=raza;
