@@ -86,7 +86,10 @@ public class VistaJugadores extends VBox {
         });
         btn.relocate(1145,5);
 
-        Pane pane = new Pane(new Label(), new Label(), nombreUsuario1, nombreUsuario2, etiquetaZerg, etiquetaProtoss, new Label(), new Label(), color1, color2, botonJugar, btn);
+        Label info = new Label("El nombre de los jugadores debe tener 6 o mas caracteres y no deben coincidir en nombre ni color");
+        info.relocate(100, 600);
+
+        Pane pane = new Pane(nombreUsuario1, nombreUsuario2, etiquetaZerg, etiquetaProtoss, color1, color2, botonJugar, btn, info);
 
         this.setStyle("-fx-background-color: rgb(213, 237, 223)");
         this.getChildren().addAll(pane);

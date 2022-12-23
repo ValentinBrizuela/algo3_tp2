@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 
 
 public class VistaMapa extends StackPane {
+    final int escalado = 8;
     private AlgoStar algostar;
     private Pane recursos = new Pane();
     private Pane terrenos = new Pane();
@@ -46,8 +47,8 @@ public class VistaMapa extends StackPane {
 
         public void dibujarElemento(int i, int j, Image elemento, Pane pane) {
             ImageView imagen = new ImageView(elemento);
-            imagen.setX(i * 8);
-            imagen.setY(j * 8);
+            imagen.setX(i * escalado);
+            imagen.setY(j * escalado);
             pane.getChildren().add(imagen);
         }
 

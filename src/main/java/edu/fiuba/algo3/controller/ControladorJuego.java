@@ -37,7 +37,7 @@ public class ControladorJuego {
     }
 
     public void clickEnMapa(MouseEvent mouseEvent) {
-        if ((int) (mouseEvent.getX()/8) < this.algoStar.mapa.tamanioMapa() && (int) (mouseEvent.getY()/8) < algoStar.mapa.tamanioMapa()) {
+        if ((int) (mouseEvent.getX()/escalado) < this.algoStar.mapa.tamanioMapa() && (int) (mouseEvent.getY()/escalado) < algoStar.mapa.tamanioMapa()) {
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                 this.casillaActiva = algoStar.mapa.obtenerCasilla((int)(mouseEvent.getX()/escalado), (int)(mouseEvent.getY()/escalado));
                 this.vistaMapa.dibujarBordeCasillaPrimaria((int)(mouseEvent.getX()/escalado), (int)(mouseEvent.getY()/escalado));
