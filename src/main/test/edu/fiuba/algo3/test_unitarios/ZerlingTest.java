@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.test_unitarios;
 
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaRecursoError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaTerrenoError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
@@ -57,7 +59,7 @@ public class ZerlingTest {
         almacen.almacenarMineral(10000);
         Zerling z=new Zerling(casilla);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(z,almacen);});
+        assertThrows(ConstruccionNoPermitidaTerrenoError.class, () -> {casilla.construir(z,almacen);});
     }
 
     @Test
@@ -67,7 +69,7 @@ public class ZerlingTest {
         almacen.almacenarMineral(10000);
         Zerling z=new Zerling(casilla);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(z,almacen);});
+        assertThrows(ConstruccionNoPermitidaRecursoError.class, () -> {casilla.construir(z,almacen);});
     }
 
     @Test
@@ -77,6 +79,6 @@ public class ZerlingTest {
         almacen.almacenarMineral(10000);
         Zerling z=new Zerling(casilla);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(z,almacen);});
+        assertThrows(ConstruccionNoPermitidaRecursoError.class, () -> {casilla.construir(z,almacen);});
     }
 }

@@ -104,7 +104,15 @@ public class ControladorJuego {
     }
 
     public void construir(String construccion) {
-        algoStar.construirEntidad(construccion, casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY());
+        String s = algoStar.construirEntidad(construccion, casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY());
+        if (s != null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText(s);
+
+            alert.showAndWait();
+        }
     }
 
     public void evolucionarGuardian() {

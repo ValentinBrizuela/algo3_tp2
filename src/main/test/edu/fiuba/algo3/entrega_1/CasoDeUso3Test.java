@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.edificios.Asimilador;
 import edu.fiuba.algo3.modelo.edificios.Criadero;
 import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaRecursoError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
@@ -45,6 +46,6 @@ public class CasoDeUso3Test {
         Almacen almacen = new Almacen();
         almacen.almacenarMineral(1000);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero, almacen);});
+        assertThrows(ConstruccionNoPermitidaRecursoError.class, () -> {casilla.construir(criadero, almacen);});
     }
 }

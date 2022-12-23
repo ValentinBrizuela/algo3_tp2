@@ -27,7 +27,7 @@ public class CasoDeUso16Test {
         casilla.construir(extractor, almacen);
 
         Extractor extractor2 = new Extractor(casilla, almacen);
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(extractor2, almacen);});
+        assertThrows(CasillaOcupadaError.class, () -> {casilla.construir(extractor2, almacen);});
     }
 
     @Test
@@ -40,7 +40,7 @@ public class CasoDeUso16Test {
         casilla.construir(extractor, almacen);
 
         Extractor extractor2 = new Extractor(casilla, almacen);
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(extractor2, almacen);});
+        assertThrows(CasillaOcupadaError.class, () -> {casilla.construir(extractor2, almacen);});
     }
 
     @Test
@@ -69,6 +69,6 @@ public class CasoDeUso16Test {
         zangano.avanzarTurno();
 
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla1.construir(new NexoMineral(casilla1, almacen),almacen);});
+        assertThrows(CasillaOcupadaError.class, () -> {casilla1.construir(new NexoMineral(casilla1, almacen),almacen);});
     }
 }

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.entrega_1;
 import edu.fiuba.algo3.modelo.edificios.Asimilador;
 import edu.fiuba.algo3.modelo.edificios.Extractor;
 import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaError;
+import edu.fiuba.algo3.modelo.errores.ConstruccionNoPermitidaTerrenoError;
 import edu.fiuba.algo3.modelo.juego.Almacen;
 import edu.fiuba.algo3.modelo.juego.Casilla;
 import edu.fiuba.algo3.modelo.recursos.Geiser;
@@ -22,19 +23,8 @@ public class CasoDeUso5Test {
         Extractor extractor = new Extractor(casilla, almacen);
         almacen.almacenarMineral(1000);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(extractor, almacen);});
-        //Falta testear los otros edificios.
+        assertThrows(ConstruccionNoPermitidaTerrenoError.class, () -> {casilla.construir(extractor, almacen);});
     }
-
-   /* @Test
-    public void construyoEdificioZergEnGeiserYNoSePuede() {
-        Casilla casilla = new Casilla(0,0, new Moho(),new Geiser(), new Desocupada());
-        Criadero criadero = new Criadero();
-        Almacen almacen = new Almacen();
-        almacen.almacenarMineral(1000);
-
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(criadero, almacen);});
-    }*/
 
     @Test
     public void construyoEdificioProtossEnMohoYNoSePuede() {
@@ -43,7 +33,7 @@ public class CasoDeUso5Test {
         Asimilador asimilador = new Asimilador(casilla, almacen);
         almacen.almacenarMineral(1000);
 
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(asimilador, almacen);});
+        assertThrows(ConstruccionNoPermitidaTerrenoError.class, () -> {casilla.construir(asimilador, almacen);});
     }
 
     //REFACTOREAR LA CONSTRUCCION POR RAZA.
@@ -55,6 +45,6 @@ public class CasoDeUso5Test {
         almacen.almacenarMineral(1000);
         //Casilla sin energia por defecto.
         // Funciona por ser tierra pero deberia funcionar por no tener energia.
-        assertThrows(ConstruccionNoPermitidaError.class, () -> {casilla.construir(asimilador, almacen);});
+        assertThrows(ConstruccionNoPermitidaTerrenoError.class, () -> {casilla.construir(asimilador, almacen);});
     }
 }

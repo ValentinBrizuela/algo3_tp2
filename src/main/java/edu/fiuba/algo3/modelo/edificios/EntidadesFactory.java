@@ -8,83 +8,87 @@ import edu.fiuba.algo3.modelo.unidades.*;
 
 public class EntidadesFactory {
 
-    public void construirEntidad(String entidad, Casilla casilla, Jugador jugadorActual, IMapa mapa){
+    public String construirEntidad(String entidad, Casilla casilla, Jugador jugadorActual, IMapa mapa){
+        String s = null;
+
         switch (entidad) {
+
             case "Criadero":
-                construirCriadero(casilla, jugadorActual, mapa);
-                break;
+                s = construirCriadero(casilla, jugadorActual, mapa);
+                return s;
 
             case "Pilon":
-                construirPilon(casilla, jugadorActual, mapa);
-                break;
+                s = construirPilon(casilla, jugadorActual, mapa);
+                return s;
 
             case "ReservaDeReproduccion":
-                construirReservaDeReproduccion(casilla, jugadorActual);
-                break;
+                s = construirReservaDeReproduccion(casilla, jugadorActual);
+                return s;
 
             case "Espiral":
-                construirEspiral(casilla, jugadorActual);
-                break;
+                s = construirEspiral(casilla, jugadorActual);
+                return s;
 
             case "Acceso":
-                construirAcceso(casilla, jugadorActual);
-                break;
+                s = construirAcceso(casilla, jugadorActual);
+                return s;
 
             case "PuertoEstelar":
-                construirPuertoEstelar(casilla, jugadorActual);
-                break;
+                s = construirPuertoEstelar(casilla, jugadorActual);
+                return s;
 
             case "Extractor":
-                construirExtractor(casilla, jugadorActual);
-                break;
+                s = construirExtractor(casilla, jugadorActual);
+                return s;
 
             case "Guarida":
-                construirGuarida(casilla, jugadorActual);
-                break;
+                s = construirGuarida(casilla, jugadorActual);
+                return s;
 
             case "NexoMineral":
-                construirNexoMineral(casilla, jugadorActual);
-                break;
+                s = construirNexoMineral(casilla, jugadorActual);
+                return s;
 
             case "Asimilador":
-                construirAsimilador(casilla, jugadorActual);
-                break;
+                s = construirAsimilador(casilla, jugadorActual);
+                return s;
 
             case "Zerling":
                 crearZerling(casilla, jugadorActual);
-                break;
+                return null;
 
             case "Zangano":
                 crearZangano(casilla, jugadorActual);
-                break;
+                return null;
 
             case "Hidralisco":
                 crearHidralisco(casilla, jugadorActual);
-                break;
+                return null;
 
             case "Mutalisco":
                 crearMutalisco(casilla, jugadorActual);
-                break;
+                return null;
 
             case "Zealot":
                 crearZealot(casilla, jugadorActual);
-                break;
+                return null;
 
             case "Dragon":
                 crearDragon(casilla, jugadorActual);
-                break;
+                return null;
 
             case "Scout":
                 crearScout(casilla, jugadorActual);
-                break;
+                return null;
 
             case "AmoSupremo":
                 crearAmoSupremo(casilla, jugadorActual);
-                break;
+                return null;
         }
+        return null;
     }
 
-    private void construirCriadero(Casilla casilla, Jugador jugadorActual, IMapa mapa){
+    private String construirCriadero(Casilla casilla, Jugador jugadorActual, IMapa mapa){
         try {
             Criadero c = new Criadero(casilla);
             jugadorActual.puedeSeleccionar(c.obtenerRaza());
@@ -97,10 +101,24 @@ public class EntidadesFactory {
 
         } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirPilon(Casilla casilla, Jugador jugadorActual, IMapa mapa){
+    private String construirPilon(Casilla casilla, Jugador jugadorActual, IMapa mapa){
         try {
             Pilon p = new Pilon(casilla);
             jugadorActual.puedeSeleccionar(p.obtenerRaza());
@@ -113,11 +131,24 @@ public class EntidadesFactory {
 
         } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
 
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirReservaDeReproduccion(Casilla casilla, Jugador jugadorActual){
+    private String construirReservaDeReproduccion(Casilla casilla, Jugador jugadorActual){
         try {
             ReservaDeReproduccion r = new ReservaDeReproduccion(casilla);
             jugadorActual.puedeSeleccionar(r.obtenerRaza());
@@ -127,10 +158,24 @@ public class EntidadesFactory {
 
         } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirEspiral(Casilla casilla, Jugador jugadorActual){
+    private String construirEspiral(Casilla casilla, Jugador jugadorActual){
         try {
             if (!jugadorActual.yaTiene("Guarida")){
                 throw new ConstruccionNoPermitidaError();
@@ -138,7 +183,7 @@ public class EntidadesFactory {
 
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir un Espiral necesitas una Guarida. ");
-            return;
+            return "Para construir un Espiral necesitas una Guarida. ";
         }
 
         try {
@@ -148,12 +193,26 @@ public class EntidadesFactory {
             jugadorActual.construyo("Espiral");
             jugadorActual.agregarEdificio(e);
 
-        } catch (SeleccionInvalidaError e) {
+        } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirPuertoEstelar(Casilla casilla, Jugador jugadorActual) {
+    private String construirPuertoEstelar(Casilla casilla, Jugador jugadorActual) {
         try {
             if (!jugadorActual.yaTiene("Acceso")){
                 throw new ConstruccionNoPermitidaError();
@@ -161,7 +220,7 @@ public class EntidadesFactory {
 
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir un Puerto Estelar necesitas un Acceso. ");
-            return;
+            return "Para construir un Puerto Estelar necesitas un Acceso. ";
         }
 
         try {
@@ -171,12 +230,26 @@ public class EntidadesFactory {
             jugadorActual.construyo("PuertoEstelar");
             jugadorActual.agregarEdificio(p);
 
-        } catch (SeleccionInvalidaError e) {
+        } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirAcceso(Casilla casilla, Jugador jugadorActual) {
+    private String construirAcceso(Casilla casilla, Jugador jugadorActual) {
         try {
             Acceso a = new Acceso(casilla);
             jugadorActual.puedeSeleccionar(a.obtenerRaza());
@@ -186,10 +259,24 @@ public class EntidadesFactory {
 
         } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirExtractor(Casilla casilla, Jugador jugadorActual){
+    private String construirExtractor(Casilla casilla, Jugador jugadorActual){
         try{
             Extractor e = new Extractor(casilla, jugadorActual.obtenerAlmacen());
             jugadorActual.puedeSeleccionar(e.obtenerRaza());
@@ -199,17 +286,31 @@ public class EntidadesFactory {
 
         } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirGuarida(Casilla casilla, Jugador jugadorActual){
+    private String construirGuarida(Casilla casilla, Jugador jugadorActual){
         try {
             if (!jugadorActual.yaTiene("ReservaDeReproduccion")){
                 throw new ConstruccionNoPermitidaError();
             }
         } catch (ConstruccionNoPermitidaError e) {
             System.out.println("Para construir una guarida necesitas una Reserva de Reproduccion. ");
-            return;
+            return "Para construir una guarida necesitas una Reserva de Reproduccion. ";
         }
 
         try {
@@ -219,12 +320,26 @@ public class EntidadesFactory {
             jugadorActual.construyo("Guarida");
             jugadorActual.agregarEdificio(g);
 
-        } catch (SeleccionInvalidaError e) {
+        } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirNexoMineral(Casilla casilla, Jugador jugadorActual){
+    private String construirNexoMineral(Casilla casilla, Jugador jugadorActual){
         try {
             NexoMineral n = new NexoMineral(casilla, jugadorActual.obtenerAlmacen());
             jugadorActual.puedeSeleccionar(n.obtenerRaza());
@@ -234,10 +349,24 @@ public class EntidadesFactory {
 
         } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
-    private void construirAsimilador(Casilla casilla, Jugador jugadorActual){
+    private String construirAsimilador(Casilla casilla, Jugador jugadorActual){
         try {
             Asimilador a = new Asimilador(casilla, jugadorActual.obtenerAlmacen());
             jugadorActual.puedeSeleccionar(a.obtenerRaza());
@@ -245,9 +374,23 @@ public class EntidadesFactory {
             jugadorActual.construyo("Asimilador");
             jugadorActual.agregarEdificio(a);
 
-        } catch (SeleccionInvalidaError e) {
+        } catch (SeleccionInvalidaError e){
             System.out.println("Este edificio no te pertenece. ");
+            return "Este edificio no te pertenece. ";
+
+        } catch (CasillaOcupadaError e){
+            System.out.println("Construcción invalida por casilla ocupada.");
+            return "Construcción invalida por casilla ocupada.";
+
+        } catch (ConstruccionNoPermitidaRecursoError e){
+            System.out.println("No se puede construir sobre un recurso.");
+            return "No se puede construir sobre un recurso.";
+
+        } catch (ConstruccionNoPermitidaTerrenoError e){
+            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
+            return "No se puede construir sobre un terreno incompatible con el edificio.";
         }
+        return null;
     }
 
     private void crearZerling(Casilla casilla, Jugador jugadorActual){

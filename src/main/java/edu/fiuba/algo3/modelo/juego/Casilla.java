@@ -27,14 +27,13 @@ public class Casilla {
             estado.construir(entidad, almacen);
 
         } catch (CasillaOcupadaError e) {
-            System.out.println("Construcción invalida por casilla ocupada.");
-            throw new ConstruccionNoPermitidaError();
+            throw new CasillaOcupadaError();
+
         } catch (ConstruccionNoPermitidaRecursoError e) {
-            System.out.println("No se puede construir sobre un recurso.");
-            throw new ConstruccionNoPermitidaError();
+            throw new ConstruccionNoPermitidaRecursoError();
+
         } catch (ConstruccionNoPermitidaTerrenoError e) {
-            System.out.println("No se puede construir sobre un terreno incompatible con el edificio.");
-            throw new ConstruccionNoPermitidaError();
+            throw new ConstruccionNoPermitidaTerrenoError();
         }
 
     }

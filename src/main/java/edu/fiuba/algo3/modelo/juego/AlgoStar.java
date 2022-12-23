@@ -132,9 +132,10 @@ public class AlgoStar {
         return null;
     }
 
-    public void construirEntidad(String entidad, int x, int y){
+    public String construirEntidad(String entidad, int x, int y){
         Casilla casilla = mapa.obtenerCasilla(x, y);
-        entidadesFactory.construirEntidad(entidad, casilla, jugadorActual, mapa);
+        String s = entidadesFactory.construirEntidad(entidad, casilla, jugadorActual, mapa);
+        return s;
     }
 
     public Jugador obtenerJugadorActual() {
