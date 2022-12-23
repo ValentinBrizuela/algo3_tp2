@@ -126,7 +126,7 @@ public class VistaMapa extends StackPane {
             for (int j = 0; j < algostar.mapa.tamanioMapa(); j++) {
                 Casilla casilla = algostar.mapa.obtenerCasilla(i, j);
                 try {
-                    Entidad entidad = casilla.obtenerEstado().obtenerEntidad();
+                    Entidad entidad = casilla.obtenerEntidad();
                     if (entidad.getClass() == Pilon.class) {
                         dibujarElemento(i-1, j-1, pilon, entidades);
                     }

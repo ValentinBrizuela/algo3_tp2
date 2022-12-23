@@ -75,14 +75,6 @@ public class VistaJuego extends HBox {
         HBox cajaGas = new HBox(cantGas, this.cantGas);
 
         Button botonAvanzarTurno = new Button("Avanzar Turno");
-       /* botonAvanzarTurno.setOnAction((e) -> {
-            controlador.avanzarTurno();
-            try {
-                actualizar();
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
-        });*/
         botonAvanzarTurno.setOnAction((e) -> {
             controlador.avanzarTurno(botonAvanzarTurno);
             try {
@@ -91,27 +83,6 @@ public class VistaJuego extends HBox {
                 throw new RuntimeException(ex);
             }
         });
-
-       /* Button botonAtacar = new Button("Atacar");
-        botonAtacar.setOnAction((e) -> {
-            try {
-                controlador.atacar();
-                actualizar();
-
-            } catch (Exception ignored) {
-
-            }
-        });
-
-        Button botonMover = new Button("Mover");
-        botonMover.setOnAction((e) -> {
-            try {
-                controlador.mover();
-                actualizar();
-            } catch (Exception ignored) {
-
-            }
-        });*/
 
         TextField construccion = new TextField();
         construccion.setPromptText("Nombre de la construccion");
@@ -136,24 +107,12 @@ public class VistaJuego extends HBox {
         this.getChildren().addAll(vistaMapa, acciones);
     }
 
-    public VBox nombreEntidades (AlgoStar algoStar) {
-        VBox caja = new VBox();
-        Label nombres = new Label();
-        if (algoStar.obtenerJugadorActual().obtenerRaza().getClass() == Protoss.class) {
-            nombres.setText("Edificios:\nPilon\nAsimilador\nNexoMineral\nAcceso\nPuertoEstelar\nUnidades:\nZealot\nDragon\nScout");
-        } else {
-            nombres.setText("Edificios:\nCriadero\nReservaDeReproduccion\nExtractor\nGuarida\nEspiral\nUnidades:\nAmoSupremo\nZangano\nZerling\nHidralisco\nMutalisco\nGuaridan\nDevorador");
-        }
-        caja.getChildren().addAll(nombres);
-        return caja;
-    }
-
     public void actualizar() throws FileNotFoundException {
         this.nombre.setText(algoStar.obtenerJugadorActual().obtenerNombre());
         this.raza.setText("Raza: " + algoStar.obtenerJugadorActual().obtenerRaza().getClass().getSimpleName());
         this.poblacion.setText("Poblacion disponible: " + algoStar.obtenerJugadorActual().obtenerPoblacionUsable());
-        this.cantMineral.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantMineral()));
-        this.cantGas.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantGas()));
+        this.cantMineral.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerMineral()));
+        this.cantGas.setText(Integer.toString(algoStar.obtenerJugadorActual().obtenerGas()));
         this.vistaMapa.actualizar();
         this.infoEntidad1.actualizar();
         this.infoEntidad2.actualizar();

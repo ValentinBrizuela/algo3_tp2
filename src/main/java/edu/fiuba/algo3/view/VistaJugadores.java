@@ -67,14 +67,8 @@ public class VistaJugadores extends VBox {
         ComboBox<String> color2 = new ComboBox<String>();
         color2.setPrefSize(30, 25);
         color2.setItems(data);
-
-
-
         color2.setCellFactory(factory);
         color2.setButtonCell(factory.call(null));
-
-        //ColorPicker color2 = new ColorPicker();
-        //color2.getStyleClass().add("button");
         color2.relocate(785, 280);
         color2.setPrefSize(30, 25);
 

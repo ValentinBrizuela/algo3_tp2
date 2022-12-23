@@ -34,7 +34,7 @@ public class InfoEntidad  extends VBox {
 
     public void actualizar() {
         try {
-            Entidad entidad = casilla.obtenerEstado().obtenerEntidad();
+            Entidad entidad = casilla.obtenerEntidad();
             if ( entidad != null) {
                 if (this.getChildren().isEmpty()) {
                     this.getChildren().addAll(this.tipo, this.nombre, this.raza, this.vida, this.turno);
@@ -45,7 +45,13 @@ public class InfoEntidad  extends VBox {
 
                 this.vida.setText("Vida: " + entidad.vida() + " Escudo: " + entidad.escudo());
 
-                this.turno.setText("Esta construido: " + entidad.tiempoDeConstruccion());
+                int tiempo = entidad.tiempoDeConstruccion();
+                if (tiempo < 1) {
+                    this.turno.setText("Esta construido: Verdadero");
+                } else {
+                    this.turno.setText("Esta construido: Faltan " + tiempo + " turnos");
+                }
+
             }
             else {
                 this.getChildren().clear();

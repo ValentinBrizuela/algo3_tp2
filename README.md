@@ -1,10 +1,10 @@
 ![tp2](https://github.com/ValentinBrizuela/algo3_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/ValentinBrizuela/algo3_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/ValentinBrizuela/algo3_tp2)
 
-# TP2 Algoritmos 3: {nombre} 
+# TP2 Algoritmos 3: {AlgoStar} 
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo {10}
 
 * **Integrante 1** - [Mariano Guglieri](https://github.com/marianoguglieri)
 * **Integrante 2** - [Tomás Pierdominici](https://github.com/tpierdominici)
@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 4** - [Ivan Eric Rubin](https://github.com/ivanrubin10)
 * **Integrante 5** - [Valentin Brizuela](https://github.com/ValentinBrizuela)
 
-Corrector: **{Corrector}**
+Corrector: **{Maia Naftali}**
 
 ## Aplicación
 

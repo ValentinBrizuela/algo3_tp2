@@ -22,6 +22,8 @@ import java.io.FileNotFoundException;
 import java.security.Signature;
 
 public class ControladorJuego {
+
+    final int escalado = 8;
     private AlgoStar algoStar;
 
     private VistaMapa vistaMapa;
@@ -37,14 +39,14 @@ public class ControladorJuego {
     public void clickEnMapa(MouseEvent mouseEvent) {
         if ((int) (mouseEvent.getX()/8) < this.algoStar.mapa.tamanioMapa() && (int) (mouseEvent.getY()/8) < algoStar.mapa.tamanioMapa()) {
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                this.casillaActiva = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
-                this.vistaMapa.dibujarBordeCasillaPrimaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
+                this.casillaActiva = algoStar.mapa.obtenerCasilla((int)(mouseEvent.getX()/escalado), (int)(mouseEvent.getY()/escalado));
+                this.vistaMapa.dibujarBordeCasillaPrimaria((int)(mouseEvent.getX()/escalado), (int)(mouseEvent.getY()/escalado));
                 this.vistaJuego.infoEntidad1.cambiarCasilla(this.casillaActiva);
                 this.vistaJuego.accionesEntidad.cambiarCasilla(this.casillaActiva);
             }
             if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-                this.casillaObjetivo = algoStar.mapa.obtenerCasilla((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
-                this.vistaMapa.dibujarBordeCasillaSecundaria((int) (mouseEvent.getX()/8), (int) (mouseEvent.getY()/8));
+                this.casillaObjetivo = algoStar.mapa.obtenerCasilla((int)(mouseEvent.getX()/escalado), (int)(mouseEvent.getY()/escalado));
+                this.vistaMapa.dibujarBordeCasillaSecundaria((int)(mouseEvent.getX()/escalado), (int)(mouseEvent.getY()/escalado));
                 this.vistaJuego.infoEntidad2.cambiarCasilla(this.casillaObjetivo);
             }
         }
@@ -65,11 +67,11 @@ public class ControladorJuego {
     }
 
     public String obtenerMineral() {
-        return Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantMineral());
+        return Integer.toString(algoStar.obtenerJugadorActual().obtenerMineral());
     }
 
     public String obtenerGas() {
-        return Integer.toString(algoStar.obtenerJugadorActual().obtenerAlmacen().cantGas());
+        return Integer.toString(algoStar.obtenerJugadorActual().obtenerGas());
     }
 
     public void atacar() throws FileNotFoundException {
@@ -77,6 +79,7 @@ public class ControladorJuego {
         Media media = new Media(new File("assets/espada.mp3").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
+
         String s = algoStar.atacaraPosicion(casillaActiva.obtenerPosX(), casillaActiva.obtenerPosY(), casillaObjetivo.obtenerPosX(), casillaObjetivo.obtenerPosY());
         if ( s != null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -21,7 +21,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws FileNotFoundException {
 
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setHeight(842);
         stage.setWidth(1200);
         //stage.initStyle(StageStyle.UNDECORATED);

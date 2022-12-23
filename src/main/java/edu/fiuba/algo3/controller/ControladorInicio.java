@@ -19,6 +19,7 @@ public class ControladorInicio implements EventHandler<ActionEvent> {
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setVolume(0.7);
         mediaPlayer.play();
+
         Mapa mapa = new Mapa(2);
         AlgoStar algoStar = new AlgoStar(mapa);
         ((Button)actionEvent.getSource()).getScene().setRoot(new VistaJugadores(algoStar));

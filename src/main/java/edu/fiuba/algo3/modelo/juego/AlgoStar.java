@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 public class AlgoStar {
 
+    final double puntaInicial = 0.1;
+    final double puntaFinal = 0.9;
+
     private ArrayList<Jugador> jugadores;
     private EntidadesFactory entidadesFactory;
 
@@ -28,8 +31,8 @@ public class AlgoStar {
         if(jugador1.sosIgualA(jugador2)){
             throw new JugadorInvalidoError();
         }
-        jugador1.setearPosicion((int) (mapa.tamanioMapa()*(0.1)), (int) (mapa.tamanioMapa()*(0.1)));
-        jugador2.setearPosicion((int) (mapa.tamanioMapa()*(0.9)), (int) (mapa.tamanioMapa()*(0.9)));
+        jugador1.setearPosicion((int) (mapa.tamanioMapa()*(puntaInicial)), (int) (mapa.tamanioMapa()*(puntaInicial)));
+        jugador2.setearPosicion((int) (mapa.tamanioMapa()*(puntaFinal)), (int) (mapa.tamanioMapa()*(puntaFinal)));
         jugadores.add(jugador1);
         jugadores.add(jugador2);
         jugadorActual = jugador1;

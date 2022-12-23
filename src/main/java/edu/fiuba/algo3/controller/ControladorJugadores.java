@@ -41,6 +41,7 @@ public class ControladorJugadores implements EventHandler<ActionEvent> {
             MediaPlayer mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setVolume(0.7);
             mediaPlayer.play();
+
             Jugador jugador1 = new Jugador(nombreUsuario1.getText(), new AlgoColores(color1.getValue().toString()), new Zerg());
             Jugador jugador2 = new Jugador(nombreUsuario2.getText(), new AlgoColores(color2.getValue().toString()), new Protoss());
 

@@ -165,4 +165,12 @@ public class Jugador {
         }
         throw new LarvasInsuficientesError();
     }
+
+    public int obtenerGas() {
+        return almacen.cantGas();
+    }
+
+    public int obtenerMineral() {
+        return almacen.cantMineral();
+    }
 }

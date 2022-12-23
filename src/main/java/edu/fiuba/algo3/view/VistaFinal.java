@@ -17,9 +17,10 @@ public class VistaFinal extends Pane {
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
 
-        Label felicidades = new Label("Game Over");
-        felicidades.setFont(new Font(40));
-        felicidades.relocate(500, 150);
+        Label gameOver = new Label("Game Over");
+        gameOver.setFont(new Font(40));
+        gameOver.relocate(500, 150);
+
         Label ganador = new Label("El ganador es " + jugador.obtenerNombre());
         ganador.setFont(new Font(18));
         ganador.relocate(500, 300);
@@ -30,6 +31,6 @@ public class VistaFinal extends Pane {
         menu.setPrefSize(100, 30);
 
         this.setStyle("-fx-background-color: rgb(213, 237, 223)");
-        this.getChildren().addAll(felicidades, ganador, menu);
+        this.getChildren().addAll(gameOver, ganador, menu);
     }
 }

@@ -10,6 +10,12 @@ import edu.fiuba.algo3.modelo.unidades.AmoSupremo;
 
 public class Mapa implements IMapa{
 
+    final int tamanioMapaPorBases = 50;
+    final int tamanioBase = 10;
+    final int tamanioEspacio = 10;
+    final double principio = 0.05;
+    final double ultimo = 0.95;
+
     private int nroBases;
 
     private int tamMapa;
@@ -22,7 +28,7 @@ public class Mapa implements IMapa{
         }
 
         this.nroBases = nroBases;
-        this.tamMapa = nroBases*50;
+        this.tamMapa = nroBases*tamanioMapaPorBases;
         casillas = new Casilla[tamMapa][tamMapa];
 
         inicializarMapa();
@@ -75,8 +81,8 @@ public class Mapa implements IMapa{
         }
     }
     private void crearBase(int posX, int posY){
-        for (int i=(posX - 10); i< (posX + 10); i++){
-            for (int j=(posY - 10); j < (posY + 10); j++){
+        for (int i=(posX - tamanioBase); i< (posX + tamanioBase); i++){
+            for (int j=(posY - tamanioBase); j < (posY + tamanioBase); j++){
 
                 if ((Math.floor(Math.random()*10)) % 10 == 0 && estaDentroDelMapa(i, j)){
                     if ((Math.floor(Math.random()*10)) % 2 == 0){
@@ -90,16 +96,16 @@ public class Mapa implements IMapa{
     }
 
     private void crearEspacio(int posX, int posY) {
-        for (int i=(posX - 5); i< (posX + 5); i++){
-            for (int j=(posY - 5); j < (posY + 5); j++){
+        for (int i=(posX - tamanioEspacio); i< (posX + tamanioEspacio); i++){
+            for (int j=(posY - tamanioEspacio); j < (posY + tamanioEspacio); j++){
                 casillas[i][j] = new Casilla(i, j, new Espacio(), new RecursoVacio());
             }
         }
     }
 
     private void crearBasesEsquinas(){
-        int posicionBase1 = (int) (nroBases*(tamMapa/nroBases)*0.05);
-        int posicionBase2 = (int) (nroBases*(tamMapa/nroBases)*0.95);
+        int posicionBase1 = (int) (nroBases*(tamMapa/nroBases)*principio);
+        int posicionBase2 = (int) (nroBases*(tamMapa/nroBases)*ultimo);
 
         this.crearBase(posicionBase1, posicionBase1);
         this.crearBase(posicionBase2, posicionBase2);
